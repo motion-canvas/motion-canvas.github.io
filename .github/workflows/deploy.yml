@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          path: ./docs
           cache-dependency-path: ./docs/package-lock.json
       - run: npm ci
         working-directory: ./docs
@@ -25,14 +24,10 @@ jobs:
           token: ${{ secrets.CORE_TOKEN }}
           path: ./core
           ref: master
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          path: ./core
-          cache-dependency-path: ./core/package-lock.json
       - run: npm ci
         working-directory: ./core
+
+      - run: mkdir -p ./docs/docs/api && cp ./core/CONTRIBUTING.md ./docs/docs/api/CONTRIBUTING.md
 
       - name: Build website
         working-directory: ./docs
