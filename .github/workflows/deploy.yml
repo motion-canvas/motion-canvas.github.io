@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: motion-canvas/core
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CORE_TOKEN }}
           path: ./core
           ref: master
       - uses: actions/setup-node@v3
