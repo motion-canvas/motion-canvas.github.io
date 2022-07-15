@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Motion Canvas Blog</title>
+        <link>https://motion-canvas.github.io/blog</link>
+        <description>Motion Canvas Blog</description>
+        <lastBuildDate>Thu, 14 Jul 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Hello World!]]></title>
+            <link>https://motion-canvas.github.io/blog/hello-world</link>
+            <guid>hello-world</guid>
+            <pubDate>Thu, 14 Jul 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Hello World!]]></description>
+            <content:encoded><![CDATA[<p>Hello World!</p><iframe width="560" height="315" src="https://www.youtube.com/embed/WTUafAwrunE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content:encoded>
+        </item>
+    </channel>
+</rss>

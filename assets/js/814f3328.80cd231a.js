@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmotion_canvas_github_io=self.webpackChunkmotion_canvas_github_io||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Hello World!","permalink":"/blog/hello-world"}]}')}}]);
