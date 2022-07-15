@@ -152,7 +152,7 @@ const config = {
           '../core/src/types',
           '../core/src/utils',
         ],
-        tsconfig: '../core/tsconfig.json',
+        tsconfig: '../core/tsconfig.build.json',
       },
     ],
   ],
