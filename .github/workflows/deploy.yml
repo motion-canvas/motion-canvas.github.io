@@ -7,14 +7,15 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           path: ./docs
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: motion-canvas/core
           token: ${{ secrets.GITHUB_TOKEN }}
           path: ./core
+          ref: master
       - uses: actions/setup-node@v3
         with:
           node-version: 18
