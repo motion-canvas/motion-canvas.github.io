@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmotion_canvas_github_io=self.webpackChunkmotion_canvas_github_io||[]).push([[2875],{8842:i=>{i.exports=JSON.parse('{"title":"Modules","slug":"api","permalink":"/api","navigation":{"next":{"title":"animations","permalink":"/api/modules/animations"}}}')}}]);
