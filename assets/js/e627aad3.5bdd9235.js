@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[8162],{3250:e=>{e.exports=JSON.parse('{"title":"Modules","slug":"api/2d","permalink":"/api/2d","navigation":{"previous":{"title":"SignalUtils","permalink":"/api/core/interfaces/utils.SignalUtils"},"next":{"title":"components","permalink":"/api/2d/modules/components"}}}')}}]);
