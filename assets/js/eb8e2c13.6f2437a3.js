@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[2875],{8842:e=>{e.exports=JSON.parse('{"title":"Modules","slug":"api/core","permalink":"/api/core","navigation":{"next":{"title":"decorators","permalink":"/api/core/modules/decorators"}}}')}}]);

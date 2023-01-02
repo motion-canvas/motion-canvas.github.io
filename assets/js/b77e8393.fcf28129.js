@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[9131],{3690:s=>{s.exports=JSON.parse('{"title":"Classes","slug":"api/2d/classes","permalink":"/api/2d/classes","navigation":{"previous":{"title":"utils","permalink":"/api/2d/modules/utils"},"next":{"title":"Circle","permalink":"/api/2d/classes/components.Circle"}}}')}}]);
