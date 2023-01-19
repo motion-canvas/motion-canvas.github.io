@@ -14,7 +14,7 @@
             <guid>hello-world</guid>
             <pubDate>Thu, 14 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Hello World!]]></description>
-            <content:encoded><![CDATA[<p>Hello World!</p><iframe width="560" height="315" src="https://www.youtube.com/embed/WTUafAwrunE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Hello World!</p><iframe width="560" height="315" src="https://www.youtube.com/embed/WTUafAwrunE" loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content:encoded>
         </item>
     </channel>
 </rss>

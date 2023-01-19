@@ -13,7 +13,7 @@
         <link href="https://motion-canvas.github.io/blog/hello-world"/>
         <updated>2022-07-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Hello World!]]></summary>
-        <content type="html"><![CDATA[<p>Hello World!</p><iframe width="560" height="315" src="https://www.youtube.com/embed/WTUafAwrunE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content>
+        <content type="html"><![CDATA[<p>Hello World!</p><iframe width="560" height="315" src="https://www.youtube.com/embed/WTUafAwrunE" loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content>
         <author>
             <name>Jacob</name>
             <uri>https://twitter.com/aarthificial</uri>
