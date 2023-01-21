@@ -1,9 +1,9 @@
-var Vf = Object.defineProperty;
-var zf = (t, e, n) => e in t ? Vf(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
-var On = (t, e, n) => (zf(t, typeof e != "symbol" ? e + "" : e, n), n);
-class dc {
+var Wf = Object.defineProperty;
+var Kf = (t, e, n) => e in t ? Wf(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
+var On = (t, e, n) => (Kf(t, typeof e != "symbol" ? e + "" : e, n), n);
+class uc {
   constructor() {
-    this.subscribable = new Wm(this), this.subscribers = /* @__PURE__ */ new Set();
+    this.subscribable = new Km(this), this.subscribers = /* @__PURE__ */ new Set();
   }
   subscribe(e) {
     return this.subscribers.add(e), () => this.unsubscribe(e);
@@ -18,7 +18,7 @@ class dc {
     return [...this.subscribers].map((n) => n(e));
   }
 }
-class Wm {
+class Km {
   constructor(e) {
     this.dispatcher = e;
   }
@@ -29,12 +29,12 @@ class Wm {
     this.dispatcher.unsubscribe(e);
   }
 }
-class $f extends dc {
+class Qf extends uc {
   dispatch(e) {
     this.notifySubscribers(e);
   }
 }
-class Wf extends dc {
+class Xf extends uc {
   constructor() {
     super(...arguments), this.value = !1;
   }
@@ -52,9 +52,9 @@ class Wf extends dc {
     return this.value && e(), n;
   }
 }
-class Xn extends dc {
+class Xn extends uc {
   constructor(e) {
-    super(), this.value = e, this.subscribable = new Kf(this);
+    super(), this.value = e, this.subscribable = new Zf(this);
   }
   set current(e) {
     this.value = e, this.notifySubscribers(e);
@@ -67,7 +67,7 @@ class Xn extends dc {
     return n && e(this.value), r;
   }
 }
-class Kf extends Wm {
+class Zf extends Km {
   get current() {
     return this.dispatcher.current;
   }
@@ -75,7 +75,7 @@ class Kf extends Wm {
     return this.dispatcher.subscribe(e, n);
   }
 }
-var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, We = { exports: {} };
+var Jf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, We = { exports: {} };
 /**
  * chroma.js - JavaScript library for color conversions
  *
@@ -135,7 +135,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
 (function(t, e) {
   (function(n, r) {
     t.exports = r();
-  })(Qf, function() {
+  })(Jf, function() {
     for (var n = function(l, _, p) {
       return _ === void 0 && (_ = 0), p === void 0 && (p = 1), l < _ ? _ : l > p ? p : l;
     }, r = n, a = function(l) {
@@ -155,7 +155,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       }).map(function(p) {
         return l[0][p];
       }) : l[0];
-    }, m = u, T = function(l) {
+    }, m = u, b = function(l) {
       if (l.length < 2)
         return null;
       var _ = l.length - 1;
@@ -165,7 +165,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       limit: n,
       type: u,
       unpack: E,
-      last: T,
+      last: b,
       PI: g,
       TWOPI: g * 2,
       PITHIRD: g / 3,
@@ -177,7 +177,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
     }, A = f.last, P = f.clip_rgb, k = f.type, w = C, q = function() {
       for (var _ = [], p = arguments.length; p--; )
         _[p] = arguments[p];
-      var b = this;
+      var T = this;
       if (k(_[0]) === "object" && _[0].constructor && _[0].constructor === this.constructor)
         return _[0];
       var N = A(_), O = !1;
@@ -193,10 +193,10 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       }
       if (w.format[N]) {
         var x = w.format[N].apply(null, O ? _ : _.slice(0, -1));
-        b._rgb = P(x);
+        T._rgb = P(x);
       } else
         throw new Error("unknown format: " + _);
-      b._rgb.length === 3 && b._rgb.push(1);
+      T._rgb.length === 3 && T._rgb.push(1);
     };
     q.prototype.toString = function() {
       return k(this.hex) == "function" ? this.hex() : "[" + this._rgb.join(",") + "]";
@@ -210,18 +210,18 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
     var h = X, y = f.unpack, B = Math.max, M = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = y(l, "rgb"), b = p[0], N = p[1], O = p[2];
-      b = b / 255, N = N / 255, O = O / 255;
-      var R = 1 - B(b, B(N, O)), I = R < 1 ? 1 / (1 - R) : 0, D = (1 - b - R) * I, x = (1 - N - R) * I, F = (1 - O - R) * I;
+      var p = y(l, "rgb"), T = p[0], N = p[1], O = p[2];
+      T = T / 255, N = N / 255, O = O / 255;
+      var R = 1 - B(T, B(N, O)), I = R < 1 ? 1 / (1 - R) : 0, D = (1 - T - R) * I, x = (1 - N - R) * I, F = (1 - O - R) * I;
       return [D, x, F, R];
     }, ie = M, ce = f.unpack, _e = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       l = ce(l, "cmyk");
-      var p = l[0], b = l[1], N = l[2], O = l[3], R = l.length > 4 ? l[4] : 1;
+      var p = l[0], T = l[1], N = l[2], O = l[3], R = l.length > 4 ? l[4] : 1;
       return O === 1 ? [0, 0, 0, R] : [
         p >= 1 ? 0 : 255 * (1 - p) * (1 - O),
-        b >= 1 ? 0 : 255 * (1 - b) * (1 - O),
+        T >= 1 ? 0 : 255 * (1 - T) * (1 - O),
         N >= 1 ? 0 : 255 * (1 - N) * (1 - O),
         R
       ];
@@ -246,37 +246,37 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
     }, he = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = ke(l, "hsla"), b = Ge(l) || "lsa";
-      return p[0] = ge(p[0] || 0), p[1] = ge(p[1] * 100) + "%", p[2] = ge(p[2] * 100) + "%", b === "hsla" || p.length > 3 && p[3] < 1 ? (p[3] = p.length > 3 ? p[3] : 1, b = "hsla") : p.length = 3, b + "(" + p.join(",") + ")";
+      var p = ke(l, "hsla"), T = Ge(l) || "lsa";
+      return p[0] = ge(p[0] || 0), p[1] = ge(p[1] * 100) + "%", p[2] = ge(p[2] * 100) + "%", T === "hsla" || p.length > 3 && p[3] < 1 ? (p[3] = p.length > 3 ? p[3] : 1, T = "hsla") : p.length = 3, T + "(" + p.join(",") + ")";
     }, Te = he, pe = f.unpack, Oe = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       l = pe(l, "rgba");
-      var p = l[0], b = l[1], N = l[2];
-      p /= 255, b /= 255, N /= 255;
-      var O = Math.min(p, b, N), R = Math.max(p, b, N), I = (R + O) / 2, D, x;
-      return R === O ? (D = 0, x = Number.NaN) : D = I < 0.5 ? (R - O) / (R + O) : (R - O) / (2 - R - O), p == R ? x = (b - N) / (R - O) : b == R ? x = 2 + (N - p) / (R - O) : N == R && (x = 4 + (p - b) / (R - O)), x *= 60, x < 0 && (x += 360), l.length > 3 && l[3] !== void 0 ? [x, D, I, l[3]] : [x, D, I];
-    }, De = Oe, Ue = f.unpack, Fe = f.last, et = Te, st = De, Xe = Math.round, Jt = function() {
+      var p = l[0], T = l[1], N = l[2];
+      p /= 255, T /= 255, N /= 255;
+      var O = Math.min(p, T, N), R = Math.max(p, T, N), I = (R + O) / 2, D, x;
+      return R === O ? (D = 0, x = Number.NaN) : D = I < 0.5 ? (R - O) / (R + O) : (R - O) / (2 - R - O), p == R ? x = (T - N) / (R - O) : T == R ? x = 2 + (N - p) / (R - O) : N == R && (x = 4 + (p - T) / (R - O)), x *= 60, x < 0 && (x += 360), l.length > 3 && l[3] !== void 0 ? [x, D, I, l[3]] : [x, D, I];
+    }, De = Oe, Fe = f.unpack, Be = f.last, tt = Te, lt = De, Xe = Math.round, jt = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = Ue(l, "rgba"), b = Fe(l) || "rgb";
-      return b.substr(0, 3) == "hsl" ? et(st(p), b) : (p[0] = Xe(p[0]), p[1] = Xe(p[1]), p[2] = Xe(p[2]), (b === "rgba" || p.length > 3 && p[3] < 1) && (p[3] = p.length > 3 ? p[3] : 1, b = "rgba"), b + "(" + p.slice(0, b === "rgb" ? 3 : 4).join(",") + ")");
-    }, Mt = Jt, J = f.unpack, vt = Math.round, Le = function() {
+      var p = Fe(l, "rgba"), T = Be(l) || "rgb";
+      return T.substr(0, 3) == "hsl" ? tt(lt(p), T) : (p[0] = Xe(p[0]), p[1] = Xe(p[1]), p[2] = Xe(p[2]), (T === "rgba" || p.length > 3 && p[3] < 1) && (p[3] = p.length > 3 ? p[3] : 1, T = "rgba"), T + "(" + p.slice(0, T === "rgb" ? 3 : 4).join(",") + ")");
+    }, wt = jt, J = f.unpack, vt = Math.round, Le = function() {
       for (var l, _ = [], p = arguments.length; p--; )
         _[p] = arguments[p];
       _ = J(_, "hsl");
-      var b = _[0], N = _[1], O = _[2], R, I, D;
+      var T = _[0], N = _[1], O = _[2], R, I, D;
       if (N === 0)
         R = I = D = O * 255;
       else {
-        var x = [0, 0, 0], F = [0, 0, 0], z = O < 0.5 ? O * (1 + N) : O + N - O * N, G = 2 * O - z, W = b / 360;
+        var x = [0, 0, 0], F = [0, 0, 0], z = O < 0.5 ? O * (1 + N) : O + N - O * N, G = 2 * O - z, W = T / 360;
         x[0] = W + 1 / 3, x[1] = W, x[2] = W - 1 / 3;
         for (var $ = 0; $ < 3; $++)
           x[$] < 0 && (x[$] += 1), x[$] > 1 && (x[$] -= 1), 6 * x[$] < 1 ? F[$] = G + (z - G) * 6 * x[$] : 2 * x[$] < 1 ? F[$] = z : 3 * x[$] < 2 ? F[$] = G + (z - G) * (2 / 3 - x[$]) * 6 : F[$] = G;
         l = [vt(F[0] * 255), vt(F[1] * 255), vt(F[2] * 255)], R = l[0], I = l[1], D = l[2];
       }
       return _.length > 3 ? [R, I, D, _[3]] : [R, I, D, 1];
-    }, be = Le, it = be, Ye = C, Ot = /^rgb\(\s*(-?\d+),\s*(-?\d+)\s*,\s*(-?\d+)\s*\)$/, It = /^rgba\(\s*(-?\d+),\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*([01]|[01]?\.\d+)\)$/, V = /^rgb\(\s*(-?\d+(?:\.\d+)?)%,\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*\)$/, K = /^rgba\(\s*(-?\d+(?:\.\d+)?)%,\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)$/, ee = /^hsl\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*\)$/, de = /^hsla\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)$/, we = Math.round, tt = function(l) {
+    }, be = Le, it = be, Ye = C, Ot = /^rgb\(\s*(-?\d+),\s*(-?\d+)\s*,\s*(-?\d+)\s*\)$/, It = /^rgba\(\s*(-?\d+),\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*([01]|[01]?\.\d+)\)$/, V = /^rgb\(\s*(-?\d+(?:\.\d+)?)%,\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*\)$/, K = /^rgba\(\s*(-?\d+(?:\.\d+)?)%,\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)$/, ee = /^hsl\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*\)$/, de = /^hsla\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)$/, we = Math.round, nt = function(l) {
       l = l.toLowerCase().trim();
       var _;
       if (Ye.format.named)
@@ -285,8 +285,8 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         } catch {
         }
       if (_ = l.match(Ot)) {
-        for (var p = _.slice(1, 4), b = 0; b < 3; b++)
-          p[b] = +p[b];
+        for (var p = _.slice(1, 4), T = 0; T < 3; T++)
+          p[T] = +p[T];
         return p[3] = 1, p;
       }
       if (_ = l.match(It)) {
@@ -317,17 +317,17 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         return W[3] = +_[4], W;
       }
     };
-    tt.test = function(l) {
+    nt.test = function(l) {
       return Ot.test(l) || It.test(l) || V.test(l) || K.test(l) || ee.test(l) || de.test(l);
     };
-    var jt = tt, en = h, Ie = L, tn = C, gn = f.type, Yn = Mt, or = jt;
+    var en = nt, tn = h, Ie = L, nn = C, gn = f.type, Yn = wt, or = en;
     Ie.prototype.css = function(l) {
       return Yn(this._rgb, l);
-    }, en.css = function() {
+    }, tn.css = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(Ie, [null].concat(l, ["css"])))();
-    }, tn.format.css = or, tn.autodetect.push({
+    }, nn.format.css = or, nn.autodetect.push({
       p: 5,
       test: function(l) {
         for (var _ = [], p = arguments.length - 1; p-- > 0; )
@@ -336,13 +336,13 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
           return "css";
       }
     });
-    var sr = L, na = h, ra = C, aa = f.unpack;
-    ra.format.gl = function() {
+    var sr = L, ra = h, aa = C, ia = f.unpack;
+    aa.format.gl = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = aa(l, "rgba");
+      var p = ia(l, "rgba");
       return p[0] *= 255, p[1] *= 255, p[2] *= 255, p;
-    }, na.gl = function() {
+    }, ra.gl = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(sr, [null].concat(l, ["gl"])))();
@@ -350,15 +350,15 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       var l = this._rgb;
       return [l[0] / 255, l[1] / 255, l[2] / 255, l[3]];
     };
-    var ia = f.unpack, oa = function() {
+    var oa = f.unpack, sa = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = ia(l, "rgb"), b = p[0], N = p[1], O = p[2], R = Math.min(b, N, O), I = Math.max(b, N, O), D = I - R, x = D * 100 / 255, F = R / (255 - D) * 100, z;
-      return D === 0 ? z = Number.NaN : (b === I && (z = (N - O) / D), N === I && (z = 2 + (O - b) / D), O === I && (z = 4 + (b - N) / D), z *= 60, z < 0 && (z += 360)), [z, x, F];
-    }, sa = oa, la = f.unpack, ca = Math.floor, _a = function() {
-      for (var l, _, p, b, N, O, R = [], I = arguments.length; I--; )
+      var p = oa(l, "rgb"), T = p[0], N = p[1], O = p[2], R = Math.min(T, N, O), I = Math.max(T, N, O), D = I - R, x = D * 100 / 255, F = R / (255 - D) * 100, z;
+      return D === 0 ? z = Number.NaN : (T === I && (z = (N - O) / D), N === I && (z = 2 + (O - T) / D), O === I && (z = 4 + (T - N) / D), z *= 60, z < 0 && (z += 360)), [z, x, F];
+    }, la = sa, ca = f.unpack, _a = Math.floor, da = function() {
+      for (var l, _, p, T, N, O, R = [], I = arguments.length; I--; )
         R[I] = arguments[I];
-      R = la(R, "hcg");
+      R = ca(R, "hcg");
       var D = R[0], x = R[1], F = R[2], z, G, W;
       F = F * 255;
       var $ = x * 255;
@@ -366,7 +366,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         z = G = W = F;
       else {
         D === 360 && (D = 0), D > 360 && (D -= 360), D < 0 && (D += 360), D /= 60;
-        var oe = ca(D), ue = D - oe, Se = F * (1 - x), Re = Se + $ * (1 - ue), Ze = Se + $ * ue, ze = Se + $;
+        var oe = _a(D), ue = D - oe, Se = F * (1 - x), Re = Se + $ * (1 - ue), Ze = Se + $ * ue, ze = Se + $;
         switch (oe) {
           case 0:
             l = [ze, Ze, Se], z = l[0], G = l[1], W = l[2];
@@ -378,7 +378,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
             p = [Se, ze, Ze], z = p[0], G = p[1], W = p[2];
             break;
           case 3:
-            b = [Se, Re, ze], z = b[0], G = b[1], W = b[2];
+            T = [Se, Re, ze], z = T[0], G = T[1], W = T[2];
             break;
           case 4:
             N = [Ze, Se, ze], z = N[0], G = N[1], W = N[2];
@@ -389,28 +389,28 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         }
       }
       return [z, G, W, R.length > 3 ? R[3] : 1];
-    }, da = _a, ua = f.unpack, pa = f.type, ma = h, lr = L, cr = C, Ea = sa;
+    }, ua = da, pa = f.unpack, ma = f.type, Ea = h, lr = L, cr = C, ga = la;
     lr.prototype.hcg = function() {
-      return Ea(this._rgb);
-    }, ma.hcg = function() {
+      return ga(this._rgb);
+    }, Ea.hcg = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(lr, [null].concat(l, ["hcg"])))();
-    }, cr.format.hcg = da, cr.autodetect.push({
+    }, cr.format.hcg = ua, cr.autodetect.push({
       p: 1,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = ua(l, "hcg"), pa(l) === "array" && l.length === 3)
+        if (l = pa(l, "hcg"), ma(l) === "array" && l.length === 3)
           return "hcg";
       }
     });
-    var ga = f.unpack, Sa = f.last, Sn = Math.round, fa = function() {
+    var Sa = f.unpack, fa = f.last, Sn = Math.round, ba = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = ga(l, "rgba"), b = p[0], N = p[1], O = p[2], R = p[3], I = Sa(l) || "auto";
-      R === void 0 && (R = 1), I === "auto" && (I = R < 1 ? "rgba" : "rgb"), b = Sn(b), N = Sn(N), O = Sn(O);
-      var D = b << 16 | N << 8 | O, x = "000000" + D.toString(16);
+      var p = Sa(l, "rgba"), T = p[0], N = p[1], O = p[2], R = p[3], I = fa(l) || "auto";
+      R === void 0 && (R = 1), I === "auto" && (I = R < 1 ? "rgba" : "rgb"), T = Sn(T), N = Sn(N), O = Sn(O);
+      var D = T << 16 | N << 8 | O, x = "000000" + D.toString(16);
       x = x.substr(x.length - 6);
       var F = "0" + Sn(R * 255).toString(16);
       switch (F = F.substr(F.length - 2), I.toLowerCase()) {
@@ -421,22 +421,22 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         default:
           return "#" + x;
       }
-    }, _r = fa, ba = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, Ta = /^#?([A-Fa-f0-9]{8}|[A-Fa-f0-9]{4})$/, Ra = function(l) {
-      if (l.match(ba)) {
-        (l.length === 4 || l.length === 7) && (l = l.substr(1)), l.length === 3 && (l = l.split(""), l = l[0] + l[0] + l[1] + l[1] + l[2] + l[2]);
-        var _ = parseInt(l, 16), p = _ >> 16, b = _ >> 8 & 255, N = _ & 255;
-        return [p, b, N, 1];
-      }
+    }, _r = ba, Ta = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, Ra = /^#?([A-Fa-f0-9]{8}|[A-Fa-f0-9]{4})$/, Ca = function(l) {
       if (l.match(Ta)) {
+        (l.length === 4 || l.length === 7) && (l = l.substr(1)), l.length === 3 && (l = l.split(""), l = l[0] + l[0] + l[1] + l[1] + l[2] + l[2]);
+        var _ = parseInt(l, 16), p = _ >> 16, T = _ >> 8 & 255, N = _ & 255;
+        return [p, T, N, 1];
+      }
+      if (l.match(Ra)) {
         (l.length === 5 || l.length === 9) && (l = l.substr(1)), l.length === 4 && (l = l.split(""), l = l[0] + l[0] + l[1] + l[1] + l[2] + l[2] + l[3] + l[3]);
         var O = parseInt(l, 16), R = O >> 24 & 255, I = O >> 16 & 255, D = O >> 8 & 255, x = Math.round((O & 255) / 255 * 100) / 100;
         return [R, I, D, x];
       }
       throw new Error("unknown hex color: " + l);
-    }, dr = Ra, Ca = h, ur = L, Na = f.type, pr = C, ha = _r;
+    }, dr = Ca, Na = h, ur = L, ha = f.type, pr = C, va = _r;
     ur.prototype.hex = function(l) {
-      return ha(this._rgb, l);
-    }, Ca.hex = function() {
+      return va(this._rgb, l);
+    }, Na.hex = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(ur, [null].concat(l, ["hex"])))();
@@ -445,43 +445,43 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       test: function(l) {
         for (var _ = [], p = arguments.length - 1; p-- > 0; )
           _[p] = arguments[p + 1];
-        if (!_.length && Na(l) === "string" && [3, 4, 5, 6, 7, 8, 9].indexOf(l.length) >= 0)
+        if (!_.length && ha(l) === "string" && [3, 4, 5, 6, 7, 8, 9].indexOf(l.length) >= 0)
           return "hex";
       }
     });
-    var va = f.unpack, mr = f.TWOPI, Oa = Math.min, Ia = Math.sqrt, Aa = Math.acos, ya = function() {
+    var Oa = f.unpack, mr = f.TWOPI, Ia = Math.min, Aa = Math.sqrt, ya = Math.acos, Da = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = va(l, "rgb"), b = p[0], N = p[1], O = p[2];
-      b /= 255, N /= 255, O /= 255;
-      var R, I = Oa(b, N, O), D = (b + N + O) / 3, x = D > 0 ? 1 - I / D : 0;
-      return x === 0 ? R = NaN : (R = (b - N + (b - O)) / 2, R /= Ia((b - N) * (b - N) + (b - O) * (N - O)), R = Aa(R), O > N && (R = mr - R), R /= mr), [R * 360, x, D];
-    }, Da = ya, Ma = f.unpack, qn = f.limit, Bt = f.TWOPI, Hn = f.PITHIRD, Gt = Math.cos, La = function() {
+      var p = Oa(l, "rgb"), T = p[0], N = p[1], O = p[2];
+      T /= 255, N /= 255, O /= 255;
+      var R, I = Ia(T, N, O), D = (T + N + O) / 3, x = D > 0 ? 1 - I / D : 0;
+      return x === 0 ? R = NaN : (R = (T - N + (T - O)) / 2, R /= Aa((T - N) * (T - N) + (T - O) * (N - O)), R = ya(R), O > N && (R = mr - R), R /= mr), [R * 360, x, D];
+    }, Ma = Da, La = f.unpack, qn = f.limit, Bt = f.TWOPI, Hn = f.PITHIRD, Gt = Math.cos, wa = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      l = Ma(l, "hsi");
-      var p = l[0], b = l[1], N = l[2], O, R, I;
-      return isNaN(p) && (p = 0), isNaN(b) && (b = 0), p > 360 && (p -= 360), p < 0 && (p += 360), p /= 360, p < 1 / 3 ? (I = (1 - b) / 3, O = (1 + b * Gt(Bt * p) / Gt(Hn - Bt * p)) / 3, R = 1 - (I + O)) : p < 2 / 3 ? (p -= 1 / 3, O = (1 - b) / 3, R = (1 + b * Gt(Bt * p) / Gt(Hn - Bt * p)) / 3, I = 1 - (O + R)) : (p -= 2 / 3, R = (1 - b) / 3, I = (1 + b * Gt(Bt * p) / Gt(Hn - Bt * p)) / 3, O = 1 - (R + I)), O = qn(N * O * 3), R = qn(N * R * 3), I = qn(N * I * 3), [O * 255, R * 255, I * 255, l.length > 3 ? l[3] : 1];
-    }, wa = La, xa = f.unpack, Pa = f.type, ka = h, Er = L, gr = C, Ua = Da;
+      l = La(l, "hsi");
+      var p = l[0], T = l[1], N = l[2], O, R, I;
+      return isNaN(p) && (p = 0), isNaN(T) && (T = 0), p > 360 && (p -= 360), p < 0 && (p += 360), p /= 360, p < 1 / 3 ? (I = (1 - T) / 3, O = (1 + T * Gt(Bt * p) / Gt(Hn - Bt * p)) / 3, R = 1 - (I + O)) : p < 2 / 3 ? (p -= 1 / 3, O = (1 - T) / 3, R = (1 + T * Gt(Bt * p) / Gt(Hn - Bt * p)) / 3, I = 1 - (O + R)) : (p -= 2 / 3, R = (1 - T) / 3, I = (1 + T * Gt(Bt * p) / Gt(Hn - Bt * p)) / 3, O = 1 - (R + I)), O = qn(N * O * 3), R = qn(N * R * 3), I = qn(N * I * 3), [O * 255, R * 255, I * 255, l.length > 3 ? l[3] : 1];
+    }, xa = wa, Pa = f.unpack, ka = f.type, Ua = h, Er = L, gr = C, Fa = Ma;
     Er.prototype.hsi = function() {
-      return Ua(this._rgb);
-    }, ka.hsi = function() {
+      return Fa(this._rgb);
+    }, Ua.hsi = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(Er, [null].concat(l, ["hsi"])))();
-    }, gr.format.hsi = wa, gr.autodetect.push({
+    }, gr.format.hsi = xa, gr.autodetect.push({
       p: 2,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = xa(l, "hsi"), Pa(l) === "array" && l.length === 3)
+        if (l = Pa(l, "hsi"), ka(l) === "array" && l.length === 3)
           return "hsi";
       }
     });
-    var Fa = f.unpack, Ba = f.type, Ga = h, Sr = L, fr = C, Ya = De;
+    var Ba = f.unpack, Ga = f.type, Ya = h, Sr = L, fr = C, qa = De;
     Sr.prototype.hsl = function() {
-      return Ya(this._rgb);
-    }, Ga.hsl = function() {
+      return qa(this._rgb);
+    }, Ya.hsl = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(Sr, [null].concat(l, ["hsl"])))();
@@ -490,20 +490,20 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = Fa(l, "hsl"), Ba(l) === "array" && l.length === 3)
+        if (l = Ba(l, "hsl"), Ga(l) === "array" && l.length === 3)
           return "hsl";
       }
     });
-    var qa = f.unpack, Ha = Math.min, Va = Math.max, za = function() {
+    var Ha = f.unpack, Va = Math.min, za = Math.max, $a = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      l = qa(l, "rgb");
-      var p = l[0], b = l[1], N = l[2], O = Ha(p, b, N), R = Va(p, b, N), I = R - O, D, x, F;
-      return F = R / 255, R === 0 ? (D = Number.NaN, x = 0) : (x = I / R, p === R && (D = (b - N) / I), b === R && (D = 2 + (N - p) / I), N === R && (D = 4 + (p - b) / I), D *= 60, D < 0 && (D += 360)), [D, x, F];
-    }, $a = za, Wa = f.unpack, br = Math.floor, Tr = function() {
-      for (var l, _, p, b, N, O, R = [], I = arguments.length; I--; )
+      l = Ha(l, "rgb");
+      var p = l[0], T = l[1], N = l[2], O = Va(p, T, N), R = za(p, T, N), I = R - O, D, x, F;
+      return F = R / 255, R === 0 ? (D = Number.NaN, x = 0) : (x = I / R, p === R && (D = (T - N) / I), T === R && (D = 2 + (N - p) / I), N === R && (D = 4 + (p - T) / I), D *= 60, D < 0 && (D += 360)), [D, x, F];
+    }, Wa = $a, Ka = f.unpack, br = Math.floor, Tr = function() {
+      for (var l, _, p, T, N, O, R = [], I = arguments.length; I--; )
         R[I] = arguments[I];
-      R = Wa(R, "hsv");
+      R = Ka(R, "hsv");
       var D = R[0], x = R[1], F = R[2], z, G, W;
       if (F *= 255, x === 0)
         z = G = W = F;
@@ -521,7 +521,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
             p = [ue, F, Re], z = p[0], G = p[1], W = p[2];
             break;
           case 3:
-            b = [ue, Se, F], z = b[0], G = b[1], W = b[2];
+            T = [ue, Se, F], z = T[0], G = T[1], W = T[2];
             break;
           case 4:
             N = [Re, ue, F], z = N[0], G = N[1], W = N[2];
@@ -532,23 +532,23 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         }
       }
       return [z, G, W, R.length > 3 ? R[3] : 1];
-    }, Rr = Tr, Ka = f.unpack, Qa = f.type, Cr = h, nn = L, fn = C, Nr = $a;
-    nn.prototype.hsv = function() {
+    }, Rr = Tr, Qa = f.unpack, Xa = f.type, Cr = h, rn = L, fn = C, Nr = Wa;
+    rn.prototype.hsv = function() {
       return Nr(this._rgb);
     }, Cr.hsv = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      return new (Function.prototype.bind.apply(nn, [null].concat(l, ["hsv"])))();
+      return new (Function.prototype.bind.apply(rn, [null].concat(l, ["hsv"])))();
     }, fn.format.hsv = Rr, fn.autodetect.push({
       p: 2,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = Ka(l, "hsv"), Qa(l) === "array" && l.length === 3)
+        if (l = Qa(l, "hsv"), Xa(l) === "array" && l.length === 3)
           return "hsv";
       }
     });
-    var rn = {
+    var an = {
       Kn: 18,
       Xn: 0.95047,
       Yn: 1,
@@ -557,96 +557,96 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       t1: 0.206896552,
       t2: 0.12841855,
       t3: 8856452e-9
-    }, Lt = rn, Fc = f.unpack, Xa = Math.pow, WE = function() {
+    }, xt = an, Bc = f.unpack, Za = Math.pow, XE = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = Fc(l, "rgb"), b = p[0], N = p[1], O = p[2], R = KE(b, N, O), I = R[0], D = R[1], x = R[2], F = 116 * D - 16;
+      var p = Bc(l, "rgb"), T = p[0], N = p[1], O = p[2], R = ZE(T, N, O), I = R[0], D = R[1], x = R[2], F = 116 * D - 16;
       return [F < 0 ? 0 : F, 500 * (I - D), 200 * (D - x)];
-    }, Za = function(l) {
-      return (l /= 255) <= 0.04045 ? l / 12.92 : Xa((l + 0.055) / 1.055, 2.4);
     }, Ja = function(l) {
-      return l > Lt.t3 ? Xa(l, 1 / 3) : l / Lt.t2 + Lt.t0;
-    }, KE = function(l, _, p) {
-      l = Za(l), _ = Za(_), p = Za(p);
-      var b = Ja((0.4124564 * l + 0.3575761 * _ + 0.1804375 * p) / Lt.Xn), N = Ja((0.2126729 * l + 0.7151522 * _ + 0.072175 * p) / Lt.Yn), O = Ja((0.0193339 * l + 0.119192 * _ + 0.9503041 * p) / Lt.Zn);
-      return [b, N, O];
-    }, Bc = WE, bn = rn, QE = f.unpack, XE = Math.pow, ZE = function() {
-      for (var l = [], _ = arguments.length; _--; )
-        l[_] = arguments[_];
-      l = QE(l, "lab");
-      var p = l[0], b = l[1], N = l[2], O, R, I, D, x, F;
-      return R = (p + 16) / 116, O = isNaN(b) ? R : R + b / 500, I = isNaN(N) ? R : R - N / 200, R = bn.Yn * ei(R), O = bn.Xn * ei(O), I = bn.Zn * ei(I), D = ja(3.2404542 * O - 1.5371385 * R - 0.4985314 * I), x = ja(-0.969266 * O + 1.8760108 * R + 0.041556 * I), F = ja(0.0556434 * O - 0.2040259 * R + 1.0572252 * I), [D, x, F, l.length > 3 ? l[3] : 1];
+      return (l /= 255) <= 0.04045 ? l / 12.92 : Za((l + 0.055) / 1.055, 2.4);
     }, ja = function(l) {
-      return 255 * (l <= 304e-5 ? 12.92 * l : 1.055 * XE(l, 1 / 2.4) - 0.055);
-    }, ei = function(l) {
-      return l > bn.t1 ? l * l * l : bn.t2 * (l - bn.t0);
-    }, Gc = ZE, JE = f.unpack, jE = f.type, eg = h, Yc = L, qc = C, tg = Bc;
-    Yc.prototype.lab = function() {
-      return tg(this._rgb);
-    }, eg.lab = function() {
+      return l > xt.t3 ? Za(l, 1 / 3) : l / xt.t2 + xt.t0;
+    }, ZE = function(l, _, p) {
+      l = Ja(l), _ = Ja(_), p = Ja(p);
+      var T = ja((0.4124564 * l + 0.3575761 * _ + 0.1804375 * p) / xt.Xn), N = ja((0.2126729 * l + 0.7151522 * _ + 0.072175 * p) / xt.Yn), O = ja((0.0193339 * l + 0.119192 * _ + 0.9503041 * p) / xt.Zn);
+      return [T, N, O];
+    }, Gc = XE, bn = an, JE = f.unpack, jE = Math.pow, eg = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      return new (Function.prototype.bind.apply(Yc, [null].concat(l, ["lab"])))();
-    }, qc.format.lab = Gc, qc.autodetect.push({
+      l = JE(l, "lab");
+      var p = l[0], T = l[1], N = l[2], O, R, I, D, x, F;
+      return R = (p + 16) / 116, O = isNaN(T) ? R : R + T / 500, I = isNaN(N) ? R : R - N / 200, R = bn.Yn * ti(R), O = bn.Xn * ti(O), I = bn.Zn * ti(I), D = ei(3.2404542 * O - 1.5371385 * R - 0.4985314 * I), x = ei(-0.969266 * O + 1.8760108 * R + 0.041556 * I), F = ei(0.0556434 * O - 0.2040259 * R + 1.0572252 * I), [D, x, F, l.length > 3 ? l[3] : 1];
+    }, ei = function(l) {
+      return 255 * (l <= 304e-5 ? 12.92 * l : 1.055 * jE(l, 1 / 2.4) - 0.055);
+    }, ti = function(l) {
+      return l > bn.t1 ? l * l * l : bn.t2 * (l - bn.t0);
+    }, Yc = eg, tg = f.unpack, ng = f.type, rg = h, qc = L, Hc = C, ag = Gc;
+    qc.prototype.lab = function() {
+      return ag(this._rgb);
+    }, rg.lab = function() {
+      for (var l = [], _ = arguments.length; _--; )
+        l[_] = arguments[_];
+      return new (Function.prototype.bind.apply(qc, [null].concat(l, ["lab"])))();
+    }, Hc.format.lab = Yc, Hc.autodetect.push({
       p: 2,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = JE(l, "lab"), jE(l) === "array" && l.length === 3)
+        if (l = tg(l, "lab"), ng(l) === "array" && l.length === 3)
           return "lab";
       }
     });
-    var ng = f.unpack, rg = f.RAD2DEG, ag = Math.sqrt, ig = Math.atan2, og = Math.round, sg = function() {
+    var ig = f.unpack, og = f.RAD2DEG, sg = Math.sqrt, lg = Math.atan2, cg = Math.round, _g = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = ng(l, "lab"), b = p[0], N = p[1], O = p[2], R = ag(N * N + O * O), I = (ig(O, N) * rg + 360) % 360;
-      return og(R * 1e4) === 0 && (I = Number.NaN), [b, R, I];
-    }, Hc = sg, lg = f.unpack, cg = Bc, _g = Hc, dg = function() {
+      var p = ig(l, "lab"), T = p[0], N = p[1], O = p[2], R = sg(N * N + O * O), I = (lg(O, N) * og + 360) % 360;
+      return cg(R * 1e4) === 0 && (I = Number.NaN), [T, R, I];
+    }, Vc = _g, dg = f.unpack, ug = Gc, pg = Vc, mg = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = lg(l, "rgb"), b = p[0], N = p[1], O = p[2], R = cg(b, N, O), I = R[0], D = R[1], x = R[2];
-      return _g(I, D, x);
-    }, ug = dg, pg = f.unpack, mg = f.DEG2RAD, Eg = Math.sin, gg = Math.cos, Sg = function() {
+      var p = dg(l, "rgb"), T = p[0], N = p[1], O = p[2], R = ug(T, N, O), I = R[0], D = R[1], x = R[2];
+      return pg(I, D, x);
+    }, Eg = mg, gg = f.unpack, Sg = f.DEG2RAD, fg = Math.sin, bg = Math.cos, Tg = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = pg(l, "lch"), b = p[0], N = p[1], O = p[2];
-      return isNaN(O) && (O = 0), O = O * mg, [b, gg(O) * N, Eg(O) * N];
-    }, Vc = Sg, fg = f.unpack, bg = Vc, Tg = Gc, Rg = function() {
+      var p = gg(l, "lch"), T = p[0], N = p[1], O = p[2];
+      return isNaN(O) && (O = 0), O = O * Sg, [T, bg(O) * N, fg(O) * N];
+    }, zc = Tg, Rg = f.unpack, Cg = zc, Ng = Yc, hg = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      l = fg(l, "lch");
-      var p = l[0], b = l[1], N = l[2], O = bg(p, b, N), R = O[0], I = O[1], D = O[2], x = Tg(R, I, D), F = x[0], z = x[1], G = x[2];
+      l = Rg(l, "lch");
+      var p = l[0], T = l[1], N = l[2], O = Cg(p, T, N), R = O[0], I = O[1], D = O[2], x = Ng(R, I, D), F = x[0], z = x[1], G = x[2];
       return [F, z, G, l.length > 3 ? l[3] : 1];
-    }, zc = Rg, Cg = f.unpack, Ng = zc, hg = function() {
+    }, $c = hg, vg = f.unpack, Og = $c, Ig = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = Cg(l, "hcl").reverse();
-      return Ng.apply(void 0, p);
-    }, vg = hg, Og = f.unpack, Ig = f.type, $c = h, hr = L, ti = C, Wc = ug;
+      var p = vg(l, "hcl").reverse();
+      return Og.apply(void 0, p);
+    }, Ag = Ig, yg = f.unpack, Dg = f.type, Wc = h, hr = L, ni = C, Kc = Eg;
     hr.prototype.lch = function() {
-      return Wc(this._rgb);
+      return Kc(this._rgb);
     }, hr.prototype.hcl = function() {
-      return Wc(this._rgb).reverse();
-    }, $c.lch = function() {
+      return Kc(this._rgb).reverse();
+    }, Wc.lch = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(hr, [null].concat(l, ["lch"])))();
-    }, $c.hcl = function() {
+    }, Wc.hcl = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(hr, [null].concat(l, ["hcl"])))();
-    }, ti.format.lch = zc, ti.format.hcl = vg, ["lch", "hcl"].forEach(function(l) {
-      return ti.autodetect.push({
+    }, ni.format.lch = $c, ni.format.hcl = Ag, ["lch", "hcl"].forEach(function(l) {
+      return ni.autodetect.push({
         p: 2,
         test: function() {
           for (var _ = [], p = arguments.length; p--; )
             _[p] = arguments[p];
-          if (_ = Og(_, l), Ig(_) === "array" && _.length === 3)
+          if (_ = yg(_, l), Dg(_) === "array" && _.length === 3)
             return l;
         }
       });
     });
-    var Ag = {
+    var Mg = {
       aliceblue: "#f0f8ff",
       antiquewhite: "#faebd7",
       aqua: "#00ffff",
@@ -802,255 +802,255 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       whitesmoke: "#f5f5f5",
       yellow: "#ffff00",
       yellowgreen: "#9acd32"
-    }, Kc = Ag, yg = L, Qc = C, Dg = f.type, Vn = Kc, Mg = dr, Lg = _r;
-    yg.prototype.name = function() {
-      for (var l = Lg(this._rgb, "rgb"), _ = 0, p = Object.keys(Vn); _ < p.length; _ += 1) {
-        var b = p[_];
-        if (Vn[b] === l)
-          return b.toLowerCase();
+    }, Qc = Mg, Lg = L, Xc = C, wg = f.type, Vn = Qc, xg = dr, Pg = _r;
+    Lg.prototype.name = function() {
+      for (var l = Pg(this._rgb, "rgb"), _ = 0, p = Object.keys(Vn); _ < p.length; _ += 1) {
+        var T = p[_];
+        if (Vn[T] === l)
+          return T.toLowerCase();
       }
       return l;
-    }, Qc.format.named = function(l) {
+    }, Xc.format.named = function(l) {
       if (l = l.toLowerCase(), Vn[l])
-        return Mg(Vn[l]);
+        return xg(Vn[l]);
       throw new Error("unknown color name: " + l);
-    }, Qc.autodetect.push({
+    }, Xc.autodetect.push({
       p: 5,
       test: function(l) {
         for (var _ = [], p = arguments.length - 1; p-- > 0; )
           _[p] = arguments[p + 1];
-        if (!_.length && Dg(l) === "string" && Vn[l.toLowerCase()])
+        if (!_.length && wg(l) === "string" && Vn[l.toLowerCase()])
           return "named";
       }
     });
-    var wg = f.unpack, xg = function() {
+    var kg = f.unpack, Ug = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = wg(l, "rgb"), b = p[0], N = p[1], O = p[2];
-      return (b << 16) + (N << 8) + O;
-    }, Pg = xg, kg = f.type, Ug = function(l) {
-      if (kg(l) == "number" && l >= 0 && l <= 16777215) {
-        var _ = l >> 16, p = l >> 8 & 255, b = l & 255;
-        return [_, p, b, 1];
+      var p = kg(l, "rgb"), T = p[0], N = p[1], O = p[2];
+      return (T << 16) + (N << 8) + O;
+    }, Fg = Ug, Bg = f.type, Gg = function(l) {
+      if (Bg(l) == "number" && l >= 0 && l <= 16777215) {
+        var _ = l >> 16, p = l >> 8 & 255, T = l & 255;
+        return [_, p, T, 1];
       }
       throw new Error("unknown num color: " + l);
-    }, Fg = Ug, Bg = h, Xc = L, Zc = C, Gg = f.type, Yg = Pg;
-    Xc.prototype.num = function() {
-      return Yg(this._rgb);
-    }, Bg.num = function() {
+    }, Yg = Gg, qg = h, Zc = L, Jc = C, Hg = f.type, Vg = Fg;
+    Zc.prototype.num = function() {
+      return Vg(this._rgb);
+    }, qg.num = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      return new (Function.prototype.bind.apply(Xc, [null].concat(l, ["num"])))();
-    }, Zc.format.num = Fg, Zc.autodetect.push({
+      return new (Function.prototype.bind.apply(Zc, [null].concat(l, ["num"])))();
+    }, Jc.format.num = Yg, Jc.autodetect.push({
       p: 5,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l.length === 1 && Gg(l[0]) === "number" && l[0] >= 0 && l[0] <= 16777215)
+        if (l.length === 1 && Hg(l[0]) === "number" && l[0] >= 0 && l[0] <= 16777215)
           return "num";
       }
     });
-    var qg = h, ni = L, Jc = C, jc = f.unpack, e_ = f.type, t_ = Math.round;
-    ni.prototype.rgb = function(l) {
-      return l === void 0 && (l = !0), l === !1 ? this._rgb.slice(0, 3) : this._rgb.slice(0, 3).map(t_);
-    }, ni.prototype.rgba = function(l) {
+    var zg = h, ri = L, jc = C, e_ = f.unpack, t_ = f.type, n_ = Math.round;
+    ri.prototype.rgb = function(l) {
+      return l === void 0 && (l = !0), l === !1 ? this._rgb.slice(0, 3) : this._rgb.slice(0, 3).map(n_);
+    }, ri.prototype.rgba = function(l) {
       return l === void 0 && (l = !0), this._rgb.slice(0, 4).map(function(_, p) {
-        return p < 3 ? l === !1 ? _ : t_(_) : _;
+        return p < 3 ? l === !1 ? _ : n_(_) : _;
       });
-    }, qg.rgb = function() {
+    }, zg.rgb = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      return new (Function.prototype.bind.apply(ni, [null].concat(l, ["rgb"])))();
-    }, Jc.format.rgb = function() {
+      return new (Function.prototype.bind.apply(ri, [null].concat(l, ["rgb"])))();
+    }, jc.format.rgb = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = jc(l, "rgba");
+      var p = e_(l, "rgba");
       return p[3] === void 0 && (p[3] = 1), p;
-    }, Jc.autodetect.push({
+    }, jc.autodetect.push({
       p: 3,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = jc(l, "rgba"), e_(l) === "array" && (l.length === 3 || l.length === 4 && e_(l[3]) == "number" && l[3] >= 0 && l[3] <= 1))
+        if (l = e_(l, "rgba"), t_(l) === "array" && (l.length === 3 || l.length === 4 && t_(l[3]) == "number" && l[3] >= 0 && l[3] <= 1))
           return "rgb";
       }
     });
-    var vr = Math.log, Hg = function(l) {
-      var _ = l / 100, p, b, N;
-      return _ < 66 ? (p = 255, b = _ < 6 ? 0 : -155.25485562709179 - 0.44596950469579133 * (b = _ - 2) + 104.49216199393888 * vr(b), N = _ < 20 ? 0 : -254.76935184120902 + 0.8274096064007395 * (N = _ - 10) + 115.67994401066147 * vr(N)) : (p = 351.97690566805693 + 0.114206453784165 * (p = _ - 55) - 40.25366309332127 * vr(p), b = 325.4494125711974 + 0.07943456536662342 * (b = _ - 50) - 28.0852963507957 * vr(b), N = 255), [p, b, N, 1];
-    }, n_ = Hg, Vg = n_, zg = f.unpack, $g = Math.round, Wg = function() {
+    var vr = Math.log, $g = function(l) {
+      var _ = l / 100, p, T, N;
+      return _ < 66 ? (p = 255, T = _ < 6 ? 0 : -155.25485562709179 - 0.44596950469579133 * (T = _ - 2) + 104.49216199393888 * vr(T), N = _ < 20 ? 0 : -254.76935184120902 + 0.8274096064007395 * (N = _ - 10) + 115.67994401066147 * vr(N)) : (p = 351.97690566805693 + 0.114206453784165 * (p = _ - 55) - 40.25366309332127 * vr(p), T = 325.4494125711974 + 0.07943456536662342 * (T = _ - 50) - 28.0852963507957 * vr(T), N = 255), [p, T, N, 1];
+    }, r_ = $g, Wg = r_, Kg = f.unpack, Qg = Math.round, Xg = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      for (var p = zg(l, "rgb"), b = p[0], N = p[2], O = 1e3, R = 4e4, I = 0.4, D; R - O > I; ) {
+      for (var p = Kg(l, "rgb"), T = p[0], N = p[2], O = 1e3, R = 4e4, I = 0.4, D; R - O > I; ) {
         D = (R + O) * 0.5;
-        var x = Vg(D);
-        x[2] / x[0] >= N / b ? R = D : O = D;
+        var x = Wg(D);
+        x[2] / x[0] >= N / T ? R = D : O = D;
       }
-      return $g(D);
-    }, Kg = Wg, ri = h, Or = L, ai = C, Qg = Kg;
+      return Qg(D);
+    }, Zg = Xg, ai = h, Or = L, ii = C, Jg = Zg;
     Or.prototype.temp = Or.prototype.kelvin = Or.prototype.temperature = function() {
-      return Qg(this._rgb);
-    }, ri.temp = ri.kelvin = ri.temperature = function() {
+      return Jg(this._rgb);
+    }, ai.temp = ai.kelvin = ai.temperature = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       return new (Function.prototype.bind.apply(Or, [null].concat(l, ["temp"])))();
-    }, ai.format.temp = ai.format.kelvin = ai.format.temperature = n_;
-    var Xg = f.unpack, ii = Math.cbrt, Zg = Math.pow, Jg = Math.sign, jg = function() {
+    }, ii.format.temp = ii.format.kelvin = ii.format.temperature = r_;
+    var jg = f.unpack, oi = Math.cbrt, eS = Math.pow, tS = Math.sign, nS = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = Xg(l, "rgb"), b = p[0], N = p[1], O = p[2], R = [oi(b / 255), oi(N / 255), oi(O / 255)], I = R[0], D = R[1], x = R[2], F = ii(0.4122214708 * I + 0.5363325363 * D + 0.0514459929 * x), z = ii(0.2119034982 * I + 0.6806995451 * D + 0.1073969566 * x), G = ii(0.0883024619 * I + 0.2817188376 * D + 0.6299787005 * x);
+      var p = jg(l, "rgb"), T = p[0], N = p[1], O = p[2], R = [si(T / 255), si(N / 255), si(O / 255)], I = R[0], D = R[1], x = R[2], F = oi(0.4122214708 * I + 0.5363325363 * D + 0.0514459929 * x), z = oi(0.2119034982 * I + 0.6806995451 * D + 0.1073969566 * x), G = oi(0.0883024619 * I + 0.2817188376 * D + 0.6299787005 * x);
       return [
         0.2104542553 * F + 0.793617785 * z - 0.0040720468 * G,
         1.9779984951 * F - 2.428592205 * z + 0.4505937099 * G,
         0.0259040371 * F + 0.7827717662 * z - 0.808675766 * G
       ];
-    }, r_ = jg;
-    function oi(l) {
-      var _ = Math.abs(l);
-      return _ < 0.04045 ? l / 12.92 : (Jg(l) || 1) * Zg((_ + 0.055) / 1.055, 2.4);
-    }
-    var eS = f.unpack, Ir = Math.pow, tS = Math.sign, nS = function() {
-      for (var l = [], _ = arguments.length; _--; )
-        l[_] = arguments[_];
-      l = eS(l, "lab");
-      var p = l[0], b = l[1], N = l[2], O = Ir(p + 0.3963377774 * b + 0.2158037573 * N, 3), R = Ir(p - 0.1055613458 * b - 0.0638541728 * N, 3), I = Ir(p - 0.0894841775 * b - 1.291485548 * N, 3);
-      return [
-        255 * si(4.0767416621 * O - 3.3077115913 * R + 0.2309699292 * I),
-        255 * si(-1.2684380046 * O + 2.6097574011 * R - 0.3413193965 * I),
-        255 * si(-0.0041960863 * O - 0.7034186147 * R + 1.707614701 * I),
-        l.length > 3 ? l[3] : 1
-      ];
     }, a_ = nS;
     function si(l) {
       var _ = Math.abs(l);
-      return _ > 31308e-7 ? (tS(l) || 1) * (1.055 * Ir(_, 1 / 2.4) - 0.055) : l * 12.92;
+      return _ < 0.04045 ? l / 12.92 : (tS(l) || 1) * eS((_ + 0.055) / 1.055, 2.4);
     }
-    var rS = f.unpack, aS = f.type, iS = h, i_ = L, o_ = C, oS = r_;
-    i_.prototype.oklab = function() {
-      return oS(this._rgb);
-    }, iS.oklab = function() {
+    var rS = f.unpack, Ir = Math.pow, aS = Math.sign, iS = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      return new (Function.prototype.bind.apply(i_, [null].concat(l, ["oklab"])))();
-    }, o_.format.oklab = a_, o_.autodetect.push({
+      l = rS(l, "lab");
+      var p = l[0], T = l[1], N = l[2], O = Ir(p + 0.3963377774 * T + 0.2158037573 * N, 3), R = Ir(p - 0.1055613458 * T - 0.0638541728 * N, 3), I = Ir(p - 0.0894841775 * T - 1.291485548 * N, 3);
+      return [
+        255 * li(4.0767416621 * O - 3.3077115913 * R + 0.2309699292 * I),
+        255 * li(-1.2684380046 * O + 2.6097574011 * R - 0.3413193965 * I),
+        255 * li(-0.0041960863 * O - 0.7034186147 * R + 1.707614701 * I),
+        l.length > 3 ? l[3] : 1
+      ];
+    }, i_ = iS;
+    function li(l) {
+      var _ = Math.abs(l);
+      return _ > 31308e-7 ? (aS(l) || 1) * (1.055 * Ir(_, 1 / 2.4) - 0.055) : l * 12.92;
+    }
+    var oS = f.unpack, sS = f.type, lS = h, o_ = L, s_ = C, cS = a_;
+    o_.prototype.oklab = function() {
+      return cS(this._rgb);
+    }, lS.oklab = function() {
+      for (var l = [], _ = arguments.length; _--; )
+        l[_] = arguments[_];
+      return new (Function.prototype.bind.apply(o_, [null].concat(l, ["oklab"])))();
+    }, s_.format.oklab = i_, s_.autodetect.push({
       p: 3,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = rS(l, "oklab"), aS(l) === "array" && l.length === 3)
+        if (l = oS(l, "oklab"), sS(l) === "array" && l.length === 3)
           return "oklab";
       }
     });
-    var sS = f.unpack, lS = r_, cS = Hc, _S = function() {
+    var _S = f.unpack, dS = a_, uS = Vc, pS = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      var p = sS(l, "rgb"), b = p[0], N = p[1], O = p[2], R = lS(b, N, O), I = R[0], D = R[1], x = R[2];
-      return cS(I, D, x);
-    }, dS = _S, uS = f.unpack, pS = Vc, mS = a_, ES = function() {
+      var p = _S(l, "rgb"), T = p[0], N = p[1], O = p[2], R = dS(T, N, O), I = R[0], D = R[1], x = R[2];
+      return uS(I, D, x);
+    }, mS = pS, ES = f.unpack, gS = zc, SS = i_, fS = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      l = uS(l, "lch");
-      var p = l[0], b = l[1], N = l[2], O = pS(p, b, N), R = O[0], I = O[1], D = O[2], x = mS(R, I, D), F = x[0], z = x[1], G = x[2];
+      l = ES(l, "lch");
+      var p = l[0], T = l[1], N = l[2], O = gS(p, T, N), R = O[0], I = O[1], D = O[2], x = SS(R, I, D), F = x[0], z = x[1], G = x[2];
       return [F, z, G, l.length > 3 ? l[3] : 1];
-    }, gS = ES, SS = f.unpack, fS = f.type, bS = h, s_ = L, l_ = C, TS = dS;
-    s_.prototype.oklch = function() {
-      return TS(this._rgb);
-    }, bS.oklch = function() {
+    }, bS = fS, TS = f.unpack, RS = f.type, CS = h, l_ = L, c_ = C, NS = mS;
+    l_.prototype.oklch = function() {
+      return NS(this._rgb);
+    }, CS.oklch = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
-      return new (Function.prototype.bind.apply(s_, [null].concat(l, ["oklch"])))();
-    }, l_.format.oklch = gS, l_.autodetect.push({
+      return new (Function.prototype.bind.apply(l_, [null].concat(l, ["oklch"])))();
+    }, c_.format.oklch = bS, c_.autodetect.push({
       p: 3,
       test: function() {
         for (var l = [], _ = arguments.length; _--; )
           l[_] = arguments[_];
-        if (l = SS(l, "oklch"), fS(l) === "array" && l.length === 3)
+        if (l = TS(l, "oklch"), RS(l) === "array" && l.length === 3)
           return "oklch";
       }
     });
-    var c_ = L, RS = f.type;
-    c_.prototype.alpha = function(l, _) {
-      return _ === void 0 && (_ = !1), l !== void 0 && RS(l) === "number" ? _ ? (this._rgb[3] = l, this) : new c_([this._rgb[0], this._rgb[1], this._rgb[2], l], "rgb") : this._rgb[3];
+    var __ = L, hS = f.type;
+    __.prototype.alpha = function(l, _) {
+      return _ === void 0 && (_ = !1), l !== void 0 && hS(l) === "number" ? _ ? (this._rgb[3] = l, this) : new __([this._rgb[0], this._rgb[1], this._rgb[2], l], "rgb") : this._rgb[3];
     };
-    var CS = L;
-    CS.prototype.clipped = function() {
+    var vS = L;
+    vS.prototype.clipped = function() {
       return this._rgb._clipped || !1;
     };
-    var an = L, NS = rn;
-    an.prototype.darken = function(l) {
+    var on = L, OS = an;
+    on.prototype.darken = function(l) {
       l === void 0 && (l = 1);
       var _ = this, p = _.lab();
-      return p[0] -= NS.Kn * l, new an(p, "lab").alpha(_.alpha(), !0);
-    }, an.prototype.brighten = function(l) {
+      return p[0] -= OS.Kn * l, new on(p, "lab").alpha(_.alpha(), !0);
+    }, on.prototype.brighten = function(l) {
       return l === void 0 && (l = 1), this.darken(-l);
-    }, an.prototype.darker = an.prototype.darken, an.prototype.brighter = an.prototype.brighten;
-    var hS = L;
-    hS.prototype.get = function(l) {
-      var _ = l.split("."), p = _[0], b = _[1], N = this[p]();
-      if (b) {
-        var O = p.indexOf(b) - (p.substr(0, 2) === "ok" ? 2 : 0);
+    }, on.prototype.darker = on.prototype.darken, on.prototype.brighter = on.prototype.brighten;
+    var IS = L;
+    IS.prototype.get = function(l) {
+      var _ = l.split("."), p = _[0], T = _[1], N = this[p]();
+      if (T) {
+        var O = p.indexOf(T) - (p.substr(0, 2) === "ok" ? 2 : 0);
         if (O > -1)
           return N[O];
-        throw new Error("unknown channel " + b + " in mode " + p);
+        throw new Error("unknown channel " + T + " in mode " + p);
       } else
         return N;
     };
-    var Tn = L, vS = f.type, OS = Math.pow, IS = 1e-7, AS = 20;
+    var Tn = L, AS = f.type, yS = Math.pow, DS = 1e-7, MS = 20;
     Tn.prototype.luminance = function(l) {
-      if (l !== void 0 && vS(l) === "number") {
+      if (l !== void 0 && AS(l) === "number") {
         if (l === 0)
           return new Tn([0, 0, 0, this._rgb[3]], "rgb");
         if (l === 1)
           return new Tn([255, 255, 255, this._rgb[3]], "rgb");
-        var _ = this.luminance(), p = "rgb", b = AS, N = function(R, I) {
+        var _ = this.luminance(), p = "rgb", T = MS, N = function(R, I) {
           var D = R.interpolate(I, 0.5, p), x = D.luminance();
-          return Math.abs(l - x) < IS || !b-- ? D : x > l ? N(R, D) : N(D, I);
+          return Math.abs(l - x) < DS || !T-- ? D : x > l ? N(R, D) : N(D, I);
         }, O = (_ > l ? N(new Tn([0, 0, 0]), this) : N(this, new Tn([255, 255, 255]))).rgb();
         return new Tn(O.concat([this._rgb[3]]));
       }
-      return yS.apply(void 0, this._rgb.slice(0, 3));
+      return LS.apply(void 0, this._rgb.slice(0, 3));
     };
-    var yS = function(l, _, p) {
-      return l = li(l), _ = li(_), p = li(p), 0.2126 * l + 0.7152 * _ + 0.0722 * p;
-    }, li = function(l) {
-      return l /= 255, l <= 0.03928 ? l / 12.92 : OS((l + 0.055) / 1.055, 2.4);
-    }, lt = {}, __ = L, d_ = f.type, Ar = lt, u_ = function(l, _, p) {
+    var LS = function(l, _, p) {
+      return l = ci(l), _ = ci(_), p = ci(p), 0.2126 * l + 0.7152 * _ + 0.0722 * p;
+    }, ci = function(l) {
+      return l /= 255, l <= 0.03928 ? l / 12.92 : yS((l + 0.055) / 1.055, 2.4);
+    }, ct = {}, d_ = L, u_ = f.type, Ar = ct, p_ = function(l, _, p) {
       p === void 0 && (p = 0.5);
-      for (var b = [], N = arguments.length - 3; N-- > 0; )
-        b[N] = arguments[N + 3];
-      var O = b[0] || "lrgb";
-      if (!Ar[O] && !b.length && (O = Object.keys(Ar)[0]), !Ar[O])
+      for (var T = [], N = arguments.length - 3; N-- > 0; )
+        T[N] = arguments[N + 3];
+      var O = T[0] || "lrgb";
+      if (!Ar[O] && !T.length && (O = Object.keys(Ar)[0]), !Ar[O])
         throw new Error("interpolation mode " + O + " is not defined");
-      return d_(l) !== "object" && (l = new __(l)), d_(_) !== "object" && (_ = new __(_)), Ar[O](l, _, p).alpha(l.alpha() + p * (_.alpha() - l.alpha()));
-    }, p_ = L, DS = u_;
-    p_.prototype.mix = p_.prototype.interpolate = function(l, _) {
+      return u_(l) !== "object" && (l = new d_(l)), u_(_) !== "object" && (_ = new d_(_)), Ar[O](l, _, p).alpha(l.alpha() + p * (_.alpha() - l.alpha()));
+    }, m_ = L, wS = p_;
+    m_.prototype.mix = m_.prototype.interpolate = function(l, _) {
       _ === void 0 && (_ = 0.5);
-      for (var p = [], b = arguments.length - 2; b-- > 0; )
-        p[b] = arguments[b + 2];
-      return DS.apply(void 0, [this, l, _].concat(p));
+      for (var p = [], T = arguments.length - 2; T-- > 0; )
+        p[T] = arguments[T + 2];
+      return wS.apply(void 0, [this, l, _].concat(p));
     };
-    var m_ = L;
-    m_.prototype.premultiply = function(l) {
+    var E_ = L;
+    E_.prototype.premultiply = function(l) {
       l === void 0 && (l = !1);
       var _ = this._rgb, p = _[3];
-      return l ? (this._rgb = [_[0] * p, _[1] * p, _[2] * p, p], this) : new m_([_[0] * p, _[1] * p, _[2] * p, p], "rgb");
+      return l ? (this._rgb = [_[0] * p, _[1] * p, _[2] * p, p], this) : new E_([_[0] * p, _[1] * p, _[2] * p, p], "rgb");
     };
-    var ci = L, MS = rn;
-    ci.prototype.saturate = function(l) {
+    var _i = L, xS = an;
+    _i.prototype.saturate = function(l) {
       l === void 0 && (l = 1);
       var _ = this, p = _.lch();
-      return p[1] += MS.Kn * l, p[1] < 0 && (p[1] = 0), new ci(p, "lch").alpha(_.alpha(), !0);
-    }, ci.prototype.desaturate = function(l) {
+      return p[1] += xS.Kn * l, p[1] < 0 && (p[1] = 0), new _i(p, "lch").alpha(_.alpha(), !0);
+    }, _i.prototype.desaturate = function(l) {
       return l === void 0 && (l = 1), this.saturate(-l);
     };
-    var E_ = L, g_ = f.type;
-    E_.prototype.set = function(l, _, p) {
+    var g_ = L, S_ = f.type;
+    g_.prototype.set = function(l, _, p) {
       p === void 0 && (p = !1);
-      var b = l.split("."), N = b[0], O = b[1], R = this[N]();
+      var T = l.split("."), N = T[0], O = T[1], R = this[N]();
       if (O) {
         var I = N.indexOf(O) - (N.substr(0, 2) === "ok" ? 2 : 0);
         if (I > -1) {
-          if (g_(_) == "string")
+          if (S_(_) == "string")
             switch (_.charAt(0)) {
               case "+":
                 R[I] += +_;
@@ -1067,112 +1067,112 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
               default:
                 R[I] = +_;
             }
-          else if (g_(_) === "number")
+          else if (S_(_) === "number")
             R[I] = _;
           else
             throw new Error("unsupported value for Color.set");
-          var D = new E_(R, N);
+          var D = new g_(R, N);
           return p ? (this._rgb = D._rgb, this) : D;
         }
         throw new Error("unknown channel " + O + " in mode " + N);
       } else
         return R;
     };
-    var LS = L, wS = function(l, _, p) {
-      var b = l._rgb, N = _._rgb;
-      return new LS(
-        b[0] + p * (N[0] - b[0]),
-        b[1] + p * (N[1] - b[1]),
-        b[2] + p * (N[2] - b[2]),
+    var PS = L, kS = function(l, _, p) {
+      var T = l._rgb, N = _._rgb;
+      return new PS(
+        T[0] + p * (N[0] - T[0]),
+        T[1] + p * (N[1] - T[1]),
+        T[2] + p * (N[2] - T[2]),
         "rgb"
       );
     };
-    lt.rgb = wS;
-    var xS = L, _i = Math.sqrt, Rn = Math.pow, PS = function(l, _, p) {
-      var b = l._rgb, N = b[0], O = b[1], R = b[2], I = _._rgb, D = I[0], x = I[1], F = I[2];
-      return new xS(
-        _i(Rn(N, 2) * (1 - p) + Rn(D, 2) * p),
-        _i(Rn(O, 2) * (1 - p) + Rn(x, 2) * p),
-        _i(Rn(R, 2) * (1 - p) + Rn(F, 2) * p),
+    ct.rgb = kS;
+    var US = L, di = Math.sqrt, Rn = Math.pow, FS = function(l, _, p) {
+      var T = l._rgb, N = T[0], O = T[1], R = T[2], I = _._rgb, D = I[0], x = I[1], F = I[2];
+      return new US(
+        di(Rn(N, 2) * (1 - p) + Rn(D, 2) * p),
+        di(Rn(O, 2) * (1 - p) + Rn(x, 2) * p),
+        di(Rn(R, 2) * (1 - p) + Rn(F, 2) * p),
         "rgb"
       );
     };
-    lt.lrgb = PS;
-    var kS = L, US = function(l, _, p) {
-      var b = l.lab(), N = _.lab();
-      return new kS(
-        b[0] + p * (N[0] - b[0]),
-        b[1] + p * (N[1] - b[1]),
-        b[2] + p * (N[2] - b[2]),
+    ct.lrgb = FS;
+    var BS = L, GS = function(l, _, p) {
+      var T = l.lab(), N = _.lab();
+      return new BS(
+        T[0] + p * (N[0] - T[0]),
+        T[1] + p * (N[1] - T[1]),
+        T[2] + p * (N[2] - T[2]),
         "lab"
       );
     };
-    lt.lab = US;
-    var S_ = L, Cn = function(l, _, p, b) {
+    ct.lab = GS;
+    var f_ = L, Cn = function(l, _, p, T) {
       var N, O, R, I;
-      b === "hsl" ? (R = l.hsl(), I = _.hsl()) : b === "hsv" ? (R = l.hsv(), I = _.hsv()) : b === "hcg" ? (R = l.hcg(), I = _.hcg()) : b === "hsi" ? (R = l.hsi(), I = _.hsi()) : b === "lch" || b === "hcl" ? (b = "hcl", R = l.hcl(), I = _.hcl()) : b === "oklch" && (R = l.oklch().reverse(), I = _.oklch().reverse());
+      T === "hsl" ? (R = l.hsl(), I = _.hsl()) : T === "hsv" ? (R = l.hsv(), I = _.hsv()) : T === "hcg" ? (R = l.hcg(), I = _.hcg()) : T === "hsi" ? (R = l.hsi(), I = _.hsi()) : T === "lch" || T === "hcl" ? (T = "hcl", R = l.hcl(), I = _.hcl()) : T === "oklch" && (R = l.oklch().reverse(), I = _.oklch().reverse());
       var D, x, F, z, G, W;
-      (b.substr(0, 1) === "h" || b === "oklch") && (N = R, D = N[0], F = N[1], G = N[2], O = I, x = O[0], z = O[1], W = O[2]);
+      (T.substr(0, 1) === "h" || T === "oklch") && (N = R, D = N[0], F = N[1], G = N[2], O = I, x = O[0], z = O[1], W = O[2]);
       var $, oe, ue, Se;
-      return !isNaN(D) && !isNaN(x) ? (x > D && x - D > 180 ? Se = x - (D + 360) : x < D && D - x > 180 ? Se = x + 360 - D : Se = x - D, oe = D + p * Se) : isNaN(D) ? isNaN(x) ? oe = Number.NaN : (oe = x, (G == 1 || G == 0) && b != "hsv" && ($ = z)) : (oe = D, (W == 1 || W == 0) && b != "hsv" && ($ = F)), $ === void 0 && ($ = F + p * (z - F)), ue = G + p * (W - G), b === "oklch" ? new S_([ue, $, oe], b) : new S_([oe, $, ue], b);
-    }, FS = Cn, f_ = function(l, _, p) {
-      return FS(l, _, p, "lch");
+      return !isNaN(D) && !isNaN(x) ? (x > D && x - D > 180 ? Se = x - (D + 360) : x < D && D - x > 180 ? Se = x + 360 - D : Se = x - D, oe = D + p * Se) : isNaN(D) ? isNaN(x) ? oe = Number.NaN : (oe = x, (G == 1 || G == 0) && T != "hsv" && ($ = z)) : (oe = D, (W == 1 || W == 0) && T != "hsv" && ($ = F)), $ === void 0 && ($ = F + p * (z - F)), ue = G + p * (W - G), T === "oklch" ? new f_([ue, $, oe], T) : new f_([oe, $, ue], T);
+    }, YS = Cn, b_ = function(l, _, p) {
+      return YS(l, _, p, "lch");
     };
-    lt.lch = f_, lt.hcl = f_;
-    var BS = L, GS = function(l, _, p) {
-      var b = l.num(), N = _.num();
-      return new BS(b + p * (N - b), "num");
+    ct.lch = b_, ct.hcl = b_;
+    var qS = L, HS = function(l, _, p) {
+      var T = l.num(), N = _.num();
+      return new qS(T + p * (N - T), "num");
     };
-    lt.num = GS;
-    var YS = Cn, qS = function(l, _, p) {
-      return YS(l, _, p, "hcg");
+    ct.num = HS;
+    var VS = Cn, zS = function(l, _, p) {
+      return VS(l, _, p, "hcg");
     };
-    lt.hcg = qS;
-    var HS = Cn, VS = function(l, _, p) {
-      return HS(l, _, p, "hsi");
+    ct.hcg = zS;
+    var $S = Cn, WS = function(l, _, p) {
+      return $S(l, _, p, "hsi");
     };
-    lt.hsi = VS;
-    var zS = Cn, $S = function(l, _, p) {
-      return zS(l, _, p, "hsl");
+    ct.hsi = WS;
+    var KS = Cn, QS = function(l, _, p) {
+      return KS(l, _, p, "hsl");
     };
-    lt.hsl = $S;
-    var WS = Cn, KS = function(l, _, p) {
-      return WS(l, _, p, "hsv");
+    ct.hsl = QS;
+    var XS = Cn, ZS = function(l, _, p) {
+      return XS(l, _, p, "hsv");
     };
-    lt.hsv = KS;
-    var QS = L, XS = function(l, _, p) {
-      var b = l.oklab(), N = _.oklab();
-      return new QS(
-        b[0] + p * (N[0] - b[0]),
-        b[1] + p * (N[1] - b[1]),
-        b[2] + p * (N[2] - b[2]),
+    ct.hsv = ZS;
+    var JS = L, jS = function(l, _, p) {
+      var T = l.oklab(), N = _.oklab();
+      return new JS(
+        T[0] + p * (N[0] - T[0]),
+        T[1] + p * (N[1] - T[1]),
+        T[2] + p * (N[2] - T[2]),
         "oklab"
       );
     };
-    lt.oklab = XS;
-    var ZS = Cn, JS = function(l, _, p) {
-      return ZS(l, _, p, "oklch");
+    ct.oklab = jS;
+    var ef = Cn, tf = function(l, _, p) {
+      return ef(l, _, p, "oklch");
     };
-    lt.oklch = JS;
-    var di = L, jS = f.clip_rgb, ui = Math.pow, pi = Math.sqrt, mi = Math.PI, b_ = Math.cos, T_ = Math.sin, ef = Math.atan2, tf = function(l, _, p) {
+    ct.oklch = tf;
+    var ui = L, nf = f.clip_rgb, pi = Math.pow, mi = Math.sqrt, Ei = Math.PI, T_ = Math.cos, R_ = Math.sin, rf = Math.atan2, af = function(l, _, p) {
       _ === void 0 && (_ = "lrgb"), p === void 0 && (p = null);
-      var b = l.length;
-      p || (p = Array.from(new Array(b)).map(function() {
+      var T = l.length;
+      p || (p = Array.from(new Array(T)).map(function() {
         return 1;
       }));
-      var N = b / p.reduce(function(oe, ue) {
+      var N = T / p.reduce(function(oe, ue) {
         return oe + ue;
       });
       if (p.forEach(function(oe, ue) {
         p[ue] *= N;
       }), l = l.map(function(oe) {
-        return new di(oe);
+        return new ui(oe);
       }), _ === "lrgb")
-        return nf(l, p);
+        return of(l, p);
       for (var O = l.shift(), R = O.get(_), I = [], D = 0, x = 0, F = 0; F < R.length; F++)
         if (R[F] = (R[F] || 0) * p[0], I.push(isNaN(R[F]) ? 0 : p[0]), _.charAt(F) === "h" && !isNaN(R[F])) {
-          var z = R[F] / 180 * mi;
-          D += b_(z) * p[0], x += T_(z) * p[0];
+          var z = R[F] / 180 * Ei;
+          D += T_(z) * p[0], x += R_(z) * p[0];
         }
       var G = O.alpha() * p[0];
       l.forEach(function(oe, ue) {
@@ -1181,29 +1181,29 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         for (var Re = 0; Re < R.length; Re++)
           if (!isNaN(Se[Re]))
             if (I[Re] += p[ue + 1], _.charAt(Re) === "h") {
-              var Ze = Se[Re] / 180 * mi;
-              D += b_(Ze) * p[ue + 1], x += T_(Ze) * p[ue + 1];
+              var Ze = Se[Re] / 180 * Ei;
+              D += T_(Ze) * p[ue + 1], x += R_(Ze) * p[ue + 1];
             } else
               R[Re] += Se[Re] * p[ue + 1];
       });
       for (var W = 0; W < R.length; W++)
         if (_.charAt(W) === "h") {
-          for (var $ = ef(x / I[W], D / I[W]) / mi * 180; $ < 0; )
+          for (var $ = rf(x / I[W], D / I[W]) / Ei * 180; $ < 0; )
             $ += 360;
           for (; $ >= 360; )
             $ -= 360;
           R[W] = $;
         } else
           R[W] = R[W] / I[W];
-      return G /= b, new di(R, _).alpha(G > 0.99999 ? 1 : G, !0);
-    }, nf = function(l, _) {
-      for (var p = l.length, b = [0, 0, 0, 0], N = 0; N < l.length; N++) {
+      return G /= T, new ui(R, _).alpha(G > 0.99999 ? 1 : G, !0);
+    }, of = function(l, _) {
+      for (var p = l.length, T = [0, 0, 0, 0], N = 0; N < l.length; N++) {
         var O = l[N], R = _[N] / p, I = O._rgb;
-        b[0] += ui(I[0], 2) * R, b[1] += ui(I[1], 2) * R, b[2] += ui(I[2], 2) * R, b[3] += I[3] * R;
+        T[0] += pi(I[0], 2) * R, T[1] += pi(I[1], 2) * R, T[2] += pi(I[2], 2) * R, T[3] += I[3] * R;
       }
-      return b[0] = pi(b[0]), b[1] = pi(b[1]), b[2] = pi(b[2]), b[3] > 0.9999999 && (b[3] = 1), new di(jS(b));
-    }, St = h, Nn = f.type, rf = Math.pow, Ei = function(l) {
-      var _ = "rgb", p = St("#ccc"), b = 0, N = [0, 1], O = [], R = [0, 0], I = !1, D = [], x = !1, F = 0, z = 1, G = !1, W = {}, $ = !0, oe = 1, ue = function(Y) {
+      return T[0] = mi(T[0]), T[1] = mi(T[1]), T[2] = mi(T[2]), T[3] > 0.9999999 && (T[3] = 1), new ui(nf(T));
+    }, St = h, Nn = f.type, sf = Math.pow, gi = function(l) {
+      var _ = "rgb", p = St("#ccc"), T = 0, N = [0, 1], O = [], R = [0, 0], I = !1, D = [], x = !1, F = 0, z = 1, G = !1, W = {}, $ = !0, oe = 1, ue = function(Y) {
         if (Y = Y || ["#fff", "#000"], Y && Nn(Y) === "string" && St.brewer && St.brewer[Y.toLowerCase()] && (Y = St.brewer[Y.toLowerCase()]), Nn(Y) === "array") {
           Y.length === 1 && (Y = [Y[0], Y[0]]), Y = Y.slice(0);
           for (var j = 0; j < Y.length; j++)
@@ -1235,7 +1235,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
           se = Je / (I.length - 2);
         } else
           z !== F ? se = (Y - F) / (z - F) : se = 1;
-        se = Ze(se), j || (se = Re(se)), oe !== 1 && (se = rf(se, oe)), se = R[0] + se * (1 - R[0] - R[1]), se = Math.min(1, Math.max(0, se));
+        se = Ze(se), j || (se = Re(se)), oe !== 1 && (se = sf(se, oe)), se = R[0] + se * (1 - R[0] - R[1]), se = Math.min(1, Math.max(0, se));
         var ye = Math.floor(se * 1e4);
         if ($ && W[ye])
           le = W[ye];
@@ -1319,7 +1319,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       }, me.out = function(Y) {
         return x = Y, me;
       }, me.spread = function(Y) {
-        return arguments.length ? (b = Y, me) : b;
+        return arguments.length ? (T = Y, me) : T;
       }, me.correctLightness = function(Y) {
         return Y == null && (Y = !0), G = Y, ot(), G ? Re = function(j) {
           for (var le = ze(0, !0).lab()[0], se = ze(1, !0).lab()[0], Je = le > se, ye = ze(j, !0).lab()[0], fe = le + (se - le) * j, Ce = ye - fe, Ne = 0, ve = 1, bt = 20; Math.abs(Ce) > 0.01 && bt-- > 0; )
@@ -1341,7 +1341,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
           le = [me(0.5)];
         else if (Y > 1) {
           var se = N[0], Je = N[1] - se;
-          le = af(0, Y, !1).map(function(ve) {
+          le = lf(0, Y, !1).map(function(ve) {
             return me(se + ve / (Y - 1) * Je);
           });
         } else {
@@ -1367,20 +1367,20 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         return Y != null ? (p = St(Y), me) : p;
       }, me;
     };
-    function af(l, _, p) {
-      for (var b = [], N = l < _, O = p ? N ? _ + 1 : _ - 1 : _, R = l; N ? R < O : R > O; N ? R++ : R--)
-        b.push(R);
-      return b;
+    function lf(l, _, p) {
+      for (var T = [], N = l < _, O = p ? N ? _ + 1 : _ - 1 : _, R = l; N ? R < O : R > O; N ? R++ : R--)
+        T.push(R);
+      return T;
     }
-    var zn = L, of = Ei, sf = function(l) {
+    var zn = L, cf = gi, _f = function(l) {
       for (var _ = [1, 1], p = 1; p < l; p++) {
-        for (var b = [1], N = 1; N <= _.length; N++)
-          b[N] = (_[N] || 0) + _[N - 1];
-        _ = b;
+        for (var T = [1], N = 1; N <= _.length; N++)
+          T[N] = (_[N] || 0) + _[N - 1];
+        _ = T;
       }
       return _;
-    }, lf = function(l) {
-      var _, p, b, N, O, R, I;
+    }, df = function(l) {
+      var _, p, T, N, O, R, I;
       if (l = l.map(function(G) {
         return new zn(G);
       }), l.length === 2)
@@ -1403,9 +1403,9 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         };
       else if (l.length === 4) {
         var D;
-        b = l.map(function(G) {
+        T = l.map(function(G) {
           return G.lab();
-        }), O = b[0], R = b[1], I = b[2], D = b[3], N = function(G) {
+        }), O = T[0], R = T[1], I = T[2], D = T[3], N = function(G) {
           var W = [0, 1, 2].map(function($) {
             return (1 - G) * (1 - G) * (1 - G) * O[$] + 3 * (1 - G) * (1 - G) * G * R[$] + 3 * (1 - G) * G * G * I[$] + G * G * G * D[$];
           });
@@ -1415,7 +1415,7 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         var x, F, z;
         x = l.map(function(G) {
           return G.lab();
-        }), z = l.length - 1, F = sf(z), N = function(G) {
+        }), z = l.length - 1, F = _f(z), N = function(G) {
           var W = 1 - G, $ = [0, 1, 2].map(function(oe) {
             return x.reduce(function(ue, Se, Re) {
               return ue + F[Re] * Math.pow(W, z - Re) * Math.pow(G, Re) * Se[oe];
@@ -1426,69 +1426,69 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       } else
         throw new RangeError("No point in running bezier with only one color.");
       return N;
-    }, cf = function(l) {
-      var _ = lf(l);
+    }, uf = function(l) {
+      var _ = df(l);
       return _.scale = function() {
-        return of(_);
+        return cf(_);
       }, _;
-    }, gi = h, ft = function(l, _, p) {
+    }, Si = h, ft = function(l, _, p) {
       if (!ft[p])
         throw new Error("unknown blend mode " + p);
       return ft[p](l, _);
     }, Yt = function(l) {
       return function(_, p) {
-        var b = gi(p).rgb(), N = gi(_).rgb();
-        return gi.rgb(l(b, N));
+        var T = Si(p).rgb(), N = Si(_).rgb();
+        return Si.rgb(l(T, N));
       };
     }, qt = function(l) {
       return function(_, p) {
-        var b = [];
-        return b[0] = l(_[0], p[0]), b[1] = l(_[1], p[1]), b[2] = l(_[2], p[2]), b;
+        var T = [];
+        return T[0] = l(_[0], p[0]), T[1] = l(_[1], p[1]), T[2] = l(_[2], p[2]), T;
       };
-    }, _f = function(l) {
+    }, pf = function(l) {
       return l;
-    }, df = function(l, _) {
-      return l * _ / 255;
-    }, uf = function(l, _) {
-      return l > _ ? _ : l;
-    }, pf = function(l, _) {
-      return l > _ ? l : _;
     }, mf = function(l, _) {
-      return 255 * (1 - (1 - l / 255) * (1 - _ / 255));
+      return l * _ / 255;
     }, Ef = function(l, _) {
-      return _ < 128 ? 2 * l * _ / 255 : 255 * (1 - 2 * (1 - l / 255) * (1 - _ / 255));
+      return l > _ ? _ : l;
     }, gf = function(l, _) {
-      return 255 * (1 - (1 - _ / 255) / (l / 255));
+      return l > _ ? l : _;
     }, Sf = function(l, _) {
+      return 255 * (1 - (1 - l / 255) * (1 - _ / 255));
+    }, ff = function(l, _) {
+      return _ < 128 ? 2 * l * _ / 255 : 255 * (1 - 2 * (1 - l / 255) * (1 - _ / 255));
+    }, bf = function(l, _) {
+      return 255 * (1 - (1 - _ / 255) / (l / 255));
+    }, Tf = function(l, _) {
       return l === 255 ? 255 : (l = 255 * (_ / 255) / (1 - l / 255), l > 255 ? 255 : l);
     };
-    ft.normal = Yt(qt(_f)), ft.multiply = Yt(qt(df)), ft.screen = Yt(qt(mf)), ft.overlay = Yt(qt(Ef)), ft.darken = Yt(qt(uf)), ft.lighten = Yt(qt(pf)), ft.dodge = Yt(qt(Sf)), ft.burn = Yt(qt(gf));
-    for (var ff = ft, Si = f.type, bf = f.clip_rgb, Tf = f.TWOPI, Rf = Math.pow, Cf = Math.sin, Nf = Math.cos, R_ = h, hf = function(l, _, p, b, N) {
-      l === void 0 && (l = 300), _ === void 0 && (_ = -1.5), p === void 0 && (p = 1), b === void 0 && (b = 1), N === void 0 && (N = [0, 1]);
+    ft.normal = Yt(qt(pf)), ft.multiply = Yt(qt(mf)), ft.screen = Yt(qt(Sf)), ft.overlay = Yt(qt(ff)), ft.darken = Yt(qt(Ef)), ft.lighten = Yt(qt(gf)), ft.dodge = Yt(qt(Tf)), ft.burn = Yt(qt(bf));
+    for (var Rf = ft, fi = f.type, Cf = f.clip_rgb, Nf = f.TWOPI, hf = Math.pow, vf = Math.sin, Of = Math.cos, C_ = h, If = function(l, _, p, T, N) {
+      l === void 0 && (l = 300), _ === void 0 && (_ = -1.5), p === void 0 && (p = 1), T === void 0 && (T = 1), N === void 0 && (N = [0, 1]);
       var O = 0, R;
-      Si(N) === "array" ? R = N[1] - N[0] : (R = 0, N = [N, N]);
+      fi(N) === "array" ? R = N[1] - N[0] : (R = 0, N = [N, N]);
       var I = function(D) {
-        var x = Tf * ((l + 120) / 360 + _ * D), F = Rf(N[0] + R * D, b), z = O !== 0 ? p[0] + D * O : p, G = z * F * (1 - F) / 2, W = Nf(x), $ = Cf(x), oe = F + G * (-0.14861 * W + 1.78277 * $), ue = F + G * (-0.29227 * W - 0.90649 * $), Se = F + G * (1.97294 * W);
-        return R_(bf([oe * 255, ue * 255, Se * 255, 1]));
+        var x = Nf * ((l + 120) / 360 + _ * D), F = hf(N[0] + R * D, T), z = O !== 0 ? p[0] + D * O : p, G = z * F * (1 - F) / 2, W = Of(x), $ = vf(x), oe = F + G * (-0.14861 * W + 1.78277 * $), ue = F + G * (-0.29227 * W - 0.90649 * $), Se = F + G * (1.97294 * W);
+        return C_(Cf([oe * 255, ue * 255, Se * 255, 1]));
       };
       return I.start = function(D) {
         return D == null ? l : (l = D, I);
       }, I.rotations = function(D) {
         return D == null ? _ : (_ = D, I);
       }, I.gamma = function(D) {
-        return D == null ? b : (b = D, I);
+        return D == null ? T : (T = D, I);
       }, I.hue = function(D) {
-        return D == null ? p : (p = D, Si(p) === "array" ? (O = p[1] - p[0], O === 0 && (p = p[1])) : O = 0, I);
+        return D == null ? p : (p = D, fi(p) === "array" ? (O = p[1] - p[0], O === 0 && (p = p[1])) : O = 0, I);
       }, I.lightness = function(D) {
-        return D == null ? N : (Si(D) === "array" ? (N = D, R = D[1] - D[0]) : (N = [D, D], R = 0), I);
+        return D == null ? N : (fi(D) === "array" ? (N = D, R = D[1] - D[0]) : (N = [D, D], R = 0), I);
       }, I.scale = function() {
-        return R_.scale(I);
+        return C_.scale(I);
       }, I.hue(p), I;
-    }, vf = L, Of = "0123456789abcdef", If = Math.floor, Af = Math.random, yf = function() {
+    }, Af = L, yf = "0123456789abcdef", Df = Math.floor, Mf = Math.random, Lf = function() {
       for (var l = "#", _ = 0; _ < 6; _++)
-        l += Of.charAt(If(Af() * 16));
-      return new vf(l, "hex");
-    }, fi = u, C_ = Math.log, Df = Math.pow, Mf = Math.floor, Lf = Math.abs, N_ = function(l, _) {
+        l += yf.charAt(Df(Mf() * 16));
+      return new Af(l, "hex");
+    }, bi = u, N_ = Math.log, wf = Math.pow, xf = Math.floor, Pf = Math.abs, h_ = function(l, _) {
       _ === void 0 && (_ = null);
       var p = {
         min: Number.MAX_VALUE,
@@ -1497,36 +1497,36 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         values: [],
         count: 0
       };
-      return fi(l) === "object" && (l = Object.values(l)), l.forEach(function(b) {
-        _ && fi(b) === "object" && (b = b[_]), b != null && !isNaN(b) && (p.values.push(b), p.sum += b, b < p.min && (p.min = b), b > p.max && (p.max = b), p.count += 1);
-      }), p.domain = [p.min, p.max], p.limits = function(b, N) {
-        return h_(p, b, N);
+      return bi(l) === "object" && (l = Object.values(l)), l.forEach(function(T) {
+        _ && bi(T) === "object" && (T = T[_]), T != null && !isNaN(T) && (p.values.push(T), p.sum += T, T < p.min && (p.min = T), T > p.max && (p.max = T), p.count += 1);
+      }), p.domain = [p.min, p.max], p.limits = function(T, N) {
+        return v_(p, T, N);
       }, p;
-    }, h_ = function(l, _, p) {
-      _ === void 0 && (_ = "equal"), p === void 0 && (p = 7), fi(l) == "array" && (l = N_(l));
-      var b = l.min, N = l.max, O = l.values.sort(function(Ti, Ri) {
-        return Ti - Ri;
+    }, v_ = function(l, _, p) {
+      _ === void 0 && (_ = "equal"), p === void 0 && (p = 7), bi(l) == "array" && (l = h_(l));
+      var T = l.min, N = l.max, O = l.values.sort(function(Ri, Ci) {
+        return Ri - Ci;
       });
       if (p === 1)
-        return [b, N];
+        return [T, N];
       var R = [];
-      if (_.substr(0, 1) === "c" && (R.push(b), R.push(N)), _.substr(0, 1) === "e") {
-        R.push(b);
+      if (_.substr(0, 1) === "c" && (R.push(T), R.push(N)), _.substr(0, 1) === "e") {
+        R.push(T);
         for (var I = 1; I < p; I++)
-          R.push(b + I / p * (N - b));
+          R.push(T + I / p * (N - T));
         R.push(N);
       } else if (_.substr(0, 1) === "l") {
-        if (b <= 0)
+        if (T <= 0)
           throw new Error("Logarithmic scales are only possible for values > 0");
-        var D = Math.LOG10E * C_(b), x = Math.LOG10E * C_(N);
-        R.push(b);
+        var D = Math.LOG10E * N_(T), x = Math.LOG10E * N_(N);
+        R.push(T);
         for (var F = 1; F < p; F++)
-          R.push(Df(10, D + F / p * (x - D)));
+          R.push(wf(10, D + F / p * (x - D)));
         R.push(N);
       } else if (_.substr(0, 1) === "q") {
-        R.push(b);
+        R.push(T);
         for (var z = 1; z < p; z++) {
-          var G = (O.length - 1) * z / p, W = Mf(G);
+          var G = (O.length - 1) * z / p, W = xf(G);
           if (W === G)
             R.push(O[W]);
           else {
@@ -1537,15 +1537,15 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         R.push(N);
       } else if (_.substr(0, 1) === "k") {
         var oe, ue = O.length, Se = new Array(ue), Re = new Array(p), Ze = !0, ze = 0, ot = null;
-        ot = [], ot.push(b);
+        ot = [], ot.push(T);
         for (var me = 1; me < p; me++)
-          ot.push(b + me / p * (N - b));
+          ot.push(T + me / p * (N - T));
         for (ot.push(N); Ze; ) {
           for (var Y = 0; Y < p; Y++)
             Re[Y] = 0;
           for (var j = 0; j < ue; j++)
             for (var le = O[j], se = Number.MAX_VALUE, Je = void 0, ye = 0; ye < p; ye++) {
-              var fe = Lf(ot[ye] - le);
+              var fe = Pf(ot[ye] - le);
               fe < se && (se = fe, Je = ye), Re[Je]++, Se[j] = Je;
             }
           for (var Ce = new Array(p), Ne = 0; Ne < p; Ne++)
@@ -1566,55 +1566,55 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
           Vt[hn] = [];
         for (var vn = 0; vn < ue; vn++)
           oe = Se[vn], Vt[oe].push(O[vn]);
-        for (var xt = [], on = 0; on < p; on++)
-          xt.push(Vt[on][0]), xt.push(Vt[on][Vt[on].length - 1]);
-        xt = xt.sort(function(Ti, Ri) {
-          return Ti - Ri;
-        }), R.push(xt[0]);
-        for (var $n = 1; $n < xt.length; $n += 2) {
-          var sn = xt[$n];
-          !isNaN(sn) && R.indexOf(sn) === -1 && R.push(sn);
+        for (var kt = [], sn = 0; sn < p; sn++)
+          kt.push(Vt[sn][0]), kt.push(Vt[sn][Vt[sn].length - 1]);
+        kt = kt.sort(function(Ri, Ci) {
+          return Ri - Ci;
+        }), R.push(kt[0]);
+        for (var $n = 1; $n < kt.length; $n += 2) {
+          var ln = kt[$n];
+          !isNaN(ln) && R.indexOf(ln) === -1 && R.push(ln);
         }
       }
       return R;
-    }, v_ = { analyze: N_, limits: h_ }, O_ = L, wf = function(l, _) {
-      l = new O_(l), _ = new O_(_);
-      var p = l.luminance(), b = _.luminance();
-      return p > b ? (p + 0.05) / (b + 0.05) : (b + 0.05) / (p + 0.05);
-    }, I_ = L, wt = Math.sqrt, qe = Math.pow, xf = Math.min, Pf = Math.max, A_ = Math.atan2, y_ = Math.abs, yr = Math.cos, D_ = Math.sin, kf = Math.exp, M_ = Math.PI, Uf = function(l, _, p, b, N) {
-      p === void 0 && (p = 1), b === void 0 && (b = 1), N === void 0 && (N = 1);
-      var O = function(sn) {
-        return 360 * sn / (2 * M_);
-      }, R = function(sn) {
-        return 2 * M_ * sn / 360;
-      };
+    }, O_ = { analyze: h_, limits: v_ }, I_ = L, kf = function(l, _) {
       l = new I_(l), _ = new I_(_);
-      var I = Array.from(l.lab()), D = I[0], x = I[1], F = I[2], z = Array.from(_.lab()), G = z[0], W = z[1], $ = z[2], oe = (D + G) / 2, ue = wt(qe(x, 2) + qe(F, 2)), Se = wt(qe(W, 2) + qe($, 2)), Re = (ue + Se) / 2, Ze = 0.5 * (1 - wt(qe(Re, 7) / (qe(Re, 7) + qe(25, 7)))), ze = x * (1 + Ze), ot = W * (1 + Ze), me = wt(qe(ze, 2) + qe(F, 2)), Y = wt(qe(ot, 2) + qe($, 2)), j = (me + Y) / 2, le = O(A_(F, ze)), se = O(A_($, ot)), Je = le >= 0 ? le : le + 360, ye = se >= 0 ? se : se + 360, fe = y_(Je - ye) > 180 ? (Je + ye + 360) / 2 : (Je + ye) / 2, Ce = 1 - 0.17 * yr(R(fe - 30)) + 0.24 * yr(R(2 * fe)) + 0.32 * yr(R(3 * fe + 6)) - 0.2 * yr(R(4 * fe - 63)), Ne = ye - Je;
-      Ne = y_(Ne) <= 180 ? Ne : ye <= Je ? Ne + 360 : Ne - 360, Ne = 2 * wt(me * Y) * D_(R(Ne) / 2);
-      var ve = G - D, bt = Y - me, Ht = 1 + 0.015 * qe(oe - 50, 2) / wt(20 + qe(oe - 50, 2)), Vt = 1 + 0.045 * j, hn = 1 + 0.015 * j * Ce, vn = 30 * kf(-qe((fe - 275) / 25, 2)), xt = 2 * wt(qe(j, 7) / (qe(j, 7) + qe(25, 7))), on = -xt * D_(2 * R(vn)), $n = wt(qe(ve / (p * Ht), 2) + qe(bt / (b * Vt), 2) + qe(Ne / (N * hn), 2) + on * (bt / (b * Vt)) * (Ne / (N * hn)));
-      return Pf(0, xf(100, $n));
-    }, L_ = L, Ff = function(l, _, p) {
-      p === void 0 && (p = "lab"), l = new L_(l), _ = new L_(_);
-      var b = l.get(p), N = _.get(p), O = 0;
-      for (var R in b) {
-        var I = (b[R] || 0) - (N[R] || 0);
+      var p = l.luminance(), T = _.luminance();
+      return p > T ? (p + 0.05) / (T + 0.05) : (T + 0.05) / (p + 0.05);
+    }, A_ = L, Pt = Math.sqrt, qe = Math.pow, Uf = Math.min, Ff = Math.max, y_ = Math.atan2, D_ = Math.abs, yr = Math.cos, M_ = Math.sin, Bf = Math.exp, L_ = Math.PI, Gf = function(l, _, p, T, N) {
+      p === void 0 && (p = 1), T === void 0 && (T = 1), N === void 0 && (N = 1);
+      var O = function(ln) {
+        return 360 * ln / (2 * L_);
+      }, R = function(ln) {
+        return 2 * L_ * ln / 360;
+      };
+      l = new A_(l), _ = new A_(_);
+      var I = Array.from(l.lab()), D = I[0], x = I[1], F = I[2], z = Array.from(_.lab()), G = z[0], W = z[1], $ = z[2], oe = (D + G) / 2, ue = Pt(qe(x, 2) + qe(F, 2)), Se = Pt(qe(W, 2) + qe($, 2)), Re = (ue + Se) / 2, Ze = 0.5 * (1 - Pt(qe(Re, 7) / (qe(Re, 7) + qe(25, 7)))), ze = x * (1 + Ze), ot = W * (1 + Ze), me = Pt(qe(ze, 2) + qe(F, 2)), Y = Pt(qe(ot, 2) + qe($, 2)), j = (me + Y) / 2, le = O(y_(F, ze)), se = O(y_($, ot)), Je = le >= 0 ? le : le + 360, ye = se >= 0 ? se : se + 360, fe = D_(Je - ye) > 180 ? (Je + ye + 360) / 2 : (Je + ye) / 2, Ce = 1 - 0.17 * yr(R(fe - 30)) + 0.24 * yr(R(2 * fe)) + 0.32 * yr(R(3 * fe + 6)) - 0.2 * yr(R(4 * fe - 63)), Ne = ye - Je;
+      Ne = D_(Ne) <= 180 ? Ne : ye <= Je ? Ne + 360 : Ne - 360, Ne = 2 * Pt(me * Y) * M_(R(Ne) / 2);
+      var ve = G - D, bt = Y - me, Ht = 1 + 0.015 * qe(oe - 50, 2) / Pt(20 + qe(oe - 50, 2)), Vt = 1 + 0.045 * j, hn = 1 + 0.015 * j * Ce, vn = 30 * Bf(-qe((fe - 275) / 25, 2)), kt = 2 * Pt(qe(j, 7) / (qe(j, 7) + qe(25, 7))), sn = -kt * M_(2 * R(vn)), $n = Pt(qe(ve / (p * Ht), 2) + qe(bt / (T * Vt), 2) + qe(Ne / (N * hn), 2) + sn * (bt / (T * Vt)) * (Ne / (N * hn)));
+      return Ff(0, Uf(100, $n));
+    }, w_ = L, Yf = function(l, _, p) {
+      p === void 0 && (p = "lab"), l = new w_(l), _ = new w_(_);
+      var T = l.get(p), N = _.get(p), O = 0;
+      for (var R in T) {
+        var I = (T[R] || 0) - (N[R] || 0);
         O += I * I;
       }
       return Math.sqrt(O);
-    }, Bf = L, Gf = function() {
+    }, qf = L, Hf = function() {
       for (var l = [], _ = arguments.length; _--; )
         l[_] = arguments[_];
       try {
-        return new (Function.prototype.bind.apply(Bf, [null].concat(l)))(), !0;
+        return new (Function.prototype.bind.apply(qf, [null].concat(l)))(), !0;
       } catch {
         return !1;
       }
-    }, w_ = h, x_ = Ei, Yf = {
+    }, x_ = h, P_ = gi, Vf = {
       cool: function() {
-        return x_([w_.hsl(180, 1, 0.9), w_.hsl(250, 0.7, 0.4)]);
+        return P_([x_.hsl(180, 1, 0.9), x_.hsl(250, 0.7, 0.4)]);
       },
       hot: function() {
-        return x_(["#000", "#f00", "#ff0", "#fff"]).mode("rgb");
+        return P_(["#000", "#f00", "#ff0", "#fff"]).mode("rgb");
       }
     }, Dr = {
       OrRd: ["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"],
@@ -1653,53 +1653,53 @@ var Qf = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
       Paired: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"],
       Pastel2: ["#b3e2cd", "#fdcdac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae", "#f1e2cc", "#cccccc"],
       Pastel1: ["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6", "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2"]
-    }, bi = 0, P_ = Object.keys(Dr); bi < P_.length; bi += 1) {
-      var k_ = P_[bi];
-      Dr[k_.toLowerCase()] = Dr[k_];
+    }, Ti = 0, k_ = Object.keys(Dr); Ti < k_.length; Ti += 1) {
+      var U_ = k_[Ti];
+      Dr[U_.toLowerCase()] = Dr[U_];
     }
-    var qf = Dr, Ve = h;
-    Ve.average = tf, Ve.bezier = cf, Ve.blend = ff, Ve.cubehelix = hf, Ve.mix = Ve.interpolate = u_, Ve.random = yf, Ve.scale = Ei, Ve.analyze = v_.analyze, Ve.contrast = wf, Ve.deltaE = Uf, Ve.distance = Ff, Ve.limits = v_.limits, Ve.valid = Gf, Ve.scales = Yf, Ve.colors = Kc, Ve.brewer = qf;
-    var Hf = Ve;
-    return Hf;
+    var zf = Dr, Ve = h;
+    Ve.average = af, Ve.bezier = uf, Ve.blend = Rf, Ve.cubehelix = If, Ve.mix = Ve.interpolate = p_, Ve.random = Lf, Ve.scale = gi, Ve.analyze = O_.analyze, Ve.contrast = kf, Ve.deltaE = Gf, Ve.distance = Yf, Ve.limits = O_.limits, Ve.valid = Hf, Ve.scales = Vf, Ve.colors = Qc, Ve.brewer = zf;
+    var $f = Ve;
+    return $f;
   });
 })(We);
-function Xf(t, e, n) {
+function jf(t, e, n) {
   var r, a;
   if (e.length >= t.length) {
-    const i = Math.floor(e.length * n), s = Math.floor(_t(t.length - 1, e.length, n));
+    const i = Math.floor(e.length * n), s = Math.floor(dt(t.length - 1, e.length, n));
     let o = "";
     for (let c = 0; c < e.length; c++)
       c < i ? o += e[c] : (t[c] || c <= s) && (o += (r = t[c]) != null ? r : e[c]);
     return o;
   } else {
-    const i = Math.round(t.length * (1 - n)), s = Math.floor(_t(t.length + 1, e.length, n)), o = [];
+    const i = Math.round(t.length * (1 - n)), s = Math.floor(dt(t.length + 1, e.length, n)), o = [];
     for (let c = t.length - 1; c >= 0; c--)
       c < i ? o.unshift(t[c]) : (e[c] || c < s) && o.unshift((a = e[c]) != null ? a : t[c]);
     return o.join("");
   }
 }
-function sc(t, e, n) {
+function lc(t, e, n) {
   if (n === 0)
     return t;
   if (n === 1)
     return e;
   if (!(typeof t > "u" || typeof e > "u")) {
     if (typeof t == "number" && typeof e == "number")
-      return _t(t, e, n);
+      return dt(t, e, n);
     if (typeof t == "string" && typeof e == "string")
-      return Xf(t, e, n);
+      return jf(t, e, n);
     if ("lerp" in t)
       return t.lerp(e, n);
     if (t && e && typeof t == "object" && typeof e == "object")
       if (Array.isArray(t) && Array.isArray(e)) {
         if (t.length === e.length)
-          return t.map((r, a) => sc(r, e[a], n));
+          return t.map((r, a) => lc(r, e[a], n));
       } else {
         let r = !1;
         if (!(t instanceof Map) && !(e instanceof Map) && (r = !0, t = new Map(Object.entries(t)), e = new Map(Object.entries(e))), t instanceof Map && e instanceof Map) {
           const a = /* @__PURE__ */ new Map();
           for (const i of /* @__PURE__ */ new Set([...t.keys(), ...e.keys()])) {
-            const s = sc(t.get(i), e.get(i), n);
+            const s = lc(t.get(i), e.get(i), n);
             s !== void 0 && a.set(i, s);
           }
           return r ? Object.fromEntries(a) : a;
@@ -1708,21 +1708,21 @@ function sc(t, e, n) {
     return e;
   }
 }
-function _t(t, e, n) {
+function dt(t, e, n) {
   return t + (e - t) * n;
 }
-function Ci(t, e, n) {
+function Ni(t, e, n) {
   return n < t ? t : n > e ? e : n;
 }
-function Zf(t, e, n) {
+function eb(t, e, n) {
   let r = e;
   n > 1 ? n = 1 / n : r = !r;
-  const a = r ? Math.acos(1 - t) : Math.asin(t), i = _t(a, _t(0, Math.PI / 2, t), n);
+  const a = r ? Math.acos(1 - t) : Math.asin(t), i = dt(a, dt(0, Math.PI / 2, t), n);
   let s = Math.sin(i), o = 1 - Math.cos(i);
   return e && ([s, o] = [o, s]), new ae(s, o);
 }
-function Jf(t, e = 0, n = 1) {
-  return t = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2, _t(e, n, t);
+function tb(t, e = 0, n = 1) {
+  return t = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2, dt(e, n, t);
 }
 function Et(t, ...e) {
   const n = {
@@ -1741,28 +1741,28 @@ let Lr;
 function Ur() {
   return Lr;
 }
-function Km() {
+function Qm() {
   var t;
   return (t = Lr == null ? void 0 : Lr.logger) != null ? t : console;
 }
-function jf(t) {
+function nb(t) {
   return t[0].toUpperCase() + t.slice(1);
 }
-class Qm extends Error {
+class Xm extends Error {
   constructor(e, n) {
     super(e), this.remarks = n;
   }
 }
-function eb(t) {
+function rb(t) {
   return {
     message: t.message,
     stack: t.stack,
     remarks: t.remarks
   };
 }
-const tb = [];
-function nb() {
-  const t = tb.at(-1);
+const ab = [];
+function ib() {
+  const t = ab.at(-1);
   if (!t)
     throw new Error("The scene is not available in the current context.");
   return t;
@@ -1771,7 +1771,7 @@ Et(Kr, gt());
 function* Kr(t, ...e) {
   let n = !0;
   typeof t == "boolean" ? n = t : e.push(t);
-  const r = Ec(), a = e.map((o) => r.children.find((c) => c.runner === o)).filter((o) => o), i = r.time();
+  const r = gc(), a = e.map((o) => r.children.find((c) => c.runner === o)).filter((o) => o), i = r.time();
   let s;
   if (n) {
     for (; a.find((o) => !o.canceled); )
@@ -1787,15 +1787,15 @@ function* Kr(t, ...e) {
 }
 function Fr(t, e) {
   const n = Object.getPrototypeOf(t);
-  n.threadable || (n.threadable = !0, n.name = typeof e == "string" ? e : Xm(e));
+  n.threadable || (n.threadable = !0, n.name = typeof e == "string" ? e : Zm(e));
 }
-function Xm(t) {
+function Zm(t) {
   var e;
   return (e = Object.getPrototypeOf(t).name) != null ? e : null;
 }
-class U_ {
+class F_ {
   constructor(e) {
-    this.runner = e, this.children = [], this.time = gb(0), this.parent = null, this.isCanceled = !1;
+    this.runner = e, this.children = [], this.time = bb(0), this.parent = null, this.isCanceled = !1;
     const n = Ur();
     this.frameDuration = n.framesToSeconds(1), this.time(n.time);
   }
@@ -1804,9 +1804,9 @@ class U_ {
     return this.isCanceled || ((n = (e = this.parent) == null ? void 0 : e.canceled) != null ? n : !1);
   }
   next() {
-    ib(this);
+    lb(this);
     const e = this.runner.next(this.value);
-    return ob(this), this.value = null, e;
+    return cb(this), this.value = null, e;
   }
   update() {
     this.time(this.time() + Ur().framesToSeconds(1)), this.children = this.children.filter((e) => !e.canceled);
@@ -1818,14 +1818,14 @@ class U_ {
     this.isCanceled = !0, this.parent = null;
   }
 }
-function uc(t) {
+function pc(t) {
   return t !== null && typeof t == "object" && Symbol.iterator in t && "next" in t;
 }
-Et(rb, gt());
-function* rb(t, e) {
+Et(ob, gt());
+function* ob(t, e) {
   const n = t();
   Fr(n, "root");
-  const r = new U_(n);
+  const r = new F_(n);
   e == null || e(r);
   let a = [r];
   for (; a.length > 0; ) {
@@ -1839,8 +1839,8 @@ function* rb(t, e) {
         o.cancel();
         continue;
       }
-      if (uc(c.value)) {
-        const u = new U_(c.value);
+      if (pc(c.value)) {
+        const u = new F_(c.value);
         o.value = c.value, o.add(u), s.push(o), s.push(u);
       } else
         c.value ? (o.value = yield c.value, s.push(o)) : (o.update(), i.unshift(o));
@@ -1848,103 +1848,103 @@ function* rb(t, e) {
     a = i.filter((o) => !o.canceled), a.length > 0 && (yield);
   }
 }
-var F_;
-(function(t) {
-  t[t.BeforeRender = 0] = "BeforeRender", t[t.BeginRender = 1] = "BeginRender", t[t.FinishRender = 2] = "FinishRender", t[t.AfterRender = 3] = "AfterRender";
-})(F_ || (F_ = {}));
 var B_;
 (function(t) {
-  t[t.Initial = 0] = "Initial", t[t.AfterTransitionIn = 1] = "AfterTransitionIn", t[t.CanTransitionOut = 2] = "CanTransitionOut", t[t.Finished = 3] = "Finished";
+  t[t.BeforeRender = 0] = "BeforeRender", t[t.BeginRender = 1] = "BeginRender", t[t.FinishRender = 2] = "FinishRender", t[t.AfterRender = 3] = "AfterRender";
 })(B_ || (B_ = {}));
-function pc(t) {
+var G_;
+(function(t) {
+  t[t.Initial = 0] = "Initial", t[t.AfterTransitionIn = 1] = "AfterTransitionIn", t[t.CanTransitionOut = 2] = "CanTransitionOut", t[t.Finished = 3] = "Finished";
+})(G_ || (G_ = {}));
+function mc(t) {
   return t && typeof t == "object" && "validateInspection" in t;
 }
-function ab(t) {
+function sb(t) {
   return t && typeof t == "object" && "onThreadChanged" in t;
 }
-const mc = [];
-function Ec() {
-  const t = mc.at(-1);
+const Ec = [];
+function gc() {
+  const t = Ec.at(-1);
   if (!t)
-    throw new Qm("The thread is not available in the current context.", `<p><code>useThread()</code> can only be called from within generator functions.
+    throw new Xm("The thread is not available in the current context.", `<p><code>useThread()</code> can only be called from within generator functions.
       It&#39;s not available during rendering.</p>
 `);
   return t;
 }
-function ib(t) {
-  mc.push(t);
+function lb(t) {
+  Ec.push(t);
 }
-function ob(t) {
-  if (mc.pop() !== t)
+function cb(t) {
+  if (Ec.pop() !== t)
     throw new Error("startThread/endThread was called out of order.");
 }
-Et(Zm, gt());
-function* Zm(t, e, n) {
-  const r = Ur(), a = Ec(), i = a.time(), s = a.time() + t;
+Et(Jm, gt());
+function* Jm(t, e, n) {
+  const r = Ur(), a = gc(), i = a.time(), s = a.time() + t;
   for (e(0, 0); s > r.time; ) {
     const o = r.time - i, c = o / t;
     o > 0 && e(c, o), yield;
   }
   a.time(s), e(1, t), n == null || n(1, t);
 }
-Et(sb, gt());
-function* sb(...t) {
+Et(_b, gt());
+function* _b(...t) {
   for (const e of t)
     yield e;
   yield* Kr(...t);
 }
-Et(lb, gt());
-function* lb(...t) {
+Et(db, gt());
+function* db(...t) {
   for (const e of t)
     yield e;
   yield* Kr(!1, ...t);
 }
-Et(cb, gt());
-function* cb(...t) {
+Et(ub, gt());
+function* ub(...t) {
   for (const e of t)
-    uc(e) ? yield* e : e();
+    pc(e) ? yield* e : e();
 }
-Et(_b, gt());
-function* _b(t, e) {
-  const n = nb(), r = n.timeEvents.register(t);
+Et(pb, gt());
+function* pb(t, e) {
+  const n = ib(), r = n.timeEvents.register(t);
   for (; n.project.frame < r; )
     yield;
   e && (yield* e);
 }
-Et(gc, gt());
-function* gc(t = 0, e) {
-  const n = Ur(), r = Ec(), a = n.framesToSeconds(1), i = r.time() + t;
+Et(Sc, gt());
+function* Sc(t = 0, e) {
+  const n = Ur(), r = gc(), a = n.framesToSeconds(1), i = r.time() + t;
   for (; i - a > n.time; )
     yield;
   r.time(i), e && (yield* e);
 }
-Et(db, gt());
-function* db(t, e) {
-  yield* gc(t), uc(e) ? yield* e : e();
+Et(mb, gt());
+function* mb(t, e) {
+  yield* Sc(t), pc(e) ? yield* e : e();
 }
-Et(ub, gt());
-function* ub(t, e) {
+Et(Eb, gt());
+function* Eb(t, e) {
   for (let n = 0; n < t; n++) {
     const r = e(n);
     r ? yield* r : yield;
   }
 }
-Et(pb, gt());
-function* pb() {
+Et(gb, gt());
+function* gb() {
 }
-function mb(t, e) {
+function Sb(t, e) {
   let n;
   return typeof t == "string" ? (n = e(), Fr(n, t)) : (n = t(), Fr(n, n)), n;
 }
-Et(Eb, gt());
-function* Eb(t, ...e) {
+Et(fb, gt());
+function* fb(t, ...e) {
   for (const n of e)
-    yield n, yield* gc(t);
+    yield n, yield* Sc(t);
   yield* Kr(...e);
 }
 class Rt {
   constructor(e) {
-    this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new Wf(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this);
+    this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new Xf(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this);
   }
   static collectPromise(e, n = null) {
     var i;
@@ -1965,7 +1965,7 @@ class Rt {
   }
   startCollecting() {
     if (Rt.collectionSet.has(this))
-      throw new Qm("A circular dependency occurred between signals.", `This can happen when signals reference each other in a loop.
+      throw new Xm("A circular dependency occurred between signals.", `This can happen when signals reference each other in a loop.
         Try using the attached stack trace to locate said loop.`);
     this.stack = new Error().stack, Rt.collectionSet.add(this), Rt.collectionStack.push(this);
   }
@@ -2019,8 +2019,8 @@ class Br extends Rt {
       try {
         this.last = this.parse(this.current());
       } catch (n) {
-        Km().error({
-          ...eb(n),
+        Qm().error({
+          ...rb(n),
           inspect: (e = this.owner) == null ? void 0 : e.key
         });
       }
@@ -2028,14 +2028,14 @@ class Br extends Rt {
     }
     return this.event.reset(), this.collect(), this.last;
   }
-  invoke(e, n, r = Jf, a = this.interpolation) {
+  invoke(e, n, r = tb, a = this.interpolation) {
     return e === void 0 ? this.get() : n === void 0 ? this.set(e) : this.makeAnimate(r, a)(e, n);
   }
   makeAnimate(e, n, r) {
     return (i, s, o = e, c = n) => {
       const u = this.tween(i, s, o, c);
       let d = u;
-      return r && (d = mb(function* () {
+      return r && (d = Sb(function* () {
         yield* r, yield* u;
       })), d.to = this.makeAnimate(o, c, d), d;
     };
@@ -2045,7 +2045,7 @@ class Br extends Rt {
   }
   *doTween(e, n, r, a) {
     const i = this.get();
-    yield* Zm(n, (s) => {
+    yield* Jm(n, (s) => {
       this.set(a(i, e, r(s)));
     });
   }
@@ -2059,11 +2059,11 @@ class Br extends Rt {
     return this.current;
   }
 }
-class Jm extends Br {
+class jm extends Br {
   constructor(e, n, r, a, i = void 0) {
     super(void 0, a, i), this.entries = e, this.signals = [], this.parser = n;
     for (const s of e) {
-      const o = new Br(Wt(r) ? () => n(r())[s] : n(r)[s], _t, i != null ? i : this.invokable).toSignal();
+      const o = new Br(Wt(r) ? () => n(r())[s] : n(r)[s], dt, i != null ? i : this.invokable).toSignal();
       this.signals.push([s, o]), Object.defineProperty(this.invokable, s, {
         value: o
       });
@@ -2098,7 +2098,7 @@ class Jm extends Br {
     return this.owner;
   }
 }
-function gb(t, e = sc, n) {
+function bb(t, e = lc, n) {
   return new Br(t, e, n).toSignal();
 }
 We.exports.Color.symbol = We.exports.Color.prototype.symbol = Symbol.for("@motion-canvas/core/types/Color");
@@ -2115,18 +2115,18 @@ We.exports.Color.prototype.serialize = function() {
 We.exports.Color.prototype.lerp = function(t, e, n) {
   return We.exports.Color.lerp(this, t, e, n);
 };
-var G_;
+var Y_;
 (function(t) {
   t[t.Vertical = 1] = "Vertical", t[t.Horizontal = 2] = "Horizontal";
-})(G_ || (G_ = {}));
+})(Y_ || (Y_ = {}));
 var Dn;
 (function(t) {
   t[t.Top = 4] = "Top", t[t.Bottom = 8] = "Bottom", t[t.Left = 16] = "Left", t[t.Right = 32] = "Right";
 })(Dn || (Dn = {}));
-var lc;
+var cc;
 (function(t) {
   t[t.Middle = 3] = "Middle", t[t.Top = 5] = "Top", t[t.Bottom = 9] = "Bottom", t[t.Left = 18] = "Left", t[t.Right = 34] = "Right", t[t.TopLeft = 20] = "TopLeft", t[t.TopRight = 36] = "TopRight", t[t.BottomLeft = 24] = "BottomLeft", t[t.BottomRight = 40] = "BottomRight";
-})(lc || (lc = {}));
+})(cc || (cc = {}));
 class ae {
   constructor(e, n) {
     if (this.x = 0, this.y = 0, e != null) {
@@ -2146,18 +2146,18 @@ class ae {
     }
   }
   static createSignal(e, n = ae.lerp, r) {
-    return new Jm(["x", "y"], (a) => new ae(a), e, n, r).toSignal();
+    return new jm(["x", "y"], (a) => new ae(a), e, n, r).toSignal();
   }
   static lerp(e, n, r) {
     let a, i;
-    return typeof r == "number" ? a = i = r : (a = r.x, i = r.y), new ae(_t(e.x, n.x, a), _t(e.y, n.y, i));
+    return typeof r == "number" ? a = i = r : (a = r.x, i = r.y), new ae(dt(e.x, n.x, a), dt(e.y, n.y, i));
   }
   static arcLerp(e, n, r, a = !1, i) {
-    return i != null || (i = e.sub(n).ctg), ae.lerp(e, n, Zf(r, a, i));
+    return i != null || (i = e.sub(n).ctg), ae.lerp(e, n, eb(r, a, i));
   }
   static fromOrigin(e) {
     const n = new ae();
-    return e === lc.Middle || (e & Dn.Left ? n.x = -1 : e & Dn.Right && (n.x = 1), e & Dn.Top ? n.y = -1 : e & Dn.Bottom && (n.y = 1)), n;
+    return e === cc.Middle || (e & Dn.Left ? n.x = -1 : e & Dn.Right && (n.x = 1), e & Dn.Top ? n.y = -1 : e & Dn.Bottom && (n.y = 1)), n;
   }
   static fromScalar(e) {
     return new ae(e, e);
@@ -2258,7 +2258,7 @@ ae.right = new ae(1, 0);
 ae.left = new ae(-1, 0);
 ae.up = new ae(0, 1);
 ae.down = new ae(0, -1);
-class yt {
+class Mt {
   constructor(e = 0, n, r, a) {
     if (this.top = 0, this.right = 0, this.bottom = 0, this.left = 0, e != null) {
       if (Array.isArray(e) && (a = e[3], r = e[2], n = e[1], e = e[0]), typeof e == "number") {
@@ -2268,11 +2268,11 @@ class yt {
       this.top = e.top, this.right = e.right, this.bottom = e.bottom, this.left = e.left;
     }
   }
-  static createSignal(e, n = yt.lerp) {
-    return new Jm(["top", "right", "bottom", "left"], (r) => new yt(r), e, n).toSignal();
+  static createSignal(e, n = Mt.lerp) {
+    return new jm(["top", "right", "bottom", "left"], (r) => new Mt(r), e, n).toSignal();
   }
   static lerp(e, n, r) {
-    return new yt(_t(e.top, n.top, r), _t(e.right, n.right, r), _t(e.bottom, n.bottom, r), _t(e.left, n.left, r));
+    return new Mt(dt(e.top, n.top, r), dt(e.right, n.right, r), dt(e.bottom, n.bottom, r), dt(e.left, n.left, r));
   }
   get x() {
     return this.left + this.right;
@@ -2281,16 +2281,16 @@ class yt {
     return this.top + this.bottom;
   }
   lerp(e, n) {
-    return yt.lerp(this, e, n);
+    return Mt.lerp(this, e, n);
   }
   scale(e) {
-    return new yt(this.top * e, this.right * e, this.bottom * e, this.left * e);
+    return new Mt(this.top * e, this.right * e, this.bottom * e, this.left * e);
   }
   addScalar(e) {
-    return new yt(this.top + e, this.right + e, this.bottom + e, this.left + e);
+    return new Mt(this.top + e, this.right + e, this.bottom + e, this.left + e);
   }
   toSymbol() {
-    return yt.symbol;
+    return Mt.symbol;
   }
   serialize() {
     return {
@@ -2301,8 +2301,8 @@ class yt {
     };
   }
 }
-yt.symbol = Symbol.for("@motion-canvas/core/types/Spacing");
-function Sb(t) {
+Mt.symbol = Symbol.for("@motion-canvas/core/types/Spacing");
+function Tb(t) {
   return t && typeof t == "object" && "toSymbol" in t;
 }
 new AudioContext();
@@ -2315,8 +2315,8 @@ var Mn;
 (function(t) {
   t[t.Playing = 0] = "Playing", t[t.Rendering = 1] = "Rendering", t[t.Paused = 2] = "Paused", t[t.Seeking = 3] = "Seeking";
 })(Mn || (Mn = {}));
-const Y_ = 1 / 50;
-class fb {
+const q_ = 1 / 50;
+class Rb {
   constructor(e) {
     this.project = e, this.state = new Xn({
       duration: 1 / 0,
@@ -2334,7 +2334,7 @@ class fb {
       colorSpace: "srgb",
       fileType: "image/png",
       quality: 1
-    }), this.frame = new Xn(0), this.reloaded = new $f(), this.renderTime = 0, this.requestId = null, this.commands = {
+    }), this.frame = new Xn(0), this.reloaded = new Qf(), this.renderTime = 0, this.requestId = null, this.commands = {
       seek: -1,
       recalculate: !0
     }, this.startTime = performance.now(), this.logger = this.project.logger, this.project.framerate = this.state.current.fps, this.project.resolutionScale = this.state.current.scale, this.project.colorSpace = this.state.current.colorSpace, this.project.onReloaded.subscribe(() => this.reload()), this.request();
@@ -2395,12 +2395,12 @@ class fb {
   setScale(e) {
     this.project.resolutionScale = e, this.updateState({
       scale: e
-    }), this.project.render();
+    });
   }
   setColorSpace(e) {
     this.project.colorSpace = e, this.updateState({
       colorSpace: e
-    }), this.project.render();
+    });
   }
   setFileType(e) {
     this.project.fileType = e, this.updateState({
@@ -2481,9 +2481,9 @@ class fb {
       const i = e.seek < 0 ? this.project.frame : e.seek, s = this.clampRange(i, n);
       this.logger.profile("seek time"), n.finished = await this.project.seek(s), this.logger.profile("seek time"), this.project.syncAudio(-3);
     } else if (n.paused || n.speed === 1 && this.project.audio.isReady() && this.project.audio.isInRange(this.project.time) && this.project.audio.getTime() < this.project.time) {
-      n.paused && r !== Mn.Paused && await this.project.render(), this.project.time > this.project.audio.getTime() + Y_ && this.project.syncAudio(), this.request();
+      n.paused && r !== Mn.Paused && await this.project.render(), this.project.time > this.project.audio.getTime() + q_ && this.project.syncAudio(), this.request();
       return;
-    } else if (this.project.audio.isReady() && n.speed === 1 && this.project.audio.isInRange(this.project.time) && this.project.time < this.project.audio.getTime() - Y_) {
+    } else if (this.project.audio.isReady() && n.speed === 1 && this.project.audio.isInRange(this.project.time) && this.project.time < this.project.audio.getTime() - q_) {
       const i = this.project.secondsToFrames(this.project.audio.getTime());
       n.finished = await this.project.seek(i);
     } else
@@ -2512,17 +2512,17 @@ class fb {
     });
   }
 }
-var Qr, ne, jm, Kn, eE, q_, tE, Gr = {}, nE = [], bb = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
+var Qr, ne, eE, Kn, tE, H_, nE, Gr = {}, rE = [], Cb = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
 function Qt(t, e) {
   for (var n in e)
     t[n] = e[n];
   return t;
 }
-function rE(t) {
+function aE(t) {
   var e = t.parentNode;
   e && e.removeChild(t);
 }
-function Tb(t, e, n) {
+function Nb(t, e, n) {
   var r, a, i, s = {};
   for (i in e)
     i == "key" ? r = e[i] : i == "ref" ? a = e[i] : s[i] = e[i];
@@ -2532,7 +2532,7 @@ function Tb(t, e, n) {
   return wr(t, s, r, a, null);
 }
 function wr(t, e, n, r, a) {
-  var i = { type: t, props: e, key: n, ref: r, __k: null, __: null, __b: 0, __e: null, __d: void 0, __c: null, __h: null, constructor: void 0, __v: a == null ? ++jm : a };
+  var i = { type: t, props: e, key: n, ref: r, __k: null, __: null, __b: 0, __e: null, __d: void 0, __c: null, __h: null, constructor: void 0, __v: a == null ? ++eE : a };
   return a == null && ne.vnode != null && ne.vnode(i), i;
 }
 function Zt(t) {
@@ -2549,7 +2549,7 @@ function xn(t, e) {
       return n.__e;
   return typeof t.type == "function" ? xn(t) : null;
 }
-function aE(t) {
+function iE(t) {
   var e, n;
   if ((t = t.__) != null && t.__c != null) {
     for (t.__e = t.__c.base = null, e = 0; e < t.__k.length; e++)
@@ -2557,11 +2557,11 @@ function aE(t) {
         t.__e = t.__c.base = n.__e;
         break;
       }
-    return aE(t);
+    return iE(t);
   }
 }
-function cc(t) {
-  (!t.__d && (t.__d = !0) && Kn.push(t) && !Yr.__r++ || q_ !== ne.debounceRendering) && ((q_ = ne.debounceRendering) || eE)(Yr);
+function _c(t) {
+  (!t.__d && (t.__d = !0) && Kn.push(t) && !Yr.__r++ || H_ !== ne.debounceRendering) && ((H_ = ne.debounceRendering) || tE)(Yr);
 }
 function Yr() {
   for (var t; Yr.__r = Kn.length; )
@@ -2569,37 +2569,37 @@ function Yr() {
       return e.__v.__b - n.__v.__b;
     }), Kn = [], t.some(function(e) {
       var n, r, a, i, s, o;
-      e.__d && (s = (i = (n = e).__v).__e, (o = n.__P) && (r = [], (a = Qt({}, i)).__v = i.__v + 1, Sc(o, i, a, n.__n, o.ownerSVGElement !== void 0, i.__h != null ? [s] : null, r, s == null ? xn(i) : s, i.__h), lE(r, i), i.__e != s && aE(i)));
+      e.__d && (s = (i = (n = e).__v).__e, (o = n.__P) && (r = [], (a = Qt({}, i)).__v = i.__v + 1, fc(o, i, a, n.__n, o.ownerSVGElement !== void 0, i.__h != null ? [s] : null, r, s == null ? xn(i) : s, i.__h), cE(r, i), i.__e != s && iE(i)));
     });
 }
-function iE(t, e, n, r, a, i, s, o, c, u) {
-  var d, E, m, T, g, f, C, A = r && r.__k || nE, P = A.length;
+function oE(t, e, n, r, a, i, s, o, c, u) {
+  var d, E, m, b, g, f, C, A = r && r.__k || rE, P = A.length;
   for (n.__k = [], d = 0; d < e.length; d++)
-    if ((T = n.__k[d] = (T = e[d]) == null || typeof T == "boolean" ? null : typeof T == "string" || typeof T == "number" || typeof T == "bigint" ? wr(null, T, null, null, T) : Array.isArray(T) ? wr(Zt, { children: T }, null, null, null) : T.__b > 0 ? wr(T.type, T.props, T.key, null, T.__v) : T) != null) {
-      if (T.__ = n, T.__b = n.__b + 1, (m = A[d]) === null || m && T.key == m.key && T.type === m.type)
+    if ((b = n.__k[d] = (b = e[d]) == null || typeof b == "boolean" ? null : typeof b == "string" || typeof b == "number" || typeof b == "bigint" ? wr(null, b, null, null, b) : Array.isArray(b) ? wr(Zt, { children: b }, null, null, null) : b.__b > 0 ? wr(b.type, b.props, b.key, null, b.__v) : b) != null) {
+      if (b.__ = n, b.__b = n.__b + 1, (m = A[d]) === null || m && b.key == m.key && b.type === m.type)
         A[d] = void 0;
       else
         for (E = 0; E < P; E++) {
-          if ((m = A[E]) && T.key == m.key && T.type === m.type) {
+          if ((m = A[E]) && b.key == m.key && b.type === m.type) {
             A[E] = void 0;
             break;
           }
           m = null;
         }
-      Sc(t, T, m = m || Gr, a, i, s, o, c, u), g = T.__e, (E = T.ref) && m.ref != E && (C || (C = []), m.ref && C.push(m.ref, null, T), C.push(E, T.__c || g, T)), g != null ? (f == null && (f = g), typeof T.type == "function" && T.__k === m.__k ? T.__d = c = oE(T, c, t) : c = sE(t, T, m, A, g, c), typeof n.type == "function" && (n.__d = c)) : c && m.__e == c && c.parentNode != t && (c = xn(m));
+      fc(t, b, m = m || Gr, a, i, s, o, c, u), g = b.__e, (E = b.ref) && m.ref != E && (C || (C = []), m.ref && C.push(m.ref, null, b), C.push(E, b.__c || g, b)), g != null ? (f == null && (f = g), typeof b.type == "function" && b.__k === m.__k ? b.__d = c = sE(b, c, t) : c = lE(t, b, m, A, g, c), typeof n.type == "function" && (n.__d = c)) : c && m.__e == c && c.parentNode != t && (c = xn(m));
     }
   for (n.__e = f, d = P; d--; )
-    A[d] != null && (typeof n.type == "function" && A[d].__e != null && A[d].__e == n.__d && (n.__d = xn(r, d + 1)), _E(A[d], A[d]));
+    A[d] != null && (typeof n.type == "function" && A[d].__e != null && A[d].__e == n.__d && (n.__d = xn(r, d + 1)), dE(A[d], A[d]));
   if (C)
     for (d = 0; d < C.length; d++)
-      cE(C[d], C[++d], C[++d]);
+      _E(C[d], C[++d], C[++d]);
 }
-function oE(t, e, n) {
+function sE(t, e, n) {
   for (var r, a = t.__k, i = 0; a && i < a.length; i++)
-    (r = a[i]) && (r.__ = t, e = typeof r.type == "function" ? oE(r, e, n) : sE(n, r, r, a, r.__e, e));
+    (r = a[i]) && (r.__ = t, e = typeof r.type == "function" ? sE(r, e, n) : lE(n, r, r, a, r.__e, e));
   return e;
 }
-function sE(t, e, n, r, a, i) {
+function lE(t, e, n, r, a, i) {
   var s, o, c;
   if (e.__d !== void 0)
     s = e.__d, e.__d = void 0;
@@ -2615,15 +2615,15 @@ function sE(t, e, n, r, a, i) {
       }
   return s !== void 0 ? s : a.nextSibling;
 }
-function Rb(t, e, n, r, a) {
+function hb(t, e, n, r, a) {
   var i;
   for (i in n)
     i === "children" || i === "key" || i in e || qr(t, i, null, n[i], r);
   for (i in e)
     a && typeof e[i] != "function" || i === "children" || i === "key" || i === "value" || i === "checked" || n[i] === e[i] || qr(t, i, e[i], n[i], r);
 }
-function H_(t, e, n) {
-  e[0] === "-" ? t.setProperty(e, n) : t[e] = n == null ? "" : typeof n != "number" || bb.test(e) ? n : n + "px";
+function V_(t, e, n) {
+  e[0] === "-" ? t.setProperty(e, n) : t[e] = n == null ? "" : typeof n != "number" || Cb.test(e) ? n : n + "px";
 }
 function qr(t, e, n, r, a) {
   var i;
@@ -2634,13 +2634,13 @@ function qr(t, e, n, r, a) {
       else {
         if (typeof r == "string" && (t.style.cssText = r = ""), r)
           for (e in r)
-            n && e in n || H_(t.style, e, "");
+            n && e in n || V_(t.style, e, "");
         if (n)
           for (e in n)
-            r && n[e] === r[e] || H_(t.style, e, n[e]);
+            r && n[e] === r[e] || V_(t.style, e, n[e]);
       }
     else if (e[0] === "o" && e[1] === "n")
-      i = e !== (e = e.replace(/Capture$/, "")), e = e.toLowerCase() in t ? e.toLowerCase().slice(2) : e.slice(2), t.l || (t.l = {}), t.l[e + i] = n, n ? r || t.addEventListener(e, i ? z_ : V_, i) : t.removeEventListener(e, i ? z_ : V_, i);
+      i = e !== (e = e.replace(/Capture$/, "")), e = e.toLowerCase() in t ? e.toLowerCase().slice(2) : e.slice(2), t.l || (t.l = {}), t.l[e + i] = n, n ? r || t.addEventListener(e, i ? $_ : z_, i) : t.removeEventListener(e, i ? $_ : z_, i);
     else if (e !== "dangerouslySetInnerHTML") {
       if (a)
         e = e.replace(/xlink(H|:h)/, "h").replace(/sName$/, "s");
@@ -2653,21 +2653,21 @@ function qr(t, e, n, r, a) {
       typeof n == "function" || (n != null && (n !== !1 || e[0] === "a" && e[1] === "r") ? t.setAttribute(e, n) : t.removeAttribute(e));
     }
 }
-function V_(t) {
+function z_(t) {
   this.l[t.type + !1](ne.event ? ne.event(t) : t);
 }
-function z_(t) {
+function $_(t) {
   this.l[t.type + !0](ne.event ? ne.event(t) : t);
 }
-function Sc(t, e, n, r, a, i, s, o, c) {
-  var u, d, E, m, T, g, f, C, A, P, k, w = e.type;
+function fc(t, e, n, r, a, i, s, o, c) {
+  var u, d, E, m, b, g, f, C, A, P, k, w = e.type;
   if (e.constructor !== void 0)
     return null;
   n.__h != null && (c = n.__h, o = e.__e = n.__e, e.__h = null, i = [o]), (u = ne.__b) && u(e);
   try {
     e:
       if (typeof w == "function") {
-        if (C = e.props, A = (u = w.contextType) && r[u.__c], P = u ? A ? A.props.value : u.__ : r, n.__c ? f = (d = e.__c = n.__c).__ = d.__E : ("prototype" in w && w.prototype.render ? e.__c = d = new w(C, P) : (e.__c = d = new xr(C, P), d.constructor = w, d.render = Nb), A && A.sub(d), d.props = C, d.state || (d.state = {}), d.context = P, d.__n = r, E = d.__d = !0, d.__h = []), d.__s == null && (d.__s = d.state), w.getDerivedStateFromProps != null && (d.__s == d.state && (d.__s = Qt({}, d.__s)), Qt(d.__s, w.getDerivedStateFromProps(C, d.__s))), m = d.props, T = d.state, E)
+        if (C = e.props, A = (u = w.contextType) && r[u.__c], P = u ? A ? A.props.value : u.__ : r, n.__c ? f = (d = e.__c = n.__c).__ = d.__E : ("prototype" in w && w.prototype.render ? e.__c = d = new w(C, P) : (e.__c = d = new xr(C, P), d.constructor = w, d.render = Ob), A && A.sub(d), d.props = C, d.state || (d.state = {}), d.context = P, d.__n = r, E = d.__d = !0, d.__h = []), d.__s == null && (d.__s = d.state), w.getDerivedStateFromProps != null && (d.__s == d.state && (d.__s = Qt({}, d.__s)), Qt(d.__s, w.getDerivedStateFromProps(C, d.__s))), m = d.props, b = d.state, E)
           w.getDerivedStateFromProps == null && d.componentWillMount != null && d.componentWillMount(), d.componentDidMount != null && d.__h.push(d.componentDidMount);
         else {
           if (w.getDerivedStateFromProps == null && C !== m && d.componentWillReceiveProps != null && d.componentWillReceiveProps(C, P), !d.__e && d.shouldComponentUpdate != null && d.shouldComponentUpdate(C, d.__s, P) === !1 || e.__v === n.__v) {
@@ -2677,18 +2677,18 @@ function Sc(t, e, n, r, a, i, s, o, c) {
             break e;
           }
           d.componentWillUpdate != null && d.componentWillUpdate(C, d.__s, P), d.componentDidUpdate != null && d.__h.push(function() {
-            d.componentDidUpdate(m, T, g);
+            d.componentDidUpdate(m, b, g);
           });
         }
-        d.context = P, d.props = C, d.state = d.__s, (u = ne.__r) && u(e), d.__d = !1, d.__v = e, d.__P = t, u = d.render(d.props, d.state, d.context), d.state = d.__s, d.getChildContext != null && (r = Qt(Qt({}, r), d.getChildContext())), E || d.getSnapshotBeforeUpdate == null || (g = d.getSnapshotBeforeUpdate(m, T)), k = u != null && u.type === Zt && u.key == null ? u.props.children : u, iE(t, Array.isArray(k) ? k : [k], e, n, r, a, i, s, o, c), d.base = e.__e, e.__h = null, d.__h.length && s.push(d), f && (d.__E = d.__ = null), d.__e = !1;
+        d.context = P, d.props = C, d.state = d.__s, (u = ne.__r) && u(e), d.__d = !1, d.__v = e, d.__P = t, u = d.render(d.props, d.state, d.context), d.state = d.__s, d.getChildContext != null && (r = Qt(Qt({}, r), d.getChildContext())), E || d.getSnapshotBeforeUpdate == null || (g = d.getSnapshotBeforeUpdate(m, b)), k = u != null && u.type === Zt && u.key == null ? u.props.children : u, oE(t, Array.isArray(k) ? k : [k], e, n, r, a, i, s, o, c), d.base = e.__e, e.__h = null, d.__h.length && s.push(d), f && (d.__E = d.__ = null), d.__e = !1;
       } else
-        i == null && e.__v === n.__v ? (e.__k = n.__k, e.__e = n.__e) : e.__e = Cb(n.__e, e, n, r, a, i, s, c);
+        i == null && e.__v === n.__v ? (e.__k = n.__k, e.__e = n.__e) : e.__e = vb(n.__e, e, n, r, a, i, s, c);
     (u = ne.diffed) && u(e);
   } catch (q) {
     e.__v = null, (c || i != null) && (e.__e = o, e.__h = !!c, i[i.indexOf(o)] = null), ne.__e(q, e, n);
   }
 }
-function lE(t, e) {
+function cE(t, e) {
   ne.__c && ne.__c(e, t), t.some(function(n) {
     try {
       t = n.__h, n.__h = [], t.some(function(r) {
@@ -2699,21 +2699,21 @@ function lE(t, e) {
     }
   });
 }
-function Cb(t, e, n, r, a, i, s, o) {
-  var c, u, d, E = n.props, m = e.props, T = e.type, g = 0;
-  if (T === "svg" && (a = !0), i != null) {
+function vb(t, e, n, r, a, i, s, o) {
+  var c, u, d, E = n.props, m = e.props, b = e.type, g = 0;
+  if (b === "svg" && (a = !0), i != null) {
     for (; g < i.length; g++)
-      if ((c = i[g]) && "setAttribute" in c == !!T && (T ? c.localName === T : c.nodeType === 3)) {
+      if ((c = i[g]) && "setAttribute" in c == !!b && (b ? c.localName === b : c.nodeType === 3)) {
         t = c, i[g] = null;
         break;
       }
   }
   if (t == null) {
-    if (T === null)
+    if (b === null)
       return document.createTextNode(m);
-    t = a ? document.createElementNS("http://www.w3.org/2000/svg", T) : document.createElement(T, m.is && m), i = null, o = !1;
+    t = a ? document.createElementNS("http://www.w3.org/2000/svg", b) : document.createElement(b, m.is && m), i = null, o = !1;
   }
-  if (T === null)
+  if (b === null)
     E === m || o && t.data === m || (t.data = m);
   else {
     if (i = i && Qr.call(t.childNodes), u = (E = n.props || Gr).dangerouslySetInnerHTML, d = m.dangerouslySetInnerHTML, !o) {
@@ -2722,25 +2722,25 @@ function Cb(t, e, n, r, a, i, s, o) {
           E[t.attributes[g].name] = t.attributes[g].value;
       (d || u) && (d && (u && d.__html == u.__html || d.__html === t.innerHTML) || (t.innerHTML = d && d.__html || ""));
     }
-    if (Rb(t, m, E, a, o), d)
+    if (hb(t, m, E, a, o), d)
       e.__k = [];
-    else if (g = e.props.children, iE(t, Array.isArray(g) ? g : [g], e, n, r, a && T !== "foreignObject", i, s, i ? i[0] : n.__k && xn(n, 0), o), i != null)
+    else if (g = e.props.children, oE(t, Array.isArray(g) ? g : [g], e, n, r, a && b !== "foreignObject", i, s, i ? i[0] : n.__k && xn(n, 0), o), i != null)
       for (g = i.length; g--; )
-        i[g] != null && rE(i[g]);
-    o || ("value" in m && (g = m.value) !== void 0 && (g !== t.value || T === "progress" && !g || T === "option" && g !== E.value) && qr(t, "value", g, E.value, !1), "checked" in m && (g = m.checked) !== void 0 && g !== t.checked && qr(t, "checked", g, E.checked, !1));
+        i[g] != null && aE(i[g]);
+    o || ("value" in m && (g = m.value) !== void 0 && (g !== t.value || b === "progress" && !g || b === "option" && g !== E.value) && qr(t, "value", g, E.value, !1), "checked" in m && (g = m.checked) !== void 0 && g !== t.checked && qr(t, "checked", g, E.checked, !1));
   }
   return t;
 }
-function cE(t, e, n) {
+function _E(t, e, n) {
   try {
     typeof t == "function" ? t(e) : t.current = e;
   } catch (r) {
     ne.__e(r, n);
   }
 }
-function _E(t, e, n) {
+function dE(t, e, n) {
   var r, a;
-  if (ne.unmount && ne.unmount(t), (r = t.ref) && (r.current && r.current !== t.__e || cE(r, null, e)), (r = t.__c) != null) {
+  if (ne.unmount && ne.unmount(t), (r = t.ref) && (r.current && r.current !== t.__e || _E(r, null, e)), (r = t.__c) != null) {
     if (r.componentWillUnmount)
       try {
         r.componentWillUnmount();
@@ -2751,25 +2751,25 @@ function _E(t, e, n) {
   }
   if (r = t.__k)
     for (a = 0; a < r.length; a++)
-      r[a] && _E(r[a], e, typeof t.type != "function");
-  n || t.__e == null || rE(t.__e), t.__e = t.__d = void 0;
+      r[a] && dE(r[a], e, typeof t.type != "function");
+  n || t.__e == null || aE(t.__e), t.__e = t.__d = void 0;
 }
-function Nb(t, e, n) {
+function Ob(t, e, n) {
   return this.constructor(t, n);
 }
-function hb(t, e, n) {
+function Ib(t, e, n) {
   var r, a, i;
-  ne.__ && ne.__(t, e), a = (r = typeof n == "function") ? null : n && n.__k || e.__k, i = [], Sc(e, t = (!r && n || e).__k = Tb(Zt, null, [t]), a || Gr, Gr, e.ownerSVGElement !== void 0, !r && n ? [n] : a ? null : e.firstChild ? Qr.call(e.childNodes) : null, i, !r && n ? n : a ? a.__e : e.firstChild, r), lE(i, t);
+  ne.__ && ne.__(t, e), a = (r = typeof n == "function") ? null : n && n.__k || e.__k, i = [], fc(e, t = (!r && n || e).__k = Nb(Zt, null, [t]), a || Gr, Gr, e.ownerSVGElement !== void 0, !r && n ? [n] : a ? null : e.firstChild ? Qr.call(e.childNodes) : null, i, !r && n ? n : a ? a.__e : e.firstChild, r), cE(i, t);
 }
 function Un(t, e) {
-  var n = { __c: e = "__cC" + tE++, __: t, Consumer: function(r, a) {
+  var n = { __c: e = "__cC" + nE++, __: t, Consumer: function(r, a) {
     return r.children(a);
   }, Provider: function(r) {
     var a, i;
     return this.getChildContext || (a = [], (i = {})[e] = this, this.getChildContext = function() {
       return i;
     }, this.shouldComponentUpdate = function(s) {
-      this.props.value !== s.value && a.some(cc);
+      this.props.value !== s.value && a.some(_c);
     }, this.sub = function(s) {
       a.push(s);
       var o = s.componentWillUnmount;
@@ -2780,7 +2780,7 @@ function Un(t, e) {
   } };
   return n.Provider.__ = n.Consumer.contextType = n;
 }
-Qr = nE.slice, ne = { __e: function(t, e, n, r) {
+Qr = rE.slice, ne = { __e: function(t, e, n, r) {
   for (var a, i, s; e = e.__; )
     if ((a = e.__c) && !a.__)
       try {
@@ -2790,30 +2790,30 @@ Qr = nE.slice, ne = { __e: function(t, e, n, r) {
         t = o;
       }
   throw t;
-} }, jm = 0, xr.prototype.setState = function(t, e) {
+} }, eE = 0, xr.prototype.setState = function(t, e) {
   var n;
-  n = this.__s != null && this.__s !== this.state ? this.__s : this.__s = Qt({}, this.state), typeof t == "function" && (t = t(Qt({}, n), this.props)), t && Qt(n, t), t != null && this.__v && (e && this.__h.push(e), cc(this));
+  n = this.__s != null && this.__s !== this.state ? this.__s : this.__s = Qt({}, this.state), typeof t == "function" && (t = t(Qt({}, n), this.props)), t && Qt(n, t), t != null && this.__v && (e && this.__h.push(e), _c(this));
 }, xr.prototype.forceUpdate = function(t) {
-  this.__v && (this.__e = !0, t && this.__h.push(t), cc(this));
-}, xr.prototype.render = Zt, Kn = [], eE = typeof Promise == "function" ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, Yr.__r = 0, tE = 0;
-const vb = "_root_1qrlz_1", Ob = "_tabs_1qrlz_8", Ib = "_tab_1qrlz_8", Ab = "_active_1qrlz_30", yb = "_disabled_1qrlz_34", Db = "_badge_1qrlz_39", Mb = "_space_1qrlz_56", Lb = "_panes_1qrlz_60", wb = "_pane_1qrlz_60", xb = "_header_1qrlz_73", Tt = {
-  root: vb,
-  tabs: Ob,
-  tab: Ib,
-  active: Ab,
-  disabled: yb,
-  badge: Db,
-  space: Mb,
-  panes: Lb,
-  pane: wb,
-  header: xb
+  this.__v && (this.__e = !0, t && this.__h.push(t), _c(this));
+}, xr.prototype.render = Zt, Kn = [], tE = typeof Promise == "function" ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, Yr.__r = 0, nE = 0;
+const Ab = "_root_1qrlz_1", yb = "_tabs_1qrlz_8", Db = "_tab_1qrlz_8", Mb = "_active_1qrlz_30", Lb = "_disabled_1qrlz_34", wb = "_badge_1qrlz_39", xb = "_space_1qrlz_56", Pb = "_panes_1qrlz_60", kb = "_pane_1qrlz_60", Ub = "_header_1qrlz_73", Tt = {
+  root: Ab,
+  tabs: yb,
+  tab: Db,
+  active: Mb,
+  disabled: Lb,
+  badge: wb,
+  space: xb,
+  panes: Pb,
+  pane: kb,
+  header: Ub
 };
-var Pb = 0;
+var Fb = 0;
 function S(t, e, n, r, a) {
   var i, s, o = {};
   for (s in e)
     s == "ref" ? i = e[s] : o[s] = e[s];
-  var c = { type: t, props: o, key: n, ref: i, __k: null, __: null, __b: 0, __e: null, __d: void 0, __c: null, __h: null, constructor: void 0, __v: --Pb, __source: a, __self: r };
+  var c = { type: t, props: o, key: n, ref: i, __k: null, __: null, __b: 0, __e: null, __d: void 0, __c: null, __h: null, constructor: void 0, __v: --Fb, __source: a, __self: r };
   if (typeof t == "function" && (i = t.defaultProps))
     for (s in i)
       o[s] === void 0 && (o[s] = i[s]);
@@ -2833,38 +2833,38 @@ function Xr({
     }), n]
   });
 }
-var Fn, at, $_, Zn = 0, dE = [], W_ = ne.__b, K_ = ne.__r, Q_ = ne.diffed, X_ = ne.__c, Z_ = ne.unmount;
+var Fn, at, W_, Zn = 0, uE = [], K_ = ne.__b, Q_ = ne.__r, X_ = ne.diffed, Z_ = ne.__c, J_ = ne.unmount;
 function nr(t, e) {
   ne.__h && ne.__h(at, t, Zn || e), Zn = 0;
   var n = at.__H || (at.__H = { __: [], __h: [] });
   return t >= n.__.length && n.__.push({}), n.__[t];
 }
 function Ke(t) {
-  return Zn = 1, kb(uE, t);
+  return Zn = 1, Bb(pE, t);
 }
-function kb(t, e, n) {
+function Bb(t, e, n) {
   var r = nr(Fn++, 2);
-  return r.t = t, r.__c || (r.__ = [n ? n(e) : uE(void 0, e), function(a) {
+  return r.t = t, r.__c || (r.__ = [n ? n(e) : pE(void 0, e), function(a) {
     var i = r.t(r.__[0], a);
     r.__[0] !== i && (r.__ = [i, r.__[1]], r.__c.setState({}));
   }], r.__c = at), r.__;
 }
 function Nt(t, e) {
   var n = nr(Fn++, 3);
-  !ne.__s && fc(n.__H, e) && (n.__ = t, n.__H = e, at.__H.__h.push(n));
+  !ne.__s && bc(n.__H, e) && (n.__ = t, n.__H = e, at.__H.__h.push(n));
 }
-function un(t, e) {
+function Jt(t, e) {
   var n = nr(Fn++, 4);
-  !ne.__s && fc(n.__H, e) && (n.__ = t, n.__H = e, at.__h.push(n));
+  !ne.__s && bc(n.__H, e) && (n.__ = t, n.__H = e, at.__h.push(n));
 }
-function nt(t) {
+function je(t) {
   return Zn = 5, Pe(function() {
     return { current: t };
   }, []);
 }
 function Pe(t, e) {
   var n = nr(Fn++, 7);
-  return fc(n.__H, e) && (n.__ = t(), n.__H = e, n.__h = t), n.__;
+  return bc(n.__H, e) && (n.__ = t(), n.__H = e, n.__h = t), n.__;
 }
 function $e(t, e) {
   return Zn = 8, Pe(function() {
@@ -2875,44 +2875,44 @@ function pn(t) {
   var e = at.context[t.__c], n = nr(Fn++, 9);
   return n.c = t, e ? (n.__ == null && (n.__ = !0, e.sub(at)), e.props.value) : t.__;
 }
-function Ub() {
-  for (var t; t = dE.shift(); )
+function Gb() {
+  for (var t; t = uE.shift(); )
     if (t.__P)
       try {
-        t.__H.__h.forEach(Pr), t.__H.__h.forEach(_c), t.__H.__h = [];
+        t.__H.__h.forEach(Pr), t.__H.__h.forEach(dc), t.__H.__h = [];
       } catch (e) {
         t.__H.__h = [], ne.__e(e, t.__v);
       }
 }
 ne.__b = function(t) {
-  at = null, W_ && W_(t);
+  at = null, K_ && K_(t);
 }, ne.__r = function(t) {
-  K_ && K_(t), Fn = 0;
+  Q_ && Q_(t), Fn = 0;
   var e = (at = t.__c).__H;
-  e && (e.__h.forEach(Pr), e.__h.forEach(_c), e.__h = []);
+  e && (e.__h.forEach(Pr), e.__h.forEach(dc), e.__h = []);
 }, ne.diffed = function(t) {
-  Q_ && Q_(t);
+  X_ && X_(t);
   var e = t.__c;
-  e && e.__H && e.__H.__h.length && (dE.push(e) !== 1 && $_ === ne.requestAnimationFrame || (($_ = ne.requestAnimationFrame) || function(n) {
+  e && e.__H && e.__H.__h.length && (uE.push(e) !== 1 && W_ === ne.requestAnimationFrame || ((W_ = ne.requestAnimationFrame) || function(n) {
     var r, a = function() {
-      clearTimeout(i), J_ && cancelAnimationFrame(r), setTimeout(n);
+      clearTimeout(i), j_ && cancelAnimationFrame(r), setTimeout(n);
     }, i = setTimeout(a, 100);
-    J_ && (r = requestAnimationFrame(a));
-  })(Ub)), at = null;
+    j_ && (r = requestAnimationFrame(a));
+  })(Gb)), at = null;
 }, ne.__c = function(t, e) {
   e.some(function(n) {
     try {
       n.__h.forEach(Pr), n.__h = n.__h.filter(function(r) {
-        return !r.__ || _c(r);
+        return !r.__ || dc(r);
       });
     } catch (r) {
       e.some(function(a) {
         a.__h && (a.__h = []);
       }), e = [], ne.__e(r, n.__v);
     }
-  }), X_ && X_(t, e);
+  }), Z_ && Z_(t, e);
 }, ne.unmount = function(t) {
-  Z_ && Z_(t);
+  J_ && J_(t);
   var e, n = t.__c;
   n && n.__H && (n.__H.__.forEach(function(r) {
     try {
@@ -2922,31 +2922,31 @@ ne.__b = function(t) {
     }
   }), e && ne.__e(e, n.__v));
 };
-var J_ = typeof requestAnimationFrame == "function";
+var j_ = typeof requestAnimationFrame == "function";
 function Pr(t) {
   var e = at, n = t.__c;
   typeof n == "function" && (t.__c = void 0, n()), at = e;
 }
-function _c(t) {
+function dc(t) {
   var e = at;
   t.__c = t.__(), at = e;
 }
-function fc(t, e) {
+function bc(t, e) {
   return !t || t.length !== e.length || e.some(function(n, r) {
     return n !== t[r];
   });
 }
-function uE(t, e) {
+function pE(t, e) {
   return typeof e == "function" ? e(t) : e;
 }
-function pE(t) {
+function mE(t) {
   var e, n, r = "";
   if (typeof t == "string" || typeof t == "number")
     r += t;
   else if (typeof t == "object")
     if (Array.isArray(t))
       for (e = 0; e < t.length; e++)
-        t[e] && (n = pE(t[e])) && (r && (r += " "), r += n);
+        t[e] && (n = mE(t[e])) && (r && (r += " "), r += n);
     else
       for (e in t)
         t[e] && (r && (r += " "), r += e);
@@ -2954,26 +2954,26 @@ function pE(t) {
 }
 function Qe() {
   for (var t, e, n = 0, r = ""; n < arguments.length; )
-    (t = arguments[n++]) && (e = pE(t)) && (r && (r += " "), r += e);
+    (t = arguments[n++]) && (e = mE(t)) && (r && (r += " "), r += e);
   return r;
 }
 var $t = /* @__PURE__ */ ((t) => (t[t.Link = 0] = "Link", t[t.Pane = 1] = "Pane", t[t.Space = 2] = "Space", t))($t || {});
-function Fb({
+function Yb({
   children: t,
   tab: e,
   onToggle: n
 }) {
   const r = $e((a) => {
-    const i = a === e ? -1 : Ni(t[a]) ? a : -1;
+    const i = a === e ? -1 : hi(t[a]) ? a : -1;
     n(i);
   }, [e, n, t]);
-  return un(() => {
-    e > -1 && !Ni(t[e]) ? n(-1) : n(e);
+  return Jt(() => {
+    e > -1 && !hi(t[e]) ? n(-1) : n(e);
   }, [n, e]), S("div", {
     className: Tt.root,
     children: [S("div", {
       className: Tt.panes,
-      children: Ni(t[e])
+      children: hi(t[e])
     }), S("div", {
       className: Tt.tabs,
       children: t.map((a, i) => a.type === 0 ? S("a", {
@@ -2994,10 +2994,10 @@ function Fb({
     })]
   });
 }
-function Ni(t) {
+function hi(t) {
   return t && t.type === 1 ? t.pane : !1;
 }
-function Bb({
+function qb({
   children: t,
   badgeRef: e
 }) {
@@ -3007,39 +3007,39 @@ function Bb({
     children: t
   });
 }
-function Gb(t, e, n) {
-  Nt(() => t.subscribe(e), [t, ...n]);
+function EE(t, e, n) {
+  Nt(() => t == null ? void 0 : t.subscribe(e), [t, ...n]);
 }
-function Dt(t) {
+function Lt(t) {
   const [e, n] = Ke(t == null ? void 0 : t.current);
   return Nt(() => t && t.subscribe(n), [t]), e;
 }
-const mE = Un({
+const gE = Un({
   inspectedElement: null,
   setInspectedElement: () => {
     throw new Error("setSelectedNode not implemented");
   }
 });
-function Yb({
+function Hb({
   children: t
 }) {
   const [e, n] = Ke(null), r = Pe(() => ({
     inspectedElement: e,
     setInspectedElement: n
   }), [e]);
-  return S(mE.Provider, {
+  return S(gE.Provider, {
     value: r,
     children: t
   });
 }
 function rr() {
-  return pn(mE);
+  return pn(gE);
 }
-const j_ = 1;
-class qb {
+const ed = 1;
+class Vb {
   constructor(e, n = !1) {
     this.name = e, this.source = n, this.data = new Xn({
-      version: j_
+      version: ed
     });
   }
   get onDataChanged() {
@@ -3049,7 +3049,7 @@ class qb {
     return this.data.current;
   }
   setDataSync(e) {
-    this.setData(e).catch((n) => Km().error(n));
+    this.setData(e).catch((n) => Qm().error(n));
   }
   async setData(e) {
     this.data.current = {
@@ -3058,24 +3058,24 @@ class qb {
     };
   }
   async loadData(e) {
-    e.version || (e.version = j_), this.data.current = e;
+    e.version || (e.version = ed), this.data.current = e;
   }
 }
-qb.sourceLookup = {};
-const EE = Un(null);
-function bc() {
-  return pn(EE);
+Vb.sourceLookup = {};
+const SE = Un(null);
+function Tc() {
+  return pn(SE);
 }
-function Hb({
+function zb({
   project: t,
   children: e
 }) {
-  return S(EE.Provider, {
+  return S(SE.Provider, {
     value: t,
     children: e
   });
 }
-class Vb {
+class $b {
   constructor(e) {
     On(this, "errorCount", new Xn(0));
     On(this, "logs", new Xn([]));
@@ -3095,38 +3095,38 @@ class Vb {
     return this.logs.subscribable;
   }
 }
-const gE = Un(null);
-function SE() {
-  return pn(gE);
+const fE = Un(null);
+function bE() {
+  return pn(fE);
 }
-function zb() {
-  const t = SE();
-  return [Dt(t.onLogsChanged), t.clear];
+function Wb() {
+  const t = bE();
+  return [Lt(t.onLogsChanged), t.clear];
 }
-function $b({
+function Kb({
   children: t
 }) {
   var r;
-  const e = bc(), n = nt(null);
-  return (r = n.current) != null || (n.current = new Vb(e)), S(gE.Provider, {
+  const e = Tc(), n = je(null);
+  return (r = n.current) != null || (n.current = new $b(e)), S(fE.Provider, {
     value: n.current,
     children: t
   });
 }
-const fE = Un(null);
-function dt() {
-  return pn(fE);
+const TE = Un(null);
+function st() {
+  return pn(TE);
 }
-function Wb({
+function Qb({
   player: t,
   children: e
 }) {
-  return S(fE.Provider, {
+  return S(TE.Provider, {
     value: t,
     children: e
   });
 }
-const bE = Un({
+const RE = Un({
   viewLength: 0,
   offset: 0,
   density: 1,
@@ -3137,21 +3137,21 @@ const bE = Un({
   framesToPixels: (t) => t,
   pixelsToFrames: (t) => t
 });
-function Kb({
+function Xb({
   state: t,
   children: e
 }) {
-  return S(bE.Provider, {
+  return S(RE.Provider, {
     value: t,
     children: e
   });
 }
 function mn() {
-  return pn(bE);
+  return pn(RE);
 }
-function Tc() {
-  const t = dt();
-  return Dt(t.onFrameChanged);
+function Rc() {
+  const t = st();
+  return Lt(t.onFrameChanged);
 }
 function Ln(t, e, n = !0, r = !1) {
   Nt(() => {
@@ -3190,11 +3190,11 @@ function Hr(t, e = 6) {
   }, [t, e]);
 }
 function Ft() {
-  const t = dt();
-  return Dt(t.onStateChanged);
+  const t = st();
+  return Lt(t.onStateChanged);
 }
 function ar() {
-  const t = Ft(), e = Tc();
+  const t = Ft(), e = Rc();
   return Pe(() => ({
     frame: e,
     time: e / t.fps,
@@ -3203,15 +3203,15 @@ function ar() {
     completion: e / t.duration
   }), [t, e]);
 }
-function TE() {
-  const t = dt();
-  return Dt(t.project.onScenesChanged);
+function CE() {
+  const t = st();
+  return Lt(t.project.onScenesChanged);
 }
 function Zr() {
-  const t = dt();
-  return Dt(t.project.onCurrentSceneChanged);
+  const t = st();
+  return Lt(t.project.onCurrentSceneChanged);
 }
-function RE(t) {
+function NE(t) {
   const [e, n] = Ke(new DOMRect()), r = Pe(() => new ResizeObserver(() => n(t.current.getBoundingClientRect())), []);
   return Nt(() => {
     const {
@@ -3220,14 +3220,14 @@ function RE(t) {
     return r.observe(a), () => r.unobserve(a);
   }, [t.current]), e;
 }
-function CE(t, e) {
-  const n = nt(e);
-  un(() => {
+function hE(t, e) {
+  const n = je(e);
+  Jt(() => {
     t(n.current), n.current = e;
   }, e);
 }
-function Rc(t, e = null) {
-  const r = `${dt().project.name}-${t}`, [a, i] = Pe(() => {
+function Jr(t, e = null) {
+  const r = `${st().project.name}-${t}`, [a, i] = Pe(() => {
     const u = localStorage.getItem(r);
     return u ? [JSON.parse(u), !0] : [e, !1];
   }, [r]), [s, o] = Ke(a), c = $e((u) => {
@@ -3235,43 +3235,43 @@ function Rc(t, e = null) {
   }, [o, r]);
   return [s, c, i];
 }
-const Qb = "_surface_pxbh9_1", Xb = "_disabled_pxbh9_12", Zb = "_header_pxbh9_17", Jb = "_open_pxbh9_22", jb = "_fields_pxbh9_26", eT = "_field_pxbh9_26", tT = "_copy_pxbh9_43", nT = "_copied_pxbh9_60", rT = "_label_pxbh9_65", aT = "_value_pxbh9_70", iT = "_right_pxbh9_77", oT = "_grow_pxbh9_80", ut = {
-  surface: Qb,
-  disabled: Xb,
-  header: Zb,
-  open: Jb,
-  fields: jb,
-  field: eT,
-  copy: tT,
-  copied: nT,
-  label: rT,
-  value: aT,
-  right: iT,
-  grow: oT
-}, sT = "_iconCheckbox_9cbfq_1", lT = "_main_9cbfq_1", cT = "_checked_9cbfq_4", _T = "_iconButton_9cbfq_14", dT = "_group_9cbfq_28", uT = "_label_9cbfq_34", pT = "_select_9cbfq_45", mT = "_input_9cbfq_46", ET = "_button_9cbfq_47", gT = "_inputSelect_9cbfq_79", ST = "_colorPreview_9cbfq_105", fT = "_toggle_9cbfq_125", bT = "_open_9cbfq_137", TT = "_pill_9cbfq_141", rt = {
-  iconCheckbox: sT,
-  main: lT,
-  checked: cT,
-  iconButton: _T,
-  group: dT,
-  label: uT,
-  select: pT,
-  input: mT,
-  button: ET,
-  inputSelect: gT,
-  colorPreview: ST,
-  toggle: fT,
-  open: bT,
-  pill: TT
+const Zb = "_surface_pxbh9_1", Jb = "_disabled_pxbh9_12", jb = "_header_pxbh9_17", eT = "_open_pxbh9_22", tT = "_fields_pxbh9_26", nT = "_field_pxbh9_26", rT = "_copy_pxbh9_43", aT = "_copied_pxbh9_60", iT = "_label_pxbh9_65", oT = "_value_pxbh9_70", sT = "_right_pxbh9_77", lT = "_grow_pxbh9_80", ut = {
+  surface: Zb,
+  disabled: Jb,
+  header: jb,
+  open: eT,
+  fields: tT,
+  field: nT,
+  copy: rT,
+  copied: aT,
+  label: iT,
+  value: oT,
+  right: sT,
+  grow: lT
+}, cT = "_iconCheckbox_9cbfq_1", _T = "_main_9cbfq_1", dT = "_checked_9cbfq_4", uT = "_iconButton_9cbfq_14", pT = "_group_9cbfq_28", mT = "_label_9cbfq_34", ET = "_select_9cbfq_45", gT = "_input_9cbfq_46", ST = "_button_9cbfq_47", fT = "_inputSelect_9cbfq_79", bT = "_colorPreview_9cbfq_105", TT = "_toggle_9cbfq_125", RT = "_open_9cbfq_137", CT = "_pill_9cbfq_141", rt = {
+  iconCheckbox: cT,
+  main: _T,
+  checked: dT,
+  iconButton: uT,
+  group: pT,
+  label: mT,
+  select: ET,
+  input: gT,
+  button: ST,
+  inputSelect: fT,
+  colorPreview: bT,
+  toggle: TT,
+  open: RT,
+  pill: CT
 };
-function RT(t) {
+function vE(t) {
   return S("button", {
     className: Qe(rt.button, t.main && rt.main),
     type: "button",
     ...t
   });
 }
-function ln(t) {
+function cn(t) {
   return S("input", {
     className: rt.input,
     ...t
@@ -3295,7 +3295,7 @@ function Qn({
     }, i.value))
   });
 }
-function CT({
+function NT({
   options: t,
   value: e,
   onChange: n,
@@ -3303,7 +3303,7 @@ function CT({
 }) {
   return S("div", {
     className: rt.inputSelect,
-    children: [S(ln, {
+    children: [S(cn, {
       value: e,
       onChange: (a) => {
         n(a.target.value);
@@ -3316,14 +3316,14 @@ function CT({
     })]
   });
 }
-function Pt(t) {
+function yt(t) {
   return S("div", {
     className: rt.group,
     ...t,
     children: t.children
   });
 }
-function cn({
+function _n({
   children: t,
   onClick: e,
   title: n,
@@ -3337,7 +3337,7 @@ function cn({
     children: t
   });
 }
-function hi({
+function vi({
   children: t,
   titleOn: e,
   titleOff: n,
@@ -3345,21 +3345,21 @@ function hi({
   checked: a = !1,
   main: i = !1
 }) {
-  return S(cn, {
+  return S(_n, {
     className: Qe(rt.iconCheckbox, i && rt.main, a && rt.checked),
     title: n && !a ? n : e,
     onClick: () => r == null ? void 0 : r(!a),
     children: t
   });
 }
-function kt(t) {
+function Dt(t) {
   return S("label", {
     title: t.children,
     className: rt.label,
     ...t
   });
 }
-function NT(t) {
+function hT(t) {
   return S("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
@@ -3369,17 +3369,17 @@ function NT(t) {
     })
   });
 }
-function NE({
+function OE({
   open: t,
   onToggle: e
 }) {
   return S("button", {
     className: Qe(rt.toggle, t && rt.open),
     onClick: () => e(!t),
-    children: S(NT, {})
+    children: S(hT, {})
   });
 }
-function hT({
+function vT({
   children: t,
   checked: e,
   onChange: n,
@@ -3402,7 +3402,7 @@ function Cc({
     open: n,
     children: [S("div", {
       className: ut.header,
-      children: [S(NE, {
+      children: [S(OE, {
         open: n,
         onToggle: r
       }), e]
@@ -3432,7 +3432,7 @@ function ir({
   copy: e,
   children: n
 }) {
-  const r = nt(null), [a, i] = Ke(!1);
+  const r = je(null), [a, i] = Ke(!1);
   return S("div", {
     className: Qe(ut.field, {
       [ut.copy]: !!e,
@@ -3479,7 +3479,7 @@ function Ct({
     })
   });
 }
-function vT({
+function OT({
   value: t
 }) {
   const e = Hr(t.x, 2), n = Hr(t.y, 2);
@@ -3500,7 +3500,7 @@ function vT({
     })]
   });
 }
-function ed({
+function td({
   value: t
 }) {
   const e = t === null || t === "";
@@ -3514,7 +3514,7 @@ function ed({
     })
   });
 }
-function OT({
+function IT({
   value: t
 }) {
   return S(Nc, {
@@ -3523,7 +3523,7 @@ function OT({
     })
   });
 }
-function IT({
+function AT({
   color: t,
   ...e
 }) {
@@ -3537,7 +3537,7 @@ function IT({
     })
   });
 }
-function AT({
+function yT({
   value: t
 }) {
   const e = t.serialize();
@@ -3549,7 +3549,7 @@ function AT({
       }), S(Pn, {
         alignRight: !0,
         grow: !1,
-        children: S(IT, {
+        children: S(AT, {
           color: e
         })
       })]
@@ -3572,7 +3572,7 @@ function AT({
     })]
   });
 }
-function yT({
+function DT({
   value: t
 }) {
   return S(Cc, {
@@ -3598,428 +3598,26 @@ function yT({
     })]
   });
 }
-const DT = {
-  [ae.symbol]: vT,
-  [We.exports.Color.symbol]: AT,
-  [yt.symbol]: yT
+const MT = {
+  [ae.symbol]: OT,
+  [We.exports.Color.symbol]: yT,
+  [Mt.symbol]: DT
 };
-function MT({
+function LT({
   label: t,
   value: e
 }) {
   var r;
-  let n = ed;
-  return Sb(e) ? n = (r = DT[e.toSymbol()]) != null ? r : ed : typeof e == "number" && (n = OT), S(Pt, {
-    children: [S(kt, {
+  let n = td;
+  return Tb(e) ? n = (r = MT[e.toSymbol()]) != null ? r : td : typeof e == "number" && (n = IT), S(yt, {
+    children: [S(Dt, {
       children: t
     }), S(n, {
       value: e
     })]
   });
 }
-function LT() {
-  const {
-    inspectedElement: t
-  } = rr(), e = Zr(), n = Tc(), r = Pe(() => pc(e) ? e : null, [e]), a = Pe(() => r == null ? void 0 : r.inspectAttributes(t), [t, r, n]);
-  return S(Xr, {
-    title: "Properties",
-    id: "properties-pane",
-    children: a ? Object.entries(a).map(([i, s]) => S(MT, {
-      label: i,
-      value: s
-    })) : r ? "Click on a node to view its properties." : "The current scene doesn't support inspecting."
-  });
-}
-const wT = "_root_1ixub_1", xT = "_times_1ixub_5", PT = "_thread_1ixub_12", kT = "_threadTitle_1ixub_16", UT = "_threadList_1ixub_23", kr = {
-  root: wT,
-  times: xT,
-  thread: PT,
-  threadTitle: kT,
-  threadList: UT
-};
-function FT(t) {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    ...t,
-    children: S("path", {
-      d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-    })
-  });
-}
-function BT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-4 4v3c0 .22-.03.47-.07.7l-.1.65-.37.65c-.72 1.24-2.04 2-3.46 2s-2.74-.77-3.46-2l-.37-.64-.1-.65C8.03 15.48 8 15.23 8 15v-4c0-.23.03-.48.07-.7l.1-.65.37-.65c.3-.52.72-.97 1.21-1.31l.57-.39.74-.18c.31-.08.63-.12.94-.12.32 0 .63.04.95.12l.68.16.61.42c.5.34.91.78 1.21 1.31l.38.65.1.65c.04.22.07.47.07.69v1zm-6 2h4v2h-4zm0-4h4v2h-4z"
-    })
-  });
-}
-function GT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"
-    })
-  });
-}
-function td(t) {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    ...t,
-    children: S("path", {
-      d: "M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-    })
-  });
-}
-function YT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
-    })
-  });
-}
-function qT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: [S("path", {
-      d: "M23.6,17c-0.1,0.7-0.7,1.1-1.3,1.1c-0.1,0-0.1,0-0.2,0l-4.8-0.8l0.8,4.8c0.1,0.7-0.4,1.4-1.1,1.5c-0.1,0-0.1,0-0.2,0 c-0.7,0-1.2-0.5-1.3-1.1l-0.7-4.8l-4.3,2.2c-0.7,0.3-1.5,0.1-1.8-0.6c-0.1-0.2-0.1-0.4-0.1-0.6c0-0.5,0.3-0.9,0.7-1.2l4.3-2.2 L10.1,12c-0.5-0.5-0.5-1.4,0-1.9c0.3-0.3,0.6-0.4,0.9-0.4s0.7,0.1,0.9,0.4l3.4,3.4l2.2-4.3c0.3-0.7,1.1-0.9,1.8-0.6 c0.5,0.2,0.7,0.7,0.7,1.2c0,0.2-0.1,0.4-0.1,0.6l-2.2,4.3l4.8,0.7C23.3,15.6,23.7,16.3,23.6,17z"
-    }), S("path", {
-      d: "M15.5,8.9L15.5,8.9c-0.5,0.5-1.4,0.5-1.9,0l-2.8-2.8c-0.5-0.5-0.5-1.4,0-1.9l0,0c0.5-0.5,1.4-0.5,1.9,0L15.5,7 C16,7.5,16,8.4,15.5,8.9z"
-    }), S("path", {
-      d: "M9.4,2.8L9.4,2.8C8.8,3.3,8,3.3,7.5,2.8l0,0C7,2.2,7,1.4,7.5,0.9l0,0c0.5-0.5,1.4-0.5,1.9,0l0,0C9.9,1.4,9.9,2.2,9.4,2.8z"
-    }), S("path", {
-      d: "M8.4,8.4L8.4,8.4c-0.5,0.5-1.4,0.5-1.9,0L2.3,4.2c-0.5-0.5-0.5-1.4,0-1.9l0,0c0.5-0.5,1.4-0.5,1.9,0l4.2,4.2 C8.9,7.1,8.9,7.9,8.4,8.4z"
-    }), S("path", {
-      d: "M8.9,15.5L8.9,15.5C8.4,16,7.5,16,7,15.5L1.3,9.8c-0.5-0.5-0.5-1.4,0-1.9l0,0c0.5-0.5,1.4-0.5,1.9,0l5.7,5.7 C9.4,14.1,9.4,15,8.9,15.5z"
-    })]
-  });
-}
-function HT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
-    })
-  });
-}
-function VT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"
-    })
-  });
-}
-function zT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: [S("circle", {
-      cx: "12",
-      cy: "12",
-      r: "3.2"
-    }), S("path", {
-      d: "M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
-    })]
-  });
-}
-function $T() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M8 5v14l11-7z"
-    })
-  });
-}
-function WT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"
-    })
-  });
-}
-function KT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: [S("path", {
-      d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-    }), S("path", {
-      d: "M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-    })]
-  });
-}
-function QT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
-    })
-  });
-}
-function XT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M6 6h2v12H6zm3.5 6l8.5 6V6z"
-    })
-  });
-}
-function ZT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-    })
-  });
-}
-function JT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("g", {
-      children: S("g", {
-        children: [S("path", {
-          d: "M3,6h18v5h2V6c0-1.1-0.9-2-2-2H3C1.9,4,1,4.9,1,6v12c0,1.1,0.9,2,2,2h9v-2H3V6z"
-        }), S("polygon", {
-          points: "15,12 9,8 9,16"
-        }), S("path", {
-          d: "M22.71,18.43c0.03-0.29,0.04-0.58,0.01-0.86l1.07-0.85c0.1-0.08,0.12-0.21,0.06-0.32l-1.03-1.79 c-0.06-0.11-0.19-0.15-0.31-0.11L21.23,15c-0.23-0.17-0.48-0.31-0.75-0.42l-0.2-1.36C20.26,13.09,20.16,13,20.03,13h-2.07 c-0.12,0-0.23,0.09-0.25,0.21l-0.2,1.36c-0.26,0.11-0.51,0.26-0.74,0.42l-1.28-0.5c-0.12-0.05-0.25,0-0.31,0.11l-1.03,1.79 c-0.06,0.11-0.04,0.24,0.06,0.32l1.07,0.86c-0.03,0.29-0.04,0.58-0.01,0.86l-1.07,0.85c-0.1,0.08-0.12,0.21-0.06,0.32l1.03,1.79 c0.06,0.11,0.19,0.15,0.31,0.11l1.27-0.5c0.23,0.17,0.48,0.31,0.75,0.42l0.2,1.36c0.02,0.12,0.12,0.21,0.25,0.21h2.07 c0.12,0,0.23-0.09,0.25-0.21l0.2-1.36c0.26-0.11,0.51-0.26,0.74-0.42l1.28,0.5c0.12,0.05,0.25,0,0.31-0.11l1.03-1.79 c0.06-0.11,0.04-0.24-0.06-0.32L22.71,18.43z M19,19.5c-0.83,0-1.5-0.67-1.5-1.5s0.67-1.5,1.5-1.5s1.5,0.67,1.5,1.5 S19.83,19.5,19,19.5z"
-        })]
-      })
-    })
-  });
-}
-function jT() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
-    })
-  });
-}
-function eR() {
-  return S("svg", {
-    viewBox: "0 0 24 24",
-    fill: "currentColor",
-    children: S("path", {
-      d: "M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
-    })
-  });
-}
-function tR() {
-  const t = dt(), e = Ft(), {
-    width: n,
-    height: r
-  } = t.project.getSize(), a = [{
-    value: 0.5,
-    text: "0.5x (Half)"
-  }, {
-    value: 1,
-    text: "1.0x (Full)"
-  }, {
-    value: 2,
-    text: "2.0x (Double)"
-  }], i = [{
-    value: "srgb",
-    text: "sRGB"
-  }, {
-    value: "display-p3",
-    text: "DCI-P3"
-  }], s = [{
-    value: "image/png",
-    text: "png"
-  }, {
-    value: "image/jpeg",
-    text: "jpeg"
-  }, {
-    value: "image/webp",
-    text: "webp"
-  }], o = [{
-    value: "30",
-    text: "30 FPS"
-  }, {
-    value: "60",
-    text: "60 FPS"
-  }];
-  return S(Xr, {
-    title: "Rendering",
-    id: "rendering-pane",
-    children: [S(Pt, {
-      children: [S(kt, {
-        children: "range"
-      }), S(ln, {
-        min: 0,
-        max: e.endFrame,
-        type: "number",
-        value: e.startFrame,
-        onChange: (c) => {
-          t.setRange(parseInt(c.target.value));
-        }
-      }), S(ln, {
-        min: e.startFrame,
-        max: e.duration,
-        type: "number",
-        value: Math.min(e.duration, e.endFrame),
-        onChange: (c) => {
-          const u = parseInt(c.target.value);
-          t.setRange(void 0, u);
-        }
-      })]
-    }), S(Pt, {
-      children: [S(kt, {
-        children: "frame rate"
-      }), S(CT, {
-        type: "number",
-        min: 1,
-        value: e.fps.toString(),
-        onChange: (c) => {
-          t.setFramerate(parseInt(c));
-        },
-        options: o
-      })]
-    }), S(Pt, {
-      children: [S(kt, {
-        children: "resolution"
-      }), S(ln, {
-        type: "number",
-        min: 1,
-        value: n,
-        onChange: (c) => {
-          const u = parseInt(c.target.value), {
-            height: d
-          } = t.project.getSize();
-          t.project.setSize(u, d);
-        }
-      }), S(FT, {
-        className: kr.times
-      }), S(ln, {
-        type: "number",
-        min: 1,
-        value: r,
-        onChange: (c) => {
-          const u = parseInt(c.target.value), {
-            width: d
-          } = t.project.getSize();
-          t.project.setSize(d, u);
-        }
-      })]
-    }), S(Pt, {
-      children: [S(kt, {
-        children: "scale"
-      }), S(Qn, {
-        options: a,
-        value: e.scale,
-        onChange: (c) => t.setScale(c)
-      })]
-    }), S(Pt, {
-      children: [S(kt, {
-        children: "color space"
-      }), S(Qn, {
-        options: i,
-        value: e.colorSpace,
-        onChange: (c) => t.setColorSpace(c)
-      })]
-    }), S(Pt, {
-      children: [S(kt, {
-        children: "file type"
-      }), S(Qn, {
-        options: s,
-        value: e.fileType,
-        onChange: (c) => t.setFileType(c)
-      })]
-    }), e.fileType !== "image/png" && S(Pt, {
-      children: [S(kt, {
-        children: "quality (%)"
-      }), S(ln, {
-        type: "number",
-        min: 0,
-        max: 100,
-        value: e.quality * 100,
-        onChange: (c) => {
-          const u = parseFloat(c.target.value);
-          t.setQuality(u / 100);
-        }
-      })]
-    }), S(Pt, {
-      children: [S(kt, {}), S(RT, {
-        main: !0,
-        id: "render",
-        "data-rendering": e.render,
-        onClick: () => t.toggleRendering(),
-        children: e.render ? "STOP RENDERING" : "RENDER"
-      })]
-    })]
-  });
-}
-function nR() {
-  Tc();
-  const t = Zr(), e = Dt(ab(t) ? t.onThreadChanged : null);
-  return S(Xr, {
-    title: "Threads",
-    id: "threads-pane",
-    children: e ? S(hE, {
-      thread: e
-    }) : "The current scene doesn't support threading"
-  });
-}
-function hE({
-  thread: t
-}) {
-  return S("div", {
-    className: kr.thread,
-    children: [S("div", {
-      className: kr.threadTitle,
-      children: Xm(t.runner)
-    }), t.children.length > 0 && S("ul", {
-      className: kr.threadList,
-      children: t.children.map((e) => S(hE, {
-        thread: e
-      }))
-    })]
-  });
-}
-const rR = "_list_8fguk_1", aR = "_error_8fguk_7", iR = "_log_8fguk_7", oR = "_warn_8fguk_11", sR = "_info_8fguk_15", lR = "_http_8fguk_19", cR = "_verbose_8fguk_23", _R = "_debug_8fguk_27", dR = "_silly_8fguk_31", uR = "_header_8fguk_66", pR = "_empty_8fguk_72", mR = "_message_8fguk_76", ER = "_duration_8fguk_80", gR = "_stack_8fguk_87", SR = "_section_8fguk_93", fR = "_sourceCode_8fguk_122", bR = "_viewSource_8fguk_126", TR = "_entry_8fguk_140", RR = "_external_8fguk_145", CR = "_link_8fguk_149", NR = "_navbar_8fguk_158", hR = "_pills_8fguk_169", Be = {
-  list: rR,
-  error: aR,
-  log: iR,
-  warn: oR,
-  info: sR,
-  http: lR,
-  verbose: cR,
-  debug: _R,
-  silly: dR,
-  header: uR,
-  empty: pR,
-  message: mR,
-  duration: ER,
-  stack: gR,
-  section: SR,
-  sourceCode: fR,
-  viewSource: bR,
-  entry: TR,
-  external: RR,
-  link: CR,
-  navbar: NR,
-  pills: hR
-};
-var vE = {}, Jr = {}, hc = {}, nd = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split("");
+var IE = {}, jr = {}, hc = {}, nd = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split("");
 hc.encode = function(t) {
   if (0 <= t && t < nd.length)
     return nd[t];
@@ -4029,31 +3627,31 @@ hc.decode = function(t) {
   var e = 65, n = 90, r = 97, a = 122, i = 48, s = 57, o = 43, c = 47, u = 26, d = 52;
   return e <= t && t <= n ? t - e : r <= t && t <= a ? t - r + u : i <= t && t <= s ? t - i + d : t == o ? 62 : t == c ? 63 : -1;
 };
-var OE = hc, vc = 5, IE = 1 << vc, AE = IE - 1, yE = IE;
-function vR(t) {
+var AE = hc, vc = 5, yE = 1 << vc, DE = yE - 1, ME = yE;
+function wT(t) {
   return t < 0 ? (-t << 1) + 1 : (t << 1) + 0;
 }
-function OR(t) {
+function xT(t) {
   var e = (t & 1) === 1, n = t >> 1;
   return e ? -n : n;
 }
-Jr.encode = function(e) {
-  var n = "", r, a = vR(e);
+jr.encode = function(e) {
+  var n = "", r, a = wT(e);
   do
-    r = a & AE, a >>>= vc, a > 0 && (r |= yE), n += OE.encode(r);
+    r = a & DE, a >>>= vc, a > 0 && (r |= ME), n += AE.encode(r);
   while (a > 0);
   return n;
 };
-Jr.decode = function(e, n, r) {
+jr.decode = function(e, n, r) {
   var a = e.length, i = 0, s = 0, o, c;
   do {
     if (n >= a)
       throw new Error("Expected more digits in base 64 VLQ value.");
-    if (c = OE.decode(e.charCodeAt(n++)), c === -1)
+    if (c = AE.decode(e.charCodeAt(n++)), c === -1)
       throw new Error("Invalid base64 digit: " + e.charAt(n - 1));
-    o = !!(c & yE), c &= AE, i = i + (c << s), s += vc;
+    o = !!(c & ME), c &= DE, i = i + (c << s), s += vc;
   } while (o);
-  r.value = OR(i), r.rest = n;
+  r.value = xT(i), r.rest = n;
 };
 var Bn = {};
 (function(t) {
@@ -4150,10 +3748,10 @@ var Bn = {};
   function m(h) {
     return h;
   }
-  function T(h) {
+  function b(h) {
     return f(h) ? "$" + h : h;
   }
-  t.toSetString = E ? m : T;
+  t.toSetString = E ? m : b;
   function g(h) {
     return f(h) ? h.slice(1) : h;
   }
@@ -4216,9 +3814,9 @@ var Bn = {};
   }
   t.computeSourceURL = X;
 })(Bn);
-var Oc = {}, Ic = Bn, Ac = Object.prototype.hasOwnProperty, _n = typeof Map < "u";
+var Oc = {}, Ic = Bn, Ac = Object.prototype.hasOwnProperty, dn = typeof Map < "u";
 function Ut() {
-  this._array = [], this._set = _n ? /* @__PURE__ */ new Map() : /* @__PURE__ */ Object.create(null);
+  this._array = [], this._set = dn ? /* @__PURE__ */ new Map() : /* @__PURE__ */ Object.create(null);
 }
 Ut.fromArray = function(e, n) {
   for (var r = new Ut(), a = 0, i = e.length; a < i; a++)
@@ -4226,20 +3824,20 @@ Ut.fromArray = function(e, n) {
   return r;
 };
 Ut.prototype.size = function() {
-  return _n ? this._set.size : Object.getOwnPropertyNames(this._set).length;
+  return dn ? this._set.size : Object.getOwnPropertyNames(this._set).length;
 };
 Ut.prototype.add = function(e, n) {
-  var r = _n ? e : Ic.toSetString(e), a = _n ? this.has(e) : Ac.call(this._set, r), i = this._array.length;
-  (!a || n) && this._array.push(e), a || (_n ? this._set.set(e, i) : this._set[r] = i);
+  var r = dn ? e : Ic.toSetString(e), a = dn ? this.has(e) : Ac.call(this._set, r), i = this._array.length;
+  (!a || n) && this._array.push(e), a || (dn ? this._set.set(e, i) : this._set[r] = i);
 };
 Ut.prototype.has = function(e) {
-  if (_n)
+  if (dn)
     return this._set.has(e);
   var n = Ic.toSetString(e);
   return Ac.call(this._set, n);
 };
 Ut.prototype.indexOf = function(e) {
-  if (_n) {
+  if (dn) {
     var n = this._set.get(e);
     if (n >= 0)
       return n;
@@ -4259,27 +3857,27 @@ Ut.prototype.toArray = function() {
   return this._array.slice();
 };
 Oc.ArraySet = Ut;
-var DE = {}, ME = Bn;
-function IR(t, e) {
+var LE = {}, wE = Bn;
+function PT(t, e) {
   var n = t.generatedLine, r = e.generatedLine, a = t.generatedColumn, i = e.generatedColumn;
-  return r > n || r == n && i >= a || ME.compareByGeneratedPositionsInflated(t, e) <= 0;
+  return r > n || r == n && i >= a || wE.compareByGeneratedPositionsInflated(t, e) <= 0;
 }
-function jr() {
+function ea() {
   this._array = [], this._sorted = !0, this._last = { generatedLine: -1, generatedColumn: 0 };
 }
-jr.prototype.unsortedForEach = function(e, n) {
+ea.prototype.unsortedForEach = function(e, n) {
   this._array.forEach(e, n);
 };
-jr.prototype.add = function(e) {
-  IR(this._last, e) ? (this._last = e, this._array.push(e)) : (this._sorted = !1, this._array.push(e));
+ea.prototype.add = function(e) {
+  PT(this._last, e) ? (this._last = e, this._array.push(e)) : (this._sorted = !1, this._array.push(e));
 };
-jr.prototype.toArray = function() {
-  return this._sorted || (this._array.sort(ME.compareByGeneratedPositionsInflated), this._sorted = !0), this._array;
+ea.prototype.toArray = function() {
+  return this._sorted || (this._array.sort(wE.compareByGeneratedPositionsInflated), this._sorted = !0), this._array;
 };
-DE.MappingList = jr;
-var Wn = Jr, He = Bn, Vr = Oc.ArraySet, AR = DE.MappingList;
+LE.MappingList = ea;
+var Wn = jr, He = Bn, Vr = Oc.ArraySet, kT = LE.MappingList;
 function mt(t) {
-  t || (t = {}), this._file = He.getArg(t, "file", null), this._sourceRoot = He.getArg(t, "sourceRoot", null), this._skipValidation = He.getArg(t, "skipValidation", !1), this._sources = new Vr(), this._names = new Vr(), this._mappings = new AR(), this._sourcesContents = null;
+  t || (t = {}), this._file = He.getArg(t, "file", null), this._sourceRoot = He.getArg(t, "sourceRoot", null), this._skipValidation = He.getArg(t, "skipValidation", !1), this._sources = new Vr(), this._names = new Vr(), this._mappings = new kT(), this._sourcesContents = null;
 }
 mt.prototype._version = 3;
 mt.fromSourceMap = function(e) {
@@ -4366,12 +3964,12 @@ mt.prototype._validateMapping = function(e, n, r, a) {
   }
 };
 mt.prototype._serializeMappings = function() {
-  for (var e = 0, n = 1, r = 0, a = 0, i = 0, s = 0, o = "", c, u, d, E, m = this._mappings.toArray(), T = 0, g = m.length; T < g; T++) {
-    if (u = m[T], c = "", u.generatedLine !== n)
+  for (var e = 0, n = 1, r = 0, a = 0, i = 0, s = 0, o = "", c, u, d, E, m = this._mappings.toArray(), b = 0, g = m.length; b < g; b++) {
+    if (u = m[b], c = "", u.generatedLine !== n)
       for (e = 0; u.generatedLine !== n; )
         c += ";", n++;
-    else if (T > 0) {
-      if (!He.compareByGeneratedPositionsInflated(u, m[T - 1]))
+    else if (b > 0) {
+      if (!He.compareByGeneratedPositionsInflated(u, m[b - 1]))
         continue;
       c += ",";
     }
@@ -4400,8 +3998,8 @@ mt.prototype.toJSON = function() {
 mt.prototype.toString = function() {
   return JSON.stringify(this.toJSON());
 };
-vE.SourceMapGenerator = mt;
-var ea = {}, LE = {};
+IE.SourceMapGenerator = mt;
+var ta = {}, xE = {};
 (function(t) {
   t.GREATEST_LOWER_BOUND = 1, t.LEAST_UPPER_BOUND = 2;
   function e(n, r, a, i, s, o) {
@@ -4425,9 +4023,9 @@ var ea = {}, LE = {};
       --o;
     return o;
   };
-})(LE);
-var wE = {};
-function yR(t) {
+})(xE);
+var PE = {};
+function UT(t) {
   function e(a, i, s) {
     var o = a[i];
     a[i] = a[s], a[s] = o;
@@ -4448,22 +4046,22 @@ function yR(t) {
   }
   return r;
 }
-function DR(t) {
-  let e = yR.toString();
+function FT(t) {
+  let e = UT.toString();
   return new Function(`return ${e}`)()(t);
 }
 let rd = /* @__PURE__ */ new WeakMap();
-wE.quickSort = function(t, e, n = 0) {
+PE.quickSort = function(t, e, n = 0) {
   let r = rd.get(e);
-  r === void 0 && (r = DR(e), rd.set(e, r)), r(t, e, n, t.length - 1);
+  r === void 0 && (r = FT(e), rd.set(e, r)), r(t, e, n, t.length - 1);
 };
-var Q = Bn, yc = LE, kn = Oc.ArraySet, MR = Jr, Jn = wE.quickSort;
+var Q = Bn, yc = xE, kn = Oc.ArraySet, BT = jr, Jn = PE.quickSort;
 function Me(t, e) {
   var n = t;
-  return typeof t == "string" && (n = Q.parseSourceMapInput(t)), n.sections != null ? new ht(n, e) : new je(n, e);
+  return typeof t == "string" && (n = Q.parseSourceMapInput(t)), n.sections != null ? new ht(n, e) : new et(n, e);
 }
 Me.fromSourceMap = function(t, e) {
-  return je.fromSourceMap(t, e);
+  return et.fromSourceMap(t, e);
 };
 Me.prototype._version = 3;
 Me.prototype.__generatedMappings = null;
@@ -4505,7 +4103,7 @@ Me.prototype.eachMapping = function(e, n, r) {
     default:
       throw new Error("Unknown order of iteration.");
   }
-  for (var o = this.sourceRoot, c = e.bind(a), u = this._names, d = this._sources, E = this._sourceMapURL, m = 0, T = s.length; m < T; m++) {
+  for (var o = this.sourceRoot, c = e.bind(a), u = this._names, d = this._sources, E = this._sourceMapURL, m = 0, b = s.length; m < b; m++) {
     var g = s[m], f = g.source === null ? null : d.at(g.source);
     f = Q.computeSourceURL(o, f, E), c({
       source: f,
@@ -4552,8 +4150,8 @@ Me.prototype.allGeneratedPositionsFor = function(e) {
   }
   return a;
 };
-ea.SourceMapConsumer = Me;
-function je(t, e) {
+ta.SourceMapConsumer = Me;
+function et(t, e) {
   var n = t;
   typeof t == "string" && (n = Q.parseSourceMapInput(t));
   var r = Q.getArg(n, "version"), a = Q.getArg(n, "sources"), i = Q.getArg(n, "names", []), s = Q.getArg(n, "sourceRoot", null), o = Q.getArg(n, "sourcesContent", null), c = Q.getArg(n, "mappings"), u = Q.getArg(n, "file", null);
@@ -4565,9 +4163,9 @@ function je(t, e) {
     return Q.computeSourceURL(s, d, e);
   }), this.sourceRoot = s, this.sourcesContent = o, this._mappings = c, this._sourceMapURL = e, this.file = u;
 }
-je.prototype = Object.create(Me.prototype);
-je.prototype.consumer = Me;
-je.prototype._findSourceIndex = function(t) {
+et.prototype = Object.create(Me.prototype);
+et.prototype.consumer = Me;
+et.prototype._findSourceIndex = function(t) {
   var e = t;
   if (this.sourceRoot != null && (e = Q.relative(this.sourceRoot, e)), this._sources.has(e))
     return this._sources.indexOf(e);
@@ -4577,84 +4175,84 @@ je.prototype._findSourceIndex = function(t) {
       return n;
   return -1;
 };
-je.fromSourceMap = function(e, n) {
-  var r = Object.create(je.prototype), a = r._names = kn.fromArray(e._names.toArray(), !0), i = r._sources = kn.fromArray(e._sources.toArray(), !0);
+et.fromSourceMap = function(e, n) {
+  var r = Object.create(et.prototype), a = r._names = kn.fromArray(e._names.toArray(), !0), i = r._sources = kn.fromArray(e._sources.toArray(), !0);
   r.sourceRoot = e._sourceRoot, r.sourcesContent = e._generateSourcesContent(
     r._sources.toArray(),
     r.sourceRoot
-  ), r.file = e._file, r._sourceMapURL = n, r._absoluteSources = r._sources.toArray().map(function(T) {
-    return Q.computeSourceURL(r.sourceRoot, T, n);
+  ), r.file = e._file, r._sourceMapURL = n, r._absoluteSources = r._sources.toArray().map(function(b) {
+    return Q.computeSourceURL(r.sourceRoot, b, n);
   });
   for (var s = e._mappings.toArray().slice(), o = r.__generatedMappings = [], c = r.__originalMappings = [], u = 0, d = s.length; u < d; u++) {
-    var E = s[u], m = new xE();
+    var E = s[u], m = new kE();
     m.generatedLine = E.generatedLine, m.generatedColumn = E.generatedColumn, E.source && (m.source = i.indexOf(E.source), m.originalLine = E.originalLine, m.originalColumn = E.originalColumn, E.name && (m.name = a.indexOf(E.name)), c.push(m)), o.push(m);
   }
   return Jn(r.__originalMappings, Q.compareByOriginalPositions), r;
 };
-je.prototype._version = 3;
-Object.defineProperty(je.prototype, "sources", {
+et.prototype._version = 3;
+Object.defineProperty(et.prototype, "sources", {
   get: function() {
     return this._absoluteSources.slice();
   }
 });
-function xE() {
+function kE() {
   this.generatedLine = 0, this.generatedColumn = 0, this.source = null, this.originalLine = null, this.originalColumn = null, this.name = null;
 }
-const vi = Q.compareByGeneratedPositionsDeflatedNoLine;
+const Oi = Q.compareByGeneratedPositionsDeflatedNoLine;
 function ad(t, e) {
   let n = t.length, r = t.length - e;
   if (!(r <= 1))
     if (r == 2) {
       let a = t[e], i = t[e + 1];
-      vi(a, i) > 0 && (t[e] = i, t[e + 1] = a);
+      Oi(a, i) > 0 && (t[e] = i, t[e + 1] = a);
     } else if (r < 20)
       for (let a = e; a < n; a++)
         for (let i = a; i > e; i--) {
           let s = t[i - 1], o = t[i];
-          if (vi(s, o) <= 0)
+          if (Oi(s, o) <= 0)
             break;
           t[i - 1] = o, t[i] = s;
         }
     else
-      Jn(t, vi, e);
+      Jn(t, Oi, e);
 }
-je.prototype._parseMappings = function(e, n) {
-  var r = 1, a = 0, i = 0, s = 0, o = 0, c = 0, u = e.length, d = 0, E = {}, m = [], T = [], g, f, C, A;
+et.prototype._parseMappings = function(e, n) {
+  var r = 1, a = 0, i = 0, s = 0, o = 0, c = 0, u = e.length, d = 0, E = {}, m = [], b = [], g, f, C, A;
   let P = 0;
   for (; d < u; )
     if (e.charAt(d) === ";")
-      r++, d++, a = 0, ad(T, P), P = T.length;
+      r++, d++, a = 0, ad(b, P), P = b.length;
     else if (e.charAt(d) === ",")
       d++;
     else {
-      for (g = new xE(), g.generatedLine = r, C = d; C < u && !this._charIsMappingSeparator(e, C); C++)
+      for (g = new kE(), g.generatedLine = r, C = d; C < u && !this._charIsMappingSeparator(e, C); C++)
         ;
       for (e.slice(d, C), f = []; d < C; )
-        MR.decode(e, d, E), A = E.value, d = E.rest, f.push(A);
+        BT.decode(e, d, E), A = E.value, d = E.rest, f.push(A);
       if (f.length === 2)
         throw new Error("Found a source, but no line and column");
       if (f.length === 3)
         throw new Error("Found a source and line, but no column");
-      if (g.generatedColumn = a + f[0], a = g.generatedColumn, f.length > 1 && (g.source = o + f[1], o += f[1], g.originalLine = i + f[2], i = g.originalLine, g.originalLine += 1, g.originalColumn = s + f[3], s = g.originalColumn, f.length > 4 && (g.name = c + f[4], c += f[4])), T.push(g), typeof g.originalLine == "number") {
+      if (g.generatedColumn = a + f[0], a = g.generatedColumn, f.length > 1 && (g.source = o + f[1], o += f[1], g.originalLine = i + f[2], i = g.originalLine, g.originalLine += 1, g.originalColumn = s + f[3], s = g.originalColumn, f.length > 4 && (g.name = c + f[4], c += f[4])), b.push(g), typeof g.originalLine == "number") {
         let w = g.source;
         for (; m.length <= w; )
           m.push(null);
         m[w] === null && (m[w] = []), m[w].push(g);
       }
     }
-  ad(T, P), this.__generatedMappings = T;
+  ad(b, P), this.__generatedMappings = b;
   for (var k = 0; k < m.length; k++)
     m[k] != null && Jn(m[k], Q.compareByOriginalPositionsNoSource);
   this.__originalMappings = [].concat(...m);
 };
-je.prototype._findMapping = function(e, n, r, a, i, s) {
+et.prototype._findMapping = function(e, n, r, a, i, s) {
   if (e[r] <= 0)
     throw new TypeError("Line must be greater than or equal to 1, got " + e[r]);
   if (e[a] < 0)
     throw new TypeError("Column must be greater than or equal to 0, got " + e[a]);
   return yc.search(e, n, i, s);
 };
-je.prototype.computeColumnSpans = function() {
+et.prototype.computeColumnSpans = function() {
   for (var e = 0; e < this._generatedMappings.length; ++e) {
     var n = this._generatedMappings[e];
     if (e + 1 < this._generatedMappings.length) {
@@ -4667,7 +4265,7 @@ je.prototype.computeColumnSpans = function() {
     n.lastGeneratedColumn = 1 / 0;
   }
 };
-je.prototype.originalPositionFor = function(e) {
+et.prototype.originalPositionFor = function(e) {
   var n = {
     generatedLine: Q.getArg(e, "line"),
     generatedColumn: Q.getArg(e, "column")
@@ -4700,12 +4298,12 @@ je.prototype.originalPositionFor = function(e) {
     name: null
   };
 };
-je.prototype.hasContentsOfAllSources = function() {
+et.prototype.hasContentsOfAllSources = function() {
   return this.sourcesContent ? this.sourcesContent.length >= this._sources.size() && !this.sourcesContent.some(function(e) {
     return e == null;
   }) : !1;
 };
-je.prototype.sourceContentFor = function(e, n) {
+et.prototype.sourceContentFor = function(e, n) {
   if (!this.sourcesContent)
     return null;
   var r = this._findSourceIndex(e);
@@ -4725,7 +4323,7 @@ je.prototype.sourceContentFor = function(e, n) {
     return null;
   throw new Error('"' + a + '" is not in the SourceMap.');
 };
-je.prototype.generatedPositionFor = function(e) {
+et.prototype.generatedPositionFor = function(e) {
   var n = Q.getArg(e, "source");
   if (n = this._findSourceIndex(n), n < 0)
     return {
@@ -4760,7 +4358,7 @@ je.prototype.generatedPositionFor = function(e) {
     lastColumn: null
   };
 };
-ea.BasicSourceMapConsumer = je;
+ta.BasicSourceMapConsumer = et;
 function ht(t, e) {
   var n = t;
   typeof t == "string" && (n = Q.parseSourceMapInput(t));
@@ -4875,15 +4473,15 @@ ht.prototype._parseMappings = function(e, n) {
     }
   Jn(this.__generatedMappings, Q.compareByGeneratedPositionsDeflated), Jn(this.__originalMappings, Q.compareByOriginalPositions);
 };
-ea.IndexedSourceMapConsumer = ht;
-var LR = vE.SourceMapGenerator, zr = Bn, wR = /(\r?\n)/, xR = 10, Gn = "$$$isSourceNode$$$";
+ta.IndexedSourceMapConsumer = ht;
+var GT = IE.SourceMapGenerator, zr = Bn, YT = /(\r?\n)/, qT = 10, Gn = "$$$isSourceNode$$$";
 function pt(t, e, n, r, a) {
   this.children = [], this.sourceContents = {}, this.line = t == null ? null : t, this.column = e == null ? null : e, this.source = n == null ? null : n, this.name = a == null ? null : a, this[Gn] = !0, r != null && this.add(r);
 }
 pt.fromStringWithSourceMap = function(e, n, r) {
-  var a = new pt(), i = e.split(wR), s = 0, o = function() {
-    var m = g(), T = g() || "";
-    return m + T;
+  var a = new pt(), i = e.split(YT), s = 0, o = function() {
+    var m = g(), b = g() || "";
+    return m + b;
     function g() {
       return s < i.length ? i[s++] : void 0;
     }
@@ -4893,31 +4491,31 @@ pt.fromStringWithSourceMap = function(e, n, r) {
       if (c < m.generatedLine)
         E(d, o()), c++, u = 0;
       else {
-        var T = i[s] || "", g = T.substr(0, m.generatedColumn - u);
-        i[s] = T.substr(m.generatedColumn - u), u = m.generatedColumn, E(d, g), d = m;
+        var b = i[s] || "", g = b.substr(0, m.generatedColumn - u);
+        i[s] = b.substr(m.generatedColumn - u), u = m.generatedColumn, E(d, g), d = m;
         return;
       }
     for (; c < m.generatedLine; )
       a.add(o()), c++;
     if (u < m.generatedColumn) {
-      var T = i[s] || "";
-      a.add(T.substr(0, m.generatedColumn)), i[s] = T.substr(m.generatedColumn), u = m.generatedColumn;
+      var b = i[s] || "";
+      a.add(b.substr(0, m.generatedColumn)), i[s] = b.substr(m.generatedColumn), u = m.generatedColumn;
     }
     d = m;
   }, this), s < i.length && (d && E(d, o()), a.add(i.splice(s).join(""))), n.sources.forEach(function(m) {
-    var T = n.sourceContentFor(m);
-    T != null && (r != null && (m = zr.join(r, m)), a.setSourceContent(m, T));
+    var b = n.sourceContentFor(m);
+    b != null && (r != null && (m = zr.join(r, m)), a.setSourceContent(m, b));
   }), a;
-  function E(m, T) {
+  function E(m, b) {
     if (m === null || m.source === void 0)
-      a.add(T);
+      a.add(b);
     else {
       var g = r ? zr.join(r, m.source) : m.source;
       a.add(new pt(
         m.originalLine,
         m.originalColumn,
         g,
-        T,
+        b,
         m.name
       ));
     }
@@ -4990,7 +4588,7 @@ pt.prototype.toStringWithSourceMap = function(e) {
     code: "",
     line: 1,
     column: 0
-  }, r = new LR(e), a = !1, i = null, s = null, o = null, c = null;
+  }, r = new GT(e), a = !1, i = null, s = null, o = null, c = null;
   return this.walk(function(u, d) {
     n.code += u, d.source !== null && d.line !== null && d.column !== null ? ((i !== d.source || s !== d.line || o !== d.column || c !== d.name) && r.addMapping({
       source: d.source,
@@ -5010,7 +4608,7 @@ pt.prototype.toStringWithSourceMap = function(e) {
       }
     }), i = null, a = !1);
     for (var E = 0, m = u.length; E < m; E++)
-      u.charCodeAt(E) === xR ? (n.line++, n.column = 0, E + 1 === m ? (i = null, a = !1) : a && r.addMapping({
+      u.charCodeAt(E) === qT ? (n.line++, n.column = 0, E + 1 === m ? (i = null, a = !1) : a && r.addMapping({
         source: d.source,
         original: {
           line: d.line,
@@ -5026,14 +4624,14 @@ pt.prototype.toStringWithSourceMap = function(e) {
     r.setSourceContent(u, d);
   }), { code: n.code, map: r };
 };
-var PR = ea.SourceMapConsumer;
-let Oi = 0;
-async function kR(t) {
-  Oi++, document.body.classList.add("wait");
+var HT = ta.SourceMapConsumer;
+let Ii = 0;
+async function VT(t) {
+  Ii++, document.body.classList.add("wait");
   try {
     await t();
   } finally {
-    Oi--, Oi == 0 && document.body.classList.remove("wait");
+    Ii--, Ii == 0 && document.body.classList.remove("wait");
   }
 }
 var Dc = { exports: {} };
@@ -5057,7 +4655,7 @@ class id {
     this.isMatchIgnored = !0;
   }
 }
-function PE(t) {
+function UE(t) {
   return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;");
 }
 function Xt(t, ...e) {
@@ -5069,7 +4667,7 @@ function Xt(t, ...e) {
       n[a] = r[a];
   }), n;
 }
-const UR = "</span>", od = (t) => !!t.scope || t.sublanguage && t.language, FR = (t, { prefix: e }) => {
+const zT = "</span>", od = (t) => !!t.scope || t.sublanguage && t.language, $T = (t, { prefix: e }) => {
   if (t.includes(".")) {
     const n = t.split(".");
     return [
@@ -5079,21 +4677,21 @@ const UR = "</span>", od = (t) => !!t.scope || t.sublanguage && t.language, FR =
   }
   return `${e}${t}`;
 };
-class BR {
+class WT {
   constructor(e, n) {
     this.buffer = "", this.classPrefix = n.classPrefix, e.walk(this);
   }
   addText(e) {
-    this.buffer += PE(e);
+    this.buffer += UE(e);
   }
   openNode(e) {
     if (!od(e))
       return;
     let n = "";
-    e.sublanguage ? n = `language-${e.language}` : n = FR(e.scope, { prefix: this.classPrefix }), this.span(n);
+    e.sublanguage ? n = `language-${e.language}` : n = $T(e.scope, { prefix: this.classPrefix }), this.span(n);
   }
   closeNode(e) {
-    !od(e) || (this.buffer += UR);
+    !od(e) || (this.buffer += zT);
   }
   value() {
     return this.buffer;
@@ -5146,7 +4744,7 @@ class Lc {
     })));
   }
 }
-class GR extends Lc {
+class KT extends Lc {
   constructor(e) {
     super(), this.options = e;
   }
@@ -5161,7 +4759,7 @@ class GR extends Lc {
     r.sublanguage = !0, r.language = n, this.add(r);
   }
   toHTML() {
-    return new BR(this, this.options).value();
+    return new WT(this, this.options).value();
   }
   finalize() {
     return !0;
@@ -5170,34 +4768,34 @@ class GR extends Lc {
 function jn(t) {
   return t ? typeof t == "string" ? t : t.source : null;
 }
-function kE(t) {
+function FE(t) {
   return En("(?=", t, ")");
 }
-function YR(t) {
+function QT(t) {
   return En("(?:", t, ")*");
 }
-function qR(t) {
+function XT(t) {
   return En("(?:", t, ")?");
 }
 function En(...t) {
   return t.map((n) => jn(n)).join("");
 }
-function HR(t) {
+function ZT(t) {
   const e = t[t.length - 1];
   return typeof e == "object" && e.constructor === Object ? (t.splice(t.length - 1, 1), e) : {};
 }
 function wc(...t) {
-  const e = HR(t);
+  const e = ZT(t);
   return "(" + (e.capture ? "" : "?:") + t.map((r) => jn(r)).join("|") + ")";
 }
-function UE(t) {
+function BE(t) {
   return new RegExp(t.toString() + "|").exec("").length - 1;
 }
-function VR(t, e) {
+function JT(t, e) {
   const n = t && t.exec(e);
   return n && n.index === 0;
 }
-const zR = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
+const jT = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
 function xc(t, { joinWith: e }) {
   let n = 0;
   return t.map((r) => {
@@ -5205,7 +4803,7 @@ function xc(t, { joinWith: e }) {
     const a = n;
     let i = jn(r), s = "";
     for (; i.length > 0; ) {
-      const o = zR.exec(i);
+      const o = jT.exec(i);
       if (!o) {
         s += i;
         break;
@@ -5215,7 +4813,7 @@ function xc(t, { joinWith: e }) {
     return s;
   }).map((r) => `(${r})`).join(e);
 }
-const $R = /\b\B/, FE = "[a-zA-Z]\\w*", Pc = "[a-zA-Z_]\\w*", BE = "\\b\\d+(\\.\\d+)?", GE = "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", YE = "\\b(0b[01]+)", WR = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~", KR = (t = {}) => {
+const eR = /\b\B/, GE = "[a-zA-Z]\\w*", Pc = "[a-zA-Z_]\\w*", YE = "\\b\\d+(\\.\\d+)?", qE = "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", HE = "\\b(0b[01]+)", tR = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~", nR = (t = {}) => {
   const e = /^#![ ]*\//;
   return t.binary && (t.begin = En(
     e,
@@ -5234,21 +4832,21 @@ const $R = /\b\B/, FE = "[a-zA-Z]\\w*", Pc = "[a-zA-Z_]\\w*", BE = "\\b\\d+(\\.\
 }, er = {
   begin: "\\\\[\\s\\S]",
   relevance: 0
-}, QR = {
+}, rR = {
   scope: "string",
   begin: "'",
   end: "'",
   illegal: "\\n",
   contains: [er]
-}, XR = {
+}, aR = {
   scope: "string",
   begin: '"',
   end: '"',
   illegal: "\\n",
   contains: [er]
-}, ZR = {
+}, iR = {
   begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/
-}, ta = function(t, e, n = {}) {
+}, na = function(t, e, n = {}) {
   const r = Xt(
     {
       scope: "comment",
@@ -5292,19 +4890,19 @@ const $R = /\b\B/, FE = "[a-zA-Z]\\w*", Pc = "[a-zA-Z_]\\w*", BE = "\\b\\d+(\\.\
       )
     }
   ), r;
-}, JR = ta("//", "$"), jR = ta("/\\*", "\\*/"), eC = ta("#", "$"), tC = {
-  scope: "number",
-  begin: BE,
-  relevance: 0
-}, nC = {
-  scope: "number",
-  begin: GE,
-  relevance: 0
-}, rC = {
+}, oR = na("//", "$"), sR = na("/\\*", "\\*/"), lR = na("#", "$"), cR = {
   scope: "number",
   begin: YE,
   relevance: 0
-}, aC = {
+}, _R = {
+  scope: "number",
+  begin: qE,
+  relevance: 0
+}, dR = {
+  scope: "number",
+  begin: HE,
+  relevance: 0
+}, uR = {
   begin: /(?=\/[^/\n]*\/)/,
   contains: [{
     scope: "regexp",
@@ -5321,18 +4919,18 @@ const $R = /\b\B/, FE = "[a-zA-Z]\\w*", Pc = "[a-zA-Z_]\\w*", BE = "\\b\\d+(\\.\
       }
     ]
   }]
-}, iC = {
+}, pR = {
   scope: "title",
-  begin: FE,
+  begin: GE,
   relevance: 0
-}, oC = {
+}, mR = {
   scope: "title",
   begin: Pc,
   relevance: 0
-}, sC = {
+}, ER = {
   begin: "\\.\\s*" + Pc,
   relevance: 0
-}, lC = function(t) {
+}, gR = function(t) {
   return Object.assign(
     t,
     {
@@ -5347,54 +4945,54 @@ const $R = /\b\B/, FE = "[a-zA-Z]\\w*", Pc = "[a-zA-Z_]\\w*", BE = "\\b\\d+(\\.\
 };
 var Mr = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  MATCH_NOTHING_RE: $R,
-  IDENT_RE: FE,
+  MATCH_NOTHING_RE: eR,
+  IDENT_RE: GE,
   UNDERSCORE_IDENT_RE: Pc,
-  NUMBER_RE: BE,
-  C_NUMBER_RE: GE,
-  BINARY_NUMBER_RE: YE,
-  RE_STARTERS_RE: WR,
-  SHEBANG: KR,
+  NUMBER_RE: YE,
+  C_NUMBER_RE: qE,
+  BINARY_NUMBER_RE: HE,
+  RE_STARTERS_RE: tR,
+  SHEBANG: nR,
   BACKSLASH_ESCAPE: er,
-  APOS_STRING_MODE: QR,
-  QUOTE_STRING_MODE: XR,
-  PHRASAL_WORDS_MODE: ZR,
-  COMMENT: ta,
-  C_LINE_COMMENT_MODE: JR,
-  C_BLOCK_COMMENT_MODE: jR,
-  HASH_COMMENT_MODE: eC,
-  NUMBER_MODE: tC,
-  C_NUMBER_MODE: nC,
-  BINARY_NUMBER_MODE: rC,
-  REGEXP_MODE: aC,
-  TITLE_MODE: iC,
-  UNDERSCORE_TITLE_MODE: oC,
-  METHOD_GUARD: sC,
-  END_SAME_AS_BEGIN: lC
+  APOS_STRING_MODE: rR,
+  QUOTE_STRING_MODE: aR,
+  PHRASAL_WORDS_MODE: iR,
+  COMMENT: na,
+  C_LINE_COMMENT_MODE: oR,
+  C_BLOCK_COMMENT_MODE: sR,
+  HASH_COMMENT_MODE: lR,
+  NUMBER_MODE: cR,
+  C_NUMBER_MODE: _R,
+  BINARY_NUMBER_MODE: dR,
+  REGEXP_MODE: uR,
+  TITLE_MODE: pR,
+  UNDERSCORE_TITLE_MODE: mR,
+  METHOD_GUARD: ER,
+  END_SAME_AS_BEGIN: gR
 });
-function cC(t, e) {
+function SR(t, e) {
   t.input[t.index - 1] === "." && e.ignoreMatch();
 }
-function _C(t, e) {
+function fR(t, e) {
   t.className !== void 0 && (t.scope = t.className, delete t.className);
 }
-function dC(t, e) {
-  !e || !t.beginKeywords || (t.begin = "\\b(" + t.beginKeywords.split(" ").join("|") + ")(?!\\.)(?=\\b|\\s)", t.__beforeBegin = cC, t.keywords = t.keywords || t.beginKeywords, delete t.beginKeywords, t.relevance === void 0 && (t.relevance = 0));
+function bR(t, e) {
+  !e || !t.beginKeywords || (t.begin = "\\b(" + t.beginKeywords.split(" ").join("|") + ")(?!\\.)(?=\\b|\\s)", t.__beforeBegin = SR, t.keywords = t.keywords || t.beginKeywords, delete t.beginKeywords, t.relevance === void 0 && (t.relevance = 0));
 }
-function uC(t, e) {
+function TR(t, e) {
   !Array.isArray(t.illegal) || (t.illegal = wc(...t.illegal));
 }
-function pC(t, e) {
+function RR(t, e) {
   if (!!t.match) {
     if (t.begin || t.end)
       throw new Error("begin & end are not supported with match");
     t.begin = t.match, delete t.match;
   }
 }
-function mC(t, e) {
+function CR(t, e) {
   t.relevance === void 0 && (t.relevance = 1);
 }
-const EC = (t, e) => {
+const NR = (t, e) => {
   if (!t.beforeMatch)
     return;
   if (t.starts)
@@ -5402,13 +5000,13 @@ const EC = (t, e) => {
   const n = Object.assign({}, t);
   Object.keys(t).forEach((r) => {
     delete t[r];
-  }), t.keywords = n.keywords, t.begin = En(n.beforeMatch, kE(n.begin)), t.starts = {
+  }), t.keywords = n.keywords, t.begin = En(n.beforeMatch, FE(n.begin)), t.starts = {
     relevance: 0,
     contains: [
       Object.assign(n, { endsParent: !0 })
     ]
   }, t.relevance = 0, delete n.beforeMatch;
-}, gC = [
+}, hR = [
   "of",
   "and",
   "for",
@@ -5420,67 +5018,67 @@ const EC = (t, e) => {
   "parent",
   "list",
   "value"
-], SC = "keyword";
-function qE(t, e, n = SC) {
+], vR = "keyword";
+function VE(t, e, n = vR) {
   const r = /* @__PURE__ */ Object.create(null);
   return typeof t == "string" ? a(n, t.split(" ")) : Array.isArray(t) ? a(n, t) : Object.keys(t).forEach(function(i) {
     Object.assign(
       r,
-      qE(t[i], e, i)
+      VE(t[i], e, i)
     );
   }), r;
   function a(i, s) {
     e && (s = s.map((o) => o.toLowerCase())), s.forEach(function(o) {
       const c = o.split("|");
-      r[c[0]] = [i, fC(c[0], c[1])];
+      r[c[0]] = [i, OR(c[0], c[1])];
     });
   }
 }
-function fC(t, e) {
-  return e ? Number(e) : bC(t) ? 0 : 1;
+function OR(t, e) {
+  return e ? Number(e) : IR(t) ? 0 : 1;
 }
-function bC(t) {
-  return gC.includes(t.toLowerCase());
+function IR(t) {
+  return hR.includes(t.toLowerCase());
 }
-const ld = {}, dn = (t) => {
+const ld = {}, un = (t) => {
   console.error(t);
 }, cd = (t, ...e) => {
   console.log(`WARN: ${t}`, ...e);
 }, In = (t, e) => {
   ld[`${t}/${e}`] || (console.log(`Deprecated as of ${t}. ${e}`), ld[`${t}/${e}`] = !0);
 }, $r = new Error();
-function HE(t, e, { key: n }) {
+function zE(t, e, { key: n }) {
   let r = 0;
   const a = t[n], i = {}, s = {};
   for (let o = 1; o <= e.length; o++)
-    s[o + r] = a[o], i[o + r] = !0, r += UE(e[o - 1]);
+    s[o + r] = a[o], i[o + r] = !0, r += BE(e[o - 1]);
   t[n] = s, t[n]._emit = i, t[n]._multi = !0;
 }
-function TC(t) {
+function AR(t) {
   if (!!Array.isArray(t.begin)) {
     if (t.skip || t.excludeBegin || t.returnBegin)
-      throw dn("skip, excludeBegin, returnBegin not compatible with beginScope: {}"), $r;
+      throw un("skip, excludeBegin, returnBegin not compatible with beginScope: {}"), $r;
     if (typeof t.beginScope != "object" || t.beginScope === null)
-      throw dn("beginScope must be object"), $r;
-    HE(t, t.begin, { key: "beginScope" }), t.begin = xc(t.begin, { joinWith: "" });
+      throw un("beginScope must be object"), $r;
+    zE(t, t.begin, { key: "beginScope" }), t.begin = xc(t.begin, { joinWith: "" });
   }
 }
-function RC(t) {
+function yR(t) {
   if (!!Array.isArray(t.end)) {
     if (t.skip || t.excludeEnd || t.returnEnd)
-      throw dn("skip, excludeEnd, returnEnd not compatible with endScope: {}"), $r;
+      throw un("skip, excludeEnd, returnEnd not compatible with endScope: {}"), $r;
     if (typeof t.endScope != "object" || t.endScope === null)
-      throw dn("endScope must be object"), $r;
-    HE(t, t.end, { key: "endScope" }), t.end = xc(t.end, { joinWith: "" });
+      throw un("endScope must be object"), $r;
+    zE(t, t.end, { key: "endScope" }), t.end = xc(t.end, { joinWith: "" });
   }
 }
-function CC(t) {
+function DR(t) {
   t.scope && typeof t.scope == "object" && t.scope !== null && (t.beginScope = t.scope, delete t.scope);
 }
-function NC(t) {
-  CC(t), typeof t.beginScope == "string" && (t.beginScope = { _wrap: t.beginScope }), typeof t.endScope == "string" && (t.endScope = { _wrap: t.endScope }), TC(t), RC(t);
+function MR(t) {
+  DR(t), typeof t.beginScope == "string" && (t.beginScope = { _wrap: t.beginScope }), typeof t.endScope == "string" && (t.endScope = { _wrap: t.endScope }), AR(t), yR(t);
 }
-function hC(t) {
+function LR(t) {
   function e(s, o) {
     return new RegExp(
       jn(s),
@@ -5492,7 +5090,7 @@ function hC(t) {
       this.matchIndexes = {}, this.regexes = [], this.matchAt = 1, this.position = 0;
     }
     addRule(o, c) {
-      c.position = this.position++, this.matchIndexes[this.matchAt] = c, this.regexes.push([c, o]), this.matchAt += UE(o) + 1;
+      c.position = this.position++, this.matchIndexes[this.matchAt] = c, this.regexes.push([c, o]), this.matchAt += BE(o) + 1;
     }
     compile() {
       this.regexes.length === 0 && (this.exec = () => null);
@@ -5547,18 +5145,18 @@ function hC(t) {
     if (s.isCompiled)
       return c;
     [
-      _C,
-      pC,
-      NC,
-      EC
+      fR,
+      RR,
+      MR,
+      NR
     ].forEach((d) => d(s, o)), t.compilerExtensions.forEach((d) => d(s, o)), s.__beforeBegin = null, [
-      dC,
-      uC,
-      mC
+      bR,
+      TR,
+      CR
     ].forEach((d) => d(s, o)), s.isCompiled = !0;
     let u = null;
-    return typeof s.keywords == "object" && s.keywords.$pattern && (s.keywords = Object.assign({}, s.keywords), u = s.keywords.$pattern, delete s.keywords.$pattern), u = u || /\w+/, s.keywords && (s.keywords = qE(s.keywords, t.case_insensitive)), c.keywordPatternRe = e(u, !0), o && (s.begin || (s.begin = /\B|\b/), c.beginRe = e(c.begin), !s.end && !s.endsWithParent && (s.end = /\B|\b/), s.end && (c.endRe = e(c.end)), c.terminatorEnd = jn(c.end) || "", s.endsWithParent && o.terminatorEnd && (c.terminatorEnd += (s.end ? "|" : "") + o.terminatorEnd)), s.illegal && (c.illegalRe = e(s.illegal)), s.contains || (s.contains = []), s.contains = [].concat(...s.contains.map(function(d) {
-      return vC(d === "self" ? s : d);
+    return typeof s.keywords == "object" && s.keywords.$pattern && (s.keywords = Object.assign({}, s.keywords), u = s.keywords.$pattern, delete s.keywords.$pattern), u = u || /\w+/, s.keywords && (s.keywords = VE(s.keywords, t.case_insensitive)), c.keywordPatternRe = e(u, !0), o && (s.begin || (s.begin = /\B|\b/), c.beginRe = e(c.begin), !s.end && !s.endsWithParent && (s.end = /\B|\b/), s.end && (c.endRe = e(c.end)), c.terminatorEnd = jn(c.end) || "", s.endsWithParent && o.terminatorEnd && (c.terminatorEnd += (s.end ? "|" : "") + o.terminatorEnd)), s.illegal && (c.illegalRe = e(s.illegal)), s.contains || (s.contains = []), s.contains = [].concat(...s.contains.map(function(d) {
+      return wR(d === "self" ? s : d);
     })), s.contains.forEach(function(d) {
       i(d, c);
     }), s.starts && i(s.starts, o), c.matcher = a(c), c;
@@ -5567,21 +5165,21 @@ function hC(t) {
     throw new Error("ERR: contains `self` is not supported at the top-level of a language.  See documentation.");
   return t.classNameAliases = Xt(t.classNameAliases || {}), i(t);
 }
-function VE(t) {
-  return t ? t.endsWithParent || VE(t.starts) : !1;
+function $E(t) {
+  return t ? t.endsWithParent || $E(t.starts) : !1;
 }
-function vC(t) {
+function wR(t) {
   return t.variants && !t.cachedVariants && (t.cachedVariants = t.variants.map(function(e) {
     return Xt(t, { variants: null }, e);
-  })), t.cachedVariants ? t.cachedVariants : VE(t) ? Xt(t, { starts: t.starts ? Xt(t.starts) : null }) : Object.isFrozen(t) ? Xt(t) : t;
+  })), t.cachedVariants ? t.cachedVariants : $E(t) ? Xt(t, { starts: t.starts ? Xt(t.starts) : null }) : Object.isFrozen(t) ? Xt(t) : t;
 }
-var OC = "11.7.0";
-class IC extends Error {
+var xR = "11.7.0";
+class PR extends Error {
   constructor(e, n) {
     super(e), this.name = "HTMLInjectionError", this.html = n;
   }
 }
-const Ii = PE, _d = Xt, dd = Symbol("nomatch"), AC = 7, yC = function(t) {
+const Ai = UE, _d = Xt, dd = Symbol("nomatch"), kR = 7, UR = function(t) {
   const e = /* @__PURE__ */ Object.create(null), n = /* @__PURE__ */ Object.create(null), r = [];
   let a = !0;
   const i = "Could not find the language '{}', did you forget to load/include a language module?", s = { disableAutodetect: !0, name: "Plain text", contains: [] };
@@ -5593,7 +5191,7 @@ const Ii = PE, _d = Xt, dd = Symbol("nomatch"), AC = 7, yC = function(t) {
     classPrefix: "hljs-",
     cssSelector: "pre code",
     languages: null,
-    __emitter: GR
+    __emitter: KT
   };
   function c(U) {
     return o.noHighlightRe.test(U);
@@ -5637,12 +5235,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
         ee += be.substring(V, K.index);
         const de = Xe.case_insensitive ? K[0].toLowerCase() : K[0], we = Ae(J, de);
         if (we) {
-          const [tt, jt] = we;
-          if (Le.addText(ee), ee = "", Ee[de] = (Ee[de] || 0) + 1, Ee[de] <= AC && (it += jt), tt.startsWith("_"))
+          const [nt, en] = we;
+          if (Le.addText(ee), ee = "", Ee[de] = (Ee[de] || 0) + 1, Ee[de] <= kR && (it += en), nt.startsWith("_"))
             ee += K[0];
           else {
-            const en = Xe.classNameAliases[tt] || tt;
-            Le.addKeyword(K[0], en);
+            const tn = Xe.classNameAliases[nt] || nt;
+            Le.addKeyword(K[0], tn);
           }
         } else
           ee += K[0];
@@ -5661,7 +5259,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
         }
         V = E(J.subLanguage, be, !0, vt[J.subLanguage]), vt[J.subLanguage] = V._top;
       } else
-        V = T(be, J.subLanguage.length ? J.subLanguage : null);
+        V = b(be, J.subLanguage.length ? J.subLanguage : null);
       J.relevance > 0 && (it += V.relevance), Le.addSublanguage(V._emitter, V.language);
     }
     function ge() {
@@ -5675,15 +5273,15 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
           ee++;
           continue;
         }
-        const we = Xe.classNameAliases[V[ee]] || V[ee], tt = K[ee];
-        we ? Le.addKeyword(tt, we) : (be = tt, ke(), be = ""), ee++;
+        const we = Xe.classNameAliases[V[ee]] || V[ee], nt = K[ee];
+        we ? Le.addKeyword(nt, we) : (be = nt, ke(), be = ""), ee++;
       }
     }
     function Te(V, K) {
       return V.scope && typeof V.scope == "string" && Le.openNode(Xe.classNameAliases[V.scope] || V.scope), V.beginScope && (V.beginScope._wrap ? (Le.addKeyword(be, Xe.classNameAliases[V.beginScope._wrap] || V.beginScope._wrap), be = "") : V.beginScope._multi && (he(V.beginScope, K), be = "")), J = Object.create(V, { parent: { value: J } }), J;
     }
     function pe(V, K, ee) {
-      let de = VR(V.endRe, ee);
+      let de = JT(V.endRe, ee);
       if (de) {
         if (V["on:end"]) {
           const we = new id(V);
@@ -5703,12 +5301,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
     }
     function De(V) {
       const K = V[0], ee = V.rule, de = new id(ee), we = [ee.__beforeBegin, ee["on:begin"]];
-      for (const tt of we)
-        if (!!tt && (tt(V, de), de.isMatchIgnored))
+      for (const nt of we)
+        if (!!nt && (nt(V, de), de.isMatchIgnored))
           return Oe(K);
       return ee.skip ? be += K : (ee.excludeBegin && (be += K), ge(), !ee.returnBegin && !ee.excludeBegin && (be = K)), Te(ee, V), ee.returnBegin ? 0 : K.length;
     }
-    function Ue(V) {
+    function Fe(V) {
       const K = V[0], ee = H.substring(V.index), de = pe(J, V, ee);
       if (!de)
         return dd;
@@ -5719,31 +5317,31 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
       while (J !== de.parent);
       return de.starts && Te(de.starts, V), we.returnEnd ? 0 : K.length;
     }
-    function Fe() {
+    function Be() {
       const V = [];
       for (let K = J; K !== Xe; K = K.parent)
         K.scope && V.unshift(K.scope);
       V.forEach((K) => Le.openNode(K));
     }
-    let et = {};
-    function st(V, K) {
+    let tt = {};
+    function lt(V, K) {
       const ee = K && K[0];
       if (be += V, ee == null)
         return ge(), 0;
-      if (et.type === "begin" && K.type === "end" && et.index === K.index && ee === "") {
+      if (tt.type === "begin" && K.type === "end" && tt.index === K.index && ee === "") {
         if (be += H.slice(K.index, K.index + 1), !a) {
           const de = new Error(`0 width match regex (${U})`);
-          throw de.languageName = U, de.badRule = et.rule, de;
+          throw de.languageName = U, de.badRule = tt.rule, de;
         }
         return 1;
       }
-      if (et = K, K.type === "begin")
+      if (tt = K, K.type === "begin")
         return De(K);
       if (K.type === "illegal" && !Z) {
         const de = new Error('Illegal lexeme "' + ee + '" for mode "' + (J.scope || "<unnamed>") + '"');
         throw de.mode = J, de;
       } else if (K.type === "end") {
-        const de = Ue(K);
+        const de = Fe(K);
         if (de !== dd)
           return de;
       }
@@ -5755,11 +5353,11 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
     }
     const Xe = y(U);
     if (!Xe)
-      throw dn(i.replace("{}", U)), new Error('Unknown language: "' + U + '"');
-    const Jt = hC(Xe);
-    let Mt = "", J = te || Jt;
+      throw un(i.replace("{}", U)), new Error('Unknown language: "' + U + '"');
+    const jt = LR(Xe);
+    let wt = "", J = te || jt;
     const vt = {}, Le = new o.__emitter(o);
-    Fe();
+    Be();
     let be = "", it = 0, Ye = 0, Ot = 0, It = !1;
     try {
       for (J.matcher.considerAll(); ; ) {
@@ -5767,12 +5365,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
         const V = J.matcher.exec(H);
         if (!V)
           break;
-        const K = H.substring(Ye, V.index), ee = st(K, V);
+        const K = H.substring(Ye, V.index), ee = lt(K, V);
         Ye = V.index + ee;
       }
-      return st(H.substring(Ye)), Le.closeAllNodes(), Le.finalize(), Mt = Le.toHTML(), {
+      return lt(H.substring(Ye)), Le.closeAllNodes(), Le.finalize(), wt = Le.toHTML(), {
         language: U,
-        value: Mt,
+        value: wt,
         relevance: it,
         illegal: !1,
         _emitter: Le,
@@ -5782,7 +5380,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
       if (V.message && V.message.includes("Illegal"))
         return {
           language: U,
-          value: Ii(H),
+          value: Ai(H),
           illegal: !0,
           relevance: 0,
           _illegalBy: {
@@ -5790,14 +5388,14 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
             index: Ye,
             context: H.slice(Ye - 100, Ye + 100),
             mode: V.mode,
-            resultSoFar: Mt
+            resultSoFar: wt
           },
           _emitter: Le
         };
       if (a)
         return {
           language: U,
-          value: Ii(H),
+          value: Ai(H),
           illegal: !1,
           relevance: 0,
           errorRaised: V,
@@ -5809,7 +5407,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
   }
   function m(U) {
     const H = {
-      value: Ii(U),
+      value: Ai(U),
       illegal: !1,
       relevance: 0,
       _top: s,
@@ -5817,7 +5415,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
     };
     return H._emitter.addText(U), H;
   }
-  function T(U, H) {
+  function b(U, H) {
     H = H || o.languages || Object.keys(e);
     const Z = m(U), te = H.filter(y).filter(M).map(
       (ge) => E(ge, U, !1)
@@ -5849,12 +5447,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
       "before:highlightElement",
       { el: U, language: Z }
     ), U.children.length > 0 && (o.ignoreUnescapedHTML || (console.warn("One of your code blocks includes unescaped HTML. This is a potentially serious security risk."), console.warn("https://github.com/highlightjs/highlight.js/wiki/security"), console.warn("The element with unescaped HTML:"), console.warn(U)), o.throwUnescapedHTML))
-      throw new IC(
+      throw new PR(
         "One of your code blocks includes unescaped HTML.",
         U.innerHTML
       );
     H = U;
-    const te = H.textContent, Ee = Z ? d(te, { language: Z, ignoreIllegals: !0 }) : T(te);
+    const te = H.textContent, Ee = Z ? d(te, { language: Z, ignoreIllegals: !0 }) : b(te);
     U.innerHTML = Ee.value, g(U, Z, Ee.language), U.result = {
       language: Ee.language,
       re: Ee.relevance,
@@ -5890,8 +5488,8 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
     try {
       Z = H(t);
     } catch (te) {
-      if (dn("Language definition for '{}' could not be registered.".replace("{}", U)), a)
-        dn(te);
+      if (un("Language definition for '{}' could not be registered.".replace("{}", U)), a)
+        un(te);
       else
         throw te;
       Z = s;
@@ -5943,7 +5541,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
   }
   Object.assign(t, {
     highlight: d,
-    highlightAuto: T,
+    highlightAuto: b,
     highlightAll: w,
     highlightElement: f,
     highlightBlock: re,
@@ -5962,27 +5560,27 @@ https://github.com/highlightjs/highlight.js/issues/2277`), Ee = U, te = H), Z ==
     a = !1;
   }, t.safeMode = function() {
     a = !0;
-  }, t.versionString = OC, t.regex = {
+  }, t.versionString = xR, t.regex = {
     concat: En,
-    lookahead: kE,
+    lookahead: FE,
     either: wc,
-    optional: qR,
-    anyNumberOfTimes: YR
+    optional: XT,
+    anyNumberOfTimes: QT
   };
   for (const U in Mr)
     typeof Mr[U] == "object" && Dc.exports(Mr[U]);
   return Object.assign(t, Mr), t;
 };
-var tr = yC({}), DC = tr;
+var tr = UR({}), FR = tr;
 tr.HighlightJS = tr;
 tr.default = tr;
-var Ai, ud;
-function MC() {
+var yi, ud;
+function BR() {
   if (ud)
-    return Ai;
+    return yi;
   ud = 1;
   function t(e) {
-    const n = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]+", i = "\u0434\u0430\u043B\u0435\u0435 " + "\u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0432\u044B\u0437\u0432\u0430\u0442\u044C\u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u0434\u043B\u044F \u0435\u0441\u043B\u0438 \u0438 \u0438\u0437 \u0438\u043B\u0438 \u0438\u043D\u0430\u0447\u0435 \u0438\u043D\u0430\u0447\u0435\u0435\u0441\u043B\u0438 \u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u043A\u0430\u0436\u0434\u043E\u0433\u043E \u043A\u043E\u043D\u0435\u0446\u0435\u0441\u043B\u0438 \u043A\u043E\u043D\u0435\u0446\u043F\u043E\u043F\u044B\u0442\u043A\u0438 \u043A\u043E\u043D\u0435\u0446\u0446\u0438\u043A\u043B\u0430 \u043D\u0435 \u043D\u043E\u0432\u044B\u0439 \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043F\u0435\u0440\u0435\u043C \u043F\u043E \u043F\u043E\u043A\u0430 \u043F\u043E\u043F\u044B\u0442\u043A\u0430 \u043F\u0440\u0435\u0440\u0432\u0430\u0442\u044C \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u0442\u043E\u0433\u0434\u0430 \u0446\u0438\u043A\u043B \u044D\u043A\u0441\u043F\u043E\u0440\u0442 ", c = "\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0438\u0437\u0444\u0430\u0439\u043B\u0430 " + "\u0432\u0435\u0431\u043A\u043B\u0438\u0435\u043D\u0442 \u0432\u043C\u0435\u0441\u0442\u043E \u0432\u043D\u0435\u0448\u043D\u0435\u0435\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u043A\u043B\u0438\u0435\u043D\u0442 \u043A\u043E\u043D\u0435\u0446\u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u043B\u0438\u0435\u043D\u0442 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0441\u0435\u0440\u0432\u0435\u0440 \u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0435 \u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0435\u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435 \u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0435\u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435\u0431\u0435\u0437\u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u0430 \u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435 \u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435\u0431\u0435\u0437\u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u0430 \u043E\u0431\u043B\u0430\u0441\u0442\u044C \u043F\u0435\u0440\u0435\u0434 \u043F\u043E\u0441\u043B\u0435 \u0441\u0435\u0440\u0432\u0435\u0440 \u0442\u043E\u043B\u0441\u0442\u044B\u0439\u043A\u043B\u0438\u0435\u043D\u0442\u043E\u0431\u044B\u0447\u043D\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0442\u043E\u043B\u0441\u0442\u044B\u0439\u043A\u043B\u0438\u0435\u043D\u0442\u0443\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u043C\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0442\u043E\u043D\u043A\u0438\u0439\u043A\u043B\u0438\u0435\u043D\u0442 ", u = "\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0440\u0430\u043D\u0438\u0446 \u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0440\u043E\u043A \u0441\u0438\u043C\u0432\u043E\u043B\u0442\u0430\u0431\u0443\u043B\u044F\u0446\u0438\u0438 ", d = "ansitooem oemtoansi \u0432\u0432\u0435\u0441\u0442\u0438\u0432\u0438\u0434\u0441\u0443\u0431\u043A\u043E\u043D\u0442\u043E \u0432\u0432\u0435\u0441\u0442\u0438\u043F\u0435\u0440\u0435\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u0435 \u0432\u0432\u0435\u0441\u0442\u0438\u043F\u0435\u0440\u0438\u043E\u0434 \u0432\u0432\u0435\u0441\u0442\u0438\u043F\u043B\u0430\u043D\u0441\u0447\u0435\u0442\u043E\u0432 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439\u043F\u043B\u0430\u043D\u0441\u0447\u0435\u0442\u043E\u0432 \u0434\u0430\u0442\u0430\u0433\u043E\u0434 \u0434\u0430\u0442\u0430\u043C\u0435\u0441\u044F\u0446 \u0434\u0430\u0442\u0430\u0447\u0438\u0441\u043B\u043E \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0441\u0442\u0440\u043E\u043A\u0443 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0437\u0441\u0442\u0440\u043E\u043A\u0438 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0438\u0431 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043A\u043E\u0434\u0441\u0438\u043C\u0432 \u043A\u043E\u043D\u0433\u043E\u0434\u0430 \u043A\u043E\u043D\u0435\u0446\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0431\u0438 \u043A\u043E\u043D\u0435\u0446\u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043D\u043D\u043E\u0433\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0431\u0438 \u043A\u043E\u043D\u0435\u0446\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430 \u043A\u043E\u043D\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043A\u043E\u043D\u043C\u0435\u0441\u044F\u0446\u0430 \u043A\u043E\u043D\u043D\u0435\u0434\u0435\u043B\u0438 \u043B\u043E\u0433 \u043B\u043E\u043310 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u0441\u0443\u0431\u043A\u043E\u043D\u0442\u043E \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043D\u0430\u0431\u043E\u0440\u0430\u043F\u0440\u0430\u0432 \u043D\u0430\u0437\u043D\u0430\u0447\u0438\u0442\u044C\u0432\u0438\u0434 \u043D\u0430\u0437\u043D\u0430\u0447\u0438\u0442\u044C\u0441\u0447\u0435\u0442 \u043D\u0430\u0439\u0442\u0438\u0441\u0441\u044B\u043B\u043A\u0438 \u043D\u0430\u0447\u0430\u043B\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0431\u0438 \u043D\u0430\u0447\u0430\u043B\u043E\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430 \u043D\u0430\u0447\u0433\u043E\u0434\u0430 \u043D\u0430\u0447\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043D\u0430\u0447\u043C\u0435\u0441\u044F\u0446\u0430 \u043D\u0430\u0447\u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u043E\u043C\u0435\u0440\u0434\u043D\u044F\u0433\u043E\u0434\u0430 \u043D\u043E\u043C\u0435\u0440\u0434\u043D\u044F\u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u043E\u043C\u0435\u0440\u043D\u0435\u0434\u0435\u043B\u0438\u0433\u043E\u0434\u0430 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0430\u0441\u0447\u0435\u0442\u043E\u0432 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439\u043F\u043B\u0430\u043D\u0441\u0447\u0435\u0442\u043E\u0432 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439\u044F\u0437\u044B\u043A \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u043E\u043A\u043D\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0439 \u043F\u0435\u0440\u0438\u043E\u0434\u0441\u0442\u0440 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u0430\u0442\u0443\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u043E\u0442\u0431\u043E\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u043E\u0437\u0438\u0446\u0438\u044E\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0443\u0441\u0442\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0442\u0430 \u043F\u0440\u0435\u0444\u0438\u043A\u0441\u0430\u0432\u0442\u043E\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u0438 \u043F\u0440\u043E\u043F\u0438\u0441\u044C \u043F\u0443\u0441\u0442\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u043C \u0440\u0430\u0437\u043E\u0431\u0440\u0430\u0442\u044C\u043F\u043E\u0437\u0438\u0446\u0438\u044E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u043D\u0430 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u043F\u043E \u0441\u0438\u043C\u0432 \u0441\u043E\u0437\u0434\u0430\u0442\u044C\u043E\u0431\u044A\u0435\u043A\u0442 \u0441\u0442\u0430\u0442\u0443\u0441\u0432\u043E\u0437\u0432\u0440\u0430\u0442\u0430 \u0441\u0442\u0440\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u0441\u0442\u0440\u043E\u043A \u0441\u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u043F\u043E\u0437\u0438\u0446\u0438\u044E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0441\u0447\u0435\u0442\u043F\u043E\u043A\u043E\u0434\u0443 \u0442\u0435\u043A\u0443\u0449\u0435\u0435\u0432\u0440\u0435\u043C\u044F \u0442\u0438\u043F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0441\u0442\u0440 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0442\u0430\u043D\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0442\u0430\u043F\u043E \u0444\u0438\u043A\u0441\u0448\u0430\u0431\u043B\u043E\u043D \u0448\u0430\u0431\u043B\u043E\u043D ", E = "acos asin atan base64\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 base64\u0441\u0442\u0440\u043E\u043A\u0430 cos exp log log10 pow sin sqrt tan xml\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 xml\u0441\u0442\u0440\u043E\u043A\u0430 xml\u0442\u0438\u043F xml\u0442\u0438\u043F\u0437\u043D\u0447 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0435\u043E\u043A\u043D\u043E \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C\u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0431\u0443\u043B\u0435\u0432\u043E \u0432\u0432\u0435\u0441\u0442\u0438\u0434\u0430\u0442\u0443 \u0432\u0432\u0435\u0441\u0442\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432\u0432\u0435\u0441\u0442\u0438\u0441\u0442\u0440\u043E\u043A\u0443 \u0432\u0432\u0435\u0441\u0442\u0438\u0447\u0438\u0441\u043B\u043E \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C\u0447\u0442\u0435\u043D\u0438\u044Fxml \u0432\u043E\u043F\u0440\u043E\u0441 \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432\u0440\u0435\u0433 \u0432\u044B\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0443\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0443\u043F\u0440\u0430\u0432\u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u0432\u044B\u0447\u0438\u0441\u043B\u0438\u0442\u044C \u0433\u043E\u0434 \u0434\u0430\u043D\u043D\u044B\u0435\u0444\u043E\u0440\u043C\u044B\u0432\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u0430\u0442\u0430 \u0434\u0435\u043D\u044C \u0434\u0435\u043D\u044C\u0433\u043E\u0434\u0430 \u0434\u0435\u043D\u044C\u043D\u0435\u0434\u0435\u043B\u0438 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C\u043C\u0435\u0441\u044F\u0446 \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0434\u043B\u044F\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0440\u0430\u0431\u043E\u0442\u0443\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044C\u0440\u0430\u0431\u043E\u0442\u0443\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0432\u043D\u0435\u0448\u043D\u044E\u044E\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u0443 \u0437\u0430\u043A\u0440\u044B\u0442\u044C\u0441\u043F\u0440\u0430\u0432\u043A\u0443 \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044Cjson \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044Cxml \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044C\u0434\u0430\u0442\u0443json \u0437\u0430\u043F\u0438\u0441\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0441\u0432\u043E\u0439\u0441\u0442\u0432 \u0437\u0430\u043F\u0440\u043E\u0441\u0438\u0442\u044C\u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0437\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0437\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C\u0441\u0438\u0441\u0442\u0435\u043C\u0443 \u0437\u0430\u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044E \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0434\u0430\u043D\u043D\u044B\u0435\u0444\u043E\u0440\u043C\u044B \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0441\u0442\u0440\u043E\u043A\u0443\u0432\u043D\u0443\u0442\u0440 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0444\u0430\u0439\u043B \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043E \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0437\u0441\u0442\u0440\u043E\u043A\u0438\u0432\u043D\u0443\u0442\u0440 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0437\u0444\u0430\u0439\u043B\u0430 \u0438\u0437xml\u0442\u0438\u043F\u0430 \u0438\u043C\u043F\u043E\u0440\u0442\u043C\u043E\u0434\u0435\u043B\u0438xdto \u0438\u043C\u044F\u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u0430 \u0438\u043C\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0438\u043D\u0438\u0446\u0438\u0430\u043B\u0438\u0437\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435\u0434\u0430\u043D\u043D\u044B\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F\u043E\u0431\u043E\u0448\u0438\u0431\u043A\u0435 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0438\u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0433\u043E\u0443\u0441\u0442\u0440\u043E\u0439\u0441\u0442\u0432\u0430 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0445\u0444\u0430\u0439\u043B\u043E\u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u0442\u0440\u043E\u043A\u0443 \u043A\u043E\u0434\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043A\u043E\u0434\u0441\u0438\u043C\u0432\u043E\u043B\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u0430\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043A\u043E\u043D\u0435\u0446\u0433\u043E\u0434\u0430 \u043A\u043E\u043D\u0435\u0446\u0434\u043D\u044F \u043A\u043E\u043D\u0435\u0446\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043A\u043E\u043D\u0435\u0446\u043C\u0435\u0441\u044F\u0446\u0430 \u043A\u043E\u043D\u0435\u0446\u043C\u0438\u043D\u0443\u0442\u044B \u043A\u043E\u043D\u0435\u0446\u043D\u0435\u0434\u0435\u043B\u0438 \u043A\u043E\u043D\u0435\u0446\u0447\u0430\u0441\u0430 \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0430\u0434\u0438\u043D\u0430\u043C\u0438\u0447\u0435\u0441\u043A\u0438 \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0430 \u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0444\u043E\u0440\u043C\u044B \u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0444\u0430\u0439\u043B \u043A\u0440\u0430\u0442\u043A\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043E\u0448\u0438\u0431\u043A\u0438 \u043B\u0435\u0432 \u043C\u0430\u043A\u0441 \u043C\u0435\u0441\u0442\u043D\u043E\u0435\u0432\u0440\u0435\u043C\u044F \u043C\u0435\u0441\u044F\u0446 \u043C\u0438\u043D \u043C\u0438\u043D\u0443\u0442\u0430 \u043C\u043E\u043D\u043E\u043F\u043E\u043B\u044C\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u043D\u0430\u0439\u0442\u0438 \u043D\u0430\u0439\u0442\u0438\u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u0441\u0438\u043C\u0432\u043E\u043B\u044Bxml \u043D\u0430\u0439\u0442\u0438\u043E\u043A\u043D\u043E\u043F\u043E\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0441\u0441\u044B\u043B\u043A\u0435 \u043D\u0430\u0439\u0442\u0438\u043F\u043E\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u0435\u043D\u0430\u0443\u0434\u0430\u043B\u0435\u043D\u0438\u0435 \u043D\u0430\u0439\u0442\u0438\u043F\u043E\u0441\u0441\u044B\u043B\u043A\u0430\u043C \u043D\u0430\u0439\u0442\u0438\u0444\u0430\u0439\u043B\u044B \u043D\u0430\u0447\u0430\u043B\u043E\u0433\u043E\u0434\u0430 \u043D\u0430\u0447\u0430\u043B\u043E\u0434\u043D\u044F \u043D\u0430\u0447\u0430\u043B\u043E\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043D\u0430\u0447\u0430\u043B\u043E\u043C\u0435\u0441\u044F\u0446\u0430 \u043D\u0430\u0447\u0430\u043B\u043E\u043C\u0438\u043D\u0443\u0442\u044B \u043D\u0430\u0447\u0430\u043B\u043E\u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u0430\u0447\u0430\u043B\u043E\u0447\u0430\u0441\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u0437\u0430\u043F\u0440\u043E\u0441\u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0430\u0447\u0430\u0442\u044C\u0437\u0430\u043F\u0443\u0441\u043A\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0447\u0430\u0442\u044C\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0432\u043D\u0435\u0448\u043D\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044B \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0438\u0441\u043A\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0445\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0435\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u0437\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0435\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044E \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0434\u0430\u043B\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0443\u0432\u043D\u0435\u0448\u043D\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044B \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0443\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0443\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u043D\u0435\u0434\u0435\u043B\u044F\u0433\u043E\u0434\u0430 \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E\u0441\u0442\u044C\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F \u043D\u043E\u043C\u0435\u0440\u0441\u0435\u0430\u043D\u0441\u0430\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043D\u043E\u043C\u0435\u0440\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043D\u0440\u0435\u0433 \u043D\u0441\u0442\u0440 \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u044E\u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u044B\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043F\u0440\u0435\u0440\u044B\u0432\u0430\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043E\u0431\u044A\u0435\u0434\u0438\u043D\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u043E\u043A\u0440 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u043E\u0448\u0438\u0431\u043A\u0438 \u043E\u043F\u043E\u0432\u0435\u0441\u0442\u0438\u0442\u044C \u043E\u043F\u043E\u0432\u0435\u0441\u0442\u0438\u0442\u044C\u043E\u0431\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0438 \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0437\u0430\u043F\u0440\u043E\u0441\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0438\u043D\u0434\u0435\u043A\u0441\u0441\u043F\u0440\u0430\u0432\u043A\u0438 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0441\u043E\u0434\u0435\u0440\u0436\u0430\u043D\u0438\u0435\u0441\u043F\u0440\u0430\u0432\u043A\u0438 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0441\u043F\u0440\u0430\u0432\u043A\u0443 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0444\u043E\u0440\u043C\u0443 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0444\u043E\u0440\u043C\u0443\u043C\u043E\u0434\u0430\u043B\u044C\u043D\u043E \u043E\u0442\u043C\u0435\u043D\u0438\u0442\u044C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044E \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043F\u0435\u0440\u0435\u0439\u0442\u0438\u043F\u043E\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0441\u0441\u044B\u043B\u043A\u0435 \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0432\u043D\u0435\u0448\u043D\u044E\u044E\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u0443 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0437\u0430\u043F\u0440\u043E\u0441\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043E\u0448\u0438\u0431\u043A\u0438 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0434\u0430\u0442\u044B \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0441\u0442\u0440\u043E\u043A\u0438 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0447\u0438\u0441\u043B\u0430 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u043E\u043F\u0440\u043E\u0441 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E\u043E\u0431\u043E\u0448\u0438\u0431\u043A\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u043D\u0430\u043A\u0430\u0440\u0442\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u043D\u043E\u0435\u0438\u043C\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044Ccom\u043E\u0431\u044A\u0435\u043A\u0442 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044Cxml\u0442\u0438\u043F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0430\u0434\u0440\u0435\u0441\u043F\u043E\u043C\u0435\u0441\u0442\u043E\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u044E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0443\u0441\u0435\u0430\u043D\u0441\u043E\u0432 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F\u0441\u043F\u044F\u0449\u0435\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0441\u044B\u043F\u0430\u043D\u0438\u044F\u043F\u0430\u0441\u0441\u0438\u0432\u043D\u043E\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0432\u044B\u0431\u043E\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u043A\u043E\u0434\u044B\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u0447\u0430\u0441\u043E\u0432\u044B\u0435\u043F\u043E\u044F\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u043E\u0442\u0431\u043E\u0440\u0430\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0437\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u043C\u044F\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u043C\u044F\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E\u044D\u043A\u0440\u0430\u043D\u043E\u0432\u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043A\u0440\u0430\u0442\u043A\u0438\u0439\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u043A\u0435\u0442\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u0441\u043A\u0443\u0432\u0441\u0435\u0444\u0430\u0439\u043B\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u0441\u043A\u0443\u0432\u0441\u0435\u0444\u0430\u0439\u043B\u044B\u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u0441\u043A\u0443\u0432\u0441\u0435\u0444\u0430\u0439\u043B\u044B\u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0435\u0441\u0442\u043E\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0430\u0434\u0440\u0435\u0441\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E\u0434\u043B\u0438\u043D\u0443\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u0443\u044E\u0441\u0441\u044B\u043B\u043A\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u0443\u044E\u0441\u0441\u044B\u043B\u043A\u0443\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u0449\u0438\u0439\u043C\u0430\u043A\u0435\u0442 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u0449\u0443\u044E\u0444\u043E\u0440\u043C\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u043A\u043D\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u043F\u0435\u0440\u0430\u0442\u0438\u0432\u043D\u0443\u044E\u043E\u0442\u043C\u0435\u0442\u043A\u0443\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0442\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0433\u043E\u0440\u0435\u0436\u0438\u043C\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445\u043E\u043F\u0446\u0438\u0439\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u043E\u043B\u043D\u043E\u0435\u0438\u043C\u044F\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u043E\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0445\u0441\u0441\u044B\u043B\u043E\u043A \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0443\u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u0438\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u043F\u0443\u0442\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u043F\u0443\u0442\u0438\u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u043F\u0443\u0442\u0438\u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u0435\u0430\u043D\u0441\u044B\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435\u043E\u0431\u044A\u0435\u043A\u0442\u0430\u0438\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u0441\u0442\u0430\u0432\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430odata \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0443\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0441\u0435\u0430\u043D\u0441\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u043E\u0440\u043C\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u0443\u044E\u043E\u043F\u0446\u0438\u044E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u0443\u044E\u043E\u043F\u0446\u0438\u044E\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438\u043E\u0441 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0432\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0435\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u043F\u0440\u0430\u0432 \u043F\u0440\u0430\u0432\u043E\u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043A\u043E\u0434\u0430\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0435\u0440\u0438\u043E\u0434\u0430 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0430\u0432\u0430 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0447\u0430\u0441\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u044F\u0441\u0430 \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u043A\u0440\u0430\u0442\u0438\u0442\u044C\u0440\u0430\u0431\u043E\u0442\u0443\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043F\u0440\u0438\u0432\u0438\u043B\u0435\u0433\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C\u0432\u044B\u0437\u043E\u0432 \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044Cjson \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044Cxml \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044C\u0434\u0430\u0442\u0443json \u043F\u0443\u0441\u0442\u0430\u044F\u0441\u0442\u0440\u043E\u043A\u0430 \u0440\u0430\u0431\u043E\u0447\u0438\u0439\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0434\u043B\u044F\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u0440\u0430\u0437\u043E\u0440\u0432\u0430\u0442\u044C\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u0441\u0432\u043D\u0435\u0448\u043D\u0438\u043C\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u043E\u043C\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u0442\u0440\u043E\u043A\u0443 \u0440\u043E\u043B\u044C\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430 \u0441\u0435\u043A\u0443\u043D\u0434\u0430 \u0441\u0438\u0433\u043D\u0430\u043B \u0441\u0438\u043C\u0432\u043E\u043B \u0441\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0441\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u043B\u0435\u0442\u043D\u0435\u0433\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0441\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u044C\u0431\u0443\u0444\u0435\u0440\u044B\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043E\u0437\u0434\u0430\u0442\u044C\u043A\u0430\u0442\u0430\u043B\u043E\u0433 \u0441\u043E\u0437\u0434\u0430\u0442\u044C\u0444\u0430\u0431\u0440\u0438\u043A\u0443xdto \u0441\u043E\u043A\u0440\u043B \u0441\u043E\u043A\u0440\u043B\u043F \u0441\u043E\u043A\u0440\u043F \u0441\u043E\u043E\u0431\u0449\u0438\u0442\u044C \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441\u0440\u0435\u0434 \u0441\u0442\u0440\u0434\u043B\u0438\u043D\u0430 \u0441\u0442\u0440\u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044F\u043D\u0430 \u0441\u0442\u0440\u0437\u0430\u043C\u0435\u043D\u0438\u0442\u044C \u0441\u0442\u0440\u043D\u0430\u0439\u0442\u0438 \u0441\u0442\u0440\u043D\u0430\u0447\u0438\u043D\u0430\u0435\u0442\u0441\u044F\u0441 \u0441\u0442\u0440\u043E\u043A\u0430 \u0441\u0442\u0440\u043E\u043A\u0430\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0441\u0442\u0440\u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u0442\u0440\u043E\u043A\u0443 \u0441\u0442\u0440\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u044C \u0441\u0442\u0440\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u044C \u0441\u0442\u0440\u0441\u0440\u0430\u0432\u043D\u0438\u0442\u044C \u0441\u0442\u0440\u0447\u0438\u0441\u043B\u043E\u0432\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0439 \u0441\u0442\u0440\u0447\u0438\u0441\u043B\u043E\u0441\u0442\u0440\u043E\u043A \u0441\u0442\u0440\u0448\u0430\u0431\u043B\u043E\u043D \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0434\u0430\u0442\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0434\u0430\u0442\u0430\u0441\u0435\u0430\u043D\u0441\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0430\u043B\u044C\u043D\u0430\u044F\u0434\u0430\u0442\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0430\u043B\u044C\u043D\u0430\u044F\u0434\u0430\u0442\u0430\u0432\u043C\u0438\u043B\u043B\u0438\u0441\u0435\u043A\u0443\u043D\u0434\u0430\u0445 \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E\u0448\u0440\u0438\u0444\u0442\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u043A\u043E\u0434\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0443\u0441\u043A\u0430 \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u044F\u0437\u044B\u043A \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u044F\u0437\u044B\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0442\u0438\u043F \u0442\u0438\u043F\u0437\u043D\u0447 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044F\u0430\u043A\u0442\u0438\u0432\u043D\u0430 \u0442\u0440\u0435\u0433 \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u0438\u0437\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430 \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u043E\u0431\u044A\u0435\u043A\u0442\u044B \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0430\u043B\u044C\u043D\u043E\u0435\u0432\u0440\u0435\u043C\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C\u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0443\u0441\u0435\u0430\u043D\u0441\u043E\u0432 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u043D\u0435\u0448\u043D\u044E\u044E\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u0443 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F\u0441\u043F\u044F\u0449\u0435\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0441\u044B\u043F\u0430\u043D\u0438\u044F\u043F\u0430\u0441\u0441\u0438\u0432\u043D\u043E\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043A\u0440\u0430\u0442\u043A\u0438\u0439\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E\u0434\u043B\u0438\u043D\u0443\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043C\u043E\u043D\u043E\u043F\u043E\u043B\u044C\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043E\u0442\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0433\u043E\u0440\u0435\u0436\u0438\u043C\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445\u043E\u043F\u0446\u0438\u0439\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u0440\u0438\u0432\u0438\u043B\u0435\u0433\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0443\u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u0438\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u0441\u0432\u043D\u0435\u0448\u043D\u0438\u043C\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u043E\u043C\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435\u043E\u0431\u044A\u0435\u043A\u0442\u0430\u0438\u0444\u043E\u0440\u043C\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0441\u043E\u0441\u0442\u0430\u0432\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430odata \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0441\u0435\u0430\u043D\u0441\u0430 \u0444\u043E\u0440\u043C\u0430\u0442 \u0446\u0435\u043B \u0447\u0430\u0441 \u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441 \u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0441\u0435\u0430\u043D\u0441\u0430 \u0447\u0438\u0441\u043B\u043E \u0447\u0438\u0441\u043B\u043E\u043F\u0440\u043E\u043F\u0438\u0441\u044C\u044E \u044D\u0442\u043E\u0430\u0434\u0440\u0435\u0441\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430 ", m = "ws\u0441\u0441\u044B\u043B\u043A\u0438 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u043A\u0430\u0440\u0442\u0438\u043D\u043E\u043A \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u043C\u0430\u043A\u0435\u0442\u043E\u0432\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u0441\u0442\u0438\u043B\u0435\u0439 \u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u044B \u0432\u043D\u0435\u0448\u043D\u0438\u0435\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u043D\u0435\u0448\u043D\u0438\u0435\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u0432\u043D\u0435\u0448\u043D\u0438\u0435\u043E\u0442\u0447\u0435\u0442\u044B \u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0435\u043F\u043E\u043A\u0443\u043F\u043A\u0438 \u0433\u043B\u0430\u0432\u043D\u044B\u0439\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u0433\u043B\u0430\u0432\u043D\u044B\u0439\u0441\u0442\u0438\u043B\u044C \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B \u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u044B\u0435\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u044F \u0436\u0443\u0440\u043D\u0430\u043B\u044B\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u0437\u0430\u0434\u0430\u0447\u0438 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F\u043E\u0431\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0447\u0435\u0439\u0434\u0430\u0442\u044B \u0438\u0441\u0442\u043E\u0440\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u044B \u043A\u0440\u0438\u0442\u0435\u0440\u0438\u0438\u043E\u0442\u0431\u043E\u0440\u0430 \u043C\u0435\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0435 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u043A\u043B\u0430\u043C\u044B \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0430\u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u044B\u0445\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0439 \u043E\u0442\u0447\u0435\u0442\u044B \u043F\u0430\u043D\u0435\u043B\u044C\u0437\u0430\u0434\u0430\u0447\u043E\u0441 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0437\u0430\u043F\u0443\u0441\u043A\u0430 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0441\u0435\u0430\u043D\u0441\u0430 \u043F\u0435\u0440\u0435\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u044F \u043F\u043B\u0430\u043D\u044B\u0432\u0438\u0434\u043E\u0432\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043F\u043B\u0430\u043D\u044B\u0432\u0438\u0434\u043E\u0432\u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A \u043F\u043B\u0430\u043D\u044B\u043E\u0431\u043C\u0435\u043D\u0430 \u043F\u043B\u0430\u043D\u044B\u0441\u0447\u0435\u0442\u043E\u0432 \u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0439\u043F\u043E\u0438\u0441\u043A \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0445\u043F\u043E\u043A\u0443\u043F\u043E\u043A \u0440\u0430\u0431\u043E\u0447\u0430\u044F\u0434\u0430\u0442\u0430 \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u0431\u0443\u0445\u0433\u0430\u043B\u0442\u0435\u0440\u0438\u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u0441\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u0440\u0435\u0433\u043B\u0430\u043C\u0435\u043D\u0442\u043D\u044B\u0435\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0441\u0435\u0440\u0438\u0430\u043B\u0438\u0437\u0430\u0442\u043E\u0440xdto \u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0438 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u0433\u0435\u043E\u043F\u043E\u0437\u0438\u0446\u0438\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043C\u0443\u043B\u044C\u0442\u0438\u043C\u0435\u0434\u0438\u0430 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0440\u0435\u043A\u043B\u0430\u043C\u044B \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043F\u043E\u0447\u0442\u044B \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0438\u0438 \u0444\u0430\u0431\u0440\u0438\u043A\u0430xdto \u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435\u043F\u043E\u0442\u043E\u043A\u0438 \u0444\u043E\u043D\u043E\u0432\u044B\u0435\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0432\u043E\u0442\u0447\u0435\u0442\u043E\u0432 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u0434\u0430\u043D\u043D\u044B\u0445\u0444\u043E\u0440\u043C \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043E\u0431\u0449\u0438\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0438\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u0434\u0438\u043D\u0430\u043C\u0438\u0447\u0435\u0441\u043A\u0438\u0445\u0441\u043F\u0438\u0441\u043A\u043E\u0432 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0438\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043E\u0442\u0447\u0435\u0442\u043E\u0432 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u0441\u0438\u0441\u0442\u0435\u043C\u043D\u044B\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A ", T = u + d + E + m, g = "web\u0446\u0432\u0435\u0442\u0430 windows\u0446\u0432\u0435\u0442\u0430 windows\u0448\u0440\u0438\u0444\u0442\u044B \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u043A\u0430\u0440\u0442\u0438\u043D\u043E\u043A \u0440\u0430\u043C\u043A\u0438\u0441\u0442\u0438\u043B\u044F \u0441\u0438\u043C\u0432\u043E\u043B\u044B \u0446\u0432\u0435\u0442\u0430\u0441\u0442\u0438\u043B\u044F \u0448\u0440\u0438\u0444\u0442\u044B\u0441\u0442\u0438\u043B\u044F ", f = "\u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445\u0444\u043E\u0440\u043C\u044B\u0432\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430\u0445 \u0430\u0432\u0442\u043E\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u044F\u0432\u0444\u043E\u0440\u043C\u0435 \u0430\u0432\u0442\u043E\u0440\u0430\u0437\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0435\u0441\u0435\u0440\u0438\u0439 \u0430\u043D\u0438\u043C\u0430\u0446\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0432\u044B\u0440\u0430\u0432\u043D\u0438\u0432\u0430\u043D\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0438\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u043E\u0432 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u0432\u044B\u0441\u043E\u0442\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F\u043F\u0440\u043E\u043A\u0440\u0443\u0442\u043A\u0430\u0444\u043E\u0440\u043C\u044B \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430 \u0432\u0438\u0434\u0433\u0440\u0443\u043F\u043F\u044B\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0434\u0435\u043A\u043E\u0440\u0430\u0446\u0438\u0438\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u0438\u0434\u043A\u043D\u043E\u043F\u043A\u0438\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u043F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0430\u0442\u0435\u043B\u044F \u0432\u0438\u0434\u043F\u043E\u0434\u043F\u0438\u0441\u0435\u0439\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435 \u0432\u0438\u0434\u043F\u043E\u043B\u044F\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0444\u043B\u0430\u0436\u043A\u0430 \u0432\u043B\u0438\u044F\u043D\u0438\u0435\u0440\u0430\u0437\u043C\u0435\u0440\u0430\u043D\u0430\u043F\u0443\u0437\u044B\u0440\u0435\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430 \u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430\u043A\u043E\u043B\u043E\u043D\u043E\u043A \u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430\u043F\u043E\u0434\u0447\u0438\u043D\u0435\u043D\u043D\u044B\u0445\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0444\u043E\u0440\u043C\u044B \u0433\u0440\u0443\u043F\u043F\u044B\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u043F\u0435\u0440\u0435\u0442\u0430\u0441\u043A\u0438\u0432\u0430\u043D\u0438\u044F \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F\u043F\u0435\u0440\u0435\u0442\u0430\u0441\u043A\u0438\u0432\u0430\u043D\u0438\u044F \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u043C\u0435\u0436\u0434\u0443\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043C\u0438\u0444\u043E\u0440\u043C\u044B \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0432\u044B\u0432\u043E\u0434\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u043B\u043E\u0441\u044B\u043F\u0440\u043E\u043A\u0440\u0443\u0442\u043A\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0442\u043E\u0447\u043A\u0438\u0431\u0438\u0440\u0436\u0435\u0432\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0438\u0441\u0442\u043E\u0440\u0438\u044F\u0432\u044B\u0431\u043E\u0440\u0430\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u043E\u0441\u0438\u0442\u043E\u0447\u0435\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0440\u0430\u0437\u043C\u0435\u0440\u0430\u043F\u0443\u0437\u044B\u0440\u044C\u043A\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u0433\u0440\u0443\u043F\u043F\u044B\u043A\u043E\u043C\u0430\u043D\u0434 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C\u0441\u0435\u0440\u0438\u0439 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u043E\u0435\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0434\u0435\u0440\u0435\u0432\u0430 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u043E\u0435\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0441\u043F\u0438\u0441\u043A\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u0434\u0435\u043D\u0434\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u043C\u0435\u0442\u043E\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u043C\u0435\u0442\u043E\u043A\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0432\u043B\u0435\u0433\u0435\u043D\u0434\u0435\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u044B\u043A\u043D\u043E\u043F\u043E\u043A \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0448\u043A\u0430\u043B\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0438\u0437\u043C\u0435\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043A\u043D\u043E\u043F\u043A\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043A\u043D\u043E\u043F\u043A\u0438\u0432\u044B\u0431\u043E\u0440\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043E\u0431\u0441\u0443\u0436\u0434\u0435\u043D\u0438\u0439\u0444\u043E\u0440\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0439\u0433\u0440\u0443\u043F\u043F\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0445\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u043F\u0443\u0437\u044B\u0440\u044C\u043A\u043E\u0432\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u0430\u043D\u0435\u043B\u0438\u043F\u043E\u0438\u0441\u043A\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u044F\u043F\u0440\u0438\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0440\u0430\u0437\u043C\u0435\u0442\u043A\u0438\u043F\u043E\u043B\u043E\u0441\u044B\u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0444\u043E\u0440\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043E\u0431\u044B\u0447\u043D\u043E\u0439\u0433\u0440\u0443\u043F\u043F\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0444\u0438\u0433\u0443\u0440\u044B\u043A\u043D\u043E\u043F\u043A\u0438 \u043F\u0430\u043B\u0438\u0442\u0440\u0430\u0446\u0432\u0435\u0442\u043E\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0439\u0433\u0440\u0443\u043F\u043F\u044B \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0434\u0435\u043D\u0434\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0438\u0441\u043A\u0432\u0442\u0430\u0431\u043B\u0438\u0446\u0435\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438\u043A\u043D\u043E\u043F\u043A\u0438\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u043E\u043C\u0430\u043D\u0434\u043D\u043E\u0439\u043F\u0430\u043D\u0435\u043B\u0438\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u043E\u043C\u0430\u043D\u0434\u043D\u043E\u0439\u043F\u0430\u043D\u0435\u043B\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043E\u043F\u043E\u0440\u043D\u043E\u0439\u0442\u043E\u0447\u043A\u0438\u043E\u0442\u0440\u0438\u0441\u043E\u0432\u043A\u0438 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0434\u043F\u0438\u0441\u0435\u0439\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0434\u043F\u0438\u0441\u0435\u0439\u0448\u043A\u0430\u043B\u044B\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0438\u0437\u043C\u0435\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u044F\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0441\u0442\u0440\u043E\u043A\u0438\u043F\u043E\u0438\u0441\u043A\u0430 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u043B\u0438\u043D\u0438\u0438 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u043E\u0438\u0441\u043A\u043E\u043C \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0448\u043A\u0430\u043B\u044B\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043F\u043E\u0440\u044F\u0434\u043E\u043A\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0442\u043E\u0447\u0435\u043A\u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0439\u0433\u0438\u0441\u0442\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0440\u044F\u0434\u043E\u043A\u0441\u0435\u0440\u0438\u0439\u0432\u043B\u0435\u0433\u0435\u043D\u0434\u0435\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0430\u0437\u043C\u0435\u0440\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0448\u043A\u0430\u043B\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0430\u0441\u0442\u044F\u0433\u0438\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u0440\u0435\u0436\u0438\u043C\u0430\u0432\u0442\u043E\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0432\u0432\u043E\u0434\u0430\u0441\u0442\u0440\u043E\u043A\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0431\u043E\u0440\u0430\u043D\u0435\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043D\u043E\u0433\u043E \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0434\u0430\u0442\u044B \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0441\u0442\u0440\u043E\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0440\u0435\u0436\u0438\u043C\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0440\u0430\u0437\u043C\u0435\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0441\u0432\u044F\u0437\u0430\u043D\u043D\u043E\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0434\u0438\u0430\u043B\u043E\u0433\u0430\u043F\u0435\u0447\u0430\u0442\u0438 \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0440\u0435\u0436\u0438\u043C\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E\u043E\u043A\u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u043E\u043A\u043D\u0430\u0444\u043E\u0440\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0441\u0435\u0440\u0438\u0438 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u0440\u0438\u0441\u043E\u0432\u043A\u0438\u0441\u0435\u0442\u043A\u0438\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u043B\u0443\u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043F\u0440\u043E\u0431\u0435\u043B\u043E\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u043D\u0430\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0440\u0435\u0436\u0438\u043C\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043A\u043E\u043B\u043E\u043D\u043A\u0438 \u0440\u0435\u0436\u0438\u043C\u0441\u0433\u043B\u0430\u0436\u0438\u0432\u0430\u043D\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u0441\u0433\u043B\u0430\u0436\u0438\u0432\u0430\u043D\u0438\u044F\u0438\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u0441\u043F\u0438\u0441\u043A\u0430\u0437\u0430\u0434\u0430\u0447 \u0441\u043A\u0432\u043E\u0437\u043D\u043E\u0435\u0432\u044B\u0440\u0430\u0432\u043D\u0438\u0432\u0430\u043D\u0438\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445\u0444\u043E\u0440\u043C\u044B\u0432\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430\u0445 \u0441\u043F\u043E\u0441\u043E\u0431\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u0442\u0435\u043A\u0441\u0442\u0430\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0448\u043A\u0430\u043B\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0441\u043F\u043E\u0441\u043E\u0431\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0438\u0432\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F\u0433\u0440\u0443\u043F\u043F\u0430\u043A\u043E\u043C\u0430\u043D\u0434 \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0435\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u0435 \u0441\u0442\u0430\u0442\u0443\u0441\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441\u0442\u0438\u043B\u044C\u0441\u0442\u0440\u0435\u043B\u043A\u0438 \u0442\u0438\u043F\u0430\u043F\u043F\u0440\u043E\u043A\u0441\u0438\u043C\u0430\u0446\u0438\u0438\u043B\u0438\u043D\u0438\u0438\u0442\u0440\u0435\u043D\u0434\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0435\u0434\u0438\u043D\u0438\u0446\u044B\u0448\u043A\u0430\u043B\u044B\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0442\u0438\u043F\u0438\u043C\u043F\u043E\u0440\u0442\u0430\u0441\u0435\u0440\u0438\u0439\u0441\u043B\u043E\u044F\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u043C\u0430\u0440\u043A\u0435\u0440\u0430\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043C\u0430\u0440\u043A\u0435\u0440\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0441\u0435\u0440\u0438\u0438\u0441\u043B\u043E\u044F\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0442\u043E\u0447\u0435\u0447\u043D\u043E\u0433\u043E\u043E\u0431\u044A\u0435\u043A\u0442\u0430\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0448\u043A\u0430\u043B\u044B\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043B\u0435\u0433\u0435\u043D\u0434\u044B\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043F\u043E\u0438\u0441\u043A\u0430\u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043F\u0440\u043E\u0435\u043A\u0446\u0438\u0438\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u043E\u0432\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u0440\u0430\u043C\u043A\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0441\u0432\u044F\u0437\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u043F\u043E\u0441\u0435\u0440\u0438\u044F\u043C\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0442\u043E\u0447\u0435\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u043B\u0438\u043D\u0438\u0438 \u0442\u0438\u043F\u0441\u0442\u043E\u0440\u043E\u043D\u044B\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u0444\u043E\u0440\u043C\u044B\u043E\u0442\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u0448\u043A\u0430\u043B\u044B\u0440\u0430\u0434\u0430\u0440\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0444\u0430\u043A\u0442\u043E\u0440\u043B\u0438\u043D\u0438\u0438\u0442\u0440\u0435\u043D\u0434\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0444\u0438\u0433\u0443\u0440\u0430\u043A\u043D\u043E\u043F\u043A\u0438 \u0444\u0438\u0433\u0443\u0440\u044B\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0444\u0438\u043A\u0441\u0430\u0446\u0438\u044F\u0432\u0442\u0430\u0431\u043B\u0438\u0446\u0435 \u0444\u043E\u0440\u043C\u0430\u0442\u0434\u043D\u044F\u0448\u043A\u0430\u043B\u044B\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0444\u043E\u0440\u043C\u0430\u0442\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0448\u0438\u0440\u0438\u043D\u0430\u043F\u043E\u0434\u0447\u0438\u043D\u0435\u043D\u043D\u044B\u0445\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0444\u043E\u0440\u043C\u044B ", C = "\u0432\u0438\u0434\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F\u0431\u0443\u0445\u0433\u0430\u043B\u0442\u0435\u0440\u0438\u0438 \u0432\u0438\u0434\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0432\u0438\u0434\u0441\u0447\u0435\u0442\u0430 \u0432\u0438\u0434\u0442\u043E\u0447\u043A\u0438\u043C\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0430\u0433\u0440\u0435\u0433\u0430\u0442\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0435\u0436\u0438\u043C\u0430\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u0440\u0435\u0437\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u0430\u0433\u0440\u0435\u0433\u0430\u0442\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0430\u0432\u0442\u043E\u0432\u0440\u0435\u043C\u044F \u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0438\u0441\u0438\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0440\u0435\u0436\u0438\u043C\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u044F\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 ", A = "\u0430\u0432\u0442\u043E\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0439\u043D\u043E\u043C\u0435\u0440\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0430\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0445 ", P = "\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0438\u0442\u043E\u0433\u043E\u0432\u043A\u043E\u043B\u043E\u043D\u043E\u043A\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0438\u0442\u043E\u0433\u043E\u0432\u0441\u0442\u0440\u043E\u043A\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0441\u043F\u043E\u0441\u043E\u0431\u0447\u0442\u0435\u043D\u0438\u044F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0434\u0432\u0443\u0441\u0442\u043E\u0440\u043E\u043D\u043D\u0435\u0439\u043F\u0435\u0447\u0430\u0442\u0438 \u0442\u0438\u043F\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043A\u0443\u0440\u0441\u043E\u0440\u043E\u0432\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u0440\u0438\u0441\u0443\u043D\u043A\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u044F\u0447\u0435\u0439\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u0435\u0440\u0435\u0445\u043E\u0434\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u043B\u0438\u043D\u0438\u0439\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0442\u0435\u043A\u0441\u0442\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0440\u0438\u0441\u0443\u043D\u043A\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0441\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0443\u0437\u043E\u0440\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0444\u0430\u0439\u043B\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u043E\u0447\u043D\u043E\u0441\u0442\u044C\u043F\u0435\u0447\u0430\u0442\u0438 \u0447\u0435\u0440\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u044F\u0441\u0442\u0440\u0430\u043D\u0438\u0446 ", k = "\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0432\u0440\u0435\u043C\u0435\u043D\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0449\u0438\u043A\u0430 ", w = "\u0442\u0438\u043F\u0444\u0430\u0439\u043B\u0430\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 ", q = "\u043E\u0431\u0445\u043E\u0434\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u0437\u0430\u043F\u0438\u0441\u0438\u0437\u0430\u043F\u0440\u043E\u0441\u0430 ", L = "\u0432\u0438\u0434\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044F\u043E\u0442\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044F\u043E\u0442\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0438\u0442\u043E\u0433\u043E\u0432 ", X = "\u0434\u043E\u0441\u0442\u0443\u043F\u043A\u0444\u0430\u0439\u043B\u0443 \u0440\u0435\u0436\u0438\u043C\u0434\u0438\u0430\u043B\u043E\u0433\u0430\u0432\u044B\u0431\u043E\u0440\u0430\u0444\u0430\u0439\u043B\u0430 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u0444\u0430\u0439\u043B\u0430 ", h = "\u0442\u0438\u043F\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044F\u0437\u0430\u043F\u0440\u043E\u0441\u0430 ", y = "\u0432\u0438\u0434\u0434\u0430\u043D\u043D\u044B\u0445\u0430\u043D\u0430\u043B\u0438\u0437\u0430 \u043C\u0435\u0442\u043E\u0434\u043A\u043B\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u0438 \u0442\u0438\u043F\u0435\u0434\u0438\u043D\u0438\u0446\u044B\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430\u0432\u0440\u0435\u043C\u0435\u043D\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0447\u0438\u0441\u043B\u043E\u0432\u044B\u0445\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0438\u0441\u043A\u0430\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u0434\u0435\u0440\u0435\u0432\u043E\u0440\u0435\u0448\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043A\u043B\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043E\u0431\u0449\u0430\u044F\u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0438\u0441\u043A\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0438\u0441\u043A\u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0435\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u043C\u043E\u0434\u0435\u043B\u0438\u043F\u0440\u043E\u0433\u043D\u043E\u0437\u0430 \u0442\u0438\u043F\u043C\u0435\u0440\u044B\u0440\u0430\u0441\u0441\u0442\u043E\u044F\u043D\u0438\u044F\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0442\u0441\u0435\u0447\u0435\u043D\u0438\u044F\u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0438 \u0442\u0438\u043F\u043F\u043E\u043B\u044F\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u0438\u0437\u0430\u0446\u0438\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0443\u043F\u043E\u0440\u044F\u0434\u043E\u0447\u0438\u0432\u0430\u043D\u0438\u044F\u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0443\u043F\u043E\u0440\u044F\u0434\u043E\u0447\u0438\u0432\u0430\u043D\u0438\u044F\u0448\u0430\u0431\u043B\u043E\u043D\u043E\u0432\u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0435\u0439\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0443\u043F\u0440\u043E\u0449\u0435\u043D\u0438\u044F\u0434\u0435\u0440\u0435\u0432\u0430\u0440\u0435\u0448\u0435\u043D\u0438\u0439 ", B = "ws\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430 \u0432\u0430\u0440\u0438\u0430\u043D\u0442xpathxs \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0437\u0430\u043F\u0438\u0441\u0438\u0434\u0430\u0442\u044Bjson \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043F\u0440\u043E\u0441\u0442\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u0432\u0438\u0434\u0433\u0440\u0443\u043F\u043F\u044B\u043C\u043E\u0434\u0435\u043B\u0438xs \u0432\u0438\u0434\u0444\u0430\u0441\u0435\u0442\u0430xdto \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044Fdom \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u043F\u0440\u043E\u0441\u0442\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u0441\u043E\u0441\u0442\u0430\u0432\u043D\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u0441\u0445\u0435\u043C\u044Bxs \u0437\u0430\u043F\u0440\u0435\u0449\u0435\u043D\u043D\u044B\u0435\u043F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438xs \u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F\u0433\u0440\u0443\u043F\u043F\u043F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438xs \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xs \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F\u0438\u0434\u0435\u043D\u0442\u0438\u0447\u043D\u043E\u0441\u0442\u0438xs \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F\u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0441\u0442\u0432\u0438\u043C\u0435\u043Dxs \u043C\u0435\u0442\u043E\u0434\u043D\u0430\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u044Fxs \u043C\u043E\u0434\u0435\u043B\u044C\u0441\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0433\u043Exs \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0442\u0438\u043F\u0430xml \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u043F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438xs \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043F\u0440\u043E\u0431\u0435\u043B\u044C\u043D\u044B\u0445\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432xs \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u0441\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0433\u043Exs \u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u043E\u0442\u0431\u043E\u0440\u0430\u0443\u0437\u043B\u043E\u0432dom \u043F\u0435\u0440\u0435\u043D\u043E\u0441\u0441\u0442\u0440\u043E\u043Ajson \u043F\u043E\u0437\u0438\u0446\u0438\u044F\u0432\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0435dom \u043F\u0440\u043E\u0431\u0435\u043B\u044C\u043D\u044B\u0435\u0441\u0438\u043C\u0432\u043E\u043B\u044Bxml \u0442\u0438\u043F\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xml \u0442\u0438\u043F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fjson \u0442\u0438\u043F\u043A\u0430\u043D\u043E\u043D\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043Exml \u0442\u0438\u043F\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044Bxs \u0442\u0438\u043F\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438xml \u0442\u0438\u043F\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430domxpath \u0442\u0438\u043F\u0443\u0437\u043B\u0430dom \u0442\u0438\u043F\u0443\u0437\u043B\u0430xml \u0444\u043E\u0440\u043C\u0430xml \u0444\u043E\u0440\u043C\u0430\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u044Fxs \u0444\u043E\u0440\u043C\u0430\u0442\u0434\u0430\u0442\u044Bjson \u044D\u043A\u0440\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432json ", M = "\u0432\u0438\u0434\u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0432\u043B\u043E\u0436\u0435\u043D\u043D\u044B\u0445\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0438\u0442\u043E\u0433\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u0435\u0439\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0431\u0443\u0445\u0433\u0430\u043B\u0442\u0435\u0440\u0441\u043A\u043E\u0433\u043E\u043E\u0441\u0442\u0430\u0442\u043A\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0432\u044B\u0432\u043E\u0434\u0430\u0442\u0435\u043A\u0441\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0433\u0440\u0443\u043F\u043F\u044B\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u043E\u0442\u0431\u043E\u0440\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u043F\u043E\u043B\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043C\u0430\u043A\u0435\u0442\u0430\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043C\u0430\u043A\u0435\u0442\u0430\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0441\u0442\u0430\u0442\u043A\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0442\u0435\u043A\u0441\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0441\u0432\u044F\u0437\u0438\u043D\u0430\u0431\u043E\u0440\u043E\u0432\u0434\u0430\u043D\u043D\u044B\u0445\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043B\u0435\u0433\u0435\u043D\u0434\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u043E\u0442\u0431\u043E\u0440\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043F\u043E\u0441\u043E\u0431\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0430\u0432\u0442\u043E\u043F\u043E\u0437\u0438\u0446\u0438\u044F\u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0444\u0438\u043A\u0441\u0430\u0446\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0443\u0441\u043B\u043E\u0432\u043D\u043E\u0433\u043E\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 ", ie = "\u0432\u0430\u0436\u043D\u043E\u0441\u0442\u044C\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u0442\u0435\u043A\u0441\u0442\u0430\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0441\u043F\u043E\u0441\u043E\u0431\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0432\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0441\u043F\u043E\u0441\u043E\u0431\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043D\u0435ascii\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0442\u0435\u043A\u0441\u0442\u0430\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043F\u0440\u043E\u0442\u043E\u043A\u043E\u043B\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u044B \u0441\u0442\u0430\u0442\u0443\u0441\u0440\u0430\u0437\u0431\u043E\u0440\u0430\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F ", ce = "\u0440\u0435\u0436\u0438\u043C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438\u0437\u0430\u043F\u0438\u0441\u0438\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0441\u0442\u0430\u0442\u0443\u0441\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438\u0437\u0430\u043F\u0438\u0441\u0438\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 ", _e = "\u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0432\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0440\u0435\u0436\u0438\u043C\u0432\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0432\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0440\u0435\u0436\u0438\u043C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u0430\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0442\u0438\u043F\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0432\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 ", re = "\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u043A\u0430\u0438\u043C\u0435\u043D\u0444\u0430\u0439\u043B\u043E\u0432\u0432zip\u0444\u0430\u0439\u043B\u0435 \u043C\u0435\u0442\u043E\u0434\u0441\u0436\u0430\u0442\u0438\u044Fzip \u043C\u0435\u0442\u043E\u0434\u0448\u0438\u0444\u0440\u043E\u0432\u0430\u043D\u0438\u044Fzip \u0440\u0435\u0436\u0438\u043C\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u0443\u0442\u0435\u0439\u0444\u0430\u0439\u043B\u043E\u0432zip \u0440\u0435\u0436\u0438\u043C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\u043F\u043E\u0434\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u043E\u0432zip \u0440\u0435\u0436\u0438\u043C\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u043F\u0443\u0442\u0435\u0439zip \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0441\u0436\u0430\u0442\u0438\u044Fzip ", U = "\u0437\u0432\u0443\u043A\u043E\u0432\u043E\u0435\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u0435 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0435\u0440\u0435\u0445\u043E\u0434\u0430\u043A\u0441\u0442\u0440\u043E\u043A\u0435 \u043F\u043E\u0437\u0438\u0446\u0438\u044F\u0432\u043F\u043E\u0442\u043E\u043A\u0435 \u043F\u043E\u0440\u044F\u0434\u043E\u043A\u0431\u0430\u0439\u0442\u043E\u0432 \u0440\u0435\u0436\u0438\u043C\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u043E\u0439\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0435\u0440\u0432\u0438\u0441\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0445\u043F\u043E\u043A\u0443\u043F\u043E\u043A \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u0444\u043E\u043D\u043E\u0432\u043E\u0433\u043E\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0442\u0438\u043F\u043F\u043E\u0434\u043F\u0438\u0441\u0447\u0438\u043A\u0430\u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u044B\u0445\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0437\u0430\u0449\u0438\u0449\u0435\u043D\u043D\u043E\u0433\u043E\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044Fftp ", H = "\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u043E\u0440\u044F\u0434\u043A\u0430\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u043C\u0438\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u043A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u043E\u0439\u0442\u043E\u0447\u043A\u0438\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u043E\u0431\u044A\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 ", Z = "http\u043C\u0435\u0442\u043E\u0434 \u0430\u0432\u0442\u043E\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0430\u0432\u0442\u043E\u043F\u0440\u0435\u0444\u0438\u043A\u0441\u043D\u043E\u043C\u0435\u0440\u0430\u0437\u0430\u0434\u0430\u0447\u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0433\u043E\u044F\u0437\u044B\u043A\u0430 \u0432\u0438\u0434\u0438\u0435\u0440\u0430\u0440\u0445\u0438\u0438 \u0432\u0438\u0434\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0432\u043D\u0435\u0448\u043D\u0435\u0433\u043E\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0437\u0430\u043F\u0438\u0441\u044C\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0439\u043F\u0440\u0438\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435\u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0435\u0439 \u0438\u043D\u0434\u0435\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0431\u0430\u0437\u044B\u043F\u043B\u0430\u043D\u0430\u0432\u0438\u0434\u043E\u0432\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0431\u044B\u0441\u0442\u0440\u043E\u0433\u043E\u0432\u044B\u0431\u043E\u0440\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u0434\u0447\u0438\u043D\u0435\u043D\u0438\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0437\u0434\u0435\u043B\u044F\u0435\u043C\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u043F\u0435\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0435\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0432\u0438\u0434\u0430\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0432\u0438\u0434\u0430\u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0437\u0430\u0434\u0430\u0447\u0438 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u043B\u0430\u043D\u0430\u043E\u0431\u043C\u0435\u043D\u0430 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u0447\u0435\u0442\u0430 \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0433\u0440\u0430\u043D\u0438\u0446\u044B\u043F\u0440\u0438\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0438 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u043D\u043E\u043C\u0435\u0440\u0430\u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u043D\u043E\u043C\u0435\u0440\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0441\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u043C\u044B\u0445\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0439\u043F\u043E\u0438\u0441\u043A\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u043A\u0435 \u043F\u0440\u0438\u043D\u0430\u0434\u043B\u0435\u0436\u043D\u043E\u0441\u0442\u044C\u043E\u0431\u044A\u0435\u043A\u0442\u0430 \u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0430\u0443\u0442\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u0438\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0439\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0440\u0435\u0436\u0438\u043C\u0430\u0432\u0442\u043E\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u0438\u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0438\u0441\u0438\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u043C\u043E\u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0438\u043D\u0445\u0440\u043E\u043D\u043D\u044B\u0445\u0432\u044B\u0437\u043E\u0432\u043E\u0432\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0439\u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u044B\u0438\u0432\u043D\u0435\u0448\u043D\u0438\u0445\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0433\u043E\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0435\u0430\u043D\u0441\u043E\u0432 \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445\u0432\u044B\u0431\u043E\u0440\u0430\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u043A\u0435 \u0440\u0435\u0436\u0438\u043C\u0441\u043E\u0432\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u0438 \u0440\u0435\u0436\u0438\u043C\u0441\u043E\u0432\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u0438\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u0440\u0435\u0436\u0438\u043C\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u043E\u0439\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u0441\u0435\u0440\u0438\u0438\u043A\u043E\u0434\u043E\u0432\u043F\u043B\u0430\u043D\u0430\u0432\u0438\u0434\u043E\u0432\u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A \u0441\u0435\u0440\u0438\u0438\u043A\u043E\u0434\u043E\u0432\u043F\u043B\u0430\u043D\u0430\u0441\u0447\u0435\u0442\u043E\u0432 \u0441\u0435\u0440\u0438\u0438\u043A\u043E\u0434\u043E\u0432\u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0435\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435 \u0441\u043F\u043E\u0441\u043E\u0431\u0432\u044B\u0431\u043E\u0440\u0430 \u0441\u043F\u043E\u0441\u043E\u0431\u043F\u043E\u0438\u0441\u043A\u0430\u0441\u0442\u0440\u043E\u043A\u0438\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u043A\u0435 \u0441\u043F\u043E\u0441\u043E\u0431\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0442\u0438\u043F\u0434\u0430\u043D\u043D\u044B\u0445\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0432\u043D\u0435\u0448\u043D\u0435\u0433\u043E\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043A\u043E\u0434\u0430\u043F\u043B\u0430\u043D\u0430\u0432\u0438\u0434\u043E\u0432\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u043A\u043E\u0434\u0430\u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u0442\u0438\u043F\u043C\u0430\u043A\u0435\u0442\u0430 \u0442\u0438\u043F\u043D\u043E\u043C\u0435\u0440\u0430\u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u0430 \u0442\u0438\u043F\u043D\u043E\u043C\u0435\u0440\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043D\u043E\u043C\u0435\u0440\u0430\u0437\u0430\u0434\u0430\u0447\u0438 \u0442\u0438\u043F\u0444\u043E\u0440\u043C\u044B \u0443\u0434\u0430\u043B\u0435\u043D\u0438\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0439 ", te = "\u0432\u0430\u0436\u043D\u043E\u0441\u0442\u044C\u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0444\u043E\u0440\u043C\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E\u0448\u0440\u0438\u0444\u0442\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0439\u0434\u0430\u0442\u044B\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0438\u0434\u0433\u0440\u0430\u043D\u0438\u0446\u044B \u0432\u0438\u0434\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0432\u0438\u0434\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0432\u0438\u0434\u0440\u0430\u043C\u043A\u0438 \u0432\u0438\u0434\u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0446\u0432\u0435\u0442\u0430 \u0432\u0438\u0434\u0447\u0438\u0441\u043B\u043E\u0432\u043E\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u0430\u044F\u0434\u043B\u0438\u043D\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0439\u0437\u043D\u0430\u043A \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435byteordermark \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043C\u0435\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0439\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043A\u043B\u0430\u0432\u0438\u0448\u0430 \u043A\u043E\u0434\u0432\u043E\u0437\u0432\u0440\u0430\u0442\u0430\u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u043A\u043E\u0434\u0438\u0440\u043E\u0432\u043A\u0430xbase \u043A\u043E\u0434\u0438\u0440\u043E\u0432\u043A\u0430\u0442\u0435\u043A\u0441\u0442\u0430 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u043E\u0438\u0441\u043A\u0430 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u043A\u0438 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0438\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u0430\u043D\u0435\u043B\u0438\u0440\u0430\u0437\u0434\u0435\u043B\u043E\u0432 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0434\u0438\u0430\u043B\u043E\u0433\u0430\u0432\u043E\u043F\u0440\u043E\u0441 \u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0443\u0441\u043A\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u043A\u0440\u0443\u0433\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u0444\u043E\u0440\u043C\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u0432\u043D\u0435\u0448\u043D\u0435\u0433\u043E\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043F\u043E\u0441\u043E\u0431\u0432\u044B\u0431\u043E\u0440\u0430\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u0430windows \u0441\u043F\u043E\u0441\u043E\u0431\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0442\u0440\u043E\u043A\u0438 \u0441\u0442\u0430\u0442\u0443\u0441\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0432\u043D\u0435\u0448\u043D\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044B \u0442\u0438\u043F\u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u044B \u0442\u0438\u043F\u043F\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u044F\u043A\u043B\u0430\u0432\u0438\u0448\u0438enter \u0442\u0438\u043F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\u043E\u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0438\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0438\u0437\u043E\u043B\u044F\u0446\u0438\u0438\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0439 \u0445\u0435\u0448\u0444\u0443\u043D\u043A\u0446\u0438\u044F \u0447\u0430\u0441\u0442\u0438\u0434\u0430\u0442\u044B", Ee = g + f + C + A + P + k + w + q + L + X + h + y + B + M + ie + ce + _e + re + U + H + Z + te, Ge = "com\u043E\u0431\u044A\u0435\u043A\u0442 ftp\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 http\u0437\u0430\u043F\u0440\u043E\u0441 http\u0441\u0435\u0440\u0432\u0438\u0441\u043E\u0442\u0432\u0435\u0442 http\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 ws\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F ws\u043F\u0440\u043E\u043A\u0441\u0438 xbase \u0430\u043D\u0430\u043B\u0438\u0437\u0434\u0430\u043D\u043D\u044B\u0445 \u0430\u043D\u043D\u043E\u0442\u0430\u0446\u0438\u044Fxs \u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0431\u0443\u0444\u0435\u0440\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435xs \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440\u0441\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0445\u0447\u0438\u0441\u0435\u043B \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0430\u044F\u0441\u0445\u0435\u043C\u0430 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0435\u043A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B \u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0430\u044F\u0441\u0445\u0435\u043C\u0430 \u0433\u0440\u0443\u043F\u043F\u0430\u043C\u043E\u0434\u0435\u043B\u0438xs \u0434\u0430\u043D\u043D\u044B\u0435\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0435\u0434\u0430\u043D\u043D\u044B\u0435 \u0434\u0435\u043D\u0434\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0430 \u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0430\u0433\u0430\u043D\u0442\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0432\u044B\u0431\u043E\u0440\u0430\u0444\u0430\u0439\u043B\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0432\u044B\u0431\u043E\u0440\u0430\u0446\u0432\u0435\u0442\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0432\u044B\u0431\u043E\u0440\u0430\u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0440\u0430\u0441\u043F\u0438\u0441\u0430\u043D\u0438\u044F\u0440\u0435\u0433\u043B\u0430\u043C\u0435\u043D\u0442\u043D\u043E\u0433\u043E\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0434\u0438\u0430\u043B\u043E\u0433\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442dom \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442html \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430\u0446\u0438\u044Fxs \u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u043E\u0435\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0435 \u0437\u0430\u043F\u0438\u0441\u044Cdom \u0437\u0430\u043F\u0438\u0441\u044Cfastinfoset \u0437\u0430\u043F\u0438\u0441\u044Chtml \u0437\u0430\u043F\u0438\u0441\u044Cjson \u0437\u0430\u043F\u0438\u0441\u044Cxml \u0437\u0430\u043F\u0438\u0441\u044Czip\u0444\u0430\u0439\u043B\u0430 \u0437\u0430\u043F\u0438\u0441\u044C\u0434\u0430\u043D\u043D\u044B\u0445 \u0437\u0430\u043F\u0438\u0441\u044C\u0442\u0435\u043A\u0441\u0442\u0430 \u0437\u0430\u043F\u0438\u0441\u044C\u0443\u0437\u043B\u043E\u0432dom \u0437\u0430\u043F\u0440\u043E\u0441 \u0437\u0430\u0449\u0438\u0449\u0435\u043D\u043D\u043E\u0435\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435openssl \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u0435\u0439\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0437\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430 \u0438\u043C\u043F\u043E\u0440\u0442xs \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u0430 \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0435\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u044B\u0439\u043F\u0440\u043E\u0444\u0438\u043B\u044C \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u0440\u043E\u043A\u0441\u0438 \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F\u0434\u043B\u044F\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044Fxs \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xs \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0442\u0435\u0440\u0430\u0442\u043E\u0440\u0443\u0437\u043B\u043E\u0432dom \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0430 \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0434\u0430\u0442\u044B \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0441\u0442\u0440\u043E\u043A\u0438 \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0447\u0438\u0441\u043B\u0430 \u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u0449\u0438\u043A\u043C\u0430\u043A\u0435\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u0449\u0438\u043A\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u043C\u0430\u043A\u0435\u0442\u0430\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0444\u043E\u0440\u043C\u0430\u0442\u043D\u043E\u0439\u0441\u0442\u0440\u043E\u043A\u0438 \u043B\u0438\u043D\u0438\u044F \u043C\u0430\u043A\u0435\u0442\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u0430\u043A\u0435\u0442\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u0430\u043A\u0435\u0442\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u0430\u0441\u043A\u0430xs \u043C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u043D\u0430\u0431\u043E\u0440\u0441\u0445\u0435\u043Cxml \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u0441\u0435\u0440\u0438\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438json \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043A\u0430\u0440\u0442\u0438\u043D\u043E\u043A \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0431\u0445\u043E\u0434\u0434\u0435\u0440\u0435\u0432\u0430dom \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xs \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435\u043D\u043E\u0442\u0430\u0446\u0438\u0438xs \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430xs \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0434\u043E\u0441\u0442\u0443\u043F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u043E\u0442\u043A\u0430\u0437\u0432\u0434\u043E\u0441\u0442\u0443\u043F\u0435\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u043F\u0435\u0440\u0435\u0434\u0430\u0432\u0430\u0435\u043C\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u0430 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0442\u0438\u043F\u043E\u0432 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u044B\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u044B\u043C\u043E\u0434\u0435\u043B\u0438xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F\u0438\u0434\u0435\u043D\u0442\u0438\u0447\u043D\u043E\u0441\u0442\u0438xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u043E\u0441\u0442\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0441\u0442\u0430\u0432\u043D\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0442\u0438\u043F\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430dom \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044Fxpathxs \u043E\u0442\u0431\u043E\u0440\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u0430\u043A\u0435\u0442\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0435\u043C\u044B\u0445\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0432\u044B\u0431\u043E\u0440\u0430 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0437\u0430\u043F\u0438\u0441\u0438json \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0437\u0430\u043F\u0438\u0441\u0438xml \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0447\u0442\u0435\u043D\u0438\u044Fxml \u043F\u0435\u0440\u0435\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435xs \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0449\u0438\u043A \u043F\u043E\u043B\u0435\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0435\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044Cdom \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u043E\u0442\u0447\u0435\u0442\u0430 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u043E\u0442\u0447\u0435\u0442\u0430\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0445\u0435\u043Cxml \u043F\u043E\u0442\u043E\u043A \u043F\u043E\u0442\u043E\u043A\u0432\u043F\u0430\u043C\u044F\u0442\u0438 \u043F\u043E\u0447\u0442\u0430 \u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0435\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u0435xsl \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043A\u043A\u0430\u043D\u043E\u043D\u0438\u0447\u0435\u0441\u043A\u043E\u043C\u0443xml \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0432\u044B\u0432\u043E\u0434\u0430\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445\u0432\u043A\u043E\u043B\u043B\u0435\u043A\u0446\u0438\u044E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0432\u044B\u0432\u043E\u0434\u0430\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445\u0432\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0437\u044B\u043C\u0435\u043D\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0441\u0442\u0432\u0438\u043C\u0435\u043Ddom \u0440\u0430\u043C\u043A\u0430 \u0440\u0430\u0441\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0440\u0435\u0433\u043B\u0430\u043C\u0435\u043D\u0442\u043D\u043E\u0433\u043E\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u043D\u043E\u0435\u0438\u043C\u044Fxml \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0447\u0442\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0432\u043E\u0434\u043D\u0430\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0430 \u0441\u0432\u044F\u0437\u044C\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u0432\u044B\u0431\u043E\u0440\u0430 \u0441\u0432\u044F\u0437\u044C\u043F\u043E\u0442\u0438\u043F\u0443 \u0441\u0432\u044F\u0437\u044C\u043F\u043E\u0442\u0438\u043F\u0443\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0435\u0440\u0438\u0430\u043B\u0438\u0437\u0430\u0442\u043E\u0440xdto \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043A\u043B\u0438\u0435\u043D\u0442\u0430windows \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u0444\u0430\u0439\u043B \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u044B\u0443\u0434\u043E\u0441\u0442\u043E\u0432\u0435\u0440\u044F\u044E\u0449\u0438\u0445\u0446\u0435\u043D\u0442\u0440\u043E\u0432windows \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u044B\u0443\u0434\u043E\u0441\u0442\u043E\u0432\u0435\u0440\u044F\u044E\u0449\u0438\u0445\u0446\u0435\u043D\u0442\u0440\u043E\u0432\u0444\u0430\u0439\u043B \u0441\u0436\u0430\u0442\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0438\u0441\u0442\u0435\u043C\u043D\u0430\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044E \u0441\u043E\u0447\u0435\u0442\u0430\u043D\u0438\u0435\u043A\u043B\u0430\u0432\u0438\u0448 \u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F\u0434\u0430\u0442\u0430\u043D\u0430\u0447\u0430\u043B\u0430 \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u044B\u0439\u043F\u0435\u0440\u0438\u043E\u0434 \u0441\u0445\u0435\u043C\u0430xml \u0441\u0445\u0435\u043C\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0430\u0431\u043B\u0438\u0447\u043D\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0435\u043C\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0442\u0438\u043F\u0434\u0430\u043D\u043D\u044B\u0445xml \u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0439\u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0444\u0430\u0431\u0440\u0438\u043A\u0430xdto \u0444\u0430\u0439\u043B \u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0439\u043F\u043E\u0442\u043E\u043A \u0444\u0430\u0441\u0435\u0442\u0434\u043B\u0438\u043D\u044Bxs \u0444\u0430\u0441\u0435\u0442\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430\u0440\u0430\u0437\u0440\u044F\u0434\u043E\u0432\u0434\u0440\u043E\u0431\u043D\u043E\u0439\u0447\u0430\u0441\u0442\u0438xs \u0444\u0430\u0441\u0435\u0442\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0432\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0438\u0441\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0439\u0434\u043B\u0438\u043D\u044Bxs \u0444\u0430\u0441\u0435\u0442\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0432\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0438\u0441\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0439\u0434\u043B\u0438\u043D\u044Bxs \u0444\u0430\u0441\u0435\u0442\u043E\u0431\u0440\u0430\u0437\u0446\u0430xs \u0444\u0430\u0441\u0435\u0442\u043E\u0431\u0449\u0435\u0433\u043E\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430\u0440\u0430\u0437\u0440\u044F\u0434\u043E\u0432xs \u0444\u0430\u0441\u0435\u0442\u043F\u0435\u0440\u0435\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043F\u0440\u043E\u0431\u0435\u043B\u044C\u043D\u044B\u0445\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432xs \u0444\u0438\u043B\u044C\u0442\u0440\u0443\u0437\u043B\u043E\u0432dom \u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0430\u044F\u0441\u0442\u0440\u043E\u043A\u0430 \u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u0444\u0440\u0430\u0433\u043C\u0435\u043D\u0442xs \u0445\u0435\u0448\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0446\u0432\u0435\u0442 \u0447\u0442\u0435\u043D\u0438\u0435fastinfoset \u0447\u0442\u0435\u043D\u0438\u0435html \u0447\u0442\u0435\u043D\u0438\u0435json \u0447\u0442\u0435\u043D\u0438\u0435xml \u0447\u0442\u0435\u043D\u0438\u0435zip\u0444\u0430\u0439\u043B\u0430 \u0447\u0442\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445 \u0447\u0442\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430 \u0447\u0442\u0435\u043D\u0438\u0435\u0443\u0437\u043B\u043E\u0432dom \u0448\u0440\u0438\u0444\u0442 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 " + "comsafearray \u0434\u0435\u0440\u0435\u0432\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u043C\u0430\u0441\u0441\u0438\u0432 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 \u0441\u043F\u0438\u0441\u043E\u043A\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0430 \u0442\u0430\u0431\u043B\u0438\u0446\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0430\u044F\u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0430 \u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0435\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 \u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u043C\u0430\u0441\u0441\u0438\u0432 ", ge = "null \u0438\u0441\u0442\u0438\u043D\u0430 \u043B\u043E\u0436\u044C \u043D\u0435\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043E", he = e.inherit(e.NUMBER_MODE), Te = {
+    const n = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]+", i = "\u0434\u0430\u043B\u0435\u0435 " + "\u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0432\u044B\u0437\u0432\u0430\u0442\u044C\u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u0434\u043B\u044F \u0435\u0441\u043B\u0438 \u0438 \u0438\u0437 \u0438\u043B\u0438 \u0438\u043D\u0430\u0447\u0435 \u0438\u043D\u0430\u0447\u0435\u0435\u0441\u043B\u0438 \u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u043A\u0430\u0436\u0434\u043E\u0433\u043E \u043A\u043E\u043D\u0435\u0446\u0435\u0441\u043B\u0438 \u043A\u043E\u043D\u0435\u0446\u043F\u043E\u043F\u044B\u0442\u043A\u0438 \u043A\u043E\u043D\u0435\u0446\u0446\u0438\u043A\u043B\u0430 \u043D\u0435 \u043D\u043E\u0432\u044B\u0439 \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043F\u0435\u0440\u0435\u043C \u043F\u043E \u043F\u043E\u043A\u0430 \u043F\u043E\u043F\u044B\u0442\u043A\u0430 \u043F\u0440\u0435\u0440\u0432\u0430\u0442\u044C \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u0442\u043E\u0433\u0434\u0430 \u0446\u0438\u043A\u043B \u044D\u043A\u0441\u043F\u043E\u0440\u0442 ", c = "\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0438\u0437\u0444\u0430\u0439\u043B\u0430 " + "\u0432\u0435\u0431\u043A\u043B\u0438\u0435\u043D\u0442 \u0432\u043C\u0435\u0441\u0442\u043E \u0432\u043D\u0435\u0448\u043D\u0435\u0435\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u043A\u043B\u0438\u0435\u043D\u0442 \u043A\u043E\u043D\u0435\u0446\u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u043B\u0438\u0435\u043D\u0442 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0441\u0435\u0440\u0432\u0435\u0440 \u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0435 \u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0435\u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435 \u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0435\u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435\u0431\u0435\u0437\u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u0430 \u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435 \u043D\u0430\u0441\u0435\u0440\u0432\u0435\u0440\u0435\u0431\u0435\u0437\u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u0430 \u043E\u0431\u043B\u0430\u0441\u0442\u044C \u043F\u0435\u0440\u0435\u0434 \u043F\u043E\u0441\u043B\u0435 \u0441\u0435\u0440\u0432\u0435\u0440 \u0442\u043E\u043B\u0441\u0442\u044B\u0439\u043A\u043B\u0438\u0435\u043D\u0442\u043E\u0431\u044B\u0447\u043D\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0442\u043E\u043B\u0441\u0442\u044B\u0439\u043A\u043B\u0438\u0435\u043D\u0442\u0443\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u043C\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0442\u043E\u043D\u043A\u0438\u0439\u043A\u043B\u0438\u0435\u043D\u0442 ", u = "\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0440\u0430\u043D\u0438\u0446 \u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0440\u043E\u043A \u0441\u0438\u043C\u0432\u043E\u043B\u0442\u0430\u0431\u0443\u043B\u044F\u0446\u0438\u0438 ", d = "ansitooem oemtoansi \u0432\u0432\u0435\u0441\u0442\u0438\u0432\u0438\u0434\u0441\u0443\u0431\u043A\u043E\u043D\u0442\u043E \u0432\u0432\u0435\u0441\u0442\u0438\u043F\u0435\u0440\u0435\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u0435 \u0432\u0432\u0435\u0441\u0442\u0438\u043F\u0435\u0440\u0438\u043E\u0434 \u0432\u0432\u0435\u0441\u0442\u0438\u043F\u043B\u0430\u043D\u0441\u0447\u0435\u0442\u043E\u0432 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439\u043F\u043B\u0430\u043D\u0441\u0447\u0435\u0442\u043E\u0432 \u0434\u0430\u0442\u0430\u0433\u043E\u0434 \u0434\u0430\u0442\u0430\u043C\u0435\u0441\u044F\u0446 \u0434\u0430\u0442\u0430\u0447\u0438\u0441\u043B\u043E \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0441\u0442\u0440\u043E\u043A\u0443 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0437\u0441\u0442\u0440\u043E\u043A\u0438 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0438\u0431 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043A\u043E\u0434\u0441\u0438\u043C\u0432 \u043A\u043E\u043D\u0433\u043E\u0434\u0430 \u043A\u043E\u043D\u0435\u0446\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0431\u0438 \u043A\u043E\u043D\u0435\u0446\u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043D\u043D\u043E\u0433\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0431\u0438 \u043A\u043E\u043D\u0435\u0446\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430 \u043A\u043E\u043D\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043A\u043E\u043D\u043C\u0435\u0441\u044F\u0446\u0430 \u043A\u043E\u043D\u043D\u0435\u0434\u0435\u043B\u0438 \u043B\u043E\u0433 \u043B\u043E\u043310 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u0441\u0443\u0431\u043A\u043E\u043D\u0442\u043E \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043D\u0430\u0431\u043E\u0440\u0430\u043F\u0440\u0430\u0432 \u043D\u0430\u0437\u043D\u0430\u0447\u0438\u0442\u044C\u0432\u0438\u0434 \u043D\u0430\u0437\u043D\u0430\u0447\u0438\u0442\u044C\u0441\u0447\u0435\u0442 \u043D\u0430\u0439\u0442\u0438\u0441\u0441\u044B\u043B\u043A\u0438 \u043D\u0430\u0447\u0430\u043B\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0431\u0438 \u043D\u0430\u0447\u0430\u043B\u043E\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430 \u043D\u0430\u0447\u0433\u043E\u0434\u0430 \u043D\u0430\u0447\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043D\u0430\u0447\u043C\u0435\u0441\u044F\u0446\u0430 \u043D\u0430\u0447\u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u043E\u043C\u0435\u0440\u0434\u043D\u044F\u0433\u043E\u0434\u0430 \u043D\u043E\u043C\u0435\u0440\u0434\u043D\u044F\u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u043E\u043C\u0435\u0440\u043D\u0435\u0434\u0435\u043B\u0438\u0433\u043E\u0434\u0430 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0430\u0441\u0447\u0435\u0442\u043E\u0432 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439\u043F\u043B\u0430\u043D\u0441\u0447\u0435\u0442\u043E\u0432 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439\u044F\u0437\u044B\u043A \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u043E\u043A\u043D\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0439 \u043F\u0435\u0440\u0438\u043E\u0434\u0441\u0442\u0440 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u0430\u0442\u0443\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u043E\u0442\u0431\u043E\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u043E\u0437\u0438\u0446\u0438\u044E\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0443\u0441\u0442\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0442\u0430 \u043F\u0440\u0435\u0444\u0438\u043A\u0441\u0430\u0432\u0442\u043E\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u0438 \u043F\u0440\u043E\u043F\u0438\u0441\u044C \u043F\u0443\u0441\u0442\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u043C \u0440\u0430\u0437\u043E\u0431\u0440\u0430\u0442\u044C\u043F\u043E\u0437\u0438\u0446\u0438\u044E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u043D\u0430 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u043F\u043E \u0441\u0438\u043C\u0432 \u0441\u043E\u0437\u0434\u0430\u0442\u044C\u043E\u0431\u044A\u0435\u043A\u0442 \u0441\u0442\u0430\u0442\u0443\u0441\u0432\u043E\u0437\u0432\u0440\u0430\u0442\u0430 \u0441\u0442\u0440\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u0441\u0442\u0440\u043E\u043A \u0441\u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u043F\u043E\u0437\u0438\u0446\u0438\u044E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0441\u0447\u0435\u0442\u043F\u043E\u043A\u043E\u0434\u0443 \u0442\u0435\u043A\u0443\u0449\u0435\u0435\u0432\u0440\u0435\u043C\u044F \u0442\u0438\u043F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0441\u0442\u0440 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0442\u0430\u043D\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0442\u0430\u043F\u043E \u0444\u0438\u043A\u0441\u0448\u0430\u0431\u043B\u043E\u043D \u0448\u0430\u0431\u043B\u043E\u043D ", E = "acos asin atan base64\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 base64\u0441\u0442\u0440\u043E\u043A\u0430 cos exp log log10 pow sin sqrt tan xml\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 xml\u0441\u0442\u0440\u043E\u043A\u0430 xml\u0442\u0438\u043F xml\u0442\u0438\u043F\u0437\u043D\u0447 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0435\u043E\u043A\u043D\u043E \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C\u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0431\u0443\u043B\u0435\u0432\u043E \u0432\u0432\u0435\u0441\u0442\u0438\u0434\u0430\u0442\u0443 \u0432\u0432\u0435\u0441\u0442\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432\u0432\u0435\u0441\u0442\u0438\u0441\u0442\u0440\u043E\u043A\u0443 \u0432\u0432\u0435\u0441\u0442\u0438\u0447\u0438\u0441\u043B\u043E \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C\u0447\u0442\u0435\u043D\u0438\u044Fxml \u0432\u043E\u043F\u0440\u043E\u0441 \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432\u0440\u0435\u0433 \u0432\u044B\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0443\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0443\u043F\u0440\u0430\u0432\u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u0432\u044B\u0447\u0438\u0441\u043B\u0438\u0442\u044C \u0433\u043E\u0434 \u0434\u0430\u043D\u043D\u044B\u0435\u0444\u043E\u0440\u043C\u044B\u0432\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u0430\u0442\u0430 \u0434\u0435\u043D\u044C \u0434\u0435\u043D\u044C\u0433\u043E\u0434\u0430 \u0434\u0435\u043D\u044C\u043D\u0435\u0434\u0435\u043B\u0438 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C\u043C\u0435\u0441\u044F\u0446 \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0434\u043B\u044F\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0440\u0430\u0431\u043E\u0442\u0443\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044C\u0440\u0430\u0431\u043E\u0442\u0443\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0432\u043D\u0435\u0448\u043D\u044E\u044E\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u0443 \u0437\u0430\u043A\u0440\u044B\u0442\u044C\u0441\u043F\u0440\u0430\u0432\u043A\u0443 \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044Cjson \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044Cxml \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044C\u0434\u0430\u0442\u0443json \u0437\u0430\u043F\u0438\u0441\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0441\u0432\u043E\u0439\u0441\u0442\u0432 \u0437\u0430\u043F\u0440\u043E\u0441\u0438\u0442\u044C\u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0437\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0437\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C\u0441\u0438\u0441\u0442\u0435\u043C\u0443 \u0437\u0430\u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044E \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0434\u0430\u043D\u043D\u044B\u0435\u0444\u043E\u0440\u043C\u044B \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0441\u0442\u0440\u043E\u043A\u0443\u0432\u043D\u0443\u0442\u0440 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0432\u0444\u0430\u0439\u043B \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043E \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0437\u0441\u0442\u0440\u043E\u043A\u0438\u0432\u043D\u0443\u0442\u0440 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0437\u0444\u0430\u0439\u043B\u0430 \u0438\u0437xml\u0442\u0438\u043F\u0430 \u0438\u043C\u043F\u043E\u0440\u0442\u043C\u043E\u0434\u0435\u043B\u0438xdto \u0438\u043C\u044F\u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u0430 \u0438\u043C\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0438\u043D\u0438\u0446\u0438\u0430\u043B\u0438\u0437\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435\u0434\u0430\u043D\u043D\u044B\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F\u043E\u0431\u043E\u0448\u0438\u0431\u043A\u0435 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0438\u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0433\u043E\u0443\u0441\u0442\u0440\u043E\u0439\u0441\u0442\u0432\u0430 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0445\u0444\u0430\u0439\u043B\u043E\u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u0442\u0440\u043E\u043A\u0443 \u043A\u043E\u0434\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043A\u043E\u0434\u0441\u0438\u043C\u0432\u043E\u043B\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u0430\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043A\u043E\u043D\u0435\u0446\u0433\u043E\u0434\u0430 \u043A\u043E\u043D\u0435\u0446\u0434\u043D\u044F \u043A\u043E\u043D\u0435\u0446\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043A\u043E\u043D\u0435\u0446\u043C\u0435\u0441\u044F\u0446\u0430 \u043A\u043E\u043D\u0435\u0446\u043C\u0438\u043D\u0443\u0442\u044B \u043A\u043E\u043D\u0435\u0446\u043D\u0435\u0434\u0435\u043B\u0438 \u043A\u043E\u043D\u0435\u0446\u0447\u0430\u0441\u0430 \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0430\u0434\u0438\u043D\u0430\u043C\u0438\u0447\u0435\u0441\u043A\u0438 \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0430 \u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0444\u043E\u0440\u043C\u044B \u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0444\u0430\u0439\u043B \u043A\u0440\u0430\u0442\u043A\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043E\u0448\u0438\u0431\u043A\u0438 \u043B\u0435\u0432 \u043C\u0430\u043A\u0441 \u043C\u0435\u0441\u0442\u043D\u043E\u0435\u0432\u0440\u0435\u043C\u044F \u043C\u0435\u0441\u044F\u0446 \u043C\u0438\u043D \u043C\u0438\u043D\u0443\u0442\u0430 \u043C\u043E\u043D\u043E\u043F\u043E\u043B\u044C\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u043D\u0430\u0439\u0442\u0438 \u043D\u0430\u0439\u0442\u0438\u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u0441\u0438\u043C\u0432\u043E\u043B\u044Bxml \u043D\u0430\u0439\u0442\u0438\u043E\u043A\u043D\u043E\u043F\u043E\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0441\u0441\u044B\u043B\u043A\u0435 \u043D\u0430\u0439\u0442\u0438\u043F\u043E\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u0435\u043D\u0430\u0443\u0434\u0430\u043B\u0435\u043D\u0438\u0435 \u043D\u0430\u0439\u0442\u0438\u043F\u043E\u0441\u0441\u044B\u043B\u043A\u0430\u043C \u043D\u0430\u0439\u0442\u0438\u0444\u0430\u0439\u043B\u044B \u043D\u0430\u0447\u0430\u043B\u043E\u0433\u043E\u0434\u0430 \u043D\u0430\u0447\u0430\u043B\u043E\u0434\u043D\u044F \u043D\u0430\u0447\u0430\u043B\u043E\u043A\u0432\u0430\u0440\u0442\u0430\u043B\u0430 \u043D\u0430\u0447\u0430\u043B\u043E\u043C\u0435\u0441\u044F\u0446\u0430 \u043D\u0430\u0447\u0430\u043B\u043E\u043C\u0438\u043D\u0443\u0442\u044B \u043D\u0430\u0447\u0430\u043B\u043E\u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u0430\u0447\u0430\u043B\u043E\u0447\u0430\u0441\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u0437\u0430\u043F\u0440\u043E\u0441\u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0430\u0447\u0430\u0442\u044C\u0437\u0430\u043F\u0443\u0441\u043A\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0447\u0430\u0442\u044C\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0432\u043D\u0435\u0448\u043D\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044B \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u0438\u0441\u043A\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0445\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0435\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u0437\u0444\u0430\u0439\u043B\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0435\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430 \u043D\u0430\u0447\u0430\u0442\u044C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044E \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0434\u0430\u043B\u0435\u043D\u0438\u0435\u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0443\u0432\u043D\u0435\u0448\u043D\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044B \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0443\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u043D\u0430\u0447\u0430\u0442\u044C\u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0443\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u043D\u0435\u0434\u0435\u043B\u044F\u0433\u043E\u0434\u0430 \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E\u0441\u0442\u044C\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F \u043D\u043E\u043C\u0435\u0440\u0441\u0435\u0430\u043D\u0441\u0430\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043D\u043E\u043C\u0435\u0440\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043D\u0440\u0435\u0433 \u043D\u0441\u0442\u0440 \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u044E\u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u044B\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043F\u0440\u0435\u0440\u044B\u0432\u0430\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043E\u0431\u044A\u0435\u0434\u0438\u043D\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u043E\u043A\u0440 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u043E\u0448\u0438\u0431\u043A\u0438 \u043E\u043F\u043E\u0432\u0435\u0441\u0442\u0438\u0442\u044C \u043E\u043F\u043E\u0432\u0435\u0441\u0442\u0438\u0442\u044C\u043E\u0431\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0438 \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0437\u0430\u043F\u0440\u043E\u0441\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0438\u043D\u0434\u0435\u043A\u0441\u0441\u043F\u0440\u0430\u0432\u043A\u0438 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0441\u043E\u0434\u0435\u0440\u0436\u0430\u043D\u0438\u0435\u0441\u043F\u0440\u0430\u0432\u043A\u0438 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0441\u043F\u0440\u0430\u0432\u043A\u0443 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0444\u043E\u0440\u043C\u0443 \u043E\u0442\u043A\u0440\u044B\u0442\u044C\u0444\u043E\u0440\u043C\u0443\u043C\u043E\u0434\u0430\u043B\u044C\u043D\u043E \u043E\u0442\u043C\u0435\u043D\u0438\u0442\u044C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044E \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u044C\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043F\u0435\u0440\u0435\u0439\u0442\u0438\u043F\u043E\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0441\u0441\u044B\u043B\u043A\u0435 \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0432\u043D\u0435\u0448\u043D\u044E\u044E\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u0443 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0437\u0430\u043F\u0440\u043E\u0441\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043E\u0448\u0438\u0431\u043A\u0438 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0434\u0430\u0442\u044B \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0441\u0442\u0440\u043E\u043A\u0438 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u0432\u043E\u0434\u0447\u0438\u0441\u043B\u0430 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0432\u043E\u043F\u0440\u043E\u0441 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E\u043E\u0431\u043E\u0448\u0438\u0431\u043A\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u043D\u0430\u043A\u0430\u0440\u0442\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C\u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u043D\u043E\u0435\u0438\u043C\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044Ccom\u043E\u0431\u044A\u0435\u043A\u0442 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044Cxml\u0442\u0438\u043F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0430\u0434\u0440\u0435\u0441\u043F\u043E\u043C\u0435\u0441\u0442\u043E\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u044E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0443\u0441\u0435\u0430\u043D\u0441\u043E\u0432 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F\u0441\u043F\u044F\u0449\u0435\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0441\u044B\u043F\u0430\u043D\u0438\u044F\u043F\u0430\u0441\u0441\u0438\u0432\u043D\u043E\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0432\u044B\u0431\u043E\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u043A\u043E\u0434\u044B\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u0447\u0430\u0441\u043E\u0432\u044B\u0435\u043F\u043E\u044F\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u043E\u0442\u0431\u043E\u0440\u0430\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0437\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u043C\u044F\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u043C\u044F\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E\u044D\u043A\u0440\u0430\u043D\u043E\u0432\u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043A\u0440\u0430\u0442\u043A\u0438\u0439\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u043A\u0435\u0442\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u0441\u043A\u0443\u0432\u0441\u0435\u0444\u0430\u0439\u043B\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u0441\u043A\u0443\u0432\u0441\u0435\u0444\u0430\u0439\u043B\u044B\u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0430\u0441\u043A\u0443\u0432\u0441\u0435\u0444\u0430\u0439\u043B\u044B\u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0435\u0441\u0442\u043E\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0430\u0434\u0440\u0435\u0441\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E\u0434\u043B\u0438\u043D\u0443\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u0443\u044E\u0441\u0441\u044B\u043B\u043A\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u0443\u044E\u0441\u0441\u044B\u043B\u043A\u0443\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u0449\u0438\u0439\u043C\u0430\u043A\u0435\u0442 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0431\u0449\u0443\u044E\u0444\u043E\u0440\u043C\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u043A\u043D\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u043F\u0435\u0440\u0430\u0442\u0438\u0432\u043D\u0443\u044E\u043E\u0442\u043C\u0435\u0442\u043A\u0443\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043E\u0442\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0433\u043E\u0440\u0435\u0436\u0438\u043C\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445\u043E\u043F\u0446\u0438\u0439\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u043E\u043B\u043D\u043E\u0435\u0438\u043C\u044F\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u043E\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0445\u0441\u0441\u044B\u043B\u043E\u043A \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0443\u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u0438\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u043F\u0443\u0442\u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u043F\u0443\u0442\u0438\u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C\u043F\u0443\u0442\u0438\u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u0435\u0430\u043D\u0441\u044B\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435\u043E\u0431\u044A\u0435\u043A\u0442\u0430\u0438\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u043E\u0441\u0442\u0430\u0432\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430odata \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0443\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0441\u0435\u0430\u043D\u0441\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u043E\u0440\u043C\u0443 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u0443\u044E\u043E\u043F\u0446\u0438\u044E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u0443\u044E\u043E\u043F\u0446\u0438\u044E\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438\u043E\u0441 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0432\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0435\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u043F\u0440\u0430\u0432 \u043F\u0440\u0430\u0432\u043E\u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043A\u043E\u0434\u0430\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0435\u0440\u0438\u043E\u0434\u0430 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0430\u0432\u0430 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0447\u0430\u0441\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u044F\u0441\u0430 \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u043A\u0440\u0430\u0442\u0438\u0442\u044C\u0440\u0430\u0431\u043E\u0442\u0443\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043F\u0440\u0438\u0432\u0438\u043B\u0435\u0433\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C\u0432\u044B\u0437\u043E\u0432 \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044Cjson \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044Cxml \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044C\u0434\u0430\u0442\u0443json \u043F\u0443\u0441\u0442\u0430\u044F\u0441\u0442\u0440\u043E\u043A\u0430 \u0440\u0430\u0431\u043E\u0447\u0438\u0439\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0434\u043B\u044F\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u044C\u0444\u0430\u0439\u043B \u0440\u0430\u0437\u043E\u0440\u0432\u0430\u0442\u044C\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u0441\u0432\u043D\u0435\u0448\u043D\u0438\u043C\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u043E\u043C\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u0442\u0440\u043E\u043A\u0443 \u0440\u043E\u043B\u044C\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430 \u0441\u0435\u043A\u0443\u043D\u0434\u0430 \u0441\u0438\u0433\u043D\u0430\u043B \u0441\u0438\u043C\u0432\u043E\u043B \u0441\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0441\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u043B\u0435\u0442\u043D\u0435\u0433\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0441\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u044C\u0431\u0443\u0444\u0435\u0440\u044B\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043E\u0437\u0434\u0430\u0442\u044C\u043A\u0430\u0442\u0430\u043B\u043E\u0433 \u0441\u043E\u0437\u0434\u0430\u0442\u044C\u0444\u0430\u0431\u0440\u0438\u043A\u0443xdto \u0441\u043E\u043A\u0440\u043B \u0441\u043E\u043A\u0440\u043B\u043F \u0441\u043E\u043A\u0440\u043F \u0441\u043E\u043E\u0431\u0449\u0438\u0442\u044C \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441\u0440\u0435\u0434 \u0441\u0442\u0440\u0434\u043B\u0438\u043D\u0430 \u0441\u0442\u0440\u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044F\u043D\u0430 \u0441\u0442\u0440\u0437\u0430\u043C\u0435\u043D\u0438\u0442\u044C \u0441\u0442\u0440\u043D\u0430\u0439\u0442\u0438 \u0441\u0442\u0440\u043D\u0430\u0447\u0438\u043D\u0430\u0435\u0442\u0441\u044F\u0441 \u0441\u0442\u0440\u043E\u043A\u0430 \u0441\u0442\u0440\u043E\u043A\u0430\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0441\u0442\u0440\u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u0442\u0440\u043E\u043A\u0443 \u0441\u0442\u0440\u0440\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u044C \u0441\u0442\u0440\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u044C \u0441\u0442\u0440\u0441\u0440\u0430\u0432\u043D\u0438\u0442\u044C \u0441\u0442\u0440\u0447\u0438\u0441\u043B\u043E\u0432\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0439 \u0441\u0442\u0440\u0447\u0438\u0441\u043B\u043E\u0441\u0442\u0440\u043E\u043A \u0441\u0442\u0440\u0448\u0430\u0431\u043B\u043E\u043D \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0434\u0430\u0442\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0434\u0430\u0442\u0430\u0441\u0435\u0430\u043D\u0441\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0430\u043B\u044C\u043D\u0430\u044F\u0434\u0430\u0442\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F\u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0430\u043B\u044C\u043D\u0430\u044F\u0434\u0430\u0442\u0430\u0432\u043C\u0438\u043B\u043B\u0438\u0441\u0435\u043A\u0443\u043D\u0434\u0430\u0445 \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E\u0448\u0440\u0438\u0444\u0442\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u043A\u043E\u0434\u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0443\u0441\u043A\u0430 \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u044F\u0437\u044B\u043A \u0442\u0435\u043A\u0443\u0449\u0438\u0439\u044F\u0437\u044B\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0442\u0438\u043F \u0442\u0438\u043F\u0437\u043D\u0447 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u044F\u0430\u043A\u0442\u0438\u0432\u043D\u0430 \u0442\u0440\u0435\u0433 \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u0434\u0430\u043D\u043D\u044B\u0435\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u0438\u0437\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430 \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u043E\u0431\u044A\u0435\u043A\u0442\u044B \u0443\u0434\u0430\u043B\u0438\u0442\u044C\u0444\u0430\u0439\u043B\u044B \u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0430\u043B\u044C\u043D\u043E\u0435\u0432\u0440\u0435\u043C\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C\u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0443\u0441\u0435\u0430\u043D\u0441\u043E\u0432 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u043D\u0435\u0448\u043D\u044E\u044E\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u0443 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F\u0441\u043F\u044F\u0449\u0435\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u0437\u0430\u0441\u044B\u043F\u0430\u043D\u0438\u044F\u043F\u0430\u0441\u0441\u0438\u0432\u043D\u043E\u0433\u043E\u0441\u0435\u0430\u043D\u0441\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0432\u0440\u0435\u043C\u044F\u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043A\u0440\u0430\u0442\u043A\u0438\u0439\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E\u0434\u043B\u0438\u043D\u0443\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043C\u043E\u043D\u043E\u043F\u043E\u043B\u044C\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043E\u0442\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0433\u043E\u0440\u0435\u0436\u0438\u043C\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445\u043E\u043F\u0446\u0438\u0439\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u0440\u0438\u0432\u0438\u043B\u0435\u0433\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0443\u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u0438\u043F\u0430\u0440\u043E\u043B\u0435\u0439\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0435\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0442\u044B\u0441\u0444\u0430\u0439\u043B\u0430\u043C\u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u0441\u0432\u043D\u0435\u0448\u043D\u0438\u043C\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u043E\u043C\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435\u043E\u0431\u044A\u0435\u043A\u0442\u0430\u0438\u0444\u043E\u0440\u043C\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0441\u043E\u0441\u0442\u0430\u0432\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430odata \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C\u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0441\u0435\u0430\u043D\u0441\u0430 \u0444\u043E\u0440\u043C\u0430\u0442 \u0446\u0435\u043B \u0447\u0430\u0441 \u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441 \u0447\u0430\u0441\u043E\u0432\u043E\u0439\u043F\u043E\u044F\u0441\u0441\u0435\u0430\u043D\u0441\u0430 \u0447\u0438\u0441\u043B\u043E \u0447\u0438\u0441\u043B\u043E\u043F\u0440\u043E\u043F\u0438\u0441\u044C\u044E \u044D\u0442\u043E\u0430\u0434\u0440\u0435\u0441\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430 ", m = "ws\u0441\u0441\u044B\u043B\u043A\u0438 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u043A\u0430\u0440\u0442\u0438\u043D\u043E\u043A \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u043C\u0430\u043A\u0435\u0442\u043E\u0432\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u0441\u0442\u0438\u043B\u0435\u0439 \u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u044B \u0432\u043D\u0435\u0448\u043D\u0438\u0435\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u043D\u0435\u0448\u043D\u0438\u0435\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u0432\u043D\u0435\u0448\u043D\u0438\u0435\u043E\u0442\u0447\u0435\u0442\u044B \u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0435\u043F\u043E\u043A\u0443\u043F\u043A\u0438 \u0433\u043B\u0430\u0432\u043D\u044B\u0439\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u0433\u043B\u0430\u0432\u043D\u044B\u0439\u0441\u0442\u0438\u043B\u044C \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B \u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u044B\u0435\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u044F \u0436\u0443\u0440\u043D\u0430\u043B\u044B\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u0437\u0430\u0434\u0430\u0447\u0438 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F\u043E\u0431\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0431\u043E\u0447\u0435\u0439\u0434\u0430\u0442\u044B \u0438\u0441\u0442\u043E\u0440\u0438\u044F\u0440\u0430\u0431\u043E\u0442\u044B\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u044B \u043A\u0440\u0438\u0442\u0435\u0440\u0438\u0438\u043E\u0442\u0431\u043E\u0440\u0430 \u043C\u0435\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0435 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u043A\u043B\u0430\u043C\u044B \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0430\u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u044B\u0445\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0439 \u043E\u0442\u0447\u0435\u0442\u044B \u043F\u0430\u043D\u0435\u043B\u044C\u0437\u0430\u0434\u0430\u0447\u043E\u0441 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0437\u0430\u043F\u0443\u0441\u043A\u0430 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0441\u0435\u0430\u043D\u0441\u0430 \u043F\u0435\u0440\u0435\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u044F \u043F\u043B\u0430\u043D\u044B\u0432\u0438\u0434\u043E\u0432\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043F\u043B\u0430\u043D\u044B\u0432\u0438\u0434\u043E\u0432\u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A \u043F\u043B\u0430\u043D\u044B\u043E\u0431\u043C\u0435\u043D\u0430 \u043F\u043B\u0430\u043D\u044B\u0441\u0447\u0435\u0442\u043E\u0432 \u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0439\u043F\u043E\u0438\u0441\u043A \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439\u0431\u0430\u0437\u044B \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0445\u043F\u043E\u043A\u0443\u043F\u043E\u043A \u0440\u0430\u0431\u043E\u0447\u0430\u044F\u0434\u0430\u0442\u0430 \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u0431\u0443\u0445\u0433\u0430\u043B\u0442\u0435\u0440\u0438\u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u044B\u0441\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u0440\u0435\u0433\u043B\u0430\u043C\u0435\u043D\u0442\u043D\u044B\u0435\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0441\u0435\u0440\u0438\u0430\u043B\u0438\u0437\u0430\u0442\u043E\u0440xdto \u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0438 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u0433\u0435\u043E\u043F\u043E\u0437\u0438\u0446\u0438\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043C\u0443\u043B\u044C\u0442\u0438\u043C\u0435\u0434\u0438\u0430 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0440\u0435\u043A\u043B\u0430\u043C\u044B \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u043F\u043E\u0447\u0442\u044B \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430\u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0438\u0438 \u0444\u0430\u0431\u0440\u0438\u043A\u0430xdto \u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435\u043F\u043E\u0442\u043E\u043A\u0438 \u0444\u043E\u043D\u043E\u0432\u044B\u0435\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0432\u043E\u0442\u0447\u0435\u0442\u043E\u0432 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u0434\u0430\u043D\u043D\u044B\u0445\u0444\u043E\u0440\u043C \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043E\u0431\u0449\u0438\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0438\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u0434\u0438\u043D\u0430\u043C\u0438\u0447\u0435\u0441\u043A\u0438\u0445\u0441\u043F\u0438\u0441\u043A\u043E\u0432 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0438\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043E\u0442\u0447\u0435\u0442\u043E\u0432 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u0441\u0438\u0441\u0442\u0435\u043C\u043D\u044B\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A ", b = u + d + E + m, g = "web\u0446\u0432\u0435\u0442\u0430 windows\u0446\u0432\u0435\u0442\u0430 windows\u0448\u0440\u0438\u0444\u0442\u044B \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430\u043A\u0430\u0440\u0442\u0438\u043D\u043E\u043A \u0440\u0430\u043C\u043A\u0438\u0441\u0442\u0438\u043B\u044F \u0441\u0438\u043C\u0432\u043E\u043B\u044B \u0446\u0432\u0435\u0442\u0430\u0441\u0442\u0438\u043B\u044F \u0448\u0440\u0438\u0444\u0442\u044B\u0441\u0442\u0438\u043B\u044F ", f = "\u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445\u0444\u043E\u0440\u043C\u044B\u0432\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430\u0445 \u0430\u0432\u0442\u043E\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u044F\u0432\u0444\u043E\u0440\u043C\u0435 \u0430\u0432\u0442\u043E\u0440\u0430\u0437\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0435\u0441\u0435\u0440\u0438\u0439 \u0430\u043D\u0438\u043C\u0430\u0446\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0432\u044B\u0440\u0430\u0432\u043D\u0438\u0432\u0430\u043D\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0438\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u043E\u0432 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u0432\u044B\u0441\u043E\u0442\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F\u043F\u0440\u043E\u043A\u0440\u0443\u0442\u043A\u0430\u0444\u043E\u0440\u043C\u044B \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430 \u0432\u0438\u0434\u0433\u0440\u0443\u043F\u043F\u044B\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0434\u0435\u043A\u043E\u0440\u0430\u0446\u0438\u0438\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u0438\u0434\u043A\u043D\u043E\u043F\u043A\u0438\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u043F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0430\u0442\u0435\u043B\u044F \u0432\u0438\u0434\u043F\u043E\u0434\u043F\u0438\u0441\u0435\u0439\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435 \u0432\u0438\u0434\u043F\u043E\u043B\u044F\u0444\u043E\u0440\u043C\u044B \u0432\u0438\u0434\u0444\u043B\u0430\u0436\u043A\u0430 \u0432\u043B\u0438\u044F\u043D\u0438\u0435\u0440\u0430\u0437\u043C\u0435\u0440\u0430\u043D\u0430\u043F\u0443\u0437\u044B\u0440\u0435\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0435\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430 \u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430\u043A\u043E\u043B\u043E\u043D\u043E\u043A \u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430\u043F\u043E\u0434\u0447\u0438\u043D\u0435\u043D\u043D\u044B\u0445\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0444\u043E\u0440\u043C\u044B \u0433\u0440\u0443\u043F\u043F\u044B\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u043F\u0435\u0440\u0435\u0442\u0430\u0441\u043A\u0438\u0432\u0430\u043D\u0438\u044F \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439\u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F\u043F\u0435\u0440\u0435\u0442\u0430\u0441\u043A\u0438\u0432\u0430\u043D\u0438\u044F \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u043C\u0435\u0436\u0434\u0443\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043C\u0438\u0444\u043E\u0440\u043C\u044B \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0432\u044B\u0432\u043E\u0434\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u043B\u043E\u0441\u044B\u043F\u0440\u043E\u043A\u0440\u0443\u0442\u043A\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u043E\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0442\u043E\u0447\u043A\u0438\u0431\u0438\u0440\u0436\u0435\u0432\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0438\u0441\u0442\u043E\u0440\u0438\u044F\u0432\u044B\u0431\u043E\u0440\u0430\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u043E\u0441\u0438\u0442\u043E\u0447\u0435\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0440\u0430\u0437\u043C\u0435\u0440\u0430\u043F\u0443\u0437\u044B\u0440\u044C\u043A\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u0433\u0440\u0443\u043F\u043F\u044B\u043A\u043E\u043C\u0430\u043D\u0434 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C\u0441\u0435\u0440\u0438\u0439 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u043E\u0435\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0434\u0435\u0440\u0435\u0432\u0430 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u043E\u0435\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0441\u043F\u0438\u0441\u043A\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u0434\u0435\u043D\u0434\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u043C\u0435\u0442\u043E\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u043C\u0435\u0442\u043E\u043A\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0432\u043B\u0435\u0433\u0435\u043D\u0434\u0435\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u044B\u043A\u043D\u043E\u043F\u043E\u043A \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0448\u043A\u0430\u043B\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0438\u0437\u043C\u0435\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043A\u043D\u043E\u043F\u043A\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043A\u043D\u043E\u043F\u043A\u0438\u0432\u044B\u0431\u043E\u0440\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043E\u0431\u0441\u0443\u0436\u0434\u0435\u043D\u0438\u0439\u0444\u043E\u0440\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0439\u0433\u0440\u0443\u043F\u043F\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0445\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u043F\u0443\u0437\u044B\u0440\u044C\u043A\u043E\u0432\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u0430\u043D\u0435\u043B\u0438\u043F\u043E\u0438\u0441\u043A\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u044F\u043F\u0440\u0438\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0438 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0440\u0430\u0437\u043C\u0435\u0442\u043A\u0438\u043F\u043E\u043B\u043E\u0441\u044B\u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0444\u043E\u0440\u043C\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043E\u0431\u044B\u0447\u043D\u043E\u0439\u0433\u0440\u0443\u043F\u043F\u044B \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0444\u0438\u0433\u0443\u0440\u044B\u043A\u043D\u043E\u043F\u043A\u0438 \u043F\u0430\u043B\u0438\u0442\u0440\u0430\u0446\u0432\u0435\u0442\u043E\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0439\u0433\u0440\u0443\u043F\u043F\u044B \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0434\u0435\u043D\u0434\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0438\u0441\u043A\u0432\u0442\u0430\u0431\u043B\u0438\u0446\u0435\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438\u043A\u043D\u043E\u043F\u043A\u0438\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u043E\u043C\u0430\u043D\u0434\u043D\u043E\u0439\u043F\u0430\u043D\u0435\u043B\u0438\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043A\u043E\u043C\u0430\u043D\u0434\u043D\u043E\u0439\u043F\u0430\u043D\u0435\u043B\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0444\u043E\u0440\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043E\u043F\u043E\u0440\u043D\u043E\u0439\u0442\u043E\u0447\u043A\u0438\u043E\u0442\u0440\u0438\u0441\u043E\u0432\u043A\u0438 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0434\u043F\u0438\u0441\u0435\u0439\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u0434\u043F\u0438\u0441\u0435\u0439\u0448\u043A\u0430\u043B\u044B\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0438\u0437\u043C\u0435\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u044F\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0441\u0442\u0440\u043E\u043A\u0438\u043F\u043E\u0438\u0441\u043A\u0430 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u043B\u0438\u043D\u0438\u0438 \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u043E\u0438\u0441\u043A\u043E\u043C \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0448\u043A\u0430\u043B\u044B\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043F\u043E\u0440\u044F\u0434\u043E\u043A\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0442\u043E\u0447\u0435\u043A\u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0439\u0433\u0438\u0441\u0442\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E\u0440\u044F\u0434\u043E\u043A\u0441\u0435\u0440\u0438\u0439\u0432\u043B\u0435\u0433\u0435\u043D\u0434\u0435\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0430\u0437\u043C\u0435\u0440\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0448\u043A\u0430\u043B\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0430\u0441\u0442\u044F\u0433\u0438\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u0440\u0435\u0436\u0438\u043C\u0430\u0432\u0442\u043E\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0432\u0432\u043E\u0434\u0430\u0441\u0442\u0440\u043E\u043A\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0431\u043E\u0440\u0430\u043D\u0435\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043D\u043E\u0433\u043E \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0434\u0430\u0442\u044B \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0441\u0442\u0440\u043E\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0440\u0435\u0436\u0438\u043C\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0440\u0435\u0436\u0438\u043C\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0440\u0430\u0437\u043C\u0435\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0441\u0432\u044F\u0437\u0430\u043D\u043D\u043E\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0434\u0438\u0430\u043B\u043E\u0433\u0430\u043F\u0435\u0447\u0430\u0442\u0438 \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0440\u0435\u0436\u0438\u043C\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E\u043E\u043A\u043D\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u043E\u043A\u043D\u0430\u0444\u043E\u0440\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0441\u0435\u0440\u0438\u0438 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u0440\u0438\u0441\u043E\u0432\u043A\u0438\u0441\u0435\u0442\u043A\u0438\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u043B\u0443\u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u043F\u0440\u043E\u0431\u0435\u043B\u043E\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u043D\u0430\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0440\u0435\u0436\u0438\u043C\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043A\u043E\u043B\u043E\u043D\u043A\u0438 \u0440\u0435\u0436\u0438\u043C\u0441\u0433\u043B\u0430\u0436\u0438\u0432\u0430\u043D\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0440\u0435\u0436\u0438\u043C\u0441\u0433\u043B\u0430\u0436\u0438\u0432\u0430\u043D\u0438\u044F\u0438\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u0441\u043F\u0438\u0441\u043A\u0430\u0437\u0430\u0434\u0430\u0447 \u0441\u043A\u0432\u043E\u0437\u043D\u043E\u0435\u0432\u044B\u0440\u0430\u0432\u043D\u0438\u0432\u0430\u043D\u0438\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445\u0444\u043E\u0440\u043C\u044B\u0432\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430\u0445 \u0441\u043F\u043E\u0441\u043E\u0431\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u0442\u0435\u043A\u0441\u0442\u0430\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0448\u043A\u0430\u043B\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0441\u043F\u043E\u0441\u043E\u0431\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0438\u0432\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F\u0433\u0440\u0443\u043F\u043F\u0430\u043A\u043E\u043C\u0430\u043D\u0434 \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0435\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u0435 \u0441\u0442\u0430\u0442\u0443\u0441\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441\u0442\u0438\u043B\u044C\u0441\u0442\u0440\u0435\u043B\u043A\u0438 \u0442\u0438\u043F\u0430\u043F\u043F\u0440\u043E\u043A\u0441\u0438\u043C\u0430\u0446\u0438\u0438\u043B\u0438\u043D\u0438\u0438\u0442\u0440\u0435\u043D\u0434\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0435\u0434\u0438\u043D\u0438\u0446\u044B\u0448\u043A\u0430\u043B\u044B\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0442\u0438\u043F\u0438\u043C\u043F\u043E\u0440\u0442\u0430\u0441\u0435\u0440\u0438\u0439\u0441\u043B\u043E\u044F\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u043C\u0430\u0440\u043A\u0435\u0440\u0430\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043C\u0430\u0440\u043A\u0435\u0440\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0441\u0435\u0440\u0438\u0438\u0441\u043B\u043E\u044F\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0442\u043E\u0447\u0435\u0447\u043D\u043E\u0433\u043E\u043E\u0431\u044A\u0435\u043A\u0442\u0430\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0448\u043A\u0430\u043B\u044B\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043B\u0435\u0433\u0435\u043D\u0434\u044B\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043F\u043E\u0438\u0441\u043A\u0430\u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u043F\u0440\u043E\u0435\u043A\u0446\u0438\u0438\u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u043E\u0432\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u0440\u0430\u043C\u043A\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0441\u0432\u044F\u0437\u0438\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u0433\u0430\u043D\u0442\u0430 \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u043F\u043E\u0441\u0435\u0440\u0438\u044F\u043C\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0442\u043E\u0447\u0435\u043A\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439\u043B\u0438\u043D\u0438\u0438 \u0442\u0438\u043F\u0441\u0442\u043E\u0440\u043E\u043D\u044B\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0442\u0438\u043F\u0444\u043E\u0440\u043C\u044B\u043E\u0442\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u0448\u043A\u0430\u043B\u044B\u0440\u0430\u0434\u0430\u0440\u043D\u043E\u0439\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0444\u0430\u043A\u0442\u043E\u0440\u043B\u0438\u043D\u0438\u0438\u0442\u0440\u0435\u043D\u0434\u0430\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B \u0444\u0438\u0433\u0443\u0440\u0430\u043A\u043D\u043E\u043F\u043A\u0438 \u0444\u0438\u0433\u0443\u0440\u044B\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u043E\u0439\u0441\u0445\u0435\u043C\u044B \u0444\u0438\u043A\u0441\u0430\u0446\u0438\u044F\u0432\u0442\u0430\u0431\u043B\u0438\u0446\u0435 \u0444\u043E\u0440\u043C\u0430\u0442\u0434\u043D\u044F\u0448\u043A\u0430\u043B\u044B\u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0444\u043E\u0440\u043C\u0430\u0442\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0448\u0438\u0440\u0438\u043D\u0430\u043F\u043E\u0434\u0447\u0438\u043D\u0435\u043D\u043D\u044B\u0445\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0444\u043E\u0440\u043C\u044B ", C = "\u0432\u0438\u0434\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F\u0431\u0443\u0445\u0433\u0430\u043B\u0442\u0435\u0440\u0438\u0438 \u0432\u0438\u0434\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0432\u0438\u0434\u0441\u0447\u0435\u0442\u0430 \u0432\u0438\u0434\u0442\u043E\u0447\u043A\u0438\u043C\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0430\u0433\u0440\u0435\u0433\u0430\u0442\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0435\u0436\u0438\u043C\u0430\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u0440\u0435\u0437\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u0430\u0433\u0440\u0435\u0433\u0430\u0442\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0430\u0432\u0442\u043E\u0432\u0440\u0435\u043C\u044F \u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0438\u0441\u0438\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0440\u0435\u0436\u0438\u043C\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u044F\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 ", A = "\u0430\u0432\u0442\u043E\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0439\u043D\u043E\u043C\u0435\u0440\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0430\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0445 ", P = "\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u0446\u0438\u044F\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0438\u0442\u043E\u0433\u043E\u0432\u043A\u043E\u043B\u043E\u043D\u043E\u043A\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0438\u0442\u043E\u0433\u043E\u0432\u0441\u0442\u0440\u043E\u043A\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430\u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0441\u043F\u043E\u0441\u043E\u0431\u0447\u0442\u0435\u043D\u0438\u044F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0434\u0432\u0443\u0441\u0442\u043E\u0440\u043E\u043D\u043D\u0435\u0439\u043F\u0435\u0447\u0430\u0442\u0438 \u0442\u0438\u043F\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043A\u0443\u0440\u0441\u043E\u0440\u043E\u0432\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u0440\u0438\u0441\u0443\u043D\u043A\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043B\u0438\u043D\u0438\u0438\u044F\u0447\u0435\u0439\u043A\u0438\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u0435\u0440\u0435\u0445\u043E\u0434\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u043B\u0438\u043D\u0438\u0439\u0441\u0432\u043E\u0434\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0442\u0435\u043A\u0441\u0442\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0440\u0438\u0441\u0443\u043D\u043A\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0441\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0443\u0437\u043E\u0440\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u0444\u0430\u0439\u043B\u0430\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u043E\u0447\u043D\u043E\u0441\u0442\u044C\u043F\u0435\u0447\u0430\u0442\u0438 \u0447\u0435\u0440\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u044F\u0441\u0442\u0440\u0430\u043D\u0438\u0446 ", k = "\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u0432\u0440\u0435\u043C\u0435\u043D\u0438\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0449\u0438\u043A\u0430 ", w = "\u0442\u0438\u043F\u0444\u0430\u0439\u043B\u0430\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0433\u043E\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 ", q = "\u043E\u0431\u0445\u043E\u0434\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u0437\u0430\u043F\u0438\u0441\u0438\u0437\u0430\u043F\u0440\u043E\u0441\u0430 ", L = "\u0432\u0438\u0434\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044F\u043E\u0442\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044F\u043E\u0442\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0438\u0442\u043E\u0433\u043E\u0432 ", X = "\u0434\u043E\u0441\u0442\u0443\u043F\u043A\u0444\u0430\u0439\u043B\u0443 \u0440\u0435\u0436\u0438\u043C\u0434\u0438\u0430\u043B\u043E\u0433\u0430\u0432\u044B\u0431\u043E\u0440\u0430\u0444\u0430\u0439\u043B\u0430 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u0444\u0430\u0439\u043B\u0430 ", h = "\u0442\u0438\u043F\u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044F\u0437\u0430\u043F\u0440\u043E\u0441\u0430 ", y = "\u0432\u0438\u0434\u0434\u0430\u043D\u043D\u044B\u0445\u0430\u043D\u0430\u043B\u0438\u0437\u0430 \u043C\u0435\u0442\u043E\u0434\u043A\u043B\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u0438 \u0442\u0438\u043F\u0435\u0434\u0438\u043D\u0438\u0446\u044B\u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430\u0432\u0440\u0435\u043C\u0435\u043D\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0447\u0438\u0441\u043B\u043E\u0432\u044B\u0445\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0438\u0441\u043A\u0430\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u0434\u0435\u0440\u0435\u0432\u043E\u0440\u0435\u0448\u0435\u043D\u0438\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043A\u043B\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043E\u0431\u0449\u0430\u044F\u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0438\u0441\u043A\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0438\u0441\u043A\u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0435\u0439 \u0442\u0438\u043F\u043A\u043E\u043B\u043E\u043D\u043A\u0438\u043C\u043E\u0434\u0435\u043B\u0438\u043F\u0440\u043E\u0433\u043D\u043E\u0437\u0430 \u0442\u0438\u043F\u043C\u0435\u0440\u044B\u0440\u0430\u0441\u0441\u0442\u043E\u044F\u043D\u0438\u044F\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0442\u0441\u0435\u0447\u0435\u043D\u0438\u044F\u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0438 \u0442\u0438\u043F\u043F\u043E\u043B\u044F\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u0438\u0437\u0430\u0446\u0438\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0443\u043F\u043E\u0440\u044F\u0434\u043E\u0447\u0438\u0432\u0430\u043D\u0438\u044F\u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0441\u0441\u043E\u0446\u0438\u0430\u0446\u0438\u0438\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0443\u043F\u043E\u0440\u044F\u0434\u043E\u0447\u0438\u0432\u0430\u043D\u0438\u044F\u0448\u0430\u0431\u043B\u043E\u043D\u043E\u0432\u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0435\u0439\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0443\u043F\u0440\u043E\u0449\u0435\u043D\u0438\u044F\u0434\u0435\u0440\u0435\u0432\u0430\u0440\u0435\u0448\u0435\u043D\u0438\u0439 ", B = "ws\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430 \u0432\u0430\u0440\u0438\u0430\u043D\u0442xpathxs \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0437\u0430\u043F\u0438\u0441\u0438\u0434\u0430\u0442\u044Bjson \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043F\u0440\u043E\u0441\u0442\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u0432\u0438\u0434\u0433\u0440\u0443\u043F\u043F\u044B\u043C\u043E\u0434\u0435\u043B\u0438xs \u0432\u0438\u0434\u0444\u0430\u0441\u0435\u0442\u0430xdto \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044Fdom \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u043F\u0440\u043E\u0441\u0442\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u0441\u043E\u0441\u0442\u0430\u0432\u043D\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u0441\u0445\u0435\u043C\u044Bxs \u0437\u0430\u043F\u0440\u0435\u0449\u0435\u043D\u043D\u044B\u0435\u043F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438xs \u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F\u0433\u0440\u0443\u043F\u043F\u043F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438xs \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xs \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F\u0438\u0434\u0435\u043D\u0442\u0438\u0447\u043D\u043E\u0441\u0442\u0438xs \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F\u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0441\u0442\u0432\u0438\u043C\u0435\u043Dxs \u043C\u0435\u0442\u043E\u0434\u043D\u0430\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u044Fxs \u043C\u043E\u0434\u0435\u043B\u044C\u0441\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0433\u043Exs \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0442\u0438\u043F\u0430xml \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435\u043F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438xs \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043F\u0440\u043E\u0431\u0435\u043B\u044C\u043D\u044B\u0445\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432xs \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u0441\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0433\u043Exs \u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u043E\u0442\u0431\u043E\u0440\u0430\u0443\u0437\u043B\u043E\u0432dom \u043F\u0435\u0440\u0435\u043D\u043E\u0441\u0441\u0442\u0440\u043E\u043Ajson \u043F\u043E\u0437\u0438\u0446\u0438\u044F\u0432\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0435dom \u043F\u0440\u043E\u0431\u0435\u043B\u044C\u043D\u044B\u0435\u0441\u0438\u043C\u0432\u043E\u043B\u044Bxml \u0442\u0438\u043F\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xml \u0442\u0438\u043F\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fjson \u0442\u0438\u043F\u043A\u0430\u043D\u043E\u043D\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043Exml \u0442\u0438\u043F\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044Bxs \u0442\u0438\u043F\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438xml \u0442\u0438\u043F\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430domxpath \u0442\u0438\u043F\u0443\u0437\u043B\u0430dom \u0442\u0438\u043F\u0443\u0437\u043B\u0430xml \u0444\u043E\u0440\u043C\u0430xml \u0444\u043E\u0440\u043C\u0430\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u044Fxs \u0444\u043E\u0440\u043C\u0430\u0442\u0434\u0430\u0442\u044Bjson \u044D\u043A\u0440\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432json ", M = "\u0432\u0438\u0434\u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0432\u043B\u043E\u0436\u0435\u043D\u043D\u044B\u0445\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0438\u0442\u043E\u0433\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u0435\u0439\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0431\u0443\u0445\u0433\u0430\u043B\u0442\u0435\u0440\u0441\u043A\u043E\u0433\u043E\u043E\u0441\u0442\u0430\u0442\u043A\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0432\u044B\u0432\u043E\u0434\u0430\u0442\u0435\u043A\u0441\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0433\u0440\u0443\u043F\u043F\u044B\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432\u043E\u0442\u0431\u043E\u0440\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u0430\u043F\u043E\u043B\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043C\u0430\u043A\u0435\u0442\u0430\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043C\u0430\u043A\u0435\u0442\u0430\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0441\u0442\u0430\u0442\u043A\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F\u0442\u0435\u043A\u0441\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u0441\u0432\u044F\u0437\u0438\u043D\u0430\u0431\u043E\u0440\u043E\u0432\u0434\u0430\u043D\u043D\u044B\u0445\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043B\u0435\u0433\u0435\u043D\u0434\u044B\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u044B\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u043E\u0442\u0431\u043E\u0440\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043F\u043E\u0441\u043E\u0431\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0430\u0432\u0442\u043E\u043F\u043E\u0437\u0438\u0446\u0438\u044F\u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\u0432\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0435\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0444\u0438\u043A\u0441\u0430\u0446\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0443\u0441\u043B\u043E\u0432\u043D\u043E\u0433\u043E\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 ", ie = "\u0432\u0430\u0436\u043D\u043E\u0441\u0442\u044C\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u0442\u0435\u043A\u0441\u0442\u0430\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0441\u043F\u043E\u0441\u043E\u0431\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0432\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0441\u043F\u043E\u0441\u043E\u0431\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043D\u0435ascii\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0442\u0435\u043A\u0441\u0442\u0430\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043F\u0440\u043E\u0442\u043E\u043A\u043E\u043B\u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u044B \u0441\u0442\u0430\u0442\u0443\u0441\u0440\u0430\u0437\u0431\u043E\u0440\u0430\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0433\u043E\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F ", ce = "\u0440\u0435\u0436\u0438\u043C\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438\u0437\u0430\u043F\u0438\u0441\u0438\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0441\u0442\u0430\u0442\u0443\u0441\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438\u0437\u0430\u043F\u0438\u0441\u0438\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 ", _e = "\u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0432\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0440\u0435\u0436\u0438\u043C\u0432\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0432\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0440\u0435\u0436\u0438\u043C\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u0430\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0442\u0438\u043F\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0430\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0432\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 ", re = "\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u043A\u0430\u0438\u043C\u0435\u043D\u0444\u0430\u0439\u043B\u043E\u0432\u0432zip\u0444\u0430\u0439\u043B\u0435 \u043C\u0435\u0442\u043E\u0434\u0441\u0436\u0430\u0442\u0438\u044Fzip \u043C\u0435\u0442\u043E\u0434\u0448\u0438\u0444\u0440\u043E\u0432\u0430\u043D\u0438\u044Fzip \u0440\u0435\u0436\u0438\u043C\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043F\u0443\u0442\u0435\u0439\u0444\u0430\u0439\u043B\u043E\u0432zip \u0440\u0435\u0436\u0438\u043C\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\u043F\u043E\u0434\u043A\u0430\u0442\u0430\u043B\u043E\u0433\u043E\u0432zip \u0440\u0435\u0436\u0438\u043C\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u043F\u0443\u0442\u0435\u0439zip \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0441\u0436\u0430\u0442\u0438\u044Fzip ", U = "\u0437\u0432\u0443\u043A\u043E\u0432\u043E\u0435\u043E\u043F\u043E\u0432\u0435\u0449\u0435\u043D\u0438\u0435 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0435\u0440\u0435\u0445\u043E\u0434\u0430\u043A\u0441\u0442\u0440\u043E\u043A\u0435 \u043F\u043E\u0437\u0438\u0446\u0438\u044F\u0432\u043F\u043E\u0442\u043E\u043A\u0435 \u043F\u043E\u0440\u044F\u0434\u043E\u043A\u0431\u0430\u0439\u0442\u043E\u0432 \u0440\u0435\u0436\u0438\u043C\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0435\u0436\u0438\u043C\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u043E\u0439\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0435\u0440\u0432\u0438\u0441\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0445\u043F\u043E\u043A\u0443\u043F\u043E\u043A \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u0444\u043E\u043D\u043E\u0432\u043E\u0433\u043E\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0442\u0438\u043F\u043F\u043E\u0434\u043F\u0438\u0441\u0447\u0438\u043A\u0430\u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u044B\u0445\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0437\u0430\u0449\u0438\u0449\u0435\u043D\u043D\u043E\u0433\u043E\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044Fftp ", H = "\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u043E\u0440\u044F\u0434\u043A\u0430\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F\u043F\u0435\u0440\u0438\u043E\u0434\u0430\u043C\u0438\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u043A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u043E\u0439\u0442\u043E\u0447\u043A\u0438\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u043E\u0431\u044A\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E\u0439\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043F\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F\u0441\u0445\u0435\u043C\u044B\u0437\u0430\u043F\u0440\u043E\u0441\u0430 ", Z = "http\u043C\u0435\u0442\u043E\u0434 \u0430\u0432\u0442\u043E\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0430\u0432\u0442\u043E\u043F\u0440\u0435\u0444\u0438\u043A\u0441\u043D\u043E\u043C\u0435\u0440\u0430\u0437\u0430\u0434\u0430\u0447\u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0433\u043E\u044F\u0437\u044B\u043A\u0430 \u0432\u0438\u0434\u0438\u0435\u0440\u0430\u0440\u0445\u0438\u0438 \u0432\u0438\u0434\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0432\u043D\u0435\u0448\u043D\u0435\u0433\u043E\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0437\u0430\u043F\u0438\u0441\u044C\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0439\u043F\u0440\u0438\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435\u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0435\u0439 \u0438\u043D\u0434\u0435\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0431\u0430\u0437\u044B\u043F\u043B\u0430\u043D\u0430\u0432\u0438\u0434\u043E\u0432\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0431\u044B\u0441\u0442\u0440\u043E\u0433\u043E\u0432\u044B\u0431\u043E\u0440\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u0434\u0447\u0438\u043D\u0435\u043D\u0438\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0430\u0437\u0434\u0435\u043B\u044F\u0435\u043C\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u043F\u0435\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0435\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0432\u0438\u0434\u0430\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0432\u0438\u0434\u0430\u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0437\u0430\u0434\u0430\u0447\u0438 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u043B\u0430\u043D\u0430\u043E\u0431\u043C\u0435\u043D\u0430 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435\u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u0447\u0435\u0442\u0430 \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u0433\u0440\u0430\u043D\u0438\u0446\u044B\u043F\u0440\u0438\u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0438 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u043D\u043E\u043C\u0435\u0440\u0430\u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u043D\u043E\u043C\u0435\u0440\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043F\u0435\u0440\u0438\u043E\u0434\u0438\u0447\u043D\u043E\u0441\u0442\u044C\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0441\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u043C\u044B\u0445\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0439\u043F\u043E\u0438\u0441\u043A\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u043A\u0435 \u043F\u0440\u0438\u043D\u0430\u0434\u043B\u0435\u0436\u043D\u043E\u0441\u0442\u044C\u043E\u0431\u044A\u0435\u043A\u0442\u0430 \u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0430\u0443\u0442\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u0438\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0439\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u043E\u0431\u0449\u0435\u0433\u043E\u0440\u0435\u043A\u0432\u0438\u0437\u0438\u0442\u0430 \u0440\u0435\u0436\u0438\u043C\u0430\u0432\u0442\u043E\u043D\u0443\u043C\u0435\u0440\u0430\u0446\u0438\u0438\u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0438\u0441\u0438\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430 \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u043C\u043E\u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u0440\u0435\u0436\u0438\u043C\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0438\u043D\u0445\u0440\u043E\u043D\u043D\u044B\u0445\u0432\u044B\u0437\u043E\u0432\u043E\u0432\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0439\u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u044B\u0438\u0432\u043D\u0435\u0448\u043D\u0438\u0445\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0433\u043E\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0435\u0430\u043D\u0441\u043E\u0432 \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445\u0432\u044B\u0431\u043E\u0440\u0430\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u043A\u0435 \u0440\u0435\u0436\u0438\u043C\u0441\u043E\u0432\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u0438 \u0440\u0435\u0436\u0438\u043C\u0441\u043E\u0432\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u0438\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u0440\u0435\u0436\u0438\u043C\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u043E\u0439\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u0441\u0435\u0440\u0438\u0438\u043A\u043E\u0434\u043E\u0432\u043F\u043B\u0430\u043D\u0430\u0432\u0438\u0434\u043E\u0432\u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A \u0441\u0435\u0440\u0438\u0438\u043A\u043E\u0434\u043E\u0432\u043F\u043B\u0430\u043D\u0430\u0441\u0447\u0435\u0442\u043E\u0432 \u0441\u0435\u0440\u0438\u0438\u043A\u043E\u0434\u043E\u0432\u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0435\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435 \u0441\u043F\u043E\u0441\u043E\u0431\u0432\u044B\u0431\u043E\u0440\u0430 \u0441\u043F\u043E\u0441\u043E\u0431\u043F\u043E\u0438\u0441\u043A\u0430\u0441\u0442\u0440\u043E\u043A\u0438\u043F\u0440\u0438\u0432\u0432\u043E\u0434\u0435\u043F\u043E\u0441\u0442\u0440\u043E\u043A\u0435 \u0441\u043F\u043E\u0441\u043E\u0431\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0442\u0438\u043F\u0434\u0430\u043D\u043D\u044B\u0445\u0442\u0430\u0431\u043B\u0438\u0446\u044B\u0432\u043D\u0435\u0448\u043D\u0435\u0433\u043E\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043A\u043E\u0434\u0430\u043F\u043B\u0430\u043D\u0430\u0432\u0438\u0434\u043E\u0432\u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0442\u0438\u043F\u043A\u043E\u0434\u0430\u0441\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u0442\u0438\u043F\u043C\u0430\u043A\u0435\u0442\u0430 \u0442\u0438\u043F\u043D\u043E\u043C\u0435\u0440\u0430\u0431\u0438\u0437\u043D\u0435\u0441\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u0430 \u0442\u0438\u043F\u043D\u043E\u043C\u0435\u0440\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 \u0442\u0438\u043F\u043D\u043E\u043C\u0435\u0440\u0430\u0437\u0430\u0434\u0430\u0447\u0438 \u0442\u0438\u043F\u0444\u043E\u0440\u043C\u044B \u0443\u0434\u0430\u043B\u0435\u043D\u0438\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0439 ", te = "\u0432\u0430\u0436\u043D\u043E\u0441\u0442\u044C\u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0430\u0444\u043E\u0440\u043C\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E\u0448\u0440\u0438\u0444\u0442\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0439\u0434\u0430\u0442\u044B\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0438\u0434\u0433\u0440\u0430\u043D\u0438\u0446\u044B \u0432\u0438\u0434\u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0438 \u0432\u0438\u0434\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0432\u0438\u0434\u0440\u0430\u043C\u043A\u0438 \u0432\u0438\u0434\u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0446\u0432\u0435\u0442\u0430 \u0432\u0438\u0434\u0447\u0438\u0441\u043B\u043E\u0432\u043E\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u0430\u044F\u0434\u043B\u0438\u043D\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0439\u0437\u043D\u0430\u043A \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435byteordermark \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043C\u0435\u0442\u0430\u0434\u0430\u043D\u043D\u044B\u0445\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0439\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043A\u043B\u0430\u0432\u0438\u0448\u0430 \u043A\u043E\u0434\u0432\u043E\u0437\u0432\u0440\u0430\u0442\u0430\u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u043A\u043E\u0434\u0438\u0440\u043E\u0432\u043A\u0430xbase \u043A\u043E\u0434\u0438\u0440\u043E\u0432\u043A\u0430\u0442\u0435\u043A\u0441\u0442\u0430 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u043E\u0438\u0441\u043A\u0430 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u043A\u0438 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0435\u0434\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u0438\u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043F\u0430\u043D\u0435\u043B\u0438\u0440\u0430\u0437\u0434\u0435\u043B\u043E\u0432 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u0434\u0438\u0430\u043B\u043E\u0433\u0430\u0432\u043E\u043F\u0440\u043E\u0441 \u0440\u0435\u0436\u0438\u043C\u0437\u0430\u043F\u0443\u0441\u043A\u0430\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u043A\u0440\u0443\u0433\u043B\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u0444\u043E\u0440\u043C\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0440\u0435\u0436\u0438\u043C\u043F\u043E\u043B\u043D\u043E\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E\u043F\u043E\u0438\u0441\u043A\u0430 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u043E\u0433\u043E\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u0432\u043D\u0435\u0448\u043D\u0435\u0433\u043E\u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u043F\u043E\u0441\u043E\u0431\u0432\u044B\u0431\u043E\u0440\u0430\u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u0430windows \u0441\u043F\u043E\u0441\u043E\u0431\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0442\u0440\u043E\u043A\u0438 \u0441\u0442\u0430\u0442\u0443\u0441\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0432\u043D\u0435\u0448\u043D\u0435\u0439\u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u044B \u0442\u0438\u043F\u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u044B \u0442\u0438\u043F\u043F\u043E\u0432\u0435\u0434\u0435\u043D\u0438\u044F\u043A\u043B\u0430\u0432\u0438\u0448\u0438enter \u0442\u0438\u043F\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\u043E\u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0438\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\u0431\u0430\u0437\u044B\u0434\u0430\u043D\u043D\u044B\u0445 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0438\u0437\u043E\u043B\u044F\u0446\u0438\u0438\u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0439 \u0445\u0435\u0448\u0444\u0443\u043D\u043A\u0446\u0438\u044F \u0447\u0430\u0441\u0442\u0438\u0434\u0430\u0442\u044B", Ee = g + f + C + A + P + k + w + q + L + X + h + y + B + M + ie + ce + _e + re + U + H + Z + te, Ge = "com\u043E\u0431\u044A\u0435\u043A\u0442 ftp\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 http\u0437\u0430\u043F\u0440\u043E\u0441 http\u0441\u0435\u0440\u0432\u0438\u0441\u043E\u0442\u0432\u0435\u0442 http\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 ws\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F ws\u043F\u0440\u043E\u043A\u0441\u0438 xbase \u0430\u043D\u0430\u043B\u0438\u0437\u0434\u0430\u043D\u043D\u044B\u0445 \u0430\u043D\u043D\u043E\u0442\u0430\u0446\u0438\u044Fxs \u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u0431\u0443\u0444\u0435\u0440\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u0432\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435xs \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440\u0441\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0445\u0447\u0438\u0441\u0435\u043B \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0430\u044F\u0441\u0445\u0435\u043C\u0430 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0435\u043A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B \u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0430\u044F\u0441\u0445\u0435\u043C\u0430 \u0433\u0440\u0443\u043F\u043F\u0430\u043C\u043E\u0434\u0435\u043B\u0438xs \u0434\u0430\u043D\u043D\u044B\u0435\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0435\u0434\u0430\u043D\u043D\u044B\u0435 \u0434\u0435\u043D\u0434\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0430 \u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0430\u0433\u0430\u043D\u0442\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0432\u044B\u0431\u043E\u0440\u0430\u0444\u0430\u0439\u043B\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0432\u044B\u0431\u043E\u0440\u0430\u0446\u0432\u0435\u0442\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0432\u044B\u0431\u043E\u0440\u0430\u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u0438\u0430\u043B\u043E\u0433\u0440\u0430\u0441\u043F\u0438\u0441\u0430\u043D\u0438\u044F\u0440\u0435\u0433\u043B\u0430\u043C\u0435\u043D\u0442\u043D\u043E\u0433\u043E\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0434\u0438\u0430\u043B\u043E\u0433\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0433\u043E\u043F\u0435\u0440\u0438\u043E\u0434\u0430 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442dom \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442html \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430\u0446\u0438\u044Fxs \u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C\u043E\u0435\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0435 \u0437\u0430\u043F\u0438\u0441\u044Cdom \u0437\u0430\u043F\u0438\u0441\u044Cfastinfoset \u0437\u0430\u043F\u0438\u0441\u044Chtml \u0437\u0430\u043F\u0438\u0441\u044Cjson \u0437\u0430\u043F\u0438\u0441\u044Cxml \u0437\u0430\u043F\u0438\u0441\u044Czip\u0444\u0430\u0439\u043B\u0430 \u0437\u0430\u043F\u0438\u0441\u044C\u0434\u0430\u043D\u043D\u044B\u0445 \u0437\u0430\u043F\u0438\u0441\u044C\u0442\u0435\u043A\u0441\u0442\u0430 \u0437\u0430\u043F\u0438\u0441\u044C\u0443\u0437\u043B\u043E\u0432dom \u0437\u0430\u043F\u0440\u043E\u0441 \u0437\u0430\u0449\u0438\u0449\u0435\u043D\u043D\u043E\u0435\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435openssl \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F\u043F\u043E\u043B\u0435\u0439\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0437\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430 \u0438\u043C\u043F\u043E\u0440\u0442xs \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u0430 \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0435\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u043E\u0447\u0442\u043E\u0432\u044B\u0439\u043F\u0440\u043E\u0444\u0438\u043B\u044C \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u043F\u0440\u043E\u043A\u0441\u0438 \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F\u0434\u043B\u044F\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044Fxs \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xs \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0445\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0442\u0435\u0440\u0430\u0442\u043E\u0440\u0443\u0437\u043B\u043E\u0432dom \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0430 \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0434\u0430\u0442\u044B \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0434\u0432\u043E\u0438\u0447\u043D\u044B\u0445\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0441\u0442\u0440\u043E\u043A\u0438 \u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B\u0447\u0438\u0441\u043B\u0430 \u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u0449\u0438\u043A\u043C\u0430\u043A\u0435\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u0449\u0438\u043A\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u043C\u0430\u043A\u0435\u0442\u0430\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0444\u043E\u0440\u043C\u0430\u0442\u043D\u043E\u0439\u0441\u0442\u0440\u043E\u043A\u0438 \u043B\u0438\u043D\u0438\u044F \u043C\u0430\u043A\u0435\u0442\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u0430\u043A\u0435\u0442\u043E\u0431\u043B\u0430\u0441\u0442\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u0430\u043A\u0435\u0442\u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u044F\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u0430\u0441\u043A\u0430xs \u043C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u043D\u0430\u0431\u043E\u0440\u0441\u0445\u0435\u043Cxml \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u0441\u0435\u0440\u0438\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438json \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u043A\u0430\u0440\u0442\u0438\u043D\u043E\u043A \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0431\u0445\u043E\u0434\u0434\u0435\u0440\u0435\u0432\u0430dom \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430xs \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435\u043D\u043E\u0442\u0430\u0446\u0438\u0438xs \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430xs \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0434\u043E\u0441\u0442\u0443\u043F\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u043E\u0442\u043A\u0430\u0437\u0432\u0434\u043E\u0441\u0442\u0443\u043F\u0435\u0436\u0443\u0440\u043D\u0430\u043B\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043E\u0432\u043A\u0438\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u043F\u0435\u0440\u0435\u0434\u0430\u0432\u0430\u0435\u043C\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u0430 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0442\u0438\u043F\u043E\u0432 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u044B\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0433\u0440\u0443\u043F\u043F\u044B\u043C\u043E\u0434\u0435\u043B\u0438xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F\u0438\u0434\u0435\u043D\u0442\u0438\u0447\u043D\u043E\u0441\u0442\u0438xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u043F\u0440\u043E\u0441\u0442\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0441\u043E\u0441\u0442\u0430\u0432\u043D\u043E\u0433\u043E\u0442\u0438\u043F\u0430xs \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435\u0442\u0438\u043F\u0430\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430dom \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044Fxpathxs \u043E\u0442\u0431\u043E\u0440\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u0430\u043A\u0435\u0442\u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0435\u043C\u044B\u0445\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0432\u044B\u0431\u043E\u0440\u0430 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0437\u0430\u043F\u0438\u0441\u0438json \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0437\u0430\u043F\u0438\u0441\u0438xml \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B\u0447\u0442\u0435\u043D\u0438\u044Fxml \u043F\u0435\u0440\u0435\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435xs \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0449\u0438\u043A \u043F\u043E\u043B\u0435\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u043B\u0435\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044Cdom \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0437\u0430\u043F\u0440\u043E\u0441\u0430 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u043E\u0442\u0447\u0435\u0442\u0430 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u043E\u0442\u0447\u0435\u0442\u0430\u0430\u043D\u0430\u043B\u0438\u0437\u0430\u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0445\u0435\u043Cxml \u043F\u043E\u0442\u043E\u043A \u043F\u043E\u0442\u043E\u043A\u0432\u043F\u0430\u043C\u044F\u0442\u0438 \u043F\u043E\u0447\u0442\u0430 \u043F\u043E\u0447\u0442\u043E\u0432\u043E\u0435\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u0435xsl \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043A\u043A\u0430\u043D\u043E\u043D\u0438\u0447\u0435\u0441\u043A\u043E\u043C\u0443xml \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0432\u044B\u0432\u043E\u0434\u0430\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445\u0432\u043A\u043E\u043B\u043B\u0435\u043A\u0446\u0438\u044E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0432\u044B\u0432\u043E\u0434\u0430\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445\u0432\u0442\u0430\u0431\u043B\u0438\u0447\u043D\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0440\u0430\u0437\u044B\u043C\u0435\u043D\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0441\u0442\u0432\u0438\u043C\u0435\u043Ddom \u0440\u0430\u043C\u043A\u0430 \u0440\u0430\u0441\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0440\u0435\u0433\u043B\u0430\u043C\u0435\u043D\u0442\u043D\u043E\u0433\u043E\u0437\u0430\u0434\u0430\u043D\u0438\u044F \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u043D\u043E\u0435\u0438\u043C\u044Fxml \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0447\u0442\u0435\u043D\u0438\u044F\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0432\u043E\u0434\u043D\u0430\u044F\u0434\u0438\u0430\u0433\u0440\u0430\u043C\u043C\u0430 \u0441\u0432\u044F\u0437\u044C\u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u0432\u044B\u0431\u043E\u0440\u0430 \u0441\u0432\u044F\u0437\u044C\u043F\u043E\u0442\u0438\u043F\u0443 \u0441\u0432\u044F\u0437\u044C\u043F\u043E\u0442\u0438\u043F\u0443\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0435\u0440\u0438\u0430\u043B\u0438\u0437\u0430\u0442\u043E\u0440xdto \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043A\u043B\u0438\u0435\u043D\u0442\u0430windows \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043A\u043B\u0438\u0435\u043D\u0442\u0430\u0444\u0430\u0439\u043B \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043A\u0440\u0438\u043F\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u044B\u0443\u0434\u043E\u0441\u0442\u043E\u0432\u0435\u0440\u044F\u044E\u0449\u0438\u0445\u0446\u0435\u043D\u0442\u0440\u043E\u0432windows \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u044B\u0443\u0434\u043E\u0441\u0442\u043E\u0432\u0435\u0440\u044F\u044E\u0449\u0438\u0445\u0446\u0435\u043D\u0442\u0440\u043E\u0432\u0444\u0430\u0439\u043B \u0441\u0436\u0430\u0442\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445 \u0441\u0438\u0441\u0442\u0435\u043C\u043D\u0430\u044F\u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044E \u0441\u043E\u0447\u0435\u0442\u0430\u043D\u0438\u0435\u043A\u043B\u0430\u0432\u0438\u0448 \u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F\u0434\u0430\u0442\u0430\u043D\u0430\u0447\u0430\u043B\u0430 \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u044B\u0439\u043F\u0435\u0440\u0438\u043E\u0434 \u0441\u0445\u0435\u043C\u0430xml \u0441\u0445\u0435\u043C\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u0442\u0430\u0431\u043B\u0438\u0447\u043D\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0435\u043C\u043E\u0435\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0442\u0438\u043F\u0434\u0430\u043D\u043D\u044B\u0445xml \u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0439\u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0444\u0430\u0431\u0440\u0438\u043A\u0430xdto \u0444\u0430\u0439\u043B \u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0439\u043F\u043E\u0442\u043E\u043A \u0444\u0430\u0441\u0435\u0442\u0434\u043B\u0438\u043D\u044Bxs \u0444\u0430\u0441\u0435\u0442\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430\u0440\u0430\u0437\u0440\u044F\u0434\u043E\u0432\u0434\u0440\u043E\u0431\u043D\u043E\u0439\u0447\u0430\u0441\u0442\u0438xs \u0444\u0430\u0441\u0435\u0442\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0432\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0438\u0441\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0439\u0434\u043B\u0438\u043D\u044Bxs \u0444\u0430\u0441\u0435\u0442\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0432\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0438\u0441\u043A\u043B\u044E\u0447\u0430\u044E\u0449\u0435\u0433\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0439\u0434\u043B\u0438\u043D\u044Bxs \u0444\u0430\u0441\u0435\u0442\u043E\u0431\u0440\u0430\u0437\u0446\u0430xs \u0444\u0430\u0441\u0435\u0442\u043E\u0431\u0449\u0435\u0433\u043E\u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430\u0440\u0430\u0437\u0440\u044F\u0434\u043E\u0432xs \u0444\u0430\u0441\u0435\u0442\u043F\u0435\u0440\u0435\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u044Fxs \u0444\u0430\u0441\u0435\u0442\u043F\u0440\u043E\u0431\u0435\u043B\u044C\u043D\u044B\u0445\u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432xs \u0444\u0438\u043B\u044C\u0442\u0440\u0443\u0437\u043B\u043E\u0432dom \u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0430\u044F\u0441\u0442\u0440\u043E\u043A\u0430 \u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442 \u0444\u0440\u0430\u0433\u043C\u0435\u043D\u0442xs \u0445\u0435\u0448\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0446\u0432\u0435\u0442 \u0447\u0442\u0435\u043D\u0438\u0435fastinfoset \u0447\u0442\u0435\u043D\u0438\u0435html \u0447\u0442\u0435\u043D\u0438\u0435json \u0447\u0442\u0435\u043D\u0438\u0435xml \u0447\u0442\u0435\u043D\u0438\u0435zip\u0444\u0430\u0439\u043B\u0430 \u0447\u0442\u0435\u043D\u0438\u0435\u0434\u0430\u043D\u043D\u044B\u0445 \u0447\u0442\u0435\u043D\u0438\u0435\u0442\u0435\u043A\u0441\u0442\u0430 \u0447\u0442\u0435\u043D\u0438\u0435\u0443\u0437\u043B\u043E\u0432dom \u0448\u0440\u0438\u0444\u0442 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u0430\u043A\u043E\u043C\u043F\u043E\u043D\u043E\u0432\u043A\u0438\u0434\u0430\u043D\u043D\u044B\u0445 " + "comsafearray \u0434\u0435\u0440\u0435\u0432\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u043C\u0430\u0441\u0441\u0438\u0432 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 \u0441\u043F\u0438\u0441\u043E\u043A\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0430 \u0442\u0430\u0431\u043B\u0438\u0446\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439 \u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0430\u044F\u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0430 \u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0435\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 \u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u043C\u0430\u0441\u0441\u0438\u0432 ", ge = "null \u0438\u0441\u0442\u0438\u043D\u0430 \u043B\u043E\u0436\u044C \u043D\u0435\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043E", he = e.inherit(e.NUMBER_MODE), Te = {
       className: "string",
       begin: '"|\\|',
       end: '"|$',
@@ -6007,12 +5605,12 @@ function MC() {
         keyword: i + c
       },
       contains: [Oe]
-    }, Ue = {
+    }, Fe = {
       className: "symbol",
       begin: "~",
       end: ";|:",
       excludeEnd: !0
-    }, Fe = {
+    }, Be = {
       className: "function",
       variants: [
         {
@@ -6060,28 +5658,28 @@ function MC() {
       keywords: {
         $pattern: n,
         keyword: i,
-        built_in: T,
+        built_in: b,
         class: Ee,
         type: Ge,
         literal: ge
       },
       contains: [
         De,
-        Fe,
+        Be,
         Oe,
-        Ue,
+        Fe,
         he,
         Te,
         pe
       ]
     };
   }
-  return Ai = t, Ai;
+  return yi = t, yi;
 }
-var yi, pd;
-function LC() {
+var Di, pd;
+function GR() {
   if (pd)
-    return yi;
+    return Di;
   pd = 1;
   function t(e) {
     const n = e.regex, r = /^[a-zA-Z][a-zA-Z0-9-]*/, a = [
@@ -6137,12 +5735,12 @@ function LC() {
       ]
     };
   }
-  return yi = t, yi;
+  return Di = t, Di;
 }
-var Di, md;
-function wC() {
+var Mi, md;
+function YR() {
   if (md)
-    return Di;
+    return Mi;
   md = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -6213,12 +5811,12 @@ function wC() {
       ]
     };
   }
-  return Di = t, Di;
+  return Mi = t, Mi;
 }
-var Mi, Ed;
-function xC() {
+var Li, Ed;
+function qR() {
   if (Ed)
-    return Mi;
+    return Li;
   Ed = 1;
   function t(e) {
     const n = e.regex, r = /[a-zA-Z_$][a-zA-Z0-9_$]*/, a = n.concat(
@@ -6354,12 +5952,12 @@ function xC() {
       illegal: /#/
     };
   }
-  return Mi = t, Mi;
+  return Li = t, Li;
 }
-var Li, gd;
-function PC() {
+var wi, gd;
+function HR() {
   if (gd)
-    return Li;
+    return wi;
   gd = 1;
   function t(e) {
     const n = "\\d(_|\\d)*", r = "[eE][-+]?" + n, a = n + "(\\." + n + ")?(" + r + ")?", i = "\\w+", s = n + "#" + i + "(\\." + i + ")?#(" + r + ")?", o = "\\b(" + s + "|" + a + ")", c = "[A-Za-z](_?[A-Za-z0-9.])*", u = `[]\\{\\}%#'"`, d = e.COMMENT("--", "$"), E = {
@@ -6540,12 +6138,12 @@ function PC() {
       ]
     };
   }
-  return Li = t, Li;
+  return wi = t, wi;
 }
-var wi, Sd;
-function kC() {
+var xi, Sd;
+function VR() {
   if (Sd)
-    return wi;
+    return xi;
   Sd = 1;
   function t(e) {
     const n = {
@@ -6691,12 +6289,12 @@ function kC() {
       ]
     };
   }
-  return wi = t, wi;
+  return xi = t, xi;
 }
-var xi, fd;
-function UC() {
+var Pi, fd;
+function zR() {
   if (fd)
-    return xi;
+    return Pi;
   fd = 1;
   function t(e) {
     const n = {
@@ -6779,12 +6377,12 @@ function UC() {
       illegal: /\S/
     };
   }
-  return xi = t, xi;
+  return Pi = t, Pi;
 }
-var Pi, bd;
-function FC() {
+var ki, bd;
+function $R() {
   if (bd)
-    return Pi;
+    return ki;
   bd = 1;
   function t(e) {
     const n = e.regex, r = e.inherit(
@@ -6897,12 +6495,12 @@ function FC() {
       illegal: /\/\/|->|=>|\[\[/
     };
   }
-  return Pi = t, Pi;
+  return ki = t, ki;
 }
-var ki, Td;
-function BC() {
+var Ui, Td;
+function WR() {
   if (Td)
-    return ki;
+    return Ui;
   Td = 1;
   function t(e) {
     const n = "[A-Za-z_][0-9A-Za-z_]*", r = {
@@ -7248,12 +6846,12 @@ function BC() {
       illegal: /#(?!!)/
     };
   }
-  return ki = t, ki;
+  return Ui = t, Ui;
 }
-var Ui, Rd;
-function GC() {
+var Fi, Rd;
+function KR() {
   if (Rd)
-    return Ui;
+    return Fi;
   Rd = 1;
   function t(n) {
     const r = n.regex, a = n.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] }), i = "decltype\\(auto\\)", s = "[a-zA-Z_]\\w*::", o = "<[^<>]+>", c = "(?!struct)(" + i + "|" + r.optional(s) + "[a-zA-Z_]\\w*" + r.optional(o) + ")", u = {
@@ -7286,7 +6884,7 @@ function GC() {
         { begin: "(-?)(\\b0[xX][a-fA-F0-9']+|(\\b[\\d']+(\\.[\\d']*)?|\\.[\\d']+)([eE][-+]?[\\d']+)?)" }
       ],
       relevance: 0
-    }, T = {
+    }, b = {
       className: "meta",
       begin: /#\s*[a-z]+\b/,
       end: /$/,
@@ -7600,7 +7198,7 @@ function GC() {
       )
     }, h = [
       X,
-      T,
+      b,
       u,
       a,
       n.C_BLOCK_COMMENT_MODE,
@@ -7699,7 +7297,7 @@ function GC() {
         u,
         a,
         n.C_BLOCK_COMMENT_MODE,
-        T
+        b
       ]
     };
     return {
@@ -7722,7 +7320,7 @@ function GC() {
         X,
         h,
         [
-          T,
+          b,
           {
             begin: "\\b(deque|list|queue|priority_queue|pair|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array|tuple|optional|variant|function)\\s*<(?!<)",
             end: ">",
@@ -8129,12 +7727,12 @@ function GC() {
       ...r.built_in
     ], i._hints = r._hints, a.name = "Arduino", a.aliases = ["ino"], a.supersetOf = "cpp", a;
   }
-  return Ui = e, Ui;
+  return Fi = e, Fi;
 }
-var Fi, Cd;
-function YC() {
+var Bi, Cd;
+function QR() {
   if (Cd)
-    return Fi;
+    return Bi;
   Cd = 1;
   function t(e) {
     const n = { variants: [
@@ -8211,12 +7809,12 @@ function YC() {
       ]
     };
   }
-  return Fi = t, Fi;
+  return Bi = t, Bi;
 }
-var Bi, Nd;
-function qC() {
+var Gi, Nd;
+function XR() {
   if (Nd)
-    return Bi;
+    return Gi;
   Nd = 1;
   function t(e) {
     const n = e.regex, r = n.concat(/[\p{L}_]/u, n.optional(/[\p{L}0-9_.-]*:/u), /[\p{L}0-9_.-]*/u), a = /[\p{L}0-9._:-]+/u, i = {
@@ -8421,12 +8019,12 @@ function qC() {
       ]
     };
   }
-  return Bi = t, Bi;
+  return Gi = t, Gi;
 }
-var Gi, hd;
-function HC() {
+var Yi, hd;
+function ZR() {
   if (hd)
-    return Gi;
+    return Yi;
   hd = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -8629,12 +8227,12 @@ function HC() {
       ]
     };
   }
-  return Gi = t, Gi;
+  return Yi = t, Yi;
 }
-var Yi, vd;
-function VC() {
+var qi, vd;
+function JR() {
   if (vd)
-    return Yi;
+    return qi;
   vd = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -8847,12 +8445,12 @@ function VC() {
       ]
     };
   }
-  return Yi = t, Yi;
+  return qi = t, qi;
 }
-var qi, Od;
-function zC() {
+var Hi, Od;
+function jR() {
   if (Od)
-    return qi;
+    return Hi;
   Od = 1;
   function t(e) {
     const n = { begin: "`[\\s\\S]" };
@@ -8909,12 +8507,12 @@ function zC() {
       ]
     };
   }
-  return qi = t, qi;
+  return Hi = t, Hi;
 }
-var Hi, Id;
-function $C() {
+var Vi, Id;
+function eC() {
   if (Id)
-    return Hi;
+    return Vi;
   Id = 1;
   function t(e) {
     const n = "ByRef Case Const ContinueCase ContinueLoop Dim Do Else ElseIf EndFunc EndIf EndSelect EndSwitch EndWith Enum Exit ExitLoop For Func Global If In Local Next ReDim Return Select Static Step Switch Then To Until Volatile WEnd While With", r = [
@@ -9054,12 +8652,12 @@ function $C() {
       ]
     };
   }
-  return Hi = t, Hi;
+  return Vi = t, Vi;
 }
-var Vi, Ad;
-function WC() {
+var zi, Ad;
+function tC() {
   if (Ad)
-    return Vi;
+    return zi;
   Ad = 1;
   function t(e) {
     return {
@@ -9107,12 +8705,12 @@ function WC() {
       ]
     };
   }
-  return Vi = t, Vi;
+  return zi = t, zi;
 }
-var zi, yd;
-function KC() {
+var $i, yd;
+function nC() {
   if (yd)
-    return zi;
+    return $i;
   yd = 1;
   function t(e) {
     const n = {
@@ -9169,12 +8767,12 @@ function KC() {
       ]
     };
   }
-  return zi = t, zi;
+  return $i = t, $i;
 }
-var $i, Dd;
-function QC() {
+var Wi, Dd;
+function rC() {
   if (Dd)
-    return $i;
+    return Wi;
   Dd = 1;
   function t(e) {
     const n = e.UNDERSCORE_IDENT_RE, s = {
@@ -9343,12 +8941,12 @@ function QC() {
       ]
     };
   }
-  return $i = t, $i;
+  return Wi = t, Wi;
 }
-var Wi, Md;
-function XC() {
+var Ki, Md;
+function aC() {
   if (Md)
-    return Wi;
+    return Ki;
   Md = 1;
   function t(e) {
     const n = e.regex, r = {}, a = {
@@ -9428,7 +9026,7 @@ function XC() {
     ], m = e.SHEBANG({
       binary: `(${E.join("|")})`,
       relevance: 10
-    }), T = {
+    }), b = {
       className: "function",
       begin: /\w[\w\d_]*\s*\(\s*\)\s*\{/,
       returnBegin: !0,
@@ -9683,7 +9281,7 @@ function XC() {
       contains: [
         m,
         e.SHEBANG(),
-        T,
+        b,
         d,
         e.HASH_COMMENT_MODE,
         s,
@@ -9695,12 +9293,12 @@ function XC() {
       ]
     };
   }
-  return Wi = t, Wi;
+  return Ki = t, Ki;
 }
-var Ki, Ld;
-function ZC() {
+var Qi, Ld;
+function iC() {
   if (Ld)
-    return Ki;
+    return Qi;
   Ld = 1;
   function t(e) {
     return {
@@ -9914,12 +9512,12 @@ function ZC() {
       ]
     };
   }
-  return Ki = t, Ki;
+  return Qi = t, Qi;
 }
-var Qi, wd;
-function JC() {
+var Xi, wd;
+function oC() {
   if (wd)
-    return Qi;
+    return Xi;
   wd = 1;
   function t(e) {
     return {
@@ -9947,12 +9545,12 @@ function JC() {
       ]
     };
   }
-  return Qi = t, Qi;
+  return Xi = t, Xi;
 }
-var Xi, xd;
-function jC() {
+var Zi, xd;
+function sC() {
   if (xd)
-    return Xi;
+    return Zi;
   xd = 1;
   function t(e) {
     const n = {
@@ -9996,12 +9594,12 @@ function jC() {
       ]
     };
   }
-  return Xi = t, Xi;
+  return Zi = t, Zi;
 }
-var Zi, Pd;
-function eN() {
+var Ji, Pd;
+function lC() {
   if (Pd)
-    return Zi;
+    return Ji;
   Pd = 1;
   function t(e) {
     const n = e.regex, r = e.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] }), a = "decltype\\(auto\\)", i = "[a-zA-Z_]\\w*::", s = "<[^<>]+>", o = "(" + a + "|" + n.optional(i) + "[a-zA-Z_]\\w*" + n.optional(s) + ")", c = {
@@ -10055,7 +9653,7 @@ function eN() {
         r,
         e.C_BLOCK_COMMENT_MODE
       ]
-    }, T = {
+    }, b = {
       className: "title",
       begin: n.optional(i) + e.IDENT_RE,
       relevance: 0
@@ -10173,7 +9771,7 @@ function eN() {
         {
           begin: g,
           returnBegin: !0,
-          contains: [e.inherit(T, { className: "title.function" })],
+          contains: [e.inherit(b, { className: "title.function" })],
           relevance: 0
         },
         {
@@ -10248,12 +9846,12 @@ function eN() {
       }
     };
   }
-  return Zi = t, Zi;
+  return Ji = t, Ji;
 }
-var Ji, kd;
-function tN() {
+var ji, kd;
+function cC() {
   if (kd)
-    return Ji;
+    return ji;
   kd = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -10389,12 +9987,12 @@ function tN() {
       ]
     };
   }
-  return Ji = t, Ji;
+  return ji = t, ji;
 }
-var ji, Ud;
-function nN() {
+var eo, Ud;
+function _C() {
   if (Ud)
-    return ji;
+    return eo;
   Ud = 1;
   function t(e) {
     const n = [
@@ -10481,12 +10079,12 @@ function nN() {
       ]
     };
   }
-  return ji = t, ji;
+  return eo = t, eo;
 }
-var eo, Fd;
-function rN() {
+var to, Fd;
+function dC() {
   if (Fd)
-    return eo;
+    return to;
   Fd = 1;
   function t(e) {
     const n = [
@@ -10604,12 +10202,12 @@ function rN() {
       ].concat(s)
     };
   }
-  return eo = t, eo;
+  return to = t, to;
 }
-var to, Bd;
-function aN() {
+var no, Bd;
+function uC() {
   if (Bd)
-    return to;
+    return no;
   Bd = 1;
   function t(e) {
     return {
@@ -10666,12 +10264,12 @@ function aN() {
       ]
     };
   }
-  return to = t, to;
+  return no = t, no;
 }
-var no, Gd;
-function iN() {
+var ro, Gd;
+function pC() {
   if (Gd)
-    return no;
+    return ro;
   Gd = 1;
   function t(e) {
     const n = "a-zA-Z_\\-!.?+*=<>&'", r = "[#]?[" + n + "][" + n + "0-9/;:$#]*", a = "def defonce defprotocol defstruct defmulti defmethod defn- defn defmacro deftype defrecord", i = {
@@ -10715,7 +10313,7 @@ function iN() {
       ";",
       "$",
       { relevance: 0 }
-    ), T = {
+    ), b = {
       className: "literal",
       begin: /\b(true|false|nil)\b/
     }, g = {
@@ -10747,7 +10345,7 @@ function iN() {
       f,
       g,
       o,
-      T,
+      b,
       s
     ], w = {
       beginKeywords: a,
@@ -10787,16 +10385,16 @@ function iN() {
         f,
         g,
         o,
-        T
+        b
       ]
     };
   }
-  return no = t, no;
+  return ro = t, ro;
 }
-var ro, Yd;
-function oN() {
+var ao, Yd;
+function mC() {
   if (Yd)
-    return ro;
+    return ao;
   Yd = 1;
   function t(e) {
     return {
@@ -10813,12 +10411,12 @@ function oN() {
       ]
     };
   }
-  return ro = t, ro;
+  return ao = t, ao;
 }
-var ao, qd;
-function sN() {
+var io, qd;
+function EC() {
   if (qd)
-    return ao;
+    return io;
   qd = 1;
   function t(e) {
     return {
@@ -10839,12 +10437,12 @@ function sN() {
       ]
     };
   }
-  return ao = t, ao;
+  return io = t, io;
 }
-var io, Hd;
-function lN() {
+var oo, Hd;
+function gC() {
   if (Hd)
-    return io;
+    return oo;
   Hd = 1;
   const t = [
     "as",
@@ -10991,7 +10589,7 @@ function lN() {
       "let",
       "function",
       "static"
-    ], m = (q) => (L) => !q.includes(L), T = {
+    ], m = (q) => (L) => !q.includes(L), b = {
       keyword: t.concat(d).filter(m(E)),
       literal: e.concat(u),
       built_in: i.concat(c)
@@ -10999,7 +10597,7 @@ function lN() {
       className: "subst",
       begin: /#\{/,
       end: /\}/,
-      keywords: T
+      keywords: b
     }, C = [
       o.BINARY_NUMBER_MODE,
       o.inherit(o.C_NUMBER_MODE, { starts: {
@@ -11085,7 +10683,7 @@ function lN() {
         {
           begin: /\(/,
           end: /\)/,
-          keywords: T,
+          keywords: b,
           contains: ["self"].concat(C)
         }
       ]
@@ -11106,7 +10704,7 @@ function lN() {
         2: "title.class",
         4: "title.class.inherited"
       },
-      keywords: T
+      keywords: b
     };
     return {
       name: "CoffeeScript",
@@ -11115,7 +10713,7 @@ function lN() {
         "cson",
         "iced"
       ],
-      keywords: T,
+      keywords: b,
       illegal: /\/\*/,
       contains: [
         ...C,
@@ -11155,12 +10753,12 @@ function lN() {
       ]
     };
   }
-  return io = s, io;
+  return oo = s, oo;
 }
-var oo, Vd;
-function cN() {
+var so, Vd;
+function SC() {
   if (Vd)
-    return oo;
+    return so;
   Vd = 1;
   function t(e) {
     return {
@@ -11596,12 +11194,12 @@ function cN() {
       ]
     };
   }
-  return oo = t, oo;
+  return so = t, so;
 }
-var so, zd;
-function _N() {
+var lo, zd;
+function fC() {
   if (zd)
-    return so;
+    return lo;
   zd = 1;
   function t(e) {
     return {
@@ -11680,12 +11278,12 @@ function _N() {
       ]
     };
   }
-  return so = t, so;
+  return lo = t, lo;
 }
-var lo, $d;
-function dN() {
+var co, $d;
+function bC() {
   if ($d)
-    return lo;
+    return co;
   $d = 1;
   function t(e) {
     const n = e.regex, r = e.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] }), a = "decltype\\(auto\\)", i = "[a-zA-Z_]\\w*::", s = "<[^<>]+>", o = "(?!struct)(" + a + "|" + n.optional(i) + "[a-zA-Z_]\\w*" + n.optional(s) + ")", c = {
@@ -11736,7 +11334,7 @@ function dN() {
         r,
         e.C_BLOCK_COMMENT_MODE
       ]
-    }, T = {
+    }, b = {
       className: "title",
       begin: n.optional(i) + e.IDENT_RE,
       relevance: 0
@@ -12081,7 +11679,7 @@ function dN() {
         {
           begin: g,
           returnBegin: !0,
-          contains: [T],
+          contains: [b],
           relevance: 0
         },
         {
@@ -12183,12 +11781,12 @@ function dN() {
       )
     };
   }
-  return lo = t, lo;
+  return co = t, co;
 }
-var co, Wd;
-function uN() {
+var _o, Wd;
+function TC() {
   if (Wd)
-    return co;
+    return _o;
   Wd = 1;
   function t(e) {
     const n = "primitive rsc_template", r = "group clone ms master location colocation order fencing_topology rsc_ticket acl_target acl_group user role tag xml", a = "property rsc_defaults op_defaults", i = "params meta operations op rule attributes utilization", s = "read write deny defined not_defined in_range date spec in ref reference attribute type xpath version and or lt gt tag lte gte eq ne \\", o = "number string", c = "Master Started Slave Stopped start promote demote stop monitor true false";
@@ -12268,12 +11866,12 @@ function uN() {
       ]
     };
   }
-  return co = t, co;
+  return _o = t, _o;
 }
-var _o, Kd;
-function pN() {
+var uo, Kd;
+function RC() {
   if (Kd)
-    return _o;
+    return uo;
   Kd = 1;
   function t(e) {
     const n = "(_?[ui](8|16|32|64|128))?", r = "(_?f(32|64))?", a = "[a-zA-Z_]\\w*[!?=]?", i = "[a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|[=!]~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~|]|//|//=|&[-+*]=?|&\\*\\*|\\[\\][=?]?", s = "[A-Za-z_]\\w*(::\\w+)*(\\?|!)?", o = {
@@ -12360,7 +11958,7 @@ function pN() {
         }
       ],
       relevance: 0
-    }, T = {
+    }, b = {
       className: "string",
       variants: [
         {
@@ -12457,7 +12055,7 @@ function pN() {
     }, A = [
       d,
       m,
-      T,
+      b,
       f,
       g,
       C,
@@ -12552,12 +12150,12 @@ function pN() {
       contains: A
     };
   }
-  return _o = t, _o;
+  return uo = t, uo;
 }
-var uo, Qd;
-function mN() {
+var po, Qd;
+function CC() {
   if (Qd)
-    return uo;
+    return po;
   Qd = 1;
   function t(e) {
     const n = [
@@ -12717,7 +12315,7 @@ function mN() {
       begin: /\{/,
       end: /\}/,
       keywords: o
-    }, T = e.inherit(m, { illegal: /\n/ }), g = {
+    }, b = e.inherit(m, { illegal: /\n/ }), g = {
       className: "string",
       begin: /\$"/,
       end: '"',
@@ -12726,7 +12324,7 @@ function mN() {
         { begin: /\{\{/ },
         { begin: /\}\}/ },
         e.BACKSLASH_ESCAPE,
-        T
+        b
       ]
     }, f = {
       className: "string",
@@ -12744,7 +12342,7 @@ function mN() {
         { begin: /\{\{/ },
         { begin: /\}\}/ },
         { begin: '""' },
-        T
+        b
       ]
     });
     m.contains = [
@@ -12755,7 +12353,7 @@ function mN() {
       e.QUOTE_STRING_MODE,
       u,
       e.C_BLOCK_COMMENT_MODE
-    ], T.contains = [
+    ], b.contains = [
       C,
       g,
       E,
@@ -12921,12 +12519,12 @@ function mN() {
       ]
     };
   }
-  return uo = t, uo;
+  return po = t, po;
 }
-var po, Xd;
-function EN() {
+var mo, Xd;
+function NC() {
   if (Xd)
-    return po;
+    return mo;
   Xd = 1;
   function t(e) {
     return {
@@ -12972,12 +12570,12 @@ function EN() {
       ]
     };
   }
-  return po = t, po;
+  return mo = t, mo;
 }
-var mo, Zd;
-function gN() {
+var Eo, Zd;
+function hC() {
   if (Zd)
-    return mo;
+    return Eo;
   Zd = 1;
   const t = (o) => ({
     IMPORTANT: {
@@ -13555,7 +13153,7 @@ function gN() {
     "z-index"
   ].reverse();
   function s(o) {
-    const c = o.regex, u = t(o), d = { begin: /-(webkit|moz|ms|o)-(?=[a-z])/ }, E = "and or not only", m = /@-?\w[\w]*(-\w+)*/, T = "[a-zA-Z-][a-zA-Z0-9_-]*", g = [
+    const c = o.regex, u = t(o), d = { begin: /-(webkit|moz|ms|o)-(?=[a-z])/ }, E = "and or not only", m = /@-?\w[\w]*(-\w+)*/, b = "[a-zA-Z-][a-zA-Z0-9_-]*", g = [
       o.APOS_STRING_MODE,
       o.QUOTE_STRING_MODE
     ];
@@ -13578,7 +13176,7 @@ function gN() {
         },
         {
           className: "selector-class",
-          begin: "\\." + T,
+          begin: "\\." + b,
           relevance: 0
         },
         u.ATTRIBUTE_SELECTOR_MODE,
@@ -13659,12 +13257,12 @@ function gN() {
       ]
     };
   }
-  return mo = s, mo;
+  return Eo = s, Eo;
 }
-var Eo, Jd;
-function SN() {
+var go, Jd;
+function vC() {
   if (Jd)
-    return Eo;
+    return go;
   Jd = 1;
   function t(e) {
     const n = {
@@ -13672,7 +13270,7 @@ function SN() {
       keyword: "abstract alias align asm assert auto body break byte case cast catch class const continue debug default delete deprecated do else enum export extern final finally for foreach foreach_reverse|10 goto if immutable import in inout int interface invariant is lazy macro mixin module new nothrow out override package pragma private protected public pure ref return scope shared static struct super switch synchronized template this throw try typedef typeid typeof union unittest version void volatile while with __FILE__ __LINE__ __gshared|10 __thread __traits __DATE__ __EOF__ __TIME__ __TIMESTAMP__ __VENDOR__ __VERSION__",
       built_in: "bool cdouble cent cfloat char creal dchar delegate double dstring float function idouble ifloat ireal long real short string ubyte ucent uint ulong ushort wchar wstring",
       literal: "false null true"
-    }, r = "(0|[1-9][\\d_]*)", a = "(0|[1-9][\\d_]*|\\d[\\d_]*|[\\d_]+?\\d)", i = "0[bB][01_]+", s = "([\\da-fA-F][\\da-fA-F_]*|_[\\da-fA-F][\\da-fA-F_]*)", o = "0[xX]" + s, c = "([eE][+-]?" + a + ")", u = "(" + a + "(\\.\\d*|" + c + ")|\\d+\\." + a + "|\\." + r + c + "?)", d = "(0[xX](" + s + "\\." + s + "|\\.?" + s + ")[pP][+-]?" + a + ")", E = "(" + r + "|" + i + "|" + o + ")", m = "(" + d + "|" + u + ")", T = `\\\\(['"\\?\\\\abfnrtv]|u[\\dA-Fa-f]{4}|[0-7]{1,3}|x[\\dA-Fa-f]{2}|U[\\dA-Fa-f]{8})|&[a-zA-Z\\d]{2,};`, g = {
+    }, r = "(0|[1-9][\\d_]*)", a = "(0|[1-9][\\d_]*|\\d[\\d_]*|[\\d_]+?\\d)", i = "0[bB][01_]+", s = "([\\da-fA-F][\\da-fA-F_]*|_[\\da-fA-F][\\da-fA-F_]*)", o = "0[xX]" + s, c = "([eE][+-]?" + a + ")", u = "(" + a + "(\\.\\d*|" + c + ")|\\d+\\." + a + "|\\." + r + c + "?)", d = "(0[xX](" + s + "\\." + s + "|\\.?" + s + ")[pP][+-]?" + a + ")", E = "(" + r + "|" + i + "|" + o + ")", m = "(" + d + "|" + u + ")", b = `\\\\(['"\\?\\\\abfnrtv]|u[\\dA-Fa-f]{4}|[0-7]{1,3}|x[\\dA-Fa-f]{2}|U[\\dA-Fa-f]{8})|&[a-zA-Z\\d]{2,};`, g = {
       className: "number",
       begin: "\\b" + E + "(L|u|U|Lu|LU|uL|UL)?",
       relevance: 0
@@ -13682,14 +13280,14 @@ function SN() {
       relevance: 0
     }, C = {
       className: "string",
-      begin: "'(" + T + "|.)",
+      begin: "'(" + b + "|.)",
       end: "'",
       illegal: "."
     }, P = {
       className: "string",
       begin: '"',
       contains: [{
-        begin: T,
+        begin: b,
         relevance: 0
       }],
       end: '"[cwd]?'
@@ -13752,12 +13350,12 @@ function SN() {
       ]
     };
   }
-  return Eo = t, Eo;
+  return go = t, go;
 }
-var go, jd;
-function fN() {
+var So, jd;
+function OC() {
   if (jd)
-    return go;
+    return So;
   jd = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -13896,8 +13494,8 @@ function fN() {
           relevance: 0
         }
       ]
-    }, m = e.inherit(d, { contains: [] }), T = e.inherit(E, { contains: [] });
-    d.contains.push(T), E.contains.push(m);
+    }, m = e.inherit(d, { contains: [] }), b = e.inherit(E, { contains: [] });
+    d.contains.push(b), E.contains.push(m);
     let g = [
       r,
       u
@@ -13906,7 +13504,7 @@ function fN() {
       d,
       E,
       m,
-      T
+      b
     ].forEach((A) => {
       A.contains = A.contains.concat(g);
     }), g = g.concat(d, E), {
@@ -13955,12 +13553,12 @@ function fN() {
       ]
     };
   }
-  return go = t, go;
+  return So = t, So;
 }
-var So, eu;
-function bN() {
+var fo, eu;
+function IC() {
   if (eu)
-    return So;
+    return fo;
   eu = 1;
   function t(e) {
     const n = {
@@ -14193,12 +13791,12 @@ function bN() {
       ]
     };
   }
-  return So = t, So;
+  return fo = t, fo;
 }
-var fo, tu;
-function TN() {
+var bo, tu;
+function AC() {
   if (tu)
-    return fo;
+    return bo;
   tu = 1;
   function t(e) {
     const n = [
@@ -14414,12 +14012,12 @@ function TN() {
       ].concat(r)
     };
   }
-  return fo = t, fo;
+  return bo = t, bo;
 }
-var bo, nu;
-function RN() {
+var To, nu;
+function yC() {
   if (nu)
-    return bo;
+    return To;
   nu = 1;
   function t(e) {
     const n = e.regex;
@@ -14472,12 +14070,12 @@ function RN() {
       ]
     };
   }
-  return bo = t, bo;
+  return To = t, To;
 }
-var To, ru;
-function CN() {
+var Ro, ru;
+function DC() {
   if (ru)
-    return To;
+    return Ro;
   ru = 1;
   function t(e) {
     const n = {
@@ -14523,12 +14121,12 @@ function CN() {
       ]
     };
   }
-  return To = t, To;
+  return Ro = t, Ro;
 }
-var Ro, au;
-function NN() {
+var Co, au;
+function MC() {
   if (au)
-    return Ro;
+    return Co;
   au = 1;
   function t(e) {
     return {
@@ -14595,12 +14193,12 @@ function NN() {
       ]
     };
   }
-  return Ro = t, Ro;
+  return Co = t, Co;
 }
-var Co, iu;
-function hN() {
+var No, iu;
+function LC() {
   if (iu)
-    return Co;
+    return No;
   iu = 1;
   function t(e) {
     return {
@@ -14633,12 +14231,12 @@ function hN() {
       illegal: "</"
     };
   }
-  return Co = t, Co;
+  return No = t, No;
 }
-var No, ou;
-function vN() {
+var ho, ou;
+function wC() {
   if (ou)
-    return No;
+    return ho;
   ou = 1;
   function t(e) {
     const n = e.COMMENT(
@@ -14793,12 +14391,12 @@ function vN() {
       ]
     };
   }
-  return No = t, No;
+  return ho = t, ho;
 }
-var ho, su;
-function ON() {
+var vo, su;
+function xC() {
   if (su)
-    return ho;
+    return vo;
   su = 1;
   function t(e) {
     return {
@@ -14851,12 +14449,12 @@ function ON() {
       ]
     };
   }
-  return ho = t, ho;
+  return vo = t, vo;
 }
-var vo, lu;
-function IN() {
+var Oo, lu;
+function PC() {
   if (lu)
-    return vo;
+    return Oo;
   lu = 1;
   function t(e) {
     const n = {
@@ -14950,7 +14548,7 @@ function IN() {
         1: "attr",
         3: "operator"
       }
-    }, T = {
+    }, b = {
       scope: "punctuation",
       relevance: 0,
       match: /\};|[;{}]/
@@ -14971,7 +14569,7 @@ function IN() {
         r,
         n,
         a,
-        T,
+        b,
         {
           begin: e.IDENT_RE + "::",
           keywords: ""
@@ -14979,12 +14577,12 @@ function IN() {
       ]
     };
   }
-  return vo = t, vo;
+  return Oo = t, Oo;
 }
-var Oo, cu;
-function AN() {
+var Io, cu;
+function kC() {
   if (cu)
-    return Oo;
+    return Io;
   cu = 1;
   function t(e) {
     const n = "if eq ne lt lte gt gte select default math sep";
@@ -15021,12 +14619,12 @@ function AN() {
       ]
     };
   }
-  return Oo = t, Oo;
+  return Io = t, Io;
 }
-var Io, _u;
-function yN() {
+var Ao, _u;
+function UC() {
   if (_u)
-    return Io;
+    return Ao;
   _u = 1;
   function t(e) {
     const n = e.COMMENT(/\(\*/, /\*\)/), r = {
@@ -15064,12 +14662,12 @@ function yN() {
       ]
     };
   }
-  return Io = t, Io;
+  return Ao = t, Ao;
 }
-var Ao, du;
-function DN() {
+var yo, du;
+function FC() {
   if (du)
-    return Ao;
+    return yo;
   du = 1;
   function t(e) {
     const n = e.regex, r = "[a-zA-Z_][a-zA-Z0-9_.]*(!|\\?)?", a = "[a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?", o = {
@@ -15125,7 +14723,7 @@ function DN() {
       match: /\\[\s\S]/,
       scope: "char.escape",
       relevance: 0
-    }, m = `[/|([{<"']`, T = [
+    }, m = `[/|([{<"']`, b = [
       {
         begin: /"/,
         end: /"/
@@ -15165,7 +14763,7 @@ function DN() {
     }), f = {
       className: "string",
       begin: "~[a-z](?=" + m + ")",
-      contains: T.map((L) => e.inherit(
+      contains: b.map((L) => e.inherit(
         L,
         { contains: [
           g(L.end),
@@ -15176,7 +14774,7 @@ function DN() {
     }, C = {
       className: "string",
       begin: "~[A-Z](?=" + m + ")",
-      contains: T.map((L) => e.inherit(
+      contains: b.map((L) => e.inherit(
         L,
         { contains: [g(L.end)] }
       ))
@@ -15185,7 +14783,7 @@ function DN() {
       variants: [
         {
           begin: "~r(?=" + m + ")",
-          contains: T.map((L) => e.inherit(
+          contains: b.map((L) => e.inherit(
             L,
             {
               end: n.concat(L.end, /[uismxfU]{0,7}/),
@@ -15199,7 +14797,7 @@ function DN() {
         },
         {
           begin: "~R(?=" + m + ")",
-          contains: T.map(
+          contains: b.map(
             (L) => e.inherit(
               L,
               {
@@ -15312,12 +14910,12 @@ function DN() {
       contains: q
     };
   }
-  return Ao = t, Ao;
+  return yo = t, yo;
 }
-var yo, uu;
-function MN() {
+var Do, uu;
+function BC() {
   if (uu)
-    return yo;
+    return Do;
   uu = 1;
   function t(e) {
     const n = { variants: [
@@ -15436,12 +15034,12 @@ function MN() {
       illegal: /;/
     };
   }
-  return yo = t, yo;
+  return Do = t, Do;
 }
-var Do, pu;
-function LN() {
+var Mo, pu;
+function GC() {
   if (pu)
-    return Do;
+    return Mo;
   pu = 1;
   function t(e) {
     const n = e.regex, r = "([a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?)", a = n.either(
@@ -15617,11 +15215,11 @@ function LN() {
           ]
         }
       ]
-    }, T = "[1-9](_?[0-9])*|0", g = "[0-9](_?[0-9])*", f = {
+    }, b = "[1-9](_?[0-9])*|0", g = "[0-9](_?[0-9])*", f = {
       className: "number",
       relevance: 0,
       variants: [
-        { begin: `\\b(${T})(\\.(${g}))?([eE][+-]?(${g})|r)?i?\\b` },
+        { begin: `\\b(${b})(\\.(${g}))?([eE][+-]?(${g})|r)?i?\\b` },
         { begin: "\\b0[dD][0-9](_?[0-9])*r?i?\\b" },
         { begin: "\\b0[bB][0-1](_?[0-1])*r?i?\\b" },
         { begin: "\\b0[oO][0-7](_?[0-7])*r?i?\\b" },
@@ -15813,12 +15411,12 @@ function LN() {
       contains: [e.SHEBANG({ binary: "ruby" })].concat(M).concat(d).concat(X)
     };
   }
-  return Do = t, Do;
+  return Mo = t, Mo;
 }
-var Mo, mu;
-function wN() {
+var Lo, mu;
+function YC() {
   if (mu)
-    return Mo;
+    return Lo;
   mu = 1;
   function t(e) {
     return {
@@ -15836,12 +15434,12 @@ function wN() {
       ]
     };
   }
-  return Mo = t, Mo;
+  return Lo = t, Lo;
 }
-var Lo, Eu;
-function xN() {
+var wo, Eu;
+function qC() {
   if (Eu)
-    return Lo;
+    return wo;
   Eu = 1;
   function t(e) {
     const n = e.regex;
@@ -15884,12 +15482,12 @@ function xN() {
       ]
     };
   }
-  return Lo = t, Lo;
+  return wo = t, wo;
 }
-var wo, gu;
-function PN() {
+var xo, gu;
+function HC() {
   if (gu)
-    return wo;
+    return xo;
   gu = 1;
   function t(e) {
     const n = "[a-z'][a-zA-Z0-9_']*", r = "(" + n + ":" + n + "|" + n + ")", a = {
@@ -15942,16 +15540,16 @@ function PN() {
           relevance: 0
         }
       ]
-    }, T = {
+    }, b = {
       beginKeywords: "fun receive if try case",
       end: "end",
       keywords: a
     };
-    T.contains = [
+    b.contains = [
       i,
       o,
       e.inherit(e.APOS_STRING_MODE, { className: "" }),
-      T,
+      b,
       c,
       e.QUOTE_STRING_MODE,
       s,
@@ -15963,7 +15561,7 @@ function PN() {
     const g = [
       i,
       o,
-      T,
+      b,
       c,
       e.QUOTE_STRING_MODE,
       s,
@@ -16046,12 +15644,12 @@ function PN() {
       ]
     };
   }
-  return wo = t, wo;
+  return xo = t, xo;
 }
-var xo, Su;
-function kN() {
+var Po, Su;
+function VC() {
   if (Su)
-    return xo;
+    return Po;
   Su = 1;
   function t(e) {
     return {
@@ -16583,12 +16181,12 @@ function kN() {
       ]
     };
   }
-  return xo = t, xo;
+  return Po = t, Po;
 }
-var Po, fu;
-function UN() {
+var ko, fu;
+function zC() {
   if (fu)
-    return Po;
+    return ko;
   fu = 1;
   function t(e) {
     return {
@@ -16621,12 +16219,12 @@ function UN() {
       case_insensitive: !0
     };
   }
-  return Po = t, Po;
+  return ko = t, ko;
 }
-var ko, bu;
-function FN() {
+var Uo, bu;
+function $C() {
   if (bu)
-    return ko;
+    return Uo;
   bu = 1;
   function t(e) {
     const n = {
@@ -16690,12 +16288,12 @@ function FN() {
       ]
     };
   }
-  return ko = t, ko;
+  return Uo = t, Uo;
 }
-var Uo, Tu;
-function BN() {
+var Fo, Tu;
+function WC() {
   if (Tu)
-    return Uo;
+    return Fo;
   Tu = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -17241,12 +16839,12 @@ function BN() {
       ]
     };
   }
-  return Uo = t, Uo;
+  return Fo = t, Fo;
 }
-var Fo, Ru;
-function GN() {
+var Bo, Ru;
+function KC() {
   if (Ru)
-    return Fo;
+    return Bo;
   Ru = 1;
   function t(o) {
     return new RegExp(o.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "m");
@@ -17363,7 +16961,7 @@ function GN() {
       "__LINE__",
       "__SOURCE_DIRECTORY__",
       "__SOURCE_FILE__"
-    ], T = [
+    ], b = [
       "bool",
       "byte",
       "sbyte",
@@ -17462,14 +17060,14 @@ function GN() {
     }, L = function({ includeEqual: he }) {
       let Te;
       he ? Te = "!%&*+-/<=>@^|~?" : Te = "!%&*+-/<>@^|~?";
-      const pe = Array.from(Te), Oe = r("[", ...pe.map(t), "]"), De = i(Oe, /\./), Ue = r(De, n(De)), Fe = i(
-        r(Ue, De, "*"),
+      const pe = Array.from(Te), Oe = r("[", ...pe.map(t), "]"), De = i(Oe, /\./), Fe = r(De, n(De)), Be = i(
+        r(Fe, De, "*"),
         r(Oe, "+")
       );
       return {
         scope: "operator",
         match: i(
-          Fe,
+          Be,
           /:\?>/,
           /:\?/,
           /:>/,
@@ -17506,7 +17104,7 @@ function GN() {
           )
         ),
         relevance: 0,
-        keywords: o.inherit(f, { type: T }),
+        keywords: o.inherit(f, { type: b }),
         contains: [
           A,
           q,
@@ -17702,12 +17300,12 @@ function GN() {
       ]
     };
   }
-  return Fo = s, Fo;
+  return Bo = s, Bo;
 }
-var Bo, Cu;
-function YN() {
+var Go, Cu;
+function QC() {
   if (Cu)
-    return Bo;
+    return Go;
   Cu = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -17843,12 +17441,12 @@ function YN() {
       ]
     };
   }
-  return Bo = t, Bo;
+  return Go = t, Go;
 }
-var Go, Nu;
-function qN() {
+var Yo, Nu;
+function XC() {
   if (Nu)
-    return Go;
+    return Yo;
   Nu = 1;
   function t(e) {
     const n = {
@@ -17917,11 +17515,11 @@ function qN() {
       className: "title",
       begin: e.UNDERSCORE_IDENT_RE,
       relevance: 0
-    }, c = function(T, g, f) {
+    }, c = function(b, g, f) {
       const C = e.inherit(
         {
           className: "function",
-          beginKeywords: T,
+          beginKeywords: b,
           end: g,
           excludeEnd: !0,
           contains: [].concat(s)
@@ -18011,12 +17609,12 @@ function qN() {
       ]
     };
   }
-  return Go = t, Go;
+  return Yo = t, Yo;
 }
-var Yo, hu;
-function HN() {
+var qo, hu;
+function ZC() {
   if (hu)
-    return Yo;
+    return qo;
   hu = 1;
   function t(e) {
     const n = "[A-Z_][A-Z0-9_.]*", r = "%", a = {
@@ -18080,12 +17678,12 @@ function HN() {
       ].concat(o)
     };
   }
-  return Yo = t, Yo;
+  return qo = t, qo;
 }
-var qo, vu;
-function VN() {
+var Ho, vu;
+function JC() {
   if (vu)
-    return qo;
+    return Ho;
   vu = 1;
   function t(e) {
     return {
@@ -18127,12 +17725,12 @@ function VN() {
       ]
     };
   }
-  return qo = t, qo;
+  return Ho = t, Ho;
 }
-var Ho, Ou;
-function zN() {
+var Vo, Ou;
+function jC() {
   if (Ou)
-    return Ho;
+    return Vo;
   Ou = 1;
   function t(e) {
     return {
@@ -18156,12 +17754,12 @@ function zN() {
       ]
     };
   }
-  return Ho = t, Ho;
+  return Vo = t, Vo;
 }
-var Vo, Iu;
-function $N() {
+var zo, Iu;
+function eN() {
   if (Iu)
-    return Vo;
+    return zo;
   Iu = 1;
   function t(e) {
     return {
@@ -20961,12 +20559,12 @@ function $N() {
       ]
     };
   }
-  return Vo = t, Vo;
+  return zo = t, zo;
 }
-var zo, Au;
-function WN() {
+var $o, Au;
+function tN() {
   if (Au)
-    return zo;
+    return $o;
   Au = 1;
   function t(e) {
     const s = {
@@ -21095,12 +20693,12 @@ function WN() {
       ]
     };
   }
-  return zo = t, zo;
+  return $o = t, $o;
 }
-var $o, yu;
-function KN() {
+var Wo, yu;
+function nN() {
   if (yu)
-    return $o;
+    return Wo;
   yu = 1;
   function t(e) {
     return {
@@ -21171,12 +20769,12 @@ function KN() {
       ]
     };
   }
-  return $o = t, $o;
+  return Wo = t, Wo;
 }
-var Wo, Du;
-function QN() {
+var Ko, Du;
+function rN() {
   if (Du)
-    return Wo;
+    return Ko;
   Du = 1;
   function t(e) {
     return {
@@ -21356,12 +20954,12 @@ function QN() {
       ]
     };
   }
-  return Wo = t, Wo;
+  return Ko = t, Ko;
 }
-var Ko, Mu;
-function XN() {
+var Qo, Mu;
+function aN() {
   if (Mu)
-    return Ko;
+    return Qo;
   Mu = 1;
   function t(e) {
     const n = e.regex, r = /[_A-Za-z][_0-9A-Za-z]*/;
@@ -21430,12 +21028,12 @@ function XN() {
       ]
     };
   }
-  return Ko = t, Ko;
+  return Qo = t, Qo;
 }
-var Qo, Lu;
-function ZN() {
+var Xo, Lu;
+function iN() {
   if (Lu)
-    return Qo;
+    return Xo;
   Lu = 1;
   function t(n, r = {}) {
     return r.variants = n, r;
@@ -21598,12 +21196,12 @@ function ZN() {
       illegal: /#|<\//
     };
   }
-  return Qo = e, Qo;
+  return Xo = e, Xo;
 }
-var Xo, wu;
-function JN() {
+var Zo, wu;
+function oN() {
   if (wu)
-    return Xo;
+    return Zo;
   wu = 1;
   function t(e) {
     return {
@@ -21706,12 +21304,12 @@ function JN() {
       ]
     };
   }
-  return Xo = t, Xo;
+  return Zo = t, Zo;
 }
-var Zo, xu;
-function jN() {
+var Jo, xu;
+function sN() {
   if (xu)
-    return Zo;
+    return Jo;
   xu = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -21773,7 +21371,7 @@ function jN() {
       "|",
       c,
       ")(?==)"
-    ), T = { begin: E }, g = e.inherit(T, { keywords: a }), f = {
+    ), b = { begin: E }, g = e.inherit(b, { keywords: a }), f = {
       begin: /\(/,
       end: /\)/
     }, C = {
@@ -21811,20 +21409,20 @@ function jN() {
         f
       ],
       returnEnd: !0
-    }, k = e.inherit(T, {
+    }, k = e.inherit(b, {
       className: "name",
       keywords: r,
       starts: e.inherit(P, { end: /\)/ })
     });
     f.contains = [k];
-    const w = e.inherit(T, {
+    const w = e.inherit(b, {
       keywords: r,
       className: "name",
       starts: e.inherit(P, { end: /\}\}/ })
-    }), q = e.inherit(T, {
+    }), q = e.inherit(b, {
       keywords: r,
       className: "name"
-    }), L = e.inherit(T, {
+    }), L = e.inherit(b, {
       className: "name",
       keywords: r,
       starts: e.inherit(P, { end: /\}\}/ })
@@ -21906,12 +21504,12 @@ function jN() {
       ]
     };
   }
-  return Zo = t, Zo;
+  return Jo = t, Jo;
 }
-var Jo, Pu;
-function eh() {
+var jo, Pu;
+function lN() {
   if (Pu)
-    return Jo;
+    return jo;
   Pu = 1;
   function t(e) {
     const n = { variants: [
@@ -22055,12 +21653,12 @@ function eh() {
       ]
     };
   }
-  return Jo = t, Jo;
+  return jo = t, jo;
 }
-var jo, ku;
-function th() {
+var es, ku;
+function cN() {
   if (ku)
-    return jo;
+    return es;
   ku = 1;
   function t(e) {
     return {
@@ -22197,12 +21795,12 @@ function th() {
       illegal: /<\//
     };
   }
-  return jo = t, jo;
+  return es = t, es;
 }
-var es, Uu;
-function nh() {
+var ts, Uu;
+function _N() {
   if (Uu)
-    return es;
+    return ts;
   Uu = 1;
   function t(e) {
     return {
@@ -22246,12 +21844,12 @@ function nh() {
       ]
     };
   }
-  return es = t, es;
+  return ts = t, ts;
 }
-var ts, Fu;
-function rh() {
+var ns, Fu;
+function dN() {
   if (Fu)
-    return ts;
+    return ns;
   Fu = 1;
   function t(e) {
     const n = e.regex, r = "HTTP/(2|1\\.[01])", a = /[A-Za-z][A-Za-z0-9-]*/, i = {
@@ -22332,12 +21930,12 @@ function rh() {
       ]
     };
   }
-  return ts = t, ts;
+  return ns = t, ns;
 }
-var ns, Bu;
-function ah() {
+var rs, Bu;
+function uN() {
   if (Bu)
-    return ns;
+    return rs;
   Bu = 1;
   function t(e) {
     const n = "a-zA-Z_\\-!.?+*=<>&#'", r = "[" + n + "][" + n + "0-9/;:]*", a = {
@@ -22364,7 +21962,7 @@ function ah() {
     }, m = {
       className: "comment",
       begin: "\\^" + r
-    }, T = e.COMMENT("\\^\\{", "\\}"), g = {
+    }, b = e.COMMENT("\\^\\{", "\\}"), g = {
       className: "symbol",
       begin: "[:]{1,2}" + r
     }, f = {
@@ -22383,7 +21981,7 @@ function ah() {
       f,
       c,
       m,
-      T,
+      b,
       u,
       g,
       E,
@@ -22404,7 +22002,7 @@ function ah() {
         f,
         c,
         m,
-        T,
+        b,
         u,
         g,
         E,
@@ -22413,12 +22011,12 @@ function ah() {
       ]
     };
   }
-  return ns = t, ns;
+  return rs = t, rs;
 }
-var rs, Gu;
-function ih() {
+var as, Gu;
+function pN() {
   if (Gu)
-    return rs;
+    return as;
   Gu = 1;
   function t(e) {
     const n = "\\[", r = "\\]";
@@ -22467,12 +22065,12 @@ function ih() {
       ]
     };
   }
-  return rs = t, rs;
+  return as = t, as;
 }
-var as, Yu;
-function oh() {
+var is, Yu;
+function mN() {
   if (Yu)
-    return as;
+    return is;
   Yu = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -22541,7 +22139,7 @@ function oh() {
       u,
       d,
       E
-    ), T = n.concat(
+    ), b = n.concat(
       m,
       "(\\s*\\.\\s*",
       m,
@@ -22561,7 +22159,7 @@ function oh() {
           end: /\]+/
         },
         {
-          begin: T,
+          begin: b,
           className: "attr",
           starts: {
             end: /$/,
@@ -22578,12 +22176,12 @@ function oh() {
       ]
     };
   }
-  return as = t, as;
+  return is = t, is;
 }
-var is, qu;
-function sh() {
+var os, qu;
+function EN() {
   if (qu)
-    return is;
+    return os;
   qu = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -22632,15 +22230,15 @@ function sh() {
       ]
     };
   }
-  return is = t, is;
+  return os = t, os;
 }
-var os, Hu;
-function lh() {
+var ss, Hu;
+function gN() {
   if (Hu)
-    return os;
+    return ss;
   Hu = 1;
   function t(e) {
-    const n = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_!][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]*", r = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]*", a = "and \u0438 else \u0438\u043D\u0430\u0447\u0435 endexcept endfinally endforeach \u043A\u043E\u043D\u0435\u0446\u0432\u0441\u0435 endif \u043A\u043E\u043D\u0435\u0446\u0435\u0441\u043B\u0438 endwhile \u043A\u043E\u043D\u0435\u0446\u043F\u043E\u043A\u0430 except exitfor finally foreach \u0432\u0441\u0435 if \u0435\u0441\u043B\u0438 in \u0432 not \u043D\u0435 or \u0438\u043B\u0438 try while \u043F\u043E\u043A\u0430 ", i = "SYSRES_CONST_ACCES_RIGHT_TYPE_EDIT SYSRES_CONST_ACCES_RIGHT_TYPE_FULL SYSRES_CONST_ACCES_RIGHT_TYPE_VIEW SYSRES_CONST_ACCESS_MODE_REQUISITE_CODE SYSRES_CONST_ACCESS_NO_ACCESS_VIEW SYSRES_CONST_ACCESS_NO_ACCESS_VIEW_CODE SYSRES_CONST_ACCESS_RIGHTS_ADD_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_ADD_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_CHANGE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_CHANGE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_DELETE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_DELETE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_EXECUTE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_EXECUTE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_NO_ACCESS_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_NO_ACCESS_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_RATIFY_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_RATIFY_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW SYSRES_CONST_ACCESS_RIGHTS_VIEW_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_TYPE_CHANGE SYSRES_CONST_ACCESS_TYPE_CHANGE_CODE SYSRES_CONST_ACCESS_TYPE_EXISTS SYSRES_CONST_ACCESS_TYPE_EXISTS_CODE SYSRES_CONST_ACCESS_TYPE_FULL SYSRES_CONST_ACCESS_TYPE_FULL_CODE SYSRES_CONST_ACCESS_TYPE_VIEW SYSRES_CONST_ACCESS_TYPE_VIEW_CODE SYSRES_CONST_ACTION_TYPE_ABORT SYSRES_CONST_ACTION_TYPE_ACCEPT SYSRES_CONST_ACTION_TYPE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ADD_ATTACHMENT SYSRES_CONST_ACTION_TYPE_CHANGE_CARD SYSRES_CONST_ACTION_TYPE_CHANGE_KIND SYSRES_CONST_ACTION_TYPE_CHANGE_STORAGE SYSRES_CONST_ACTION_TYPE_CONTINUE SYSRES_CONST_ACTION_TYPE_COPY SYSRES_CONST_ACTION_TYPE_CREATE SYSRES_CONST_ACTION_TYPE_CREATE_VERSION SYSRES_CONST_ACTION_TYPE_DELETE SYSRES_CONST_ACTION_TYPE_DELETE_ATTACHMENT SYSRES_CONST_ACTION_TYPE_DELETE_VERSION SYSRES_CONST_ACTION_TYPE_DISABLE_DELEGATE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ENABLE_DELEGATE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_CERTIFICATE SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_CERTIFICATE_AND_PASSWORD SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_PASSWORD SYSRES_CONST_ACTION_TYPE_EXPORT_WITH_LOCK SYSRES_CONST_ACTION_TYPE_EXPORT_WITHOUT_LOCK SYSRES_CONST_ACTION_TYPE_IMPORT_WITH_UNLOCK SYSRES_CONST_ACTION_TYPE_IMPORT_WITHOUT_UNLOCK SYSRES_CONST_ACTION_TYPE_LIFE_CYCLE_STAGE SYSRES_CONST_ACTION_TYPE_LOCK SYSRES_CONST_ACTION_TYPE_LOCK_FOR_SERVER SYSRES_CONST_ACTION_TYPE_LOCK_MODIFY SYSRES_CONST_ACTION_TYPE_MARK_AS_READED SYSRES_CONST_ACTION_TYPE_MARK_AS_UNREADED SYSRES_CONST_ACTION_TYPE_MODIFY SYSRES_CONST_ACTION_TYPE_MODIFY_CARD SYSRES_CONST_ACTION_TYPE_MOVE_TO_ARCHIVE SYSRES_CONST_ACTION_TYPE_OFF_ENCRYPTION SYSRES_CONST_ACTION_TYPE_PASSWORD_CHANGE SYSRES_CONST_ACTION_TYPE_PERFORM SYSRES_CONST_ACTION_TYPE_RECOVER_FROM_LOCAL_COPY SYSRES_CONST_ACTION_TYPE_RESTART SYSRES_CONST_ACTION_TYPE_RESTORE_FROM_ARCHIVE SYSRES_CONST_ACTION_TYPE_REVISION SYSRES_CONST_ACTION_TYPE_SEND_BY_MAIL SYSRES_CONST_ACTION_TYPE_SIGN SYSRES_CONST_ACTION_TYPE_START SYSRES_CONST_ACTION_TYPE_UNLOCK SYSRES_CONST_ACTION_TYPE_UNLOCK_FROM_SERVER SYSRES_CONST_ACTION_TYPE_VERSION_STATE SYSRES_CONST_ACTION_TYPE_VERSION_VISIBILITY SYSRES_CONST_ACTION_TYPE_VIEW SYSRES_CONST_ACTION_TYPE_VIEW_SHADOW_COPY SYSRES_CONST_ACTION_TYPE_WORKFLOW_DESCRIPTION_MODIFY SYSRES_CONST_ACTION_TYPE_WRITE_HISTORY SYSRES_CONST_ACTIVE_VERSION_STATE_PICK_VALUE SYSRES_CONST_ADD_REFERENCE_MODE_NAME SYSRES_CONST_ADDITION_REQUISITE_CODE SYSRES_CONST_ADDITIONAL_PARAMS_REQUISITE_CODE SYSRES_CONST_ADITIONAL_JOB_END_DATE_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_READ_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_START_DATE_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_STATE_REQUISITE_NAME SYSRES_CONST_ADMINISTRATION_HISTORY_ADDING_USER_TO_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_ADDING_USER_TO_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_COMP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_COMP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_USER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_USER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_CREATION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_CREATION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_DELETION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_DELETION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_COMP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_COMP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_FROM_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_FROM_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_RESTRICTION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_RESTRICTION_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_PRIVILEGE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_PRIVILEGE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_RIGHTS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_RIGHTS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_IS_MAIN_SERVER_CHANGED_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_IS_MAIN_SERVER_CHANGED_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_IS_PUBLIC_CHANGED_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_IS_PUBLIC_CHANGED_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_RESTRICTION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_RESTRICTION_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_PRIVILEGE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_PRIVILEGE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_RIGHTS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_RIGHTS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_CREATION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_CREATION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_DELETION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_DELETION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_CATEGORY_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_CATEGORY_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_COMP_TITLE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_COMP_TITLE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_FULL_NAME_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_FULL_NAME_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_PARENT_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_PARENT_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_AUTH_TYPE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_AUTH_TYPE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_LOGIN_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_LOGIN_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_STATUS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_STATUS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_USER_PASSWORD_CHANGE SYSRES_CONST_ADMINISTRATION_HISTORY_USER_PASSWORD_CHANGE_ACTION SYSRES_CONST_ALL_ACCEPT_CONDITION_RUS SYSRES_CONST_ALL_USERS_GROUP SYSRES_CONST_ALL_USERS_GROUP_NAME SYSRES_CONST_ALL_USERS_SERVER_GROUP_NAME SYSRES_CONST_ALLOWED_ACCESS_TYPE_CODE SYSRES_CONST_ALLOWED_ACCESS_TYPE_NAME SYSRES_CONST_APP_VIEWER_TYPE_REQUISITE_CODE SYSRES_CONST_APPROVING_SIGNATURE_NAME SYSRES_CONST_APPROVING_SIGNATURE_REQUISITE_CODE SYSRES_CONST_ASSISTANT_SUBSTITUE_TYPE SYSRES_CONST_ASSISTANT_SUBSTITUE_TYPE_CODE SYSRES_CONST_ATTACH_TYPE_COMPONENT_TOKEN SYSRES_CONST_ATTACH_TYPE_DOC SYSRES_CONST_ATTACH_TYPE_EDOC SYSRES_CONST_ATTACH_TYPE_FOLDER SYSRES_CONST_ATTACH_TYPE_JOB SYSRES_CONST_ATTACH_TYPE_REFERENCE SYSRES_CONST_ATTACH_TYPE_TASK SYSRES_CONST_AUTH_ENCODED_PASSWORD SYSRES_CONST_AUTH_ENCODED_PASSWORD_CODE SYSRES_CONST_AUTH_NOVELL SYSRES_CONST_AUTH_PASSWORD SYSRES_CONST_AUTH_PASSWORD_CODE SYSRES_CONST_AUTH_WINDOWS SYSRES_CONST_AUTHENTICATING_SIGNATURE_NAME SYSRES_CONST_AUTHENTICATING_SIGNATURE_REQUISITE_CODE SYSRES_CONST_AUTO_ENUM_METHOD_FLAG SYSRES_CONST_AUTO_NUMERATION_CODE SYSRES_CONST_AUTO_STRONG_ENUM_METHOD_FLAG SYSRES_CONST_AUTOTEXT_NAME_REQUISITE_CODE SYSRES_CONST_AUTOTEXT_TEXT_REQUISITE_CODE SYSRES_CONST_AUTOTEXT_USAGE_ALL SYSRES_CONST_AUTOTEXT_USAGE_ALL_CODE SYSRES_CONST_AUTOTEXT_USAGE_SIGN SYSRES_CONST_AUTOTEXT_USAGE_SIGN_CODE SYSRES_CONST_AUTOTEXT_USAGE_WORK SYSRES_CONST_AUTOTEXT_USAGE_WORK_CODE SYSRES_CONST_AUTOTEXT_USE_ANYWHERE_CODE SYSRES_CONST_AUTOTEXT_USE_ON_SIGNING_CODE SYSRES_CONST_AUTOTEXT_USE_ON_WORK_CODE SYSRES_CONST_BEGIN_DATE_REQUISITE_CODE SYSRES_CONST_BLACK_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_BLUE_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_BTN_PART SYSRES_CONST_CALCULATED_ROLE_TYPE_CODE SYSRES_CONST_CALL_TYPE_VARIABLE_BUTTON_VALUE SYSRES_CONST_CALL_TYPE_VARIABLE_PROGRAM_VALUE SYSRES_CONST_CANCEL_MESSAGE_FUNCTION_RESULT SYSRES_CONST_CARD_PART SYSRES_CONST_CARD_REFERENCE_MODE_NAME SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_ENCRYPT_VALUE SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_SIGN_AND_ENCRYPT_VALUE SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_SIGN_VALUE SYSRES_CONST_CHECK_PARAM_VALUE_DATE_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_FLOAT_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_INTEGER_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_PICK_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_REEFRENCE_PARAM_TYPE SYSRES_CONST_CLOSED_RECORD_FLAG_VALUE_FEMININE SYSRES_CONST_CLOSED_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_CODE_COMPONENT_TYPE_ADMIN SYSRES_CONST_CODE_COMPONENT_TYPE_DEVELOPER SYSRES_CONST_CODE_COMPONENT_TYPE_DOCS SYSRES_CONST_CODE_COMPONENT_TYPE_EDOC_CARDS SYSRES_CONST_CODE_COMPONENT_TYPE_EXTERNAL_EXECUTABLE SYSRES_CONST_CODE_COMPONENT_TYPE_OTHER SYSRES_CONST_CODE_COMPONENT_TYPE_REFERENCE SYSRES_CONST_CODE_COMPONENT_TYPE_REPORT SYSRES_CONST_CODE_COMPONENT_TYPE_SCRIPT SYSRES_CONST_CODE_COMPONENT_TYPE_URL SYSRES_CONST_CODE_REQUISITE_ACCESS SYSRES_CONST_CODE_REQUISITE_CODE SYSRES_CONST_CODE_REQUISITE_COMPONENT SYSRES_CONST_CODE_REQUISITE_DESCRIPTION SYSRES_CONST_CODE_REQUISITE_EXCLUDE_COMPONENT SYSRES_CONST_CODE_REQUISITE_RECORD SYSRES_CONST_COMMENT_REQ_CODE SYSRES_CONST_COMMON_SETTINGS_REQUISITE_CODE SYSRES_CONST_COMP_CODE_GRD SYSRES_CONST_COMPONENT_GROUP_TYPE_REQUISITE_CODE SYSRES_CONST_COMPONENT_TYPE_ADMIN_COMPONENTS SYSRES_CONST_COMPONENT_TYPE_DEVELOPER_COMPONENTS SYSRES_CONST_COMPONENT_TYPE_DOCS SYSRES_CONST_COMPONENT_TYPE_EDOC_CARDS SYSRES_CONST_COMPONENT_TYPE_EDOCS SYSRES_CONST_COMPONENT_TYPE_EXTERNAL_EXECUTABLE SYSRES_CONST_COMPONENT_TYPE_OTHER SYSRES_CONST_COMPONENT_TYPE_REFERENCE_TYPES SYSRES_CONST_COMPONENT_TYPE_REFERENCES SYSRES_CONST_COMPONENT_TYPE_REPORTS SYSRES_CONST_COMPONENT_TYPE_SCRIPTS SYSRES_CONST_COMPONENT_TYPE_URL SYSRES_CONST_COMPONENTS_REMOTE_SERVERS_VIEW_CODE SYSRES_CONST_CONDITION_BLOCK_DESCRIPTION SYSRES_CONST_CONST_FIRM_STATUS_COMMON SYSRES_CONST_CONST_FIRM_STATUS_INDIVIDUAL SYSRES_CONST_CONST_NEGATIVE_VALUE SYSRES_CONST_CONST_POSITIVE_VALUE SYSRES_CONST_CONST_SERVER_STATUS_DONT_REPLICATE SYSRES_CONST_CONST_SERVER_STATUS_REPLICATE SYSRES_CONST_CONTENTS_REQUISITE_CODE SYSRES_CONST_DATA_TYPE_BOOLEAN SYSRES_CONST_DATA_TYPE_DATE SYSRES_CONST_DATA_TYPE_FLOAT SYSRES_CONST_DATA_TYPE_INTEGER SYSRES_CONST_DATA_TYPE_PICK SYSRES_CONST_DATA_TYPE_REFERENCE SYSRES_CONST_DATA_TYPE_STRING SYSRES_CONST_DATA_TYPE_TEXT SYSRES_CONST_DATA_TYPE_VARIANT SYSRES_CONST_DATE_CLOSE_REQ_CODE SYSRES_CONST_DATE_FORMAT_DATE_ONLY_CHAR SYSRES_CONST_DATE_OPEN_REQ_CODE SYSRES_CONST_DATE_REQUISITE SYSRES_CONST_DATE_REQUISITE_CODE SYSRES_CONST_DATE_REQUISITE_NAME SYSRES_CONST_DATE_REQUISITE_TYPE SYSRES_CONST_DATE_TYPE_CHAR SYSRES_CONST_DATETIME_FORMAT_VALUE SYSRES_CONST_DEA_ACCESS_RIGHTS_ACTION_CODE SYSRES_CONST_DESCRIPTION_LOCALIZE_ID_REQUISITE_CODE SYSRES_CONST_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_DET1_PART SYSRES_CONST_DET2_PART SYSRES_CONST_DET3_PART SYSRES_CONST_DET4_PART SYSRES_CONST_DET5_PART SYSRES_CONST_DET6_PART SYSRES_CONST_DETAIL_DATASET_KEY_REQUISITE_CODE SYSRES_CONST_DETAIL_PICK_REQUISITE_CODE SYSRES_CONST_DETAIL_REQ_CODE SYSRES_CONST_DO_NOT_USE_ACCESS_TYPE_CODE SYSRES_CONST_DO_NOT_USE_ACCESS_TYPE_NAME SYSRES_CONST_DO_NOT_USE_ON_VIEW_ACCESS_TYPE_CODE SYSRES_CONST_DO_NOT_USE_ON_VIEW_ACCESS_TYPE_NAME SYSRES_CONST_DOCUMENT_STORAGES_CODE SYSRES_CONST_DOCUMENT_TEMPLATES_TYPE_NAME SYSRES_CONST_DOUBLE_REQUISITE_CODE SYSRES_CONST_EDITOR_CLOSE_FILE_OBSERV_TYPE_CODE SYSRES_CONST_EDITOR_CLOSE_PROCESS_OBSERV_TYPE_CODE SYSRES_CONST_EDITOR_TYPE_REQUISITE_CODE SYSRES_CONST_EDITORS_APPLICATION_NAME_REQUISITE_CODE SYSRES_CONST_EDITORS_CREATE_SEVERAL_PROCESSES_REQUISITE_CODE SYSRES_CONST_EDITORS_EXTENSION_REQUISITE_CODE SYSRES_CONST_EDITORS_OBSERVER_BY_PROCESS_TYPE SYSRES_CONST_EDITORS_REFERENCE_CODE SYSRES_CONST_EDITORS_REPLACE_SPEC_CHARS_REQUISITE_CODE SYSRES_CONST_EDITORS_USE_PLUGINS_REQUISITE_CODE SYSRES_CONST_EDITORS_VIEW_DOCUMENT_OPENED_TO_EDIT_CODE SYSRES_CONST_EDOC_CARD_TYPE_REQUISITE_CODE SYSRES_CONST_EDOC_CARD_TYPES_LINK_REQUISITE_CODE SYSRES_CONST_EDOC_CERTIFICATE_AND_PASSWORD_ENCODE_CODE SYSRES_CONST_EDOC_CERTIFICATE_ENCODE_CODE SYSRES_CONST_EDOC_DATE_REQUISITE_CODE SYSRES_CONST_EDOC_KIND_REFERENCE_CODE SYSRES_CONST_EDOC_KINDS_BY_TEMPLATE_ACTION_CODE SYSRES_CONST_EDOC_MANAGE_ACCESS_CODE SYSRES_CONST_EDOC_NONE_ENCODE_CODE SYSRES_CONST_EDOC_NUMBER_REQUISITE_CODE SYSRES_CONST_EDOC_PASSWORD_ENCODE_CODE SYSRES_CONST_EDOC_READONLY_ACCESS_CODE SYSRES_CONST_EDOC_SHELL_LIFE_TYPE_VIEW_VALUE SYSRES_CONST_EDOC_SIZE_RESTRICTION_PRIORITY_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_CHECK_ACCESS_RIGHTS_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_COMPUTER_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_DATABASE_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_EDIT_IN_STORAGE_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_LOCAL_PATH_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_SHARED_SOURCE_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_TEMPLATE_REQUISITE_CODE SYSRES_CONST_EDOC_TYPES_REFERENCE_CODE SYSRES_CONST_EDOC_VERSION_ACTIVE_STAGE_CODE SYSRES_CONST_EDOC_VERSION_DESIGN_STAGE_CODE SYSRES_CONST_EDOC_VERSION_OBSOLETE_STAGE_CODE SYSRES_CONST_EDOC_WRITE_ACCES_CODE SYSRES_CONST_EDOCUMENT_CARD_REQUISITES_REFERENCE_CODE_SELECTED_REQUISITE SYSRES_CONST_ENCODE_CERTIFICATE_TYPE_CODE SYSRES_CONST_END_DATE_REQUISITE_CODE SYSRES_CONST_ENUMERATION_TYPE_REQUISITE_CODE SYSRES_CONST_EXECUTE_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_EXECUTIVE_FILE_STORAGE_TYPE SYSRES_CONST_EXIST_CONST SYSRES_CONST_EXIST_VALUE SYSRES_CONST_EXPORT_LOCK_TYPE_ASK SYSRES_CONST_EXPORT_LOCK_TYPE_WITH_LOCK SYSRES_CONST_EXPORT_LOCK_TYPE_WITHOUT_LOCK SYSRES_CONST_EXPORT_VERSION_TYPE_ASK SYSRES_CONST_EXPORT_VERSION_TYPE_LAST SYSRES_CONST_EXPORT_VERSION_TYPE_LAST_ACTIVE SYSRES_CONST_EXTENSION_REQUISITE_CODE SYSRES_CONST_FILTER_NAME_REQUISITE_CODE SYSRES_CONST_FILTER_REQUISITE_CODE SYSRES_CONST_FILTER_TYPE_COMMON_CODE SYSRES_CONST_FILTER_TYPE_COMMON_NAME SYSRES_CONST_FILTER_TYPE_USER_CODE SYSRES_CONST_FILTER_TYPE_USER_NAME SYSRES_CONST_FILTER_VALUE_REQUISITE_NAME SYSRES_CONST_FLOAT_NUMBER_FORMAT_CHAR SYSRES_CONST_FLOAT_REQUISITE_TYPE SYSRES_CONST_FOLDER_AUTHOR_VALUE SYSRES_CONST_FOLDER_KIND_ANY_OBJECTS SYSRES_CONST_FOLDER_KIND_COMPONENTS SYSRES_CONST_FOLDER_KIND_EDOCS SYSRES_CONST_FOLDER_KIND_JOBS SYSRES_CONST_FOLDER_KIND_TASKS SYSRES_CONST_FOLDER_TYPE_COMMON SYSRES_CONST_FOLDER_TYPE_COMPONENT SYSRES_CONST_FOLDER_TYPE_FAVORITES SYSRES_CONST_FOLDER_TYPE_INBOX SYSRES_CONST_FOLDER_TYPE_OUTBOX SYSRES_CONST_FOLDER_TYPE_QUICK_LAUNCH SYSRES_CONST_FOLDER_TYPE_SEARCH SYSRES_CONST_FOLDER_TYPE_SHORTCUTS SYSRES_CONST_FOLDER_TYPE_USER SYSRES_CONST_FROM_DICTIONARY_ENUM_METHOD_FLAG SYSRES_CONST_FULL_SUBSTITUTE_TYPE SYSRES_CONST_FULL_SUBSTITUTE_TYPE_CODE SYSRES_CONST_FUNCTION_CANCEL_RESULT SYSRES_CONST_FUNCTION_CATEGORY_SYSTEM SYSRES_CONST_FUNCTION_CATEGORY_USER SYSRES_CONST_FUNCTION_FAILURE_RESULT SYSRES_CONST_FUNCTION_SAVE_RESULT SYSRES_CONST_GENERATED_REQUISITE SYSRES_CONST_GREEN_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_GROUP_ACCOUNT_TYPE_VALUE_CODE SYSRES_CONST_GROUP_CATEGORY_NORMAL_CODE SYSRES_CONST_GROUP_CATEGORY_NORMAL_NAME SYSRES_CONST_GROUP_CATEGORY_SERVICE_CODE SYSRES_CONST_GROUP_CATEGORY_SERVICE_NAME SYSRES_CONST_GROUP_COMMON_CATEGORY_FIELD_VALUE SYSRES_CONST_GROUP_FULL_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_RIGHTS_T_REQUISITE_CODE SYSRES_CONST_GROUP_SERVER_CODES_REQUISITE_CODE SYSRES_CONST_GROUP_SERVER_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_SERVICE_CATEGORY_FIELD_VALUE SYSRES_CONST_GROUP_USER_REQUISITE_CODE SYSRES_CONST_GROUPS_REFERENCE_CODE SYSRES_CONST_GROUPS_REQUISITE_CODE SYSRES_CONST_HIDDEN_MODE_NAME SYSRES_CONST_HIGH_LVL_REQUISITE_CODE SYSRES_CONST_HISTORY_ACTION_CREATE_CODE SYSRES_CONST_HISTORY_ACTION_DELETE_CODE SYSRES_CONST_HISTORY_ACTION_EDIT_CODE SYSRES_CONST_HOUR_CHAR SYSRES_CONST_ID_REQUISITE_CODE SYSRES_CONST_IDSPS_REQUISITE_CODE SYSRES_CONST_IMAGE_MODE_COLOR SYSRES_CONST_IMAGE_MODE_GREYSCALE SYSRES_CONST_IMAGE_MODE_MONOCHROME SYSRES_CONST_IMPORTANCE_HIGH SYSRES_CONST_IMPORTANCE_LOW SYSRES_CONST_IMPORTANCE_NORMAL SYSRES_CONST_IN_DESIGN_VERSION_STATE_PICK_VALUE SYSRES_CONST_INCOMING_WORK_RULE_TYPE_CODE SYSRES_CONST_INT_REQUISITE SYSRES_CONST_INT_REQUISITE_TYPE SYSRES_CONST_INTEGER_NUMBER_FORMAT_CHAR SYSRES_CONST_INTEGER_TYPE_CHAR SYSRES_CONST_IS_GENERATED_REQUISITE_NEGATIVE_VALUE SYSRES_CONST_IS_PUBLIC_ROLE_REQUISITE_CODE SYSRES_CONST_IS_REMOTE_USER_NEGATIVE_VALUE SYSRES_CONST_IS_REMOTE_USER_POSITIVE_VALUE SYSRES_CONST_IS_STORED_REQUISITE_NEGATIVE_VALUE SYSRES_CONST_IS_STORED_REQUISITE_STORED_VALUE SYSRES_CONST_ITALIC_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_JOB_BLOCK_DESCRIPTION SYSRES_CONST_JOB_KIND_CONTROL_JOB SYSRES_CONST_JOB_KIND_JOB SYSRES_CONST_JOB_KIND_NOTICE SYSRES_CONST_JOB_STATE_ABORTED SYSRES_CONST_JOB_STATE_COMPLETE SYSRES_CONST_JOB_STATE_WORKING SYSRES_CONST_KIND_REQUISITE_CODE SYSRES_CONST_KIND_REQUISITE_NAME SYSRES_CONST_KINDS_CREATE_SHADOW_COPIES_REQUISITE_CODE SYSRES_CONST_KINDS_DEFAULT_EDOC_LIFE_STAGE_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALL_TEPLATES_ALLOWED_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALLOW_LIFE_CYCLE_STAGE_CHANGING_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALLOW_MULTIPLE_ACTIVE_VERSIONS_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_SHARE_ACCES_RIGHTS_BY_DEFAULT_CODE SYSRES_CONST_KINDS_EDOC_TEMPLATE_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_TYPE_REQUISITE_CODE SYSRES_CONST_KINDS_SIGNERS_REQUISITES_CODE SYSRES_CONST_KOD_INPUT_TYPE SYSRES_CONST_LAST_UPDATE_DATE_REQUISITE_CODE SYSRES_CONST_LIFE_CYCLE_START_STAGE_REQUISITE_CODE SYSRES_CONST_LILAC_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_LINK_OBJECT_KIND_COMPONENT SYSRES_CONST_LINK_OBJECT_KIND_DOCUMENT SYSRES_CONST_LINK_OBJECT_KIND_EDOC SYSRES_CONST_LINK_OBJECT_KIND_FOLDER SYSRES_CONST_LINK_OBJECT_KIND_JOB SYSRES_CONST_LINK_OBJECT_KIND_REFERENCE SYSRES_CONST_LINK_OBJECT_KIND_TASK SYSRES_CONST_LINK_REF_TYPE_REQUISITE_CODE SYSRES_CONST_LIST_REFERENCE_MODE_NAME SYSRES_CONST_LOCALIZATION_DICTIONARY_MAIN_VIEW_CODE SYSRES_CONST_MAIN_VIEW_CODE SYSRES_CONST_MANUAL_ENUM_METHOD_FLAG SYSRES_CONST_MASTER_COMP_TYPE_REQUISITE_CODE SYSRES_CONST_MASTER_TABLE_REC_ID_REQUISITE_CODE SYSRES_CONST_MAXIMIZED_MODE_NAME SYSRES_CONST_ME_VALUE SYSRES_CONST_MESSAGE_ATTENTION_CAPTION SYSRES_CONST_MESSAGE_CONFIRMATION_CAPTION SYSRES_CONST_MESSAGE_ERROR_CAPTION SYSRES_CONST_MESSAGE_INFORMATION_CAPTION SYSRES_CONST_MINIMIZED_MODE_NAME SYSRES_CONST_MINUTE_CHAR SYSRES_CONST_MODULE_REQUISITE_CODE SYSRES_CONST_MONITORING_BLOCK_DESCRIPTION SYSRES_CONST_MONTH_FORMAT_VALUE SYSRES_CONST_NAME_LOCALIZE_ID_REQUISITE_CODE SYSRES_CONST_NAME_REQUISITE_CODE SYSRES_CONST_NAME_SINGULAR_REQUISITE_CODE SYSRES_CONST_NAMEAN_INPUT_TYPE SYSRES_CONST_NEGATIVE_PICK_VALUE SYSRES_CONST_NEGATIVE_VALUE SYSRES_CONST_NO SYSRES_CONST_NO_PICK_VALUE SYSRES_CONST_NO_SIGNATURE_REQUISITE_CODE SYSRES_CONST_NO_VALUE SYSRES_CONST_NONE_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_NONOPERATING_RECORD_FLAG_VALUE SYSRES_CONST_NONOPERATING_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_NORMAL_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_NORMAL_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_NORMAL_MODE_NAME SYSRES_CONST_NOT_ALLOWED_ACCESS_TYPE_CODE SYSRES_CONST_NOT_ALLOWED_ACCESS_TYPE_NAME SYSRES_CONST_NOTE_REQUISITE_CODE SYSRES_CONST_NOTICE_BLOCK_DESCRIPTION SYSRES_CONST_NUM_REQUISITE SYSRES_CONST_NUM_STR_REQUISITE_CODE SYSRES_CONST_NUMERATION_AUTO_NOT_STRONG SYSRES_CONST_NUMERATION_AUTO_STRONG SYSRES_CONST_NUMERATION_FROM_DICTONARY SYSRES_CONST_NUMERATION_MANUAL SYSRES_CONST_NUMERIC_TYPE_CHAR SYSRES_CONST_NUMREQ_REQUISITE_CODE SYSRES_CONST_OBSOLETE_VERSION_STATE_PICK_VALUE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_CODE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_FEMININE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_OPTIONAL_FORM_COMP_REQCODE_PREFIX SYSRES_CONST_ORANGE_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_ORIGINALREF_REQUISITE_CODE SYSRES_CONST_OURFIRM_REF_CODE SYSRES_CONST_OURFIRM_REQUISITE_CODE SYSRES_CONST_OURFIRM_VAR SYSRES_CONST_OUTGOING_WORK_RULE_TYPE_CODE SYSRES_CONST_PICK_NEGATIVE_RESULT SYSRES_CONST_PICK_POSITIVE_RESULT SYSRES_CONST_PICK_REQUISITE SYSRES_CONST_PICK_REQUISITE_TYPE SYSRES_CONST_PICK_TYPE_CHAR SYSRES_CONST_PLAN_STATUS_REQUISITE_CODE SYSRES_CONST_PLATFORM_VERSION_COMMENT SYSRES_CONST_PLUGINS_SETTINGS_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_POSITIVE_PICK_VALUE SYSRES_CONST_POWER_TO_CREATE_ACTION_CODE SYSRES_CONST_POWER_TO_SIGN_ACTION_CODE SYSRES_CONST_PRIORITY_REQUISITE_CODE SYSRES_CONST_QUALIFIED_TASK_TYPE SYSRES_CONST_QUALIFIED_TASK_TYPE_CODE SYSRES_CONST_RECSTAT_REQUISITE_CODE SYSRES_CONST_RED_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_REF_ID_T_REF_TYPE_REQUISITE_CODE SYSRES_CONST_REF_REQUISITE SYSRES_CONST_REF_REQUISITE_TYPE SYSRES_CONST_REF_REQUISITES_REFERENCE_CODE_SELECTED_REQUISITE SYSRES_CONST_REFERENCE_RECORD_HISTORY_CREATE_ACTION_CODE SYSRES_CONST_REFERENCE_RECORD_HISTORY_DELETE_ACTION_CODE SYSRES_CONST_REFERENCE_RECORD_HISTORY_MODIFY_ACTION_CODE SYSRES_CONST_REFERENCE_TYPE_CHAR SYSRES_CONST_REFERENCE_TYPE_REQUISITE_NAME SYSRES_CONST_REFERENCES_ADD_PARAMS_REQUISITE_CODE SYSRES_CONST_REFERENCES_DISPLAY_REQUISITE_REQUISITE_CODE SYSRES_CONST_REMOTE_SERVER_STATUS_WORKING SYSRES_CONST_REMOTE_SERVER_TYPE_MAIN SYSRES_CONST_REMOTE_SERVER_TYPE_SECONDARY SYSRES_CONST_REMOTE_USER_FLAG_VALUE_CODE SYSRES_CONST_REPORT_APP_EDITOR_INTERNAL SYSRES_CONST_REPORT_BASE_REPORT_ID_REQUISITE_CODE SYSRES_CONST_REPORT_BASE_REPORT_REQUISITE_CODE SYSRES_CONST_REPORT_SCRIPT_REQUISITE_CODE SYSRES_CONST_REPORT_TEMPLATE_REQUISITE_CODE SYSRES_CONST_REPORT_VIEWER_CODE_REQUISITE_CODE SYSRES_CONST_REQ_ALLOW_COMPONENT_DEFAULT_VALUE SYSRES_CONST_REQ_ALLOW_RECORD_DEFAULT_VALUE SYSRES_CONST_REQ_ALLOW_SERVER_COMPONENT_DEFAULT_VALUE SYSRES_CONST_REQ_MODE_AVAILABLE_CODE SYSRES_CONST_REQ_MODE_EDIT_CODE SYSRES_CONST_REQ_MODE_HIDDEN_CODE SYSRES_CONST_REQ_MODE_NOT_AVAILABLE_CODE SYSRES_CONST_REQ_MODE_VIEW_CODE SYSRES_CONST_REQ_NUMBER_REQUISITE_CODE SYSRES_CONST_REQ_SECTION_VALUE SYSRES_CONST_REQ_TYPE_VALUE SYSRES_CONST_REQUISITE_FORMAT_BY_UNIT SYSRES_CONST_REQUISITE_FORMAT_DATE_FULL SYSRES_CONST_REQUISITE_FORMAT_DATE_TIME SYSRES_CONST_REQUISITE_FORMAT_LEFT SYSRES_CONST_REQUISITE_FORMAT_RIGHT SYSRES_CONST_REQUISITE_FORMAT_WITHOUT_UNIT SYSRES_CONST_REQUISITE_NUMBER_REQUISITE_CODE SYSRES_CONST_REQUISITE_SECTION_ACTIONS SYSRES_CONST_REQUISITE_SECTION_BUTTON SYSRES_CONST_REQUISITE_SECTION_BUTTONS SYSRES_CONST_REQUISITE_SECTION_CARD SYSRES_CONST_REQUISITE_SECTION_TABLE SYSRES_CONST_REQUISITE_SECTION_TABLE10 SYSRES_CONST_REQUISITE_SECTION_TABLE11 SYSRES_CONST_REQUISITE_SECTION_TABLE12 SYSRES_CONST_REQUISITE_SECTION_TABLE13 SYSRES_CONST_REQUISITE_SECTION_TABLE14 SYSRES_CONST_REQUISITE_SECTION_TABLE15 SYSRES_CONST_REQUISITE_SECTION_TABLE16 SYSRES_CONST_REQUISITE_SECTION_TABLE17 SYSRES_CONST_REQUISITE_SECTION_TABLE18 SYSRES_CONST_REQUISITE_SECTION_TABLE19 SYSRES_CONST_REQUISITE_SECTION_TABLE2 SYSRES_CONST_REQUISITE_SECTION_TABLE20 SYSRES_CONST_REQUISITE_SECTION_TABLE21 SYSRES_CONST_REQUISITE_SECTION_TABLE22 SYSRES_CONST_REQUISITE_SECTION_TABLE23 SYSRES_CONST_REQUISITE_SECTION_TABLE24 SYSRES_CONST_REQUISITE_SECTION_TABLE3 SYSRES_CONST_REQUISITE_SECTION_TABLE4 SYSRES_CONST_REQUISITE_SECTION_TABLE5 SYSRES_CONST_REQUISITE_SECTION_TABLE6 SYSRES_CONST_REQUISITE_SECTION_TABLE7 SYSRES_CONST_REQUISITE_SECTION_TABLE8 SYSRES_CONST_REQUISITE_SECTION_TABLE9 SYSRES_CONST_REQUISITES_PSEUDOREFERENCE_REQUISITE_NUMBER_REQUISITE_CODE SYSRES_CONST_RIGHT_ALIGNMENT_CODE SYSRES_CONST_ROLES_REFERENCE_CODE SYSRES_CONST_ROUTE_STEP_AFTER_RUS SYSRES_CONST_ROUTE_STEP_AND_CONDITION_RUS SYSRES_CONST_ROUTE_STEP_OR_CONDITION_RUS SYSRES_CONST_ROUTE_TYPE_COMPLEX SYSRES_CONST_ROUTE_TYPE_PARALLEL SYSRES_CONST_ROUTE_TYPE_SERIAL SYSRES_CONST_SBDATASETDESC_NEGATIVE_VALUE SYSRES_CONST_SBDATASETDESC_POSITIVE_VALUE SYSRES_CONST_SBVIEWSDESC_POSITIVE_VALUE SYSRES_CONST_SCRIPT_BLOCK_DESCRIPTION SYSRES_CONST_SEARCH_BY_TEXT_REQUISITE_CODE SYSRES_CONST_SEARCHES_COMPONENT_CONTENT SYSRES_CONST_SEARCHES_CRITERIA_ACTION_NAME SYSRES_CONST_SEARCHES_EDOC_CONTENT SYSRES_CONST_SEARCHES_FOLDER_CONTENT SYSRES_CONST_SEARCHES_JOB_CONTENT SYSRES_CONST_SEARCHES_REFERENCE_CODE SYSRES_CONST_SEARCHES_TASK_CONTENT SYSRES_CONST_SECOND_CHAR SYSRES_CONST_SECTION_REQUISITE_ACTIONS_VALUE SYSRES_CONST_SECTION_REQUISITE_CARD_VALUE SYSRES_CONST_SECTION_REQUISITE_CODE SYSRES_CONST_SECTION_REQUISITE_DETAIL_1_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_2_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_3_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_4_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_5_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_6_VALUE SYSRES_CONST_SELECT_REFERENCE_MODE_NAME SYSRES_CONST_SELECT_TYPE_SELECTABLE SYSRES_CONST_SELECT_TYPE_SELECTABLE_ONLY_CHILD SYSRES_CONST_SELECT_TYPE_SELECTABLE_WITH_CHILD SYSRES_CONST_SELECT_TYPE_UNSLECTABLE SYSRES_CONST_SERVER_TYPE_MAIN SYSRES_CONST_SERVICE_USER_CATEGORY_FIELD_VALUE SYSRES_CONST_SETTINGS_USER_REQUISITE_CODE SYSRES_CONST_SIGNATURE_AND_ENCODE_CERTIFICATE_TYPE_CODE SYSRES_CONST_SIGNATURE_CERTIFICATE_TYPE_CODE SYSRES_CONST_SINGULAR_TITLE_REQUISITE_CODE SYSRES_CONST_SQL_SERVER_AUTHENTIFICATION_FLAG_VALUE_CODE SYSRES_CONST_SQL_SERVER_ENCODE_AUTHENTIFICATION_FLAG_VALUE_CODE SYSRES_CONST_STANDART_ROUTE_REFERENCE_CODE SYSRES_CONST_STANDART_ROUTE_REFERENCE_COMMENT_REQUISITE_CODE SYSRES_CONST_STANDART_ROUTES_GROUPS_REFERENCE_CODE SYSRES_CONST_STATE_REQ_NAME SYSRES_CONST_STATE_REQUISITE_ACTIVE_VALUE SYSRES_CONST_STATE_REQUISITE_CLOSED_VALUE SYSRES_CONST_STATE_REQUISITE_CODE SYSRES_CONST_STATIC_ROLE_TYPE_CODE SYSRES_CONST_STATUS_PLAN_DEFAULT_VALUE SYSRES_CONST_STATUS_VALUE_AUTOCLEANING SYSRES_CONST_STATUS_VALUE_BLUE_SQUARE SYSRES_CONST_STATUS_VALUE_COMPLETE SYSRES_CONST_STATUS_VALUE_GREEN_SQUARE SYSRES_CONST_STATUS_VALUE_ORANGE_SQUARE SYSRES_CONST_STATUS_VALUE_PURPLE_SQUARE SYSRES_CONST_STATUS_VALUE_RED_SQUARE SYSRES_CONST_STATUS_VALUE_SUSPEND SYSRES_CONST_STATUS_VALUE_YELLOW_SQUARE SYSRES_CONST_STDROUTE_SHOW_TO_USERS_REQUISITE_CODE SYSRES_CONST_STORAGE_TYPE_FILE SYSRES_CONST_STORAGE_TYPE_SQL_SERVER SYSRES_CONST_STR_REQUISITE SYSRES_CONST_STRIKEOUT_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_STRING_FORMAT_LEFT_ALIGN_CHAR SYSRES_CONST_STRING_FORMAT_RIGHT_ALIGN_CHAR SYSRES_CONST_STRING_REQUISITE_CODE SYSRES_CONST_STRING_REQUISITE_TYPE SYSRES_CONST_STRING_TYPE_CHAR SYSRES_CONST_SUBSTITUTES_PSEUDOREFERENCE_CODE SYSRES_CONST_SUBTASK_BLOCK_DESCRIPTION SYSRES_CONST_SYSTEM_SETTING_CURRENT_USER_PARAM_VALUE SYSRES_CONST_SYSTEM_SETTING_EMPTY_VALUE_PARAM_VALUE SYSRES_CONST_SYSTEM_VERSION_COMMENT SYSRES_CONST_TASK_ACCESS_TYPE_ALL SYSRES_CONST_TASK_ACCESS_TYPE_ALL_MEMBERS SYSRES_CONST_TASK_ACCESS_TYPE_MANUAL SYSRES_CONST_TASK_ENCODE_TYPE_CERTIFICATION SYSRES_CONST_TASK_ENCODE_TYPE_CERTIFICATION_AND_PASSWORD SYSRES_CONST_TASK_ENCODE_TYPE_NONE SYSRES_CONST_TASK_ENCODE_TYPE_PASSWORD SYSRES_CONST_TASK_ROUTE_ALL_CONDITION SYSRES_CONST_TASK_ROUTE_AND_CONDITION SYSRES_CONST_TASK_ROUTE_OR_CONDITION SYSRES_CONST_TASK_STATE_ABORTED SYSRES_CONST_TASK_STATE_COMPLETE SYSRES_CONST_TASK_STATE_CONTINUED SYSRES_CONST_TASK_STATE_CONTROL SYSRES_CONST_TASK_STATE_INIT SYSRES_CONST_TASK_STATE_WORKING SYSRES_CONST_TASK_TITLE SYSRES_CONST_TASK_TYPES_GROUPS_REFERENCE_CODE SYSRES_CONST_TASK_TYPES_REFERENCE_CODE SYSRES_CONST_TEMPLATES_REFERENCE_CODE SYSRES_CONST_TEST_DATE_REQUISITE_NAME SYSRES_CONST_TEST_DEV_DATABASE_NAME SYSRES_CONST_TEST_DEV_SYSTEM_CODE SYSRES_CONST_TEST_EDMS_DATABASE_NAME SYSRES_CONST_TEST_EDMS_MAIN_CODE SYSRES_CONST_TEST_EDMS_MAIN_DB_NAME SYSRES_CONST_TEST_EDMS_SECOND_CODE SYSRES_CONST_TEST_EDMS_SECOND_DB_NAME SYSRES_CONST_TEST_EDMS_SYSTEM_CODE SYSRES_CONST_TEST_NUMERIC_REQUISITE_NAME SYSRES_CONST_TEXT_REQUISITE SYSRES_CONST_TEXT_REQUISITE_CODE SYSRES_CONST_TEXT_REQUISITE_TYPE SYSRES_CONST_TEXT_TYPE_CHAR SYSRES_CONST_TYPE_CODE_REQUISITE_CODE SYSRES_CONST_TYPE_REQUISITE_CODE SYSRES_CONST_UNDEFINED_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_UNITS_SECTION_ID_REQUISITE_CODE SYSRES_CONST_UNITS_SECTION_REQUISITE_CODE SYSRES_CONST_UNOPERATING_RECORD_FLAG_VALUE_CODE SYSRES_CONST_UNSTORED_DATA_REQUISITE_CODE SYSRES_CONST_UNSTORED_DATA_REQUISITE_NAME SYSRES_CONST_USE_ACCESS_TYPE_CODE SYSRES_CONST_USE_ACCESS_TYPE_NAME SYSRES_CONST_USER_ACCOUNT_TYPE_VALUE_CODE SYSRES_CONST_USER_ADDITIONAL_INFORMATION_REQUISITE_CODE SYSRES_CONST_USER_AND_GROUP_ID_FROM_PSEUDOREFERENCE_REQUISITE_CODE SYSRES_CONST_USER_CATEGORY_NORMAL SYSRES_CONST_USER_CERTIFICATE_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_STATE_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_SUBJECT_NAME_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_THUMBPRINT_REQUISITE_CODE SYSRES_CONST_USER_COMMON_CATEGORY SYSRES_CONST_USER_COMMON_CATEGORY_CODE SYSRES_CONST_USER_FULL_NAME_REQUISITE_CODE SYSRES_CONST_USER_GROUP_TYPE_REQUISITE_CODE SYSRES_CONST_USER_LOGIN_REQUISITE_CODE SYSRES_CONST_USER_REMOTE_CONTROLLER_REQUISITE_CODE SYSRES_CONST_USER_REMOTE_SYSTEM_REQUISITE_CODE SYSRES_CONST_USER_RIGHTS_T_REQUISITE_CODE SYSRES_CONST_USER_SERVER_NAME_REQUISITE_CODE SYSRES_CONST_USER_SERVICE_CATEGORY SYSRES_CONST_USER_SERVICE_CATEGORY_CODE SYSRES_CONST_USER_STATUS_ADMINISTRATOR_CODE SYSRES_CONST_USER_STATUS_ADMINISTRATOR_NAME SYSRES_CONST_USER_STATUS_DEVELOPER_CODE SYSRES_CONST_USER_STATUS_DEVELOPER_NAME SYSRES_CONST_USER_STATUS_DISABLED_CODE SYSRES_CONST_USER_STATUS_DISABLED_NAME SYSRES_CONST_USER_STATUS_SYSTEM_DEVELOPER_CODE SYSRES_CONST_USER_STATUS_USER_CODE SYSRES_CONST_USER_STATUS_USER_NAME SYSRES_CONST_USER_STATUS_USER_NAME_DEPRECATED SYSRES_CONST_USER_TYPE_FIELD_VALUE_USER SYSRES_CONST_USER_TYPE_REQUISITE_CODE SYSRES_CONST_USERS_CONTROLLER_REQUISITE_CODE SYSRES_CONST_USERS_IS_MAIN_SERVER_REQUISITE_CODE SYSRES_CONST_USERS_REFERENCE_CODE SYSRES_CONST_USERS_REGISTRATION_CERTIFICATES_ACTION_NAME SYSRES_CONST_USERS_REQUISITE_CODE SYSRES_CONST_USERS_SYSTEM_REQUISITE_CODE SYSRES_CONST_USERS_USER_ACCESS_RIGHTS_TYPR_REQUISITE_CODE SYSRES_CONST_USERS_USER_AUTHENTICATION_REQUISITE_CODE SYSRES_CONST_USERS_USER_COMPONENT_REQUISITE_CODE SYSRES_CONST_USERS_USER_GROUP_REQUISITE_CODE SYSRES_CONST_USERS_VIEW_CERTIFICATES_ACTION_NAME SYSRES_CONST_VIEW_DEFAULT_CODE SYSRES_CONST_VIEW_DEFAULT_NAME SYSRES_CONST_VIEWER_REQUISITE_CODE SYSRES_CONST_WAITING_BLOCK_DESCRIPTION SYSRES_CONST_WIZARD_FORM_LABEL_TEST_STRING  SYSRES_CONST_WIZARD_QUERY_PARAM_HEIGHT_ETALON_STRING SYSRES_CONST_WIZARD_REFERENCE_COMMENT_REQUISITE_CODE SYSRES_CONST_WORK_RULES_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_WORK_TIME_CALENDAR_REFERENCE_CODE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE_CODE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE_CODE_RUS SYSRES_CONST_WORK_WORKFLOW_SOFT_ROUTE_TYPE_VALUE_CODE_RUS SYSRES_CONST_WORKFLOW_ROUTE_TYPR_HARD SYSRES_CONST_WORKFLOW_ROUTE_TYPR_SOFT SYSRES_CONST_XML_ENCODING SYSRES_CONST_XREC_STAT_REQUISITE_CODE SYSRES_CONST_XRECID_FIELD_NAME SYSRES_CONST_YES SYSRES_CONST_YES_NO_2_REQUISITE_CODE SYSRES_CONST_YES_NO_REQUISITE_CODE SYSRES_CONST_YES_NO_T_REF_TYPE_REQUISITE_CODE SYSRES_CONST_YES_PICK_VALUE SYSRES_CONST_YES_VALUE ", s = "CR FALSE nil NO_VALUE NULL TAB TRUE YES_VALUE ", o = "ADMINISTRATORS_GROUP_NAME CUSTOMIZERS_GROUP_NAME DEVELOPERS_GROUP_NAME SERVICE_USERS_GROUP_NAME ", c = "DECISION_BLOCK_FIRST_OPERAND_PROPERTY DECISION_BLOCK_NAME_PROPERTY DECISION_BLOCK_OPERATION_PROPERTY DECISION_BLOCK_RESULT_TYPE_PROPERTY DECISION_BLOCK_SECOND_OPERAND_PROPERTY ", u = "ANY_FILE_EXTENTION COMPRESSED_DOCUMENT_EXTENSION EXTENDED_DOCUMENT_EXTENSION SHORT_COMPRESSED_DOCUMENT_EXTENSION SHORT_EXTENDED_DOCUMENT_EXTENSION ", d = "JOB_BLOCK_ABORT_DEADLINE_PROPERTY JOB_BLOCK_AFTER_FINISH_EVENT JOB_BLOCK_AFTER_QUERY_PARAMETERS_EVENT JOB_BLOCK_ATTACHMENT_PROPERTY JOB_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY JOB_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY JOB_BLOCK_BEFORE_QUERY_PARAMETERS_EVENT JOB_BLOCK_BEFORE_START_EVENT JOB_BLOCK_CREATED_JOBS_PROPERTY JOB_BLOCK_DEADLINE_PROPERTY JOB_BLOCK_EXECUTION_RESULTS_PROPERTY JOB_BLOCK_IS_PARALLEL_PROPERTY JOB_BLOCK_IS_RELATIVE_ABORT_DEADLINE_PROPERTY JOB_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY JOB_BLOCK_JOB_TEXT_PROPERTY JOB_BLOCK_NAME_PROPERTY JOB_BLOCK_NEED_SIGN_ON_PERFORM_PROPERTY JOB_BLOCK_PERFORMER_PROPERTY JOB_BLOCK_RELATIVE_ABORT_DEADLINE_TYPE_PROPERTY JOB_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY JOB_BLOCK_SUBJECT_PROPERTY ", E = "ENGLISH_LANGUAGE_CODE RUSSIAN_LANGUAGE_CODE ", m = "smHidden smMaximized smMinimized smNormal wmNo wmYes ", T = "COMPONENT_TOKEN_LINK_KIND DOCUMENT_LINK_KIND EDOCUMENT_LINK_KIND FOLDER_LINK_KIND JOB_LINK_KIND REFERENCE_LINK_KIND TASK_LINK_KIND ", g = "COMPONENT_TOKEN_LOCK_TYPE EDOCUMENT_VERSION_LOCK_TYPE ", f = "MONITOR_BLOCK_AFTER_FINISH_EVENT MONITOR_BLOCK_BEFORE_START_EVENT MONITOR_BLOCK_DEADLINE_PROPERTY MONITOR_BLOCK_INTERVAL_PROPERTY MONITOR_BLOCK_INTERVAL_TYPE_PROPERTY MONITOR_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY MONITOR_BLOCK_NAME_PROPERTY MONITOR_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY MONITOR_BLOCK_SEARCH_SCRIPT_PROPERTY ", C = "NOTICE_BLOCK_AFTER_FINISH_EVENT NOTICE_BLOCK_ATTACHMENT_PROPERTY NOTICE_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY NOTICE_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY NOTICE_BLOCK_BEFORE_START_EVENT NOTICE_BLOCK_CREATED_NOTICES_PROPERTY NOTICE_BLOCK_DEADLINE_PROPERTY NOTICE_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY NOTICE_BLOCK_NAME_PROPERTY NOTICE_BLOCK_NOTICE_TEXT_PROPERTY NOTICE_BLOCK_PERFORMER_PROPERTY NOTICE_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY NOTICE_BLOCK_SUBJECT_PROPERTY ", A = "dseAfterCancel dseAfterClose dseAfterDelete dseAfterDeleteOutOfTransaction dseAfterInsert dseAfterOpen dseAfterScroll dseAfterUpdate dseAfterUpdateOutOfTransaction dseBeforeCancel dseBeforeClose dseBeforeDelete dseBeforeDetailUpdate dseBeforeInsert dseBeforeOpen dseBeforeUpdate dseOnAnyRequisiteChange dseOnCloseRecord dseOnDeleteError dseOnOpenRecord dseOnPrepareUpdate dseOnUpdateError dseOnUpdateRatifiedRecord dseOnValidDelete dseOnValidUpdate reOnChange reOnChangeValues SELECTION_BEGIN_ROUTE_EVENT SELECTION_END_ROUTE_EVENT ", P = "CURRENT_PERIOD_IS_REQUIRED PREVIOUS_CARD_TYPE_NAME SHOW_RECORD_PROPERTIES_FORM ", k = "ACCESS_RIGHTS_SETTING_DIALOG_CODE ADMINISTRATOR_USER_CODE ANALYTIC_REPORT_TYPE asrtHideLocal asrtHideRemote CALCULATED_ROLE_TYPE_CODE COMPONENTS_REFERENCE_DEVELOPER_VIEW_CODE DCTS_TEST_PROTOCOLS_FOLDER_PATH E_EDOC_VERSION_ALREADY_APPROVINGLY_SIGNED E_EDOC_VERSION_ALREADY_APPROVINGLY_SIGNED_BY_USER E_EDOC_VERSION_ALREDY_SIGNED E_EDOC_VERSION_ALREDY_SIGNED_BY_USER EDOC_TYPES_CODE_REQUISITE_FIELD_NAME EDOCUMENTS_ALIAS_NAME FILES_FOLDER_PATH FILTER_OPERANDS_DELIMITER FILTER_OPERATIONS_DELIMITER FORMCARD_NAME FORMLIST_NAME GET_EXTENDED_DOCUMENT_EXTENSION_CREATION_MODE GET_EXTENDED_DOCUMENT_EXTENSION_IMPORT_MODE INTEGRATED_REPORT_TYPE IS_BUILDER_APPLICATION_ROLE IS_BUILDER_APPLICATION_ROLE2 IS_BUILDER_USERS ISBSYSDEV LOG_FOLDER_PATH mbCancel mbNo mbNoToAll mbOK mbYes mbYesToAll MEMORY_DATASET_DESRIPTIONS_FILENAME mrNo mrNoToAll mrYes mrYesToAll MULTIPLE_SELECT_DIALOG_CODE NONOPERATING_RECORD_FLAG_FEMININE NONOPERATING_RECORD_FLAG_MASCULINE OPERATING_RECORD_FLAG_FEMININE OPERATING_RECORD_FLAG_MASCULINE PROFILING_SETTINGS_COMMON_SETTINGS_CODE_VALUE PROGRAM_INITIATED_LOOKUP_ACTION ratDelete ratEdit ratInsert REPORT_TYPE REQUIRED_PICK_VALUES_VARIABLE rmCard rmList SBRTE_PROGID_DEV SBRTE_PROGID_RELEASE STATIC_ROLE_TYPE_CODE SUPPRESS_EMPTY_TEMPLATE_CREATION SYSTEM_USER_CODE UPDATE_DIALOG_DATASET USED_IN_OBJECT_HINT_PARAM USER_INITIATED_LOOKUP_ACTION USER_NAME_FORMAT USER_SELECTION_RESTRICTIONS WORKFLOW_TEST_PROTOCOLS_FOLDER_PATH ELS_SUBTYPE_CONTROL_NAME ELS_FOLDER_KIND_CONTROL_NAME REPEAT_PROCESS_CURRENT_OBJECT_EXCEPTION_NAME ", w = "PRIVILEGE_COMPONENT_FULL_ACCESS PRIVILEGE_DEVELOPMENT_EXPORT PRIVILEGE_DEVELOPMENT_IMPORT PRIVILEGE_DOCUMENT_DELETE PRIVILEGE_ESD PRIVILEGE_FOLDER_DELETE PRIVILEGE_MANAGE_ACCESS_RIGHTS PRIVILEGE_MANAGE_REPLICATION PRIVILEGE_MANAGE_SESSION_SERVER PRIVILEGE_OBJECT_FULL_ACCESS PRIVILEGE_OBJECT_VIEW PRIVILEGE_RESERVE_LICENSE PRIVILEGE_SYSTEM_CUSTOMIZE PRIVILEGE_SYSTEM_DEVELOP PRIVILEGE_SYSTEM_INSTALL PRIVILEGE_TASK_DELETE PRIVILEGE_USER_PLUGIN_SETTINGS_CUSTOMIZE PRIVILEGES_PSEUDOREFERENCE_CODE ", q = "ACCESS_TYPES_PSEUDOREFERENCE_CODE ALL_AVAILABLE_COMPONENTS_PSEUDOREFERENCE_CODE ALL_AVAILABLE_PRIVILEGES_PSEUDOREFERENCE_CODE ALL_REPLICATE_COMPONENTS_PSEUDOREFERENCE_CODE AVAILABLE_DEVELOPERS_COMPONENTS_PSEUDOREFERENCE_CODE COMPONENTS_PSEUDOREFERENCE_CODE FILTRATER_SETTINGS_CONFLICTS_PSEUDOREFERENCE_CODE GROUPS_PSEUDOREFERENCE_CODE RECEIVE_PROTOCOL_PSEUDOREFERENCE_CODE REFERENCE_REQUISITE_PSEUDOREFERENCE_CODE REFERENCE_REQUISITES_PSEUDOREFERENCE_CODE REFTYPES_PSEUDOREFERENCE_CODE REPLICATION_SEANCES_DIARY_PSEUDOREFERENCE_CODE SEND_PROTOCOL_PSEUDOREFERENCE_CODE SUBSTITUTES_PSEUDOREFERENCE_CODE SYSTEM_SETTINGS_PSEUDOREFERENCE_CODE UNITS_PSEUDOREFERENCE_CODE USERS_PSEUDOREFERENCE_CODE VIEWERS_PSEUDOREFERENCE_CODE ", L = "CERTIFICATE_TYPE_ENCRYPT CERTIFICATE_TYPE_SIGN CERTIFICATE_TYPE_SIGN_AND_ENCRYPT ", X = "STORAGE_TYPE_FILE STORAGE_TYPE_NAS_CIFS STORAGE_TYPE_SAPERION STORAGE_TYPE_SQL_SERVER ", h = "COMPTYPE2_REQUISITE_DOCUMENTS_VALUE COMPTYPE2_REQUISITE_TASKS_VALUE COMPTYPE2_REQUISITE_FOLDERS_VALUE COMPTYPE2_REQUISITE_REFERENCES_VALUE ", y = "SYSREQ_CODE SYSREQ_COMPTYPE2 SYSREQ_CONST_AVAILABLE_FOR_WEB SYSREQ_CONST_COMMON_CODE SYSREQ_CONST_COMMON_VALUE SYSREQ_CONST_FIRM_CODE SYSREQ_CONST_FIRM_STATUS SYSREQ_CONST_FIRM_VALUE SYSREQ_CONST_SERVER_STATUS SYSREQ_CONTENTS SYSREQ_DATE_OPEN SYSREQ_DATE_CLOSE SYSREQ_DESCRIPTION SYSREQ_DESCRIPTION_LOCALIZE_ID SYSREQ_DOUBLE SYSREQ_EDOC_ACCESS_TYPE SYSREQ_EDOC_AUTHOR SYSREQ_EDOC_CREATED SYSREQ_EDOC_DELEGATE_RIGHTS_REQUISITE_CODE SYSREQ_EDOC_EDITOR SYSREQ_EDOC_ENCODE_TYPE SYSREQ_EDOC_ENCRYPTION_PLUGIN_NAME SYSREQ_EDOC_ENCRYPTION_PLUGIN_VERSION SYSREQ_EDOC_EXPORT_DATE SYSREQ_EDOC_EXPORTER SYSREQ_EDOC_KIND SYSREQ_EDOC_LIFE_STAGE_NAME SYSREQ_EDOC_LOCKED_FOR_SERVER_CODE SYSREQ_EDOC_MODIFIED SYSREQ_EDOC_NAME SYSREQ_EDOC_NOTE SYSREQ_EDOC_QUALIFIED_ID SYSREQ_EDOC_SESSION_KEY SYSREQ_EDOC_SESSION_KEY_ENCRYPTION_PLUGIN_NAME SYSREQ_EDOC_SESSION_KEY_ENCRYPTION_PLUGIN_VERSION SYSREQ_EDOC_SIGNATURE_TYPE SYSREQ_EDOC_SIGNED SYSREQ_EDOC_STORAGE SYSREQ_EDOC_STORAGES_ARCHIVE_STORAGE SYSREQ_EDOC_STORAGES_CHECK_RIGHTS SYSREQ_EDOC_STORAGES_COMPUTER_NAME SYSREQ_EDOC_STORAGES_EDIT_IN_STORAGE SYSREQ_EDOC_STORAGES_EXECUTIVE_STORAGE SYSREQ_EDOC_STORAGES_FUNCTION SYSREQ_EDOC_STORAGES_INITIALIZED SYSREQ_EDOC_STORAGES_LOCAL_PATH SYSREQ_EDOC_STORAGES_SAPERION_DATABASE_NAME SYSREQ_EDOC_STORAGES_SEARCH_BY_TEXT SYSREQ_EDOC_STORAGES_SERVER_NAME SYSREQ_EDOC_STORAGES_SHARED_SOURCE_NAME SYSREQ_EDOC_STORAGES_TYPE SYSREQ_EDOC_TEXT_MODIFIED SYSREQ_EDOC_TYPE_ACT_CODE SYSREQ_EDOC_TYPE_ACT_DESCRIPTION SYSREQ_EDOC_TYPE_ACT_DESCRIPTION_LOCALIZE_ID SYSREQ_EDOC_TYPE_ACT_ON_EXECUTE SYSREQ_EDOC_TYPE_ACT_ON_EXECUTE_EXISTS SYSREQ_EDOC_TYPE_ACT_SECTION SYSREQ_EDOC_TYPE_ADD_PARAMS SYSREQ_EDOC_TYPE_COMMENT SYSREQ_EDOC_TYPE_EVENT_TEXT SYSREQ_EDOC_TYPE_NAME_IN_SINGULAR SYSREQ_EDOC_TYPE_NAME_IN_SINGULAR_LOCALIZE_ID SYSREQ_EDOC_TYPE_NAME_LOCALIZE_ID SYSREQ_EDOC_TYPE_NUMERATION_METHOD SYSREQ_EDOC_TYPE_PSEUDO_REQUISITE_CODE SYSREQ_EDOC_TYPE_REQ_CODE SYSREQ_EDOC_TYPE_REQ_DESCRIPTION SYSREQ_EDOC_TYPE_REQ_DESCRIPTION_LOCALIZE_ID SYSREQ_EDOC_TYPE_REQ_IS_LEADING SYSREQ_EDOC_TYPE_REQ_IS_REQUIRED SYSREQ_EDOC_TYPE_REQ_NUMBER SYSREQ_EDOC_TYPE_REQ_ON_CHANGE SYSREQ_EDOC_TYPE_REQ_ON_CHANGE_EXISTS SYSREQ_EDOC_TYPE_REQ_ON_SELECT SYSREQ_EDOC_TYPE_REQ_ON_SELECT_KIND SYSREQ_EDOC_TYPE_REQ_SECTION SYSREQ_EDOC_TYPE_VIEW_CARD SYSREQ_EDOC_TYPE_VIEW_CODE SYSREQ_EDOC_TYPE_VIEW_COMMENT SYSREQ_EDOC_TYPE_VIEW_IS_MAIN SYSREQ_EDOC_TYPE_VIEW_NAME SYSREQ_EDOC_TYPE_VIEW_NAME_LOCALIZE_ID SYSREQ_EDOC_VERSION_AUTHOR SYSREQ_EDOC_VERSION_CRC SYSREQ_EDOC_VERSION_DATA SYSREQ_EDOC_VERSION_EDITOR SYSREQ_EDOC_VERSION_EXPORT_DATE SYSREQ_EDOC_VERSION_EXPORTER SYSREQ_EDOC_VERSION_HIDDEN SYSREQ_EDOC_VERSION_LIFE_STAGE SYSREQ_EDOC_VERSION_MODIFIED SYSREQ_EDOC_VERSION_NOTE SYSREQ_EDOC_VERSION_SIGNATURE_TYPE SYSREQ_EDOC_VERSION_SIGNED SYSREQ_EDOC_VERSION_SIZE SYSREQ_EDOC_VERSION_SOURCE SYSREQ_EDOC_VERSION_TEXT_MODIFIED SYSREQ_EDOCKIND_DEFAULT_VERSION_STATE_CODE SYSREQ_FOLDER_KIND SYSREQ_FUNC_CATEGORY SYSREQ_FUNC_COMMENT SYSREQ_FUNC_GROUP SYSREQ_FUNC_GROUP_COMMENT SYSREQ_FUNC_GROUP_NUMBER SYSREQ_FUNC_HELP SYSREQ_FUNC_PARAM_DEF_VALUE SYSREQ_FUNC_PARAM_IDENT SYSREQ_FUNC_PARAM_NUMBER SYSREQ_FUNC_PARAM_TYPE SYSREQ_FUNC_TEXT SYSREQ_GROUP_CATEGORY SYSREQ_ID SYSREQ_LAST_UPDATE SYSREQ_LEADER_REFERENCE SYSREQ_LINE_NUMBER SYSREQ_MAIN_RECORD_ID SYSREQ_NAME SYSREQ_NAME_LOCALIZE_ID SYSREQ_NOTE SYSREQ_ORIGINAL_RECORD SYSREQ_OUR_FIRM SYSREQ_PROFILING_SETTINGS_BATCH_LOGING SYSREQ_PROFILING_SETTINGS_BATCH_SIZE SYSREQ_PROFILING_SETTINGS_PROFILING_ENABLED SYSREQ_PROFILING_SETTINGS_SQL_PROFILING_ENABLED SYSREQ_PROFILING_SETTINGS_START_LOGGED SYSREQ_RECORD_STATUS SYSREQ_REF_REQ_FIELD_NAME SYSREQ_REF_REQ_FORMAT SYSREQ_REF_REQ_GENERATED SYSREQ_REF_REQ_LENGTH SYSREQ_REF_REQ_PRECISION SYSREQ_REF_REQ_REFERENCE SYSREQ_REF_REQ_SECTION SYSREQ_REF_REQ_STORED SYSREQ_REF_REQ_TOKENS SYSREQ_REF_REQ_TYPE SYSREQ_REF_REQ_VIEW SYSREQ_REF_TYPE_ACT_CODE SYSREQ_REF_TYPE_ACT_DESCRIPTION SYSREQ_REF_TYPE_ACT_DESCRIPTION_LOCALIZE_ID SYSREQ_REF_TYPE_ACT_ON_EXECUTE SYSREQ_REF_TYPE_ACT_ON_EXECUTE_EXISTS SYSREQ_REF_TYPE_ACT_SECTION SYSREQ_REF_TYPE_ADD_PARAMS SYSREQ_REF_TYPE_COMMENT SYSREQ_REF_TYPE_COMMON_SETTINGS SYSREQ_REF_TYPE_DISPLAY_REQUISITE_NAME SYSREQ_REF_TYPE_EVENT_TEXT SYSREQ_REF_TYPE_MAIN_LEADING_REF SYSREQ_REF_TYPE_NAME_IN_SINGULAR SYSREQ_REF_TYPE_NAME_IN_SINGULAR_LOCALIZE_ID SYSREQ_REF_TYPE_NAME_LOCALIZE_ID SYSREQ_REF_TYPE_NUMERATION_METHOD SYSREQ_REF_TYPE_REQ_CODE SYSREQ_REF_TYPE_REQ_DESCRIPTION SYSREQ_REF_TYPE_REQ_DESCRIPTION_LOCALIZE_ID SYSREQ_REF_TYPE_REQ_IS_CONTROL SYSREQ_REF_TYPE_REQ_IS_FILTER SYSREQ_REF_TYPE_REQ_IS_LEADING SYSREQ_REF_TYPE_REQ_IS_REQUIRED SYSREQ_REF_TYPE_REQ_NUMBER SYSREQ_REF_TYPE_REQ_ON_CHANGE SYSREQ_REF_TYPE_REQ_ON_CHANGE_EXISTS SYSREQ_REF_TYPE_REQ_ON_SELECT SYSREQ_REF_TYPE_REQ_ON_SELECT_KIND SYSREQ_REF_TYPE_REQ_SECTION SYSREQ_REF_TYPE_VIEW_CARD SYSREQ_REF_TYPE_VIEW_CODE SYSREQ_REF_TYPE_VIEW_COMMENT SYSREQ_REF_TYPE_VIEW_IS_MAIN SYSREQ_REF_TYPE_VIEW_NAME SYSREQ_REF_TYPE_VIEW_NAME_LOCALIZE_ID SYSREQ_REFERENCE_TYPE_ID SYSREQ_STATE SYSREQ_STAT\u0415 SYSREQ_SYSTEM_SETTINGS_VALUE SYSREQ_TYPE SYSREQ_UNIT SYSREQ_UNIT_ID SYSREQ_USER_GROUPS_GROUP_FULL_NAME SYSREQ_USER_GROUPS_GROUP_NAME SYSREQ_USER_GROUPS_GROUP_SERVER_NAME SYSREQ_USERS_ACCESS_RIGHTS SYSREQ_USERS_AUTHENTICATION SYSREQ_USERS_CATEGORY SYSREQ_USERS_COMPONENT SYSREQ_USERS_COMPONENT_USER_IS_PUBLIC SYSREQ_USERS_DOMAIN SYSREQ_USERS_FULL_USER_NAME SYSREQ_USERS_GROUP SYSREQ_USERS_IS_MAIN_SERVER SYSREQ_USERS_LOGIN SYSREQ_USERS_REFERENCE_USER_IS_PUBLIC SYSREQ_USERS_STATUS SYSREQ_USERS_USER_CERTIFICATE SYSREQ_USERS_USER_CERTIFICATE_INFO SYSREQ_USERS_USER_CERTIFICATE_PLUGIN_NAME SYSREQ_USERS_USER_CERTIFICATE_PLUGIN_VERSION SYSREQ_USERS_USER_CERTIFICATE_STATE SYSREQ_USERS_USER_CERTIFICATE_SUBJECT_NAME SYSREQ_USERS_USER_CERTIFICATE_THUMBPRINT SYSREQ_USERS_USER_DEFAULT_CERTIFICATE SYSREQ_USERS_USER_DESCRIPTION SYSREQ_USERS_USER_GLOBAL_NAME SYSREQ_USERS_USER_LOGIN SYSREQ_USERS_USER_MAIN_SERVER SYSREQ_USERS_USER_TYPE SYSREQ_WORK_RULES_FOLDER_ID ", B = "RESULT_VAR_NAME RESULT_VAR_NAME_ENG ", M = "AUTO_NUMERATION_RULE_ID CANT_CHANGE_ID_REQUISITE_RULE_ID CANT_CHANGE_OURFIRM_REQUISITE_RULE_ID CHECK_CHANGING_REFERENCE_RECORD_USE_RULE_ID CHECK_CODE_REQUISITE_RULE_ID CHECK_DELETING_REFERENCE_RECORD_USE_RULE_ID CHECK_FILTRATER_CHANGES_RULE_ID CHECK_RECORD_INTERVAL_RULE_ID CHECK_REFERENCE_INTERVAL_RULE_ID CHECK_REQUIRED_DATA_FULLNESS_RULE_ID CHECK_REQUIRED_REQUISITES_FULLNESS_RULE_ID MAKE_RECORD_UNRATIFIED_RULE_ID RESTORE_AUTO_NUMERATION_RULE_ID SET_FIRM_CONTEXT_FROM_RECORD_RULE_ID SET_FIRST_RECORD_IN_LIST_FORM_RULE_ID SET_IDSPS_VALUE_RULE_ID SET_NEXT_CODE_VALUE_RULE_ID SET_OURFIRM_BOUNDS_RULE_ID SET_OURFIRM_REQUISITE_RULE_ID ", ie = "SCRIPT_BLOCK_AFTER_FINISH_EVENT SCRIPT_BLOCK_BEFORE_START_EVENT SCRIPT_BLOCK_EXECUTION_RESULTS_PROPERTY SCRIPT_BLOCK_NAME_PROPERTY SCRIPT_BLOCK_SCRIPT_PROPERTY ", ce = "SUBTASK_BLOCK_ABORT_DEADLINE_PROPERTY SUBTASK_BLOCK_AFTER_FINISH_EVENT SUBTASK_BLOCK_ASSIGN_PARAMS_EVENT SUBTASK_BLOCK_ATTACHMENTS_PROPERTY SUBTASK_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY SUBTASK_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY SUBTASK_BLOCK_BEFORE_START_EVENT SUBTASK_BLOCK_CREATED_TASK_PROPERTY SUBTASK_BLOCK_CREATION_EVENT SUBTASK_BLOCK_DEADLINE_PROPERTY SUBTASK_BLOCK_IMPORTANCE_PROPERTY SUBTASK_BLOCK_INITIATOR_PROPERTY SUBTASK_BLOCK_IS_RELATIVE_ABORT_DEADLINE_PROPERTY SUBTASK_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY SUBTASK_BLOCK_JOBS_TYPE_PROPERTY SUBTASK_BLOCK_NAME_PROPERTY SUBTASK_BLOCK_PARALLEL_ROUTE_PROPERTY SUBTASK_BLOCK_PERFORMERS_PROPERTY SUBTASK_BLOCK_RELATIVE_ABORT_DEADLINE_TYPE_PROPERTY SUBTASK_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY SUBTASK_BLOCK_REQUIRE_SIGN_PROPERTY SUBTASK_BLOCK_STANDARD_ROUTE_PROPERTY SUBTASK_BLOCK_START_EVENT SUBTASK_BLOCK_STEP_CONTROL_PROPERTY SUBTASK_BLOCK_SUBJECT_PROPERTY SUBTASK_BLOCK_TASK_CONTROL_PROPERTY SUBTASK_BLOCK_TEXT_PROPERTY SUBTASK_BLOCK_UNLOCK_ATTACHMENTS_ON_STOP_PROPERTY SUBTASK_BLOCK_USE_STANDARD_ROUTE_PROPERTY SUBTASK_BLOCK_WAIT_FOR_TASK_COMPLETE_PROPERTY ", _e = "SYSCOMP_CONTROL_JOBS SYSCOMP_FOLDERS SYSCOMP_JOBS SYSCOMP_NOTICES SYSCOMP_TASKS ", re = "SYSDLG_CREATE_EDOCUMENT SYSDLG_CREATE_EDOCUMENT_VERSION SYSDLG_CURRENT_PERIOD SYSDLG_EDIT_FUNCTION_HELP SYSDLG_EDOCUMENT_KINDS_FOR_TEMPLATE SYSDLG_EXPORT_MULTIPLE_EDOCUMENTS SYSDLG_EXPORT_SINGLE_EDOCUMENT SYSDLG_IMPORT_EDOCUMENT SYSDLG_MULTIPLE_SELECT SYSDLG_SETUP_ACCESS_RIGHTS SYSDLG_SETUP_DEFAULT_RIGHTS SYSDLG_SETUP_FILTER_CONDITION SYSDLG_SETUP_SIGN_RIGHTS SYSDLG_SETUP_TASK_OBSERVERS SYSDLG_SETUP_TASK_ROUTE SYSDLG_SETUP_USERS_LIST SYSDLG_SIGN_EDOCUMENT SYSDLG_SIGN_MULTIPLE_EDOCUMENTS ", U = "SYSREF_ACCESS_RIGHTS_TYPES SYSREF_ADMINISTRATION_HISTORY SYSREF_ALL_AVAILABLE_COMPONENTS SYSREF_ALL_AVAILABLE_PRIVILEGES SYSREF_ALL_REPLICATING_COMPONENTS SYSREF_AVAILABLE_DEVELOPERS_COMPONENTS SYSREF_CALENDAR_EVENTS SYSREF_COMPONENT_TOKEN_HISTORY SYSREF_COMPONENT_TOKENS SYSREF_COMPONENTS SYSREF_CONSTANTS SYSREF_DATA_RECEIVE_PROTOCOL SYSREF_DATA_SEND_PROTOCOL SYSREF_DIALOGS SYSREF_DIALOGS_REQUISITES SYSREF_EDITORS SYSREF_EDOC_CARDS SYSREF_EDOC_TYPES SYSREF_EDOCUMENT_CARD_REQUISITES SYSREF_EDOCUMENT_CARD_TYPES SYSREF_EDOCUMENT_CARD_TYPES_REFERENCE SYSREF_EDOCUMENT_CARDS SYSREF_EDOCUMENT_HISTORY SYSREF_EDOCUMENT_KINDS SYSREF_EDOCUMENT_REQUISITES SYSREF_EDOCUMENT_SIGNATURES SYSREF_EDOCUMENT_TEMPLATES SYSREF_EDOCUMENT_TEXT_STORAGES SYSREF_EDOCUMENT_VIEWS SYSREF_FILTERER_SETUP_CONFLICTS SYSREF_FILTRATER_SETTING_CONFLICTS SYSREF_FOLDER_HISTORY SYSREF_FOLDERS SYSREF_FUNCTION_GROUPS SYSREF_FUNCTION_PARAMS SYSREF_FUNCTIONS SYSREF_JOB_HISTORY SYSREF_LINKS SYSREF_LOCALIZATION_DICTIONARY SYSREF_LOCALIZATION_LANGUAGES SYSREF_MODULES SYSREF_PRIVILEGES SYSREF_RECORD_HISTORY SYSREF_REFERENCE_REQUISITES SYSREF_REFERENCE_TYPE_VIEWS SYSREF_REFERENCE_TYPES SYSREF_REFERENCES SYSREF_REFERENCES_REQUISITES SYSREF_REMOTE_SERVERS SYSREF_REPLICATION_SESSIONS_LOG SYSREF_REPLICATION_SESSIONS_PROTOCOL SYSREF_REPORTS SYSREF_ROLES SYSREF_ROUTE_BLOCK_GROUPS SYSREF_ROUTE_BLOCKS SYSREF_SCRIPTS SYSREF_SEARCHES SYSREF_SERVER_EVENTS SYSREF_SERVER_EVENTS_HISTORY SYSREF_STANDARD_ROUTE_GROUPS SYSREF_STANDARD_ROUTES SYSREF_STATUSES SYSREF_SYSTEM_SETTINGS SYSREF_TASK_HISTORY SYSREF_TASK_KIND_GROUPS SYSREF_TASK_KINDS SYSREF_TASK_RIGHTS SYSREF_TASK_SIGNATURES SYSREF_TASKS SYSREF_UNITS SYSREF_USER_GROUPS SYSREF_USER_GROUPS_REFERENCE SYSREF_USER_SUBSTITUTION SYSREF_USERS SYSREF_USERS_REFERENCE SYSREF_VIEWERS SYSREF_WORKING_TIME_CALENDARS ", H = "ACCESS_RIGHTS_TABLE_NAME EDMS_ACCESS_TABLE_NAME EDOC_TYPES_TABLE_NAME ", Z = "TEST_DEV_DB_NAME TEST_DEV_SYSTEM_CODE TEST_EDMS_DB_NAME TEST_EDMS_MAIN_CODE TEST_EDMS_MAIN_DB_NAME TEST_EDMS_SECOND_CODE TEST_EDMS_SECOND_DB_NAME TEST_EDMS_SYSTEM_CODE TEST_ISB5_MAIN_CODE TEST_ISB5_SECOND_CODE TEST_SQL_SERVER_2005_NAME TEST_SQL_SERVER_NAME ", te = "ATTENTION_CAPTION cbsCommandLinks cbsDefault CONFIRMATION_CAPTION ERROR_CAPTION INFORMATION_CAPTION mrCancel mrOk ", Ee = "EDOC_VERSION_ACTIVE_STAGE_CODE EDOC_VERSION_DESIGN_STAGE_CODE EDOC_VERSION_OBSOLETE_STAGE_CODE ", Ae = "cpDataEnciphermentEnabled cpDigitalSignatureEnabled cpID cpIssuer cpPluginVersion cpSerial cpSubjectName cpSubjSimpleName cpValidFromDate cpValidToDate ", ke = "ISBL_SYNTAX NO_SYNTAX XML_SYNTAX ", Ge = "WAIT_BLOCK_AFTER_FINISH_EVENT WAIT_BLOCK_BEFORE_START_EVENT WAIT_BLOCK_DEADLINE_PROPERTY WAIT_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY WAIT_BLOCK_NAME_PROPERTY WAIT_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY ", ge = "SYSRES_COMMON SYSRES_CONST SYSRES_MBFUNC SYSRES_SBDATA SYSRES_SBGUI SYSRES_SBINTF SYSRES_SBREFDSC SYSRES_SQLERRORS SYSRES_SYSCOMP ", he = i + s + o + c + u + d + E + m + T + g + f + C + A + P + k + w + q + L + X + h + y + B + M + ie + ce + _e + re + U + H + Z + te + Ee + Ae + ke + Ge + ge, Te = "atUser atGroup atRole ", pe = "aemEnabledAlways aemDisabledAlways aemEnabledOnBrowse aemEnabledOnEdit aemDisabledOnBrowseEmpty ", Oe = "apBegin apEnd ", De = "alLeft alRight ", Ue = "asmNever asmNoButCustomize asmAsLastTime asmYesButCustomize asmAlways ", Fe = "cirCommon cirRevoked ", et = "ctSignature ctEncode ctSignatureEncode ", st = "clbUnchecked clbChecked clbGrayed ", Xe = "ceISB ceAlways ceNever ", Jt = "ctDocument ctReference ctScript ctUnknown ctReport ctDialog ctFunction ctFolder ctEDocument ctTask ctJob ctNotice ctControlJob ", Mt = "cfInternal cfDisplay ", J = "ciUnspecified ciWrite ciRead ", vt = "ckFolder ckEDocument ckTask ckJob ckComponentToken ckAny ckReference ckScript ckReport ckDialog ", Le = "ctISBLEditor ctBevel ctButton ctCheckListBox ctComboBox ctComboEdit ctGrid ctDBCheckBox ctDBComboBox ctDBEdit ctDBEllipsis ctDBMemo ctDBNavigator ctDBRadioGroup ctDBStatusLabel ctEdit ctGroupBox ctInplaceHint ctMemo ctPanel ctListBox ctRadioButton ctRichEdit ctTabSheet ctWebBrowser ctImage ctHyperLink ctLabel ctDBMultiEllipsis ctRibbon ctRichView ctInnerPanel ctPanelGroup ctBitButton ", be = "cctDate cctInteger cctNumeric cctPick cctReference cctString cctText ", it = "cltInternal cltPrimary cltGUI ", Ye = "dseBeforeOpen dseAfterOpen dseBeforeClose dseAfterClose dseOnValidDelete dseBeforeDelete dseAfterDelete dseAfterDeleteOutOfTransaction dseOnDeleteError dseBeforeInsert dseAfterInsert dseOnValidUpdate dseBeforeUpdate dseOnUpdateRatifiedRecord dseAfterUpdate dseAfterUpdateOutOfTransaction dseOnUpdateError dseAfterScroll dseOnOpenRecord dseOnCloseRecord dseBeforeCancel dseAfterCancel dseOnUpdateDeadlockError dseBeforeDetailUpdate dseOnPrepareUpdate dseOnAnyRequisiteChange ", Ot = "dssEdit dssInsert dssBrowse dssInActive ", It = "dftDate dftShortDate dftDateTime dftTimeStamp ", V = "dotDays dotHours dotMinutes dotSeconds ", K = "dtkndLocal dtkndUTC ", ee = "arNone arView arEdit arFull ", de = "ddaView ddaEdit ", we = "emLock emEdit emSign emExportWithLock emImportWithUnlock emChangeVersionNote emOpenForModify emChangeLifeStage emDelete emCreateVersion emImport emUnlockExportedWithLock emStart emAbort emReInit emMarkAsReaded emMarkAsUnreaded emPerform emAccept emResume emChangeRights emEditRoute emEditObserver emRecoveryFromLocalCopy emChangeWorkAccessType emChangeEncodeTypeToCertificate emChangeEncodeTypeToPassword emChangeEncodeTypeToNone emChangeEncodeTypeToCertificatePassword emChangeStandardRoute emGetText emOpenForView emMoveToStorage emCreateObject emChangeVersionHidden emDeleteVersion emChangeLifeCycleStage emApprovingSign emExport emContinue emLockFromEdit emUnLockForEdit emLockForServer emUnlockFromServer emDelegateAccessRights emReEncode ", tt = "ecotFile ecotProcess ", jt = "eaGet eaCopy eaCreate eaCreateStandardRoute ", en = "edltAll edltNothing edltQuery ", Ie = "essmText essmCard ", tn = "esvtLast esvtLastActive esvtSpecified ", gn = "edsfExecutive edsfArchive ", Yn = "edstSQLServer edstFile ", or = "edvstNone edvstEDocumentVersionCopy edvstFile edvstTemplate edvstScannedFile ", sr = "vsDefault vsDesign vsActive vsObsolete ", na = "etNone etCertificate etPassword etCertificatePassword ", ra = "ecException ecWarning ecInformation ", aa = "estAll estApprovingOnly ", ia = "evtLast evtLastActive evtQuery ", oa = "fdtString fdtNumeric fdtInteger fdtDate fdtText fdtUnknown fdtWideString fdtLargeInteger ", sa = "ftInbox ftOutbox ftFavorites ftCommonFolder ftUserFolder ftComponents ftQuickLaunch ftShortcuts ftSearch ", la = "grhAuto grhX1 grhX2 grhX3 ", ca = "hltText hltRTF hltHTML ", _a = "iffBMP iffJPEG iffMultiPageTIFF iffSinglePageTIFF iffTIFF iffPNG ", da = "im8bGrayscale im24bRGB im1bMonochrome ", ua = "itBMP itJPEG itWMF itPNG ", pa = "ikhInformation ikhWarning ikhError ikhNoIcon ", ma = "icUnknown icScript icFunction icIntegratedReport icAnalyticReport icDataSetEventHandler icActionHandler icFormEventHandler icLookUpEventHandler icRequisiteChangeEventHandler icBeforeSearchEventHandler icRoleCalculation icSelectRouteEventHandler icBlockPropertyCalculation icBlockQueryParamsEventHandler icChangeSearchResultEventHandler icBlockEventHandler icSubTaskInitEventHandler icEDocDataSetEventHandler icEDocLookUpEventHandler icEDocActionHandler icEDocFormEventHandler icEDocRequisiteChangeEventHandler icStructuredConversionRule icStructuredConversionEventBefore icStructuredConversionEventAfter icWizardEventHandler icWizardFinishEventHandler icWizardStepEventHandler icWizardStepFinishEventHandler icWizardActionEnableEventHandler icWizardActionExecuteEventHandler icCreateJobsHandler icCreateNoticesHandler icBeforeLookUpEventHandler icAfterLookUpEventHandler icTaskAbortEventHandler icWorkflowBlockActionHandler icDialogDataSetEventHandler icDialogActionHandler icDialogLookUpEventHandler icDialogRequisiteChangeEventHandler icDialogFormEventHandler icDialogValidCloseEventHandler icBlockFormEventHandler icTaskFormEventHandler icReferenceMethod icEDocMethod icDialogMethod icProcessMessageHandler ", lr = "isShow isHide isByUserSettings ", cr = "jkJob jkNotice jkControlJob ", Ea = "jtInner jtLeft jtRight jtFull jtCross ", ga = "lbpAbove lbpBelow lbpLeft lbpRight ", Sa = "eltPerConnection eltPerUser ", Sn = "sfcUndefined sfcBlack sfcGreen sfcRed sfcBlue sfcOrange sfcLilac ", fa = "sfsItalic sfsStrikeout sfsNormal ", _r = "ldctStandardRoute ldctWizard ldctScript ldctFunction ldctRouteBlock ldctIntegratedReport ldctAnalyticReport ldctReferenceType ldctEDocumentType ldctDialog ldctServerEvents ", ba = "mrcrtNone mrcrtUser mrcrtMaximal mrcrtCustom ", Ta = "vtEqual vtGreaterOrEqual vtLessOrEqual vtRange ", Ra = "rdYesterday rdToday rdTomorrow rdThisWeek rdThisMonth rdThisYear rdNextMonth rdNextWeek rdLastWeek rdLastMonth ", dr = "rdWindow rdFile rdPrinter ", Ca = "rdtString rdtNumeric rdtInteger rdtDate rdtReference rdtAccount rdtText rdtPick rdtUnknown rdtLargeInteger rdtDocument ", ur = "reOnChange reOnChangeValues ", Na = "ttGlobal ttLocal ttUser ttSystem ", pr = "ssmBrowse ssmSelect ssmMultiSelect ssmBrowseModal ", ha = "smSelect smLike smCard ", va = "stNone stAuthenticating stApproving ", mr = "sctString sctStream ", Oa = "sstAnsiSort sstNaturalSort ", Ia = "svtEqual svtContain ", Aa = "soatString soatNumeric soatInteger soatDatetime soatReferenceRecord soatText soatPick soatBoolean soatEDocument soatAccount soatIntegerCollection soatNumericCollection soatStringCollection soatPickCollection soatDatetimeCollection soatBooleanCollection soatReferenceRecordCollection soatEDocumentCollection soatAccountCollection soatContents soatUnknown ", ya = "tarAbortByUser tarAbortByWorkflowException ", Da = "tvtAllWords tvtExactPhrase tvtAnyWord ", Ma = "usNone usCompleted usRedSquare usBlueSquare usYellowSquare usGreenSquare usOrangeSquare usPurpleSquare usFollowUp ", qn = "utUnknown utUser utDeveloper utAdministrator utSystemDeveloper utDisconnected ", Bt = "btAnd btDetailAnd btOr btNotOr btOnly ", Hn = "vmView vmSelect vmNavigation ", Gt = "vsmSingle vsmMultiple vsmMultipleCheck vsmNoSelection ", La = "wfatPrevious wfatNext wfatCancel wfatFinish ", wa = "wfepUndefined wfepText3 wfepText6 wfepText9 wfepSpinEdit wfepDropDown wfepRadioGroup wfepFlag wfepText12 wfepText15 wfepText18 wfepText21 wfepText24 wfepText27 wfepText30 wfepRadioGroupColumn1 wfepRadioGroupColumn2 wfepRadioGroupColumn3 ", xa = "wfetQueryParameter wfetText wfetDelimiter wfetLabel ", Pa = "wptString wptInteger wptNumeric wptBoolean wptDateTime wptPick wptText wptUser wptUserList wptEDocumentInfo wptEDocumentInfoList wptReferenceRecordInfo wptReferenceRecordInfoList wptFolderInfo wptTaskInfo wptContents wptFileName wptDate ", ka = "wsrComplete wsrGoNext wsrGoPrevious wsrCustom wsrCancel wsrGoFinal ", Er = "wstForm wstEDocument wstTaskCard wstReferenceRecordCard wstFinal ", gr = "waAll waPerformers waManual ", Ua = "wsbStart wsbFinish wsbNotice wsbStep wsbDecision wsbWait wsbMonitor wsbScript wsbConnector wsbSubTask wsbLifeCycleStage wsbPause ", Fa = "wdtInteger wdtFloat wdtString wdtPick wdtDateTime wdtBoolean wdtTask wdtJob wdtFolder wdtEDocument wdtReferenceRecord wdtUser wdtGroup wdtRole wdtIntegerCollection wdtFloatCollection wdtStringCollection wdtPickCollection wdtDateTimeCollection wdtBooleanCollection wdtTaskCollection wdtJobCollection wdtFolderCollection wdtEDocumentCollection wdtReferenceRecordCollection wdtUserCollection wdtGroupCollection wdtRoleCollection wdtContents wdtUserList wdtSearchDescription wdtDeadLine wdtPickSet wdtAccountCollection ", Ba = "wiLow wiNormal wiHigh ", Ga = "wrtSoft wrtHard ", Sr = "wsInit wsRunning wsDone wsControlled wsAborted wsContinued ", fr = "wtmFull wtmFromCurrent wtmOnlyCurrent ", Ya = Te + pe + Oe + De + Ue + Fe + et + st + Xe + Jt + Mt + J + vt + Le + be + it + Ye + Ot + It + V + K + ee + de + we + tt + jt + en + Ie + tn + gn + Yn + or + sr + na + ra + aa + ia + oa + sa + la + ca + _a + da + ua + pa + ma + lr + cr + Ea + ga + Sa + Sn + fa + _r + ba + Ta + Ra + dr + Ca + ur + Na + pr + ha + va + mr + Oa + Ia + Aa + ya + Da + Ma + qn + Bt + Hn + Gt + La + wa + xa + Pa + ka + Er + gr + Ua + Fa + Ba + Ga + Sr + fr, qa = "AddSubString AdjustLineBreaks AmountInWords Analysis ArrayDimCount ArrayHighBound ArrayLowBound ArrayOf ArrayReDim Assert Assigned BeginOfMonth BeginOfPeriod BuildProfilingOperationAnalysis CallProcedure CanReadFile CArrayElement CDataSetRequisite ChangeDate ChangeReferenceDataset Char CharPos CheckParam CheckParamValue CompareStrings ConstantExists ControlState ConvertDateStr Copy CopyFile CreateArray CreateCachedReference CreateConnection CreateDialog CreateDualListDialog CreateEditor CreateException CreateFile CreateFolderDialog CreateInputDialog CreateLinkFile CreateList CreateLock CreateMemoryDataSet CreateObject CreateOpenDialog CreateProgress CreateQuery CreateReference CreateReport CreateSaveDialog CreateScript CreateSQLPivotFunction CreateStringList CreateTreeListSelectDialog CSelectSQL CSQL CSubString CurrentUserID CurrentUserName CurrentVersion DataSetLocateEx DateDiff DateTimeDiff DateToStr DayOfWeek DeleteFile DirectoryExists DisableCheckAccessRights DisableCheckFullShowingRestriction DisableMassTaskSendingRestrictions DropTable DupeString EditText EnableCheckAccessRights EnableCheckFullShowingRestriction EnableMassTaskSendingRestrictions EndOfMonth EndOfPeriod ExceptionExists ExceptionsOff ExceptionsOn Execute ExecuteProcess Exit ExpandEnvironmentVariables ExtractFileDrive ExtractFileExt ExtractFileName ExtractFilePath ExtractParams FileExists FileSize FindFile FindSubString FirmContext ForceDirectories Format FormatDate FormatNumeric FormatSQLDate FormatString FreeException GetComponent GetComponentLaunchParam GetConstant GetLastException GetReferenceRecord GetRefTypeByRefID GetTableID GetTempFolder IfThen In IndexOf InputDialog InputDialogEx InteractiveMode IsFileLocked IsGraphicFile IsNumeric Length LoadString LoadStringFmt LocalTimeToUTC LowerCase Max MessageBox MessageBoxEx MimeDecodeBinary MimeDecodeString MimeEncodeBinary MimeEncodeString Min MoneyInWords MoveFile NewID Now OpenFile Ord Precision Raise ReadCertificateFromFile ReadFile ReferenceCodeByID ReferenceNumber ReferenceRequisiteMode ReferenceRequisiteValue RegionDateSettings RegionNumberSettings RegionTimeSettings RegRead RegWrite RenameFile Replace Round SelectServerCode SelectSQL ServerDateTime SetConstant SetManagedFolderFieldsState ShowConstantsInputDialog ShowMessage Sleep Split SQL SQL2XLSTAB SQLProfilingSendReport StrToDate SubString SubStringCount SystemSetting Time TimeDiff Today Transliterate Trim UpperCase UserStatus UTCToLocalTime ValidateXML VarIsClear VarIsEmpty VarIsNull WorkTimeDiff WriteFile WriteFileEx WriteObjectHistory \u0410\u043D\u0430\u043B\u0438\u0437 \u0411\u0430\u0437\u0430\u0414\u0430\u043D\u043D\u044B\u0445 \u0411\u043B\u043E\u043A\u0415\u0441\u0442\u044C \u0411\u043B\u043E\u043A\u0415\u0441\u0442\u044C\u0420\u0430\u0441\u0448 \u0411\u043B\u043E\u043A\u0418\u043D\u0444\u043E \u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C \u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C\u0420\u0430\u0441\u0448 \u0411\u043B\u043E\u043A\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0412\u0432\u043E\u0434 \u0412\u0432\u043E\u0434\u041C\u0435\u043D\u044E \u0412\u0435\u0434\u0421 \u0412\u0435\u0434\u0421\u043F\u0440 \u0412\u0435\u0440\u0445\u043D\u044F\u044F\u0413\u0440\u0430\u043D\u0438\u0446\u0430\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u0412\u043D\u0435\u0448\u041F\u0440\u043E\u0433\u0440 \u0412\u043E\u0441\u0441\u0442 \u0412\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F\u041F\u0430\u043F\u043A\u0430 \u0412\u0440\u0435\u043C\u044F \u0412\u044B\u0431\u043E\u0440SQL \u0412\u044B\u0431\u0440\u0430\u0442\u044C\u0417\u0430\u043F\u0438\u0441\u044C \u0412\u044B\u0434\u0435\u043B\u0438\u0442\u044C\u0421\u0442\u0440 \u0412\u044B\u0437\u0432\u0430\u0442\u044C \u0412\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u0412\u044B\u043F\u041F\u0440\u043E\u0433\u0440 \u0413\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0439\u0424\u0430\u0439\u043B \u0413\u0440\u0443\u043F\u043F\u0430\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0414\u0430\u0442\u0430\u0412\u0440\u0435\u043C\u044F\u0421\u0435\u0440\u0432 \u0414\u0435\u043D\u044C\u041D\u0435\u0434\u0435\u043B\u0438 \u0414\u0438\u0430\u043B\u043E\u0433\u0414\u0430\u041D\u0435\u0442 \u0414\u043B\u0438\u043D\u0430\u0421\u0442\u0440 \u0414\u043E\u0431\u041F\u043E\u0434\u0441\u0442\u0440 \u0415\u041F\u0443\u0441\u0442\u043E \u0415\u0441\u043B\u0438\u0422\u043E \u0415\u0427\u0438\u0441\u043B\u043E \u0417\u0430\u043C\u041F\u043E\u0434\u0441\u0442\u0440 \u0417\u0430\u043F\u0438\u0441\u044C\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u0417\u043D\u0430\u0447\u041F\u043E\u043B\u044F\u0421\u043F\u0440 \u0418\u0414\u0422\u0438\u043F\u0421\u043F\u0440 \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u0414\u0438\u0441\u043A \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u0418\u043C\u044F\u0424\u0430\u0439\u043B\u0430 \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u041F\u0443\u0442\u044C \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u0420\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435 \u0418\u0437\u043C\u0414\u0430\u0442 \u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C\u0420\u0430\u0437\u043C\u0435\u0440\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u0418\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u0439\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u0418\u043C\u044F\u041E\u0440\u0433 \u0418\u043C\u044F\u041F\u043E\u043B\u044F\u0421\u043F\u0440 \u0418\u043D\u0434\u0435\u043A\u0441 \u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u0428\u0430\u0433 \u0418\u043D\u0442\u0435\u0440\u0430\u043A\u0442\u0438\u0432\u043D\u044B\u0439\u0420\u0435\u0436\u0438\u043C \u0418\u0442\u043E\u0433\u0422\u0431\u043B\u0421\u043F\u0440 \u041A\u043E\u0434\u0412\u0438\u0434\u0412\u0435\u0434\u0421\u043F\u0440 \u041A\u043E\u0434\u0412\u0438\u0434\u0421\u043F\u0440\u041F\u043E\u0418\u0414 \u041A\u043E\u0434\u041F\u043EAnalit \u041A\u043E\u0434\u0421\u0438\u043C\u0432\u043E\u043B\u0430 \u041A\u043E\u0434\u0421\u043F\u0440 \u041A\u043E\u043B\u041F\u043E\u0434\u0441\u0442\u0440 \u041A\u043E\u043B\u041F\u0440\u043E\u043F \u041A\u043E\u043D\u041C\u0435\u0441 \u041A\u043E\u043D\u0441\u0442 \u041A\u043E\u043D\u0441\u0442\u0415\u0441\u0442\u044C \u041A\u043E\u043D\u0441\u0442\u0417\u043D\u0430\u0447 \u041A\u043E\u043D\u0422\u0440\u0430\u043D \u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0424\u0430\u0439\u043B \u041A\u043E\u043F\u0438\u044F\u0421\u0442\u0440 \u041A\u041F\u0435\u0440\u0438\u043E\u0434 \u041A\u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u041C\u0430\u043A\u0441 \u041C\u0430\u043A\u0441\u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u041C\u0430\u0441\u0441\u0438\u0432 \u041C\u0435\u043D\u044E \u041C\u0435\u043D\u044E\u0420\u0430\u0441\u0448 \u041C\u0438\u043D \u041D\u0430\u0431\u043E\u0440\u0414\u0430\u043D\u043D\u044B\u0445\u041D\u0430\u0439\u0442\u0438\u0420\u0430\u0441\u0448 \u041D\u0430\u0438\u043C\u0412\u0438\u0434\u0421\u043F\u0440 \u041D\u0430\u0438\u043C\u041F\u043EAnalit \u041D\u0430\u0438\u043C\u0421\u043F\u0440 \u041D\u0430\u0441\u0442\u0440\u043E\u0438\u0442\u044C\u041F\u0435\u0440\u0435\u0432\u043E\u0434\u044B\u0421\u0442\u0440\u043E\u043A \u041D\u0430\u0447\u041C\u0435\u0441 \u041D\u0430\u0447\u0422\u0440\u0430\u043D \u041D\u0438\u0436\u043D\u044F\u044F\u0413\u0440\u0430\u043D\u0438\u0446\u0430\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u041D\u043E\u043C\u0435\u0440\u0421\u043F\u0440 \u041D\u041F\u0435\u0440\u0438\u043E\u0434 \u041E\u043A\u043D\u043E \u041E\u043A\u0440 \u041E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0435 \u041E\u0442\u043B\u0418\u043D\u0444\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u041E\u0442\u043B\u0418\u043D\u0444\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u041E\u0442\u0447\u0435\u0442 \u041E\u0442\u0447\u0435\u0442\u0410\u043D\u0430\u043B \u041E\u0442\u0447\u0435\u0442\u0418\u043D\u0442 \u041F\u0430\u043F\u043A\u0430\u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u041F\u0430\u0443\u0437\u0430 \u041F\u0412\u044B\u0431\u043E\u0440SQL \u041F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u0442\u044C\u0424\u0430\u0439\u043B \u041F\u0435\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0435 \u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0424\u0430\u0439\u043B \u041F\u043E\u0434\u0441\u0442\u0440 \u041F\u043E\u0438\u0441\u043A\u041F\u043E\u0434\u0441\u0442\u0440 \u041F\u043E\u0438\u0441\u043A\u0421\u0442\u0440 \u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0418\u0414\u0422\u0430\u0431\u043B\u0438\u0446\u044B \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0418\u0414 \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0418\u043C\u044F \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0421\u0442\u0430\u0442\u0443\u0441 \u041F\u0440\u0435\u0440\u0432\u0430\u0442\u044C \u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440 \u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0417\u043D\u0430\u0447 \u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C\u0423\u0441\u043B\u043E\u0432\u0438\u0435 \u0420\u0430\u0437\u0431\u0421\u0442\u0440 \u0420\u0430\u0437\u043D\u0412\u0440\u0435\u043C\u044F \u0420\u0430\u0437\u043D\u0414\u0430\u0442 \u0420\u0430\u0437\u043D\u0414\u0430\u0442\u0430\u0412\u0440\u0435\u043C\u044F \u0420\u0430\u0437\u043D\u0420\u0430\u0431\u0412\u0440\u0435\u043C\u044F \u0420\u0435\u0433\u0423\u0441\u0442\u0412\u0440\u0435\u043C \u0420\u0435\u0433\u0423\u0441\u0442\u0414\u0430\u0442 \u0420\u0435\u0433\u0423\u0441\u0442\u0427\u0441\u043B \u0420\u0435\u0434\u0422\u0435\u043A\u0441\u0442 \u0420\u0435\u0435\u0441\u0442\u0440\u0417\u0430\u043F\u0438\u0441\u044C \u0420\u0435\u0435\u0441\u0442\u0440\u0421\u043F\u0438\u0441\u043E\u043A\u0418\u043C\u0435\u043D\u041F\u0430\u0440\u0430\u043C \u0420\u0435\u0435\u0441\u0442\u0440\u0427\u0442\u0435\u043D\u0438\u0435 \u0420\u0435\u043A\u0432\u0421\u043F\u0440 \u0420\u0435\u043A\u0432\u0421\u043F\u0440\u041F\u0440 \u0421\u0435\u0433\u043E\u0434\u043D\u044F \u0421\u0435\u0439\u0447\u0430\u0441 \u0421\u0435\u0440\u0432\u0435\u0440 \u0421\u0435\u0440\u0432\u0435\u0440\u041F\u0440\u043E\u0446\u0435\u0441\u0441\u0418\u0414 \u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u0424\u0430\u0439\u043B\u0421\u0447\u0438\u0442\u0430\u0442\u044C \u0421\u0436\u041F\u0440\u043E\u0431 \u0421\u0438\u043C\u0432\u043E\u043B \u0421\u0438\u0441\u0442\u0435\u043C\u0430\u0414\u0438\u0440\u0435\u043A\u0442\u0443\u043C\u041A\u043E\u0434 \u0421\u0438\u0441\u0442\u0435\u043C\u0430\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u0421\u0438\u0441\u0442\u0435\u043C\u0430\u041A\u043E\u0434 \u0421\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u0412\u044B\u0431\u043E\u0440\u0430\u0418\u0437\u0414\u0432\u0443\u0445\u0421\u043F\u0438\u0441\u043A\u043E\u0432 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u0412\u044B\u0431\u043E\u0440\u0430\u041F\u0430\u043F\u043A\u0438 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u041E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u0424\u0430\u0439\u043B\u0430 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u0424\u0430\u0439\u043B\u0430 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0417\u0430\u043F\u0440\u043E\u0441 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041A\u044D\u0448\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041C\u0430\u0441\u0441\u0438\u0432 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041D\u0430\u0431\u043E\u0440\u0414\u0430\u043D\u043D\u044B\u0445 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041E\u0431\u044A\u0435\u043A\u0442 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041E\u0442\u0447\u0435\u0442 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041F\u0430\u043F\u043A\u0443 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0420\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043F\u0438\u0441\u043E\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043F\u0438\u0441\u043E\u043A\u0421\u0442\u0440\u043E\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0421\u043E\u0437\u0434\u0421\u043F\u0440 \u0421\u043E\u0441\u0442\u0421\u043F\u0440 \u0421\u043E\u0445\u0440 \u0421\u043E\u0445\u0440\u0421\u043F\u0440 \u0421\u043F\u0438\u0441\u043E\u043A\u0421\u0438\u0441\u0442\u0435\u043C \u0421\u043F\u0440 \u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0415\u0441\u0442\u044C \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C\u0420\u0430\u0441\u0448 \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0421\u043F\u0440\u0418\u0437\u043C\u041D\u0430\u0431\u0414\u0430\u043D \u0421\u043F\u0440\u041A\u043E\u0434 \u0421\u043F\u0440\u041D\u043E\u043C\u0435\u0440 \u0421\u043F\u0440\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u0421\u043F\u0440\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0421\u043F\u0440\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C \u0421\u043F\u0440\u041F\u0430\u0440\u0430\u043C \u0421\u043F\u0440\u041F\u043E\u043B\u0435\u0417\u043D\u0430\u0447 \u0421\u043F\u0440\u041F\u043E\u043B\u0435\u0418\u043C\u044F \u0421\u043F\u0440\u0420\u0435\u043A\u0432 \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u0412\u0432\u0435\u0434\u0417\u043D \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u041D\u043E\u0432\u044B\u0435 \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u041F\u0440 \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u041F\u0440\u0435\u0434\u0417\u043D \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u0420\u0435\u0436\u0438\u043C \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u0422\u0438\u043F\u0422\u0435\u043A\u0441\u0442 \u0421\u043F\u0440\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0421\u043F\u0440\u0421\u043E\u0441\u0442 \u0421\u043F\u0440\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0421\u043F\u0440\u0422\u0431\u043B\u0418\u0442\u043E\u0433 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041A\u043E\u043B \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041C\u0430\u043A\u0441 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041C\u0438\u043D \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041F\u0440\u0435\u0434 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u0421\u043B\u0435\u0434 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u0421\u043E\u0437\u0434 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u0423\u0434 \u0421\u043F\u0440\u0422\u0435\u043A\u041F\u0440\u0435\u0434\u0441\u0442 \u0421\u043F\u0440\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0421\u0440\u0430\u0432\u043D\u0438\u0442\u044C\u0421\u0442\u0440 \u0421\u0442\u0440\u0412\u0435\u0440\u0445\u0420\u0435\u0433\u0438\u0441\u0442\u0440 \u0421\u0442\u0440\u041D\u0438\u0436\u043D\u0420\u0435\u0433\u0438\u0441\u0442\u0440 \u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u0421\u0443\u043C\u041F\u0440\u043E\u043F \u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439\u041F\u0430\u0440\u0430\u043C \u0422\u0435\u043A\u0412\u0435\u0440\u0441\u0438\u044F \u0422\u0435\u043A\u041E\u0440\u0433 \u0422\u043E\u0447\u043D \u0422\u0440\u0430\u043D \u0422\u0440\u0430\u043D\u0441\u043B\u0438\u0442\u0435\u0440\u0430\u0446\u0438\u044F \u0423\u0434\u0430\u043B\u0438\u0442\u044C\u0422\u0430\u0431\u043B\u0438\u0446\u0443 \u0423\u0434\u0430\u043B\u0438\u0442\u044C\u0424\u0430\u0439\u043B \u0423\u0434\u0421\u043F\u0440 \u0423\u0434\u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u0423\u0441\u0442 \u0423\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442 \u0424\u0430\u0439\u043B\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u0421\u0447\u0438\u0442\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0424\u0430\u0439\u043B\u0412\u0440\u0435\u043C\u044F \u0424\u0430\u0439\u043B\u0412\u0440\u0435\u043C\u044F\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0424\u0430\u0439\u043B\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0417\u0430\u043D\u044F\u0442 \u0424\u0430\u0439\u043B\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0418\u0441\u043A\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041C\u043E\u0436\u043D\u043E\u0427\u0438\u0442\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0435\u0440\u0435\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0424\u0430\u0439\u043B\u0420\u0430\u0437\u043C\u0435\u0440 \u0424\u0430\u0439\u043B\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0421\u0441\u044B\u043B\u043A\u0430\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0424\u0430\u0439\u043B\u0421\u0447\u0438\u0442\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0424\u043C\u0442SQL\u0414\u0430\u0442 \u0424\u043C\u0442\u0414\u0430\u0442 \u0424\u043C\u0442\u0421\u0442\u0440 \u0424\u043C\u0442\u0427\u0441\u043B \u0424\u043E\u0440\u043C\u0430\u0442 \u0426\u041C\u0430\u0441\u0441\u0438\u0432\u042D\u043B\u0435\u043C\u0435\u043D\u0442 \u0426\u041D\u0430\u0431\u043E\u0440\u0414\u0430\u043D\u043D\u044B\u0445\u0420\u0435\u043A\u0432\u0438\u0437\u0438\u0442 \u0426\u041F\u043E\u0434\u0441\u0442\u0440 ", Ha = "AltState Application CallType ComponentTokens CreatedJobs CreatedNotices ControlState DialogResult Dialogs EDocuments EDocumentVersionSource Folders GlobalIDs Job Jobs InputValue LookUpReference LookUpRequisiteNames LookUpSearch Object ParentComponent Processes References Requisite ReportName Reports Result Scripts Searches SelectedAttachments SelectedItems SelectMode Sender ServerEvents ServiceFactory ShiftState SubTask SystemDialogs Tasks Wizard Wizards Work \u0412\u044B\u0437\u043E\u0432\u0421\u043F\u043E\u0441\u043E\u0431 \u0418\u043C\u044F\u041E\u0442\u0447\u0435\u0442\u0430 \u0420\u0435\u043A\u0432\u0417\u043D\u0430\u0447 ", Va = "IApplication IAccessRights IAccountRepository IAccountSelectionRestrictions IAction IActionList IAdministrationHistoryDescription IAnchors IApplication IArchiveInfo IAttachment IAttachmentList ICheckListBox ICheckPointedList IColumn IComponent IComponentDescription IComponentToken IComponentTokenFactory IComponentTokenInfo ICompRecordInfo IConnection IContents IControl IControlJob IControlJobInfo IControlList ICrypto ICrypto2 ICustomJob ICustomJobInfo ICustomListBox ICustomObjectWizardStep ICustomWork ICustomWorkInfo IDataSet IDataSetAccessInfo IDataSigner IDateCriterion IDateRequisite IDateRequisiteDescription IDateValue IDeaAccessRights IDeaObjectInfo IDevelopmentComponentLock IDialog IDialogFactory IDialogPickRequisiteItems IDialogsFactory IDICSFactory IDocRequisite IDocumentInfo IDualListDialog IECertificate IECertificateInfo IECertificates IEditControl IEditorForm IEdmsExplorer IEdmsObject IEdmsObjectDescription IEdmsObjectFactory IEdmsObjectInfo IEDocument IEDocumentAccessRights IEDocumentDescription IEDocumentEditor IEDocumentFactory IEDocumentInfo IEDocumentStorage IEDocumentVersion IEDocumentVersionListDialog IEDocumentVersionSource IEDocumentWizardStep IEDocVerSignature IEDocVersionState IEnabledMode IEncodeProvider IEncrypter IEvent IEventList IException IExternalEvents IExternalHandler IFactory IField IFileDialog IFolder IFolderDescription IFolderDialog IFolderFactory IFolderInfo IForEach IForm IFormTitle IFormWizardStep IGlobalIDFactory IGlobalIDInfo IGrid IHasher IHistoryDescription IHyperLinkControl IImageButton IImageControl IInnerPanel IInplaceHint IIntegerCriterion IIntegerList IIntegerRequisite IIntegerValue IISBLEditorForm IJob IJobDescription IJobFactory IJobForm IJobInfo ILabelControl ILargeIntegerCriterion ILargeIntegerRequisite ILargeIntegerValue ILicenseInfo ILifeCycleStage IList IListBox ILocalIDInfo ILocalization ILock IMemoryDataSet IMessagingFactory IMetadataRepository INotice INoticeInfo INumericCriterion INumericRequisite INumericValue IObject IObjectDescription IObjectImporter IObjectInfo IObserver IPanelGroup IPickCriterion IPickProperty IPickRequisite IPickRequisiteDescription IPickRequisiteItem IPickRequisiteItems IPickValue IPrivilege IPrivilegeList IProcess IProcessFactory IProcessMessage IProgress IProperty IPropertyChangeEvent IQuery IReference IReferenceCriterion IReferenceEnabledMode IReferenceFactory IReferenceHistoryDescription IReferenceInfo IReferenceRecordCardWizardStep IReferenceRequisiteDescription IReferencesFactory IReferenceValue IRefRequisite IReport IReportFactory IRequisite IRequisiteDescription IRequisiteDescriptionList IRequisiteFactory IRichEdit IRouteStep IRule IRuleList ISchemeBlock IScript IScriptFactory ISearchCriteria ISearchCriterion ISearchDescription ISearchFactory ISearchFolderInfo ISearchForObjectDescription ISearchResultRestrictions ISecuredContext ISelectDialog IServerEvent IServerEventFactory IServiceDialog IServiceFactory ISignature ISignProvider ISignProvider2 ISignProvider3 ISimpleCriterion IStringCriterion IStringList IStringRequisite IStringRequisiteDescription IStringValue ISystemDialogsFactory ISystemInfo ITabSheet ITask ITaskAbortReasonInfo ITaskCardWizardStep ITaskDescription ITaskFactory ITaskInfo ITaskRoute ITextCriterion ITextRequisite ITextValue ITreeListSelectDialog IUser IUserList IValue IView IWebBrowserControl IWizard IWizardAction IWizardFactory IWizardFormElement IWizardParam IWizardPickParam IWizardReferenceParam IWizardStep IWorkAccessRights IWorkDescription IWorkflowAskableParam IWorkflowAskableParams IWorkflowBlock IWorkflowBlockResult IWorkflowEnabledMode IWorkflowParam IWorkflowPickParam IWorkflowReferenceParam IWorkState IWorkTreeCustomNode IWorkTreeJobNode IWorkTreeTaskNode IXMLEditorForm SBCrypto ", za = he + Ya, $a = Ha, Wa = "null true false nil ", br = {
+    const n = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_!][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]*", r = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]*", a = "and \u0438 else \u0438\u043D\u0430\u0447\u0435 endexcept endfinally endforeach \u043A\u043E\u043D\u0435\u0446\u0432\u0441\u0435 endif \u043A\u043E\u043D\u0435\u0446\u0435\u0441\u043B\u0438 endwhile \u043A\u043E\u043D\u0435\u0446\u043F\u043E\u043A\u0430 except exitfor finally foreach \u0432\u0441\u0435 if \u0435\u0441\u043B\u0438 in \u0432 not \u043D\u0435 or \u0438\u043B\u0438 try while \u043F\u043E\u043A\u0430 ", i = "SYSRES_CONST_ACCES_RIGHT_TYPE_EDIT SYSRES_CONST_ACCES_RIGHT_TYPE_FULL SYSRES_CONST_ACCES_RIGHT_TYPE_VIEW SYSRES_CONST_ACCESS_MODE_REQUISITE_CODE SYSRES_CONST_ACCESS_NO_ACCESS_VIEW SYSRES_CONST_ACCESS_NO_ACCESS_VIEW_CODE SYSRES_CONST_ACCESS_RIGHTS_ADD_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_ADD_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_CHANGE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_CHANGE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_DELETE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_DELETE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_EXECUTE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_EXECUTE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_NO_ACCESS_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_NO_ACCESS_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_RATIFY_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_RATIFY_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW SYSRES_CONST_ACCESS_RIGHTS_VIEW_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_TYPE_CHANGE SYSRES_CONST_ACCESS_TYPE_CHANGE_CODE SYSRES_CONST_ACCESS_TYPE_EXISTS SYSRES_CONST_ACCESS_TYPE_EXISTS_CODE SYSRES_CONST_ACCESS_TYPE_FULL SYSRES_CONST_ACCESS_TYPE_FULL_CODE SYSRES_CONST_ACCESS_TYPE_VIEW SYSRES_CONST_ACCESS_TYPE_VIEW_CODE SYSRES_CONST_ACTION_TYPE_ABORT SYSRES_CONST_ACTION_TYPE_ACCEPT SYSRES_CONST_ACTION_TYPE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ADD_ATTACHMENT SYSRES_CONST_ACTION_TYPE_CHANGE_CARD SYSRES_CONST_ACTION_TYPE_CHANGE_KIND SYSRES_CONST_ACTION_TYPE_CHANGE_STORAGE SYSRES_CONST_ACTION_TYPE_CONTINUE SYSRES_CONST_ACTION_TYPE_COPY SYSRES_CONST_ACTION_TYPE_CREATE SYSRES_CONST_ACTION_TYPE_CREATE_VERSION SYSRES_CONST_ACTION_TYPE_DELETE SYSRES_CONST_ACTION_TYPE_DELETE_ATTACHMENT SYSRES_CONST_ACTION_TYPE_DELETE_VERSION SYSRES_CONST_ACTION_TYPE_DISABLE_DELEGATE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ENABLE_DELEGATE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_CERTIFICATE SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_CERTIFICATE_AND_PASSWORD SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_PASSWORD SYSRES_CONST_ACTION_TYPE_EXPORT_WITH_LOCK SYSRES_CONST_ACTION_TYPE_EXPORT_WITHOUT_LOCK SYSRES_CONST_ACTION_TYPE_IMPORT_WITH_UNLOCK SYSRES_CONST_ACTION_TYPE_IMPORT_WITHOUT_UNLOCK SYSRES_CONST_ACTION_TYPE_LIFE_CYCLE_STAGE SYSRES_CONST_ACTION_TYPE_LOCK SYSRES_CONST_ACTION_TYPE_LOCK_FOR_SERVER SYSRES_CONST_ACTION_TYPE_LOCK_MODIFY SYSRES_CONST_ACTION_TYPE_MARK_AS_READED SYSRES_CONST_ACTION_TYPE_MARK_AS_UNREADED SYSRES_CONST_ACTION_TYPE_MODIFY SYSRES_CONST_ACTION_TYPE_MODIFY_CARD SYSRES_CONST_ACTION_TYPE_MOVE_TO_ARCHIVE SYSRES_CONST_ACTION_TYPE_OFF_ENCRYPTION SYSRES_CONST_ACTION_TYPE_PASSWORD_CHANGE SYSRES_CONST_ACTION_TYPE_PERFORM SYSRES_CONST_ACTION_TYPE_RECOVER_FROM_LOCAL_COPY SYSRES_CONST_ACTION_TYPE_RESTART SYSRES_CONST_ACTION_TYPE_RESTORE_FROM_ARCHIVE SYSRES_CONST_ACTION_TYPE_REVISION SYSRES_CONST_ACTION_TYPE_SEND_BY_MAIL SYSRES_CONST_ACTION_TYPE_SIGN SYSRES_CONST_ACTION_TYPE_START SYSRES_CONST_ACTION_TYPE_UNLOCK SYSRES_CONST_ACTION_TYPE_UNLOCK_FROM_SERVER SYSRES_CONST_ACTION_TYPE_VERSION_STATE SYSRES_CONST_ACTION_TYPE_VERSION_VISIBILITY SYSRES_CONST_ACTION_TYPE_VIEW SYSRES_CONST_ACTION_TYPE_VIEW_SHADOW_COPY SYSRES_CONST_ACTION_TYPE_WORKFLOW_DESCRIPTION_MODIFY SYSRES_CONST_ACTION_TYPE_WRITE_HISTORY SYSRES_CONST_ACTIVE_VERSION_STATE_PICK_VALUE SYSRES_CONST_ADD_REFERENCE_MODE_NAME SYSRES_CONST_ADDITION_REQUISITE_CODE SYSRES_CONST_ADDITIONAL_PARAMS_REQUISITE_CODE SYSRES_CONST_ADITIONAL_JOB_END_DATE_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_READ_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_START_DATE_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_STATE_REQUISITE_NAME SYSRES_CONST_ADMINISTRATION_HISTORY_ADDING_USER_TO_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_ADDING_USER_TO_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_COMP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_COMP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_USER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_USER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_CREATION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_CREATION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_DELETION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_DELETION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_COMP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_COMP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_FROM_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_FROM_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_RESTRICTION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_RESTRICTION_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_PRIVILEGE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_PRIVILEGE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_RIGHTS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_RIGHTS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_IS_MAIN_SERVER_CHANGED_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_IS_MAIN_SERVER_CHANGED_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_IS_PUBLIC_CHANGED_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_IS_PUBLIC_CHANGED_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_RESTRICTION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_RESTRICTION_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_PRIVILEGE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_PRIVILEGE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_RIGHTS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_RIGHTS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_CREATION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_CREATION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_DELETION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_DELETION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_CATEGORY_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_CATEGORY_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_COMP_TITLE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_COMP_TITLE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_FULL_NAME_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_FULL_NAME_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_PARENT_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_PARENT_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_AUTH_TYPE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_AUTH_TYPE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_LOGIN_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_LOGIN_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_STATUS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_STATUS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_USER_PASSWORD_CHANGE SYSRES_CONST_ADMINISTRATION_HISTORY_USER_PASSWORD_CHANGE_ACTION SYSRES_CONST_ALL_ACCEPT_CONDITION_RUS SYSRES_CONST_ALL_USERS_GROUP SYSRES_CONST_ALL_USERS_GROUP_NAME SYSRES_CONST_ALL_USERS_SERVER_GROUP_NAME SYSRES_CONST_ALLOWED_ACCESS_TYPE_CODE SYSRES_CONST_ALLOWED_ACCESS_TYPE_NAME SYSRES_CONST_APP_VIEWER_TYPE_REQUISITE_CODE SYSRES_CONST_APPROVING_SIGNATURE_NAME SYSRES_CONST_APPROVING_SIGNATURE_REQUISITE_CODE SYSRES_CONST_ASSISTANT_SUBSTITUE_TYPE SYSRES_CONST_ASSISTANT_SUBSTITUE_TYPE_CODE SYSRES_CONST_ATTACH_TYPE_COMPONENT_TOKEN SYSRES_CONST_ATTACH_TYPE_DOC SYSRES_CONST_ATTACH_TYPE_EDOC SYSRES_CONST_ATTACH_TYPE_FOLDER SYSRES_CONST_ATTACH_TYPE_JOB SYSRES_CONST_ATTACH_TYPE_REFERENCE SYSRES_CONST_ATTACH_TYPE_TASK SYSRES_CONST_AUTH_ENCODED_PASSWORD SYSRES_CONST_AUTH_ENCODED_PASSWORD_CODE SYSRES_CONST_AUTH_NOVELL SYSRES_CONST_AUTH_PASSWORD SYSRES_CONST_AUTH_PASSWORD_CODE SYSRES_CONST_AUTH_WINDOWS SYSRES_CONST_AUTHENTICATING_SIGNATURE_NAME SYSRES_CONST_AUTHENTICATING_SIGNATURE_REQUISITE_CODE SYSRES_CONST_AUTO_ENUM_METHOD_FLAG SYSRES_CONST_AUTO_NUMERATION_CODE SYSRES_CONST_AUTO_STRONG_ENUM_METHOD_FLAG SYSRES_CONST_AUTOTEXT_NAME_REQUISITE_CODE SYSRES_CONST_AUTOTEXT_TEXT_REQUISITE_CODE SYSRES_CONST_AUTOTEXT_USAGE_ALL SYSRES_CONST_AUTOTEXT_USAGE_ALL_CODE SYSRES_CONST_AUTOTEXT_USAGE_SIGN SYSRES_CONST_AUTOTEXT_USAGE_SIGN_CODE SYSRES_CONST_AUTOTEXT_USAGE_WORK SYSRES_CONST_AUTOTEXT_USAGE_WORK_CODE SYSRES_CONST_AUTOTEXT_USE_ANYWHERE_CODE SYSRES_CONST_AUTOTEXT_USE_ON_SIGNING_CODE SYSRES_CONST_AUTOTEXT_USE_ON_WORK_CODE SYSRES_CONST_BEGIN_DATE_REQUISITE_CODE SYSRES_CONST_BLACK_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_BLUE_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_BTN_PART SYSRES_CONST_CALCULATED_ROLE_TYPE_CODE SYSRES_CONST_CALL_TYPE_VARIABLE_BUTTON_VALUE SYSRES_CONST_CALL_TYPE_VARIABLE_PROGRAM_VALUE SYSRES_CONST_CANCEL_MESSAGE_FUNCTION_RESULT SYSRES_CONST_CARD_PART SYSRES_CONST_CARD_REFERENCE_MODE_NAME SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_ENCRYPT_VALUE SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_SIGN_AND_ENCRYPT_VALUE SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_SIGN_VALUE SYSRES_CONST_CHECK_PARAM_VALUE_DATE_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_FLOAT_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_INTEGER_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_PICK_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_REEFRENCE_PARAM_TYPE SYSRES_CONST_CLOSED_RECORD_FLAG_VALUE_FEMININE SYSRES_CONST_CLOSED_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_CODE_COMPONENT_TYPE_ADMIN SYSRES_CONST_CODE_COMPONENT_TYPE_DEVELOPER SYSRES_CONST_CODE_COMPONENT_TYPE_DOCS SYSRES_CONST_CODE_COMPONENT_TYPE_EDOC_CARDS SYSRES_CONST_CODE_COMPONENT_TYPE_EXTERNAL_EXECUTABLE SYSRES_CONST_CODE_COMPONENT_TYPE_OTHER SYSRES_CONST_CODE_COMPONENT_TYPE_REFERENCE SYSRES_CONST_CODE_COMPONENT_TYPE_REPORT SYSRES_CONST_CODE_COMPONENT_TYPE_SCRIPT SYSRES_CONST_CODE_COMPONENT_TYPE_URL SYSRES_CONST_CODE_REQUISITE_ACCESS SYSRES_CONST_CODE_REQUISITE_CODE SYSRES_CONST_CODE_REQUISITE_COMPONENT SYSRES_CONST_CODE_REQUISITE_DESCRIPTION SYSRES_CONST_CODE_REQUISITE_EXCLUDE_COMPONENT SYSRES_CONST_CODE_REQUISITE_RECORD SYSRES_CONST_COMMENT_REQ_CODE SYSRES_CONST_COMMON_SETTINGS_REQUISITE_CODE SYSRES_CONST_COMP_CODE_GRD SYSRES_CONST_COMPONENT_GROUP_TYPE_REQUISITE_CODE SYSRES_CONST_COMPONENT_TYPE_ADMIN_COMPONENTS SYSRES_CONST_COMPONENT_TYPE_DEVELOPER_COMPONENTS SYSRES_CONST_COMPONENT_TYPE_DOCS SYSRES_CONST_COMPONENT_TYPE_EDOC_CARDS SYSRES_CONST_COMPONENT_TYPE_EDOCS SYSRES_CONST_COMPONENT_TYPE_EXTERNAL_EXECUTABLE SYSRES_CONST_COMPONENT_TYPE_OTHER SYSRES_CONST_COMPONENT_TYPE_REFERENCE_TYPES SYSRES_CONST_COMPONENT_TYPE_REFERENCES SYSRES_CONST_COMPONENT_TYPE_REPORTS SYSRES_CONST_COMPONENT_TYPE_SCRIPTS SYSRES_CONST_COMPONENT_TYPE_URL SYSRES_CONST_COMPONENTS_REMOTE_SERVERS_VIEW_CODE SYSRES_CONST_CONDITION_BLOCK_DESCRIPTION SYSRES_CONST_CONST_FIRM_STATUS_COMMON SYSRES_CONST_CONST_FIRM_STATUS_INDIVIDUAL SYSRES_CONST_CONST_NEGATIVE_VALUE SYSRES_CONST_CONST_POSITIVE_VALUE SYSRES_CONST_CONST_SERVER_STATUS_DONT_REPLICATE SYSRES_CONST_CONST_SERVER_STATUS_REPLICATE SYSRES_CONST_CONTENTS_REQUISITE_CODE SYSRES_CONST_DATA_TYPE_BOOLEAN SYSRES_CONST_DATA_TYPE_DATE SYSRES_CONST_DATA_TYPE_FLOAT SYSRES_CONST_DATA_TYPE_INTEGER SYSRES_CONST_DATA_TYPE_PICK SYSRES_CONST_DATA_TYPE_REFERENCE SYSRES_CONST_DATA_TYPE_STRING SYSRES_CONST_DATA_TYPE_TEXT SYSRES_CONST_DATA_TYPE_VARIANT SYSRES_CONST_DATE_CLOSE_REQ_CODE SYSRES_CONST_DATE_FORMAT_DATE_ONLY_CHAR SYSRES_CONST_DATE_OPEN_REQ_CODE SYSRES_CONST_DATE_REQUISITE SYSRES_CONST_DATE_REQUISITE_CODE SYSRES_CONST_DATE_REQUISITE_NAME SYSRES_CONST_DATE_REQUISITE_TYPE SYSRES_CONST_DATE_TYPE_CHAR SYSRES_CONST_DATETIME_FORMAT_VALUE SYSRES_CONST_DEA_ACCESS_RIGHTS_ACTION_CODE SYSRES_CONST_DESCRIPTION_LOCALIZE_ID_REQUISITE_CODE SYSRES_CONST_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_DET1_PART SYSRES_CONST_DET2_PART SYSRES_CONST_DET3_PART SYSRES_CONST_DET4_PART SYSRES_CONST_DET5_PART SYSRES_CONST_DET6_PART SYSRES_CONST_DETAIL_DATASET_KEY_REQUISITE_CODE SYSRES_CONST_DETAIL_PICK_REQUISITE_CODE SYSRES_CONST_DETAIL_REQ_CODE SYSRES_CONST_DO_NOT_USE_ACCESS_TYPE_CODE SYSRES_CONST_DO_NOT_USE_ACCESS_TYPE_NAME SYSRES_CONST_DO_NOT_USE_ON_VIEW_ACCESS_TYPE_CODE SYSRES_CONST_DO_NOT_USE_ON_VIEW_ACCESS_TYPE_NAME SYSRES_CONST_DOCUMENT_STORAGES_CODE SYSRES_CONST_DOCUMENT_TEMPLATES_TYPE_NAME SYSRES_CONST_DOUBLE_REQUISITE_CODE SYSRES_CONST_EDITOR_CLOSE_FILE_OBSERV_TYPE_CODE SYSRES_CONST_EDITOR_CLOSE_PROCESS_OBSERV_TYPE_CODE SYSRES_CONST_EDITOR_TYPE_REQUISITE_CODE SYSRES_CONST_EDITORS_APPLICATION_NAME_REQUISITE_CODE SYSRES_CONST_EDITORS_CREATE_SEVERAL_PROCESSES_REQUISITE_CODE SYSRES_CONST_EDITORS_EXTENSION_REQUISITE_CODE SYSRES_CONST_EDITORS_OBSERVER_BY_PROCESS_TYPE SYSRES_CONST_EDITORS_REFERENCE_CODE SYSRES_CONST_EDITORS_REPLACE_SPEC_CHARS_REQUISITE_CODE SYSRES_CONST_EDITORS_USE_PLUGINS_REQUISITE_CODE SYSRES_CONST_EDITORS_VIEW_DOCUMENT_OPENED_TO_EDIT_CODE SYSRES_CONST_EDOC_CARD_TYPE_REQUISITE_CODE SYSRES_CONST_EDOC_CARD_TYPES_LINK_REQUISITE_CODE SYSRES_CONST_EDOC_CERTIFICATE_AND_PASSWORD_ENCODE_CODE SYSRES_CONST_EDOC_CERTIFICATE_ENCODE_CODE SYSRES_CONST_EDOC_DATE_REQUISITE_CODE SYSRES_CONST_EDOC_KIND_REFERENCE_CODE SYSRES_CONST_EDOC_KINDS_BY_TEMPLATE_ACTION_CODE SYSRES_CONST_EDOC_MANAGE_ACCESS_CODE SYSRES_CONST_EDOC_NONE_ENCODE_CODE SYSRES_CONST_EDOC_NUMBER_REQUISITE_CODE SYSRES_CONST_EDOC_PASSWORD_ENCODE_CODE SYSRES_CONST_EDOC_READONLY_ACCESS_CODE SYSRES_CONST_EDOC_SHELL_LIFE_TYPE_VIEW_VALUE SYSRES_CONST_EDOC_SIZE_RESTRICTION_PRIORITY_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_CHECK_ACCESS_RIGHTS_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_COMPUTER_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_DATABASE_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_EDIT_IN_STORAGE_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_LOCAL_PATH_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_SHARED_SOURCE_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_TEMPLATE_REQUISITE_CODE SYSRES_CONST_EDOC_TYPES_REFERENCE_CODE SYSRES_CONST_EDOC_VERSION_ACTIVE_STAGE_CODE SYSRES_CONST_EDOC_VERSION_DESIGN_STAGE_CODE SYSRES_CONST_EDOC_VERSION_OBSOLETE_STAGE_CODE SYSRES_CONST_EDOC_WRITE_ACCES_CODE SYSRES_CONST_EDOCUMENT_CARD_REQUISITES_REFERENCE_CODE_SELECTED_REQUISITE SYSRES_CONST_ENCODE_CERTIFICATE_TYPE_CODE SYSRES_CONST_END_DATE_REQUISITE_CODE SYSRES_CONST_ENUMERATION_TYPE_REQUISITE_CODE SYSRES_CONST_EXECUTE_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_EXECUTIVE_FILE_STORAGE_TYPE SYSRES_CONST_EXIST_CONST SYSRES_CONST_EXIST_VALUE SYSRES_CONST_EXPORT_LOCK_TYPE_ASK SYSRES_CONST_EXPORT_LOCK_TYPE_WITH_LOCK SYSRES_CONST_EXPORT_LOCK_TYPE_WITHOUT_LOCK SYSRES_CONST_EXPORT_VERSION_TYPE_ASK SYSRES_CONST_EXPORT_VERSION_TYPE_LAST SYSRES_CONST_EXPORT_VERSION_TYPE_LAST_ACTIVE SYSRES_CONST_EXTENSION_REQUISITE_CODE SYSRES_CONST_FILTER_NAME_REQUISITE_CODE SYSRES_CONST_FILTER_REQUISITE_CODE SYSRES_CONST_FILTER_TYPE_COMMON_CODE SYSRES_CONST_FILTER_TYPE_COMMON_NAME SYSRES_CONST_FILTER_TYPE_USER_CODE SYSRES_CONST_FILTER_TYPE_USER_NAME SYSRES_CONST_FILTER_VALUE_REQUISITE_NAME SYSRES_CONST_FLOAT_NUMBER_FORMAT_CHAR SYSRES_CONST_FLOAT_REQUISITE_TYPE SYSRES_CONST_FOLDER_AUTHOR_VALUE SYSRES_CONST_FOLDER_KIND_ANY_OBJECTS SYSRES_CONST_FOLDER_KIND_COMPONENTS SYSRES_CONST_FOLDER_KIND_EDOCS SYSRES_CONST_FOLDER_KIND_JOBS SYSRES_CONST_FOLDER_KIND_TASKS SYSRES_CONST_FOLDER_TYPE_COMMON SYSRES_CONST_FOLDER_TYPE_COMPONENT SYSRES_CONST_FOLDER_TYPE_FAVORITES SYSRES_CONST_FOLDER_TYPE_INBOX SYSRES_CONST_FOLDER_TYPE_OUTBOX SYSRES_CONST_FOLDER_TYPE_QUICK_LAUNCH SYSRES_CONST_FOLDER_TYPE_SEARCH SYSRES_CONST_FOLDER_TYPE_SHORTCUTS SYSRES_CONST_FOLDER_TYPE_USER SYSRES_CONST_FROM_DICTIONARY_ENUM_METHOD_FLAG SYSRES_CONST_FULL_SUBSTITUTE_TYPE SYSRES_CONST_FULL_SUBSTITUTE_TYPE_CODE SYSRES_CONST_FUNCTION_CANCEL_RESULT SYSRES_CONST_FUNCTION_CATEGORY_SYSTEM SYSRES_CONST_FUNCTION_CATEGORY_USER SYSRES_CONST_FUNCTION_FAILURE_RESULT SYSRES_CONST_FUNCTION_SAVE_RESULT SYSRES_CONST_GENERATED_REQUISITE SYSRES_CONST_GREEN_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_GROUP_ACCOUNT_TYPE_VALUE_CODE SYSRES_CONST_GROUP_CATEGORY_NORMAL_CODE SYSRES_CONST_GROUP_CATEGORY_NORMAL_NAME SYSRES_CONST_GROUP_CATEGORY_SERVICE_CODE SYSRES_CONST_GROUP_CATEGORY_SERVICE_NAME SYSRES_CONST_GROUP_COMMON_CATEGORY_FIELD_VALUE SYSRES_CONST_GROUP_FULL_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_RIGHTS_T_REQUISITE_CODE SYSRES_CONST_GROUP_SERVER_CODES_REQUISITE_CODE SYSRES_CONST_GROUP_SERVER_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_SERVICE_CATEGORY_FIELD_VALUE SYSRES_CONST_GROUP_USER_REQUISITE_CODE SYSRES_CONST_GROUPS_REFERENCE_CODE SYSRES_CONST_GROUPS_REQUISITE_CODE SYSRES_CONST_HIDDEN_MODE_NAME SYSRES_CONST_HIGH_LVL_REQUISITE_CODE SYSRES_CONST_HISTORY_ACTION_CREATE_CODE SYSRES_CONST_HISTORY_ACTION_DELETE_CODE SYSRES_CONST_HISTORY_ACTION_EDIT_CODE SYSRES_CONST_HOUR_CHAR SYSRES_CONST_ID_REQUISITE_CODE SYSRES_CONST_IDSPS_REQUISITE_CODE SYSRES_CONST_IMAGE_MODE_COLOR SYSRES_CONST_IMAGE_MODE_GREYSCALE SYSRES_CONST_IMAGE_MODE_MONOCHROME SYSRES_CONST_IMPORTANCE_HIGH SYSRES_CONST_IMPORTANCE_LOW SYSRES_CONST_IMPORTANCE_NORMAL SYSRES_CONST_IN_DESIGN_VERSION_STATE_PICK_VALUE SYSRES_CONST_INCOMING_WORK_RULE_TYPE_CODE SYSRES_CONST_INT_REQUISITE SYSRES_CONST_INT_REQUISITE_TYPE SYSRES_CONST_INTEGER_NUMBER_FORMAT_CHAR SYSRES_CONST_INTEGER_TYPE_CHAR SYSRES_CONST_IS_GENERATED_REQUISITE_NEGATIVE_VALUE SYSRES_CONST_IS_PUBLIC_ROLE_REQUISITE_CODE SYSRES_CONST_IS_REMOTE_USER_NEGATIVE_VALUE SYSRES_CONST_IS_REMOTE_USER_POSITIVE_VALUE SYSRES_CONST_IS_STORED_REQUISITE_NEGATIVE_VALUE SYSRES_CONST_IS_STORED_REQUISITE_STORED_VALUE SYSRES_CONST_ITALIC_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_JOB_BLOCK_DESCRIPTION SYSRES_CONST_JOB_KIND_CONTROL_JOB SYSRES_CONST_JOB_KIND_JOB SYSRES_CONST_JOB_KIND_NOTICE SYSRES_CONST_JOB_STATE_ABORTED SYSRES_CONST_JOB_STATE_COMPLETE SYSRES_CONST_JOB_STATE_WORKING SYSRES_CONST_KIND_REQUISITE_CODE SYSRES_CONST_KIND_REQUISITE_NAME SYSRES_CONST_KINDS_CREATE_SHADOW_COPIES_REQUISITE_CODE SYSRES_CONST_KINDS_DEFAULT_EDOC_LIFE_STAGE_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALL_TEPLATES_ALLOWED_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALLOW_LIFE_CYCLE_STAGE_CHANGING_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALLOW_MULTIPLE_ACTIVE_VERSIONS_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_SHARE_ACCES_RIGHTS_BY_DEFAULT_CODE SYSRES_CONST_KINDS_EDOC_TEMPLATE_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_TYPE_REQUISITE_CODE SYSRES_CONST_KINDS_SIGNERS_REQUISITES_CODE SYSRES_CONST_KOD_INPUT_TYPE SYSRES_CONST_LAST_UPDATE_DATE_REQUISITE_CODE SYSRES_CONST_LIFE_CYCLE_START_STAGE_REQUISITE_CODE SYSRES_CONST_LILAC_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_LINK_OBJECT_KIND_COMPONENT SYSRES_CONST_LINK_OBJECT_KIND_DOCUMENT SYSRES_CONST_LINK_OBJECT_KIND_EDOC SYSRES_CONST_LINK_OBJECT_KIND_FOLDER SYSRES_CONST_LINK_OBJECT_KIND_JOB SYSRES_CONST_LINK_OBJECT_KIND_REFERENCE SYSRES_CONST_LINK_OBJECT_KIND_TASK SYSRES_CONST_LINK_REF_TYPE_REQUISITE_CODE SYSRES_CONST_LIST_REFERENCE_MODE_NAME SYSRES_CONST_LOCALIZATION_DICTIONARY_MAIN_VIEW_CODE SYSRES_CONST_MAIN_VIEW_CODE SYSRES_CONST_MANUAL_ENUM_METHOD_FLAG SYSRES_CONST_MASTER_COMP_TYPE_REQUISITE_CODE SYSRES_CONST_MASTER_TABLE_REC_ID_REQUISITE_CODE SYSRES_CONST_MAXIMIZED_MODE_NAME SYSRES_CONST_ME_VALUE SYSRES_CONST_MESSAGE_ATTENTION_CAPTION SYSRES_CONST_MESSAGE_CONFIRMATION_CAPTION SYSRES_CONST_MESSAGE_ERROR_CAPTION SYSRES_CONST_MESSAGE_INFORMATION_CAPTION SYSRES_CONST_MINIMIZED_MODE_NAME SYSRES_CONST_MINUTE_CHAR SYSRES_CONST_MODULE_REQUISITE_CODE SYSRES_CONST_MONITORING_BLOCK_DESCRIPTION SYSRES_CONST_MONTH_FORMAT_VALUE SYSRES_CONST_NAME_LOCALIZE_ID_REQUISITE_CODE SYSRES_CONST_NAME_REQUISITE_CODE SYSRES_CONST_NAME_SINGULAR_REQUISITE_CODE SYSRES_CONST_NAMEAN_INPUT_TYPE SYSRES_CONST_NEGATIVE_PICK_VALUE SYSRES_CONST_NEGATIVE_VALUE SYSRES_CONST_NO SYSRES_CONST_NO_PICK_VALUE SYSRES_CONST_NO_SIGNATURE_REQUISITE_CODE SYSRES_CONST_NO_VALUE SYSRES_CONST_NONE_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_NONOPERATING_RECORD_FLAG_VALUE SYSRES_CONST_NONOPERATING_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_NORMAL_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_NORMAL_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_NORMAL_MODE_NAME SYSRES_CONST_NOT_ALLOWED_ACCESS_TYPE_CODE SYSRES_CONST_NOT_ALLOWED_ACCESS_TYPE_NAME SYSRES_CONST_NOTE_REQUISITE_CODE SYSRES_CONST_NOTICE_BLOCK_DESCRIPTION SYSRES_CONST_NUM_REQUISITE SYSRES_CONST_NUM_STR_REQUISITE_CODE SYSRES_CONST_NUMERATION_AUTO_NOT_STRONG SYSRES_CONST_NUMERATION_AUTO_STRONG SYSRES_CONST_NUMERATION_FROM_DICTONARY SYSRES_CONST_NUMERATION_MANUAL SYSRES_CONST_NUMERIC_TYPE_CHAR SYSRES_CONST_NUMREQ_REQUISITE_CODE SYSRES_CONST_OBSOLETE_VERSION_STATE_PICK_VALUE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_CODE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_FEMININE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_OPTIONAL_FORM_COMP_REQCODE_PREFIX SYSRES_CONST_ORANGE_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_ORIGINALREF_REQUISITE_CODE SYSRES_CONST_OURFIRM_REF_CODE SYSRES_CONST_OURFIRM_REQUISITE_CODE SYSRES_CONST_OURFIRM_VAR SYSRES_CONST_OUTGOING_WORK_RULE_TYPE_CODE SYSRES_CONST_PICK_NEGATIVE_RESULT SYSRES_CONST_PICK_POSITIVE_RESULT SYSRES_CONST_PICK_REQUISITE SYSRES_CONST_PICK_REQUISITE_TYPE SYSRES_CONST_PICK_TYPE_CHAR SYSRES_CONST_PLAN_STATUS_REQUISITE_CODE SYSRES_CONST_PLATFORM_VERSION_COMMENT SYSRES_CONST_PLUGINS_SETTINGS_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_POSITIVE_PICK_VALUE SYSRES_CONST_POWER_TO_CREATE_ACTION_CODE SYSRES_CONST_POWER_TO_SIGN_ACTION_CODE SYSRES_CONST_PRIORITY_REQUISITE_CODE SYSRES_CONST_QUALIFIED_TASK_TYPE SYSRES_CONST_QUALIFIED_TASK_TYPE_CODE SYSRES_CONST_RECSTAT_REQUISITE_CODE SYSRES_CONST_RED_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_REF_ID_T_REF_TYPE_REQUISITE_CODE SYSRES_CONST_REF_REQUISITE SYSRES_CONST_REF_REQUISITE_TYPE SYSRES_CONST_REF_REQUISITES_REFERENCE_CODE_SELECTED_REQUISITE SYSRES_CONST_REFERENCE_RECORD_HISTORY_CREATE_ACTION_CODE SYSRES_CONST_REFERENCE_RECORD_HISTORY_DELETE_ACTION_CODE SYSRES_CONST_REFERENCE_RECORD_HISTORY_MODIFY_ACTION_CODE SYSRES_CONST_REFERENCE_TYPE_CHAR SYSRES_CONST_REFERENCE_TYPE_REQUISITE_NAME SYSRES_CONST_REFERENCES_ADD_PARAMS_REQUISITE_CODE SYSRES_CONST_REFERENCES_DISPLAY_REQUISITE_REQUISITE_CODE SYSRES_CONST_REMOTE_SERVER_STATUS_WORKING SYSRES_CONST_REMOTE_SERVER_TYPE_MAIN SYSRES_CONST_REMOTE_SERVER_TYPE_SECONDARY SYSRES_CONST_REMOTE_USER_FLAG_VALUE_CODE SYSRES_CONST_REPORT_APP_EDITOR_INTERNAL SYSRES_CONST_REPORT_BASE_REPORT_ID_REQUISITE_CODE SYSRES_CONST_REPORT_BASE_REPORT_REQUISITE_CODE SYSRES_CONST_REPORT_SCRIPT_REQUISITE_CODE SYSRES_CONST_REPORT_TEMPLATE_REQUISITE_CODE SYSRES_CONST_REPORT_VIEWER_CODE_REQUISITE_CODE SYSRES_CONST_REQ_ALLOW_COMPONENT_DEFAULT_VALUE SYSRES_CONST_REQ_ALLOW_RECORD_DEFAULT_VALUE SYSRES_CONST_REQ_ALLOW_SERVER_COMPONENT_DEFAULT_VALUE SYSRES_CONST_REQ_MODE_AVAILABLE_CODE SYSRES_CONST_REQ_MODE_EDIT_CODE SYSRES_CONST_REQ_MODE_HIDDEN_CODE SYSRES_CONST_REQ_MODE_NOT_AVAILABLE_CODE SYSRES_CONST_REQ_MODE_VIEW_CODE SYSRES_CONST_REQ_NUMBER_REQUISITE_CODE SYSRES_CONST_REQ_SECTION_VALUE SYSRES_CONST_REQ_TYPE_VALUE SYSRES_CONST_REQUISITE_FORMAT_BY_UNIT SYSRES_CONST_REQUISITE_FORMAT_DATE_FULL SYSRES_CONST_REQUISITE_FORMAT_DATE_TIME SYSRES_CONST_REQUISITE_FORMAT_LEFT SYSRES_CONST_REQUISITE_FORMAT_RIGHT SYSRES_CONST_REQUISITE_FORMAT_WITHOUT_UNIT SYSRES_CONST_REQUISITE_NUMBER_REQUISITE_CODE SYSRES_CONST_REQUISITE_SECTION_ACTIONS SYSRES_CONST_REQUISITE_SECTION_BUTTON SYSRES_CONST_REQUISITE_SECTION_BUTTONS SYSRES_CONST_REQUISITE_SECTION_CARD SYSRES_CONST_REQUISITE_SECTION_TABLE SYSRES_CONST_REQUISITE_SECTION_TABLE10 SYSRES_CONST_REQUISITE_SECTION_TABLE11 SYSRES_CONST_REQUISITE_SECTION_TABLE12 SYSRES_CONST_REQUISITE_SECTION_TABLE13 SYSRES_CONST_REQUISITE_SECTION_TABLE14 SYSRES_CONST_REQUISITE_SECTION_TABLE15 SYSRES_CONST_REQUISITE_SECTION_TABLE16 SYSRES_CONST_REQUISITE_SECTION_TABLE17 SYSRES_CONST_REQUISITE_SECTION_TABLE18 SYSRES_CONST_REQUISITE_SECTION_TABLE19 SYSRES_CONST_REQUISITE_SECTION_TABLE2 SYSRES_CONST_REQUISITE_SECTION_TABLE20 SYSRES_CONST_REQUISITE_SECTION_TABLE21 SYSRES_CONST_REQUISITE_SECTION_TABLE22 SYSRES_CONST_REQUISITE_SECTION_TABLE23 SYSRES_CONST_REQUISITE_SECTION_TABLE24 SYSRES_CONST_REQUISITE_SECTION_TABLE3 SYSRES_CONST_REQUISITE_SECTION_TABLE4 SYSRES_CONST_REQUISITE_SECTION_TABLE5 SYSRES_CONST_REQUISITE_SECTION_TABLE6 SYSRES_CONST_REQUISITE_SECTION_TABLE7 SYSRES_CONST_REQUISITE_SECTION_TABLE8 SYSRES_CONST_REQUISITE_SECTION_TABLE9 SYSRES_CONST_REQUISITES_PSEUDOREFERENCE_REQUISITE_NUMBER_REQUISITE_CODE SYSRES_CONST_RIGHT_ALIGNMENT_CODE SYSRES_CONST_ROLES_REFERENCE_CODE SYSRES_CONST_ROUTE_STEP_AFTER_RUS SYSRES_CONST_ROUTE_STEP_AND_CONDITION_RUS SYSRES_CONST_ROUTE_STEP_OR_CONDITION_RUS SYSRES_CONST_ROUTE_TYPE_COMPLEX SYSRES_CONST_ROUTE_TYPE_PARALLEL SYSRES_CONST_ROUTE_TYPE_SERIAL SYSRES_CONST_SBDATASETDESC_NEGATIVE_VALUE SYSRES_CONST_SBDATASETDESC_POSITIVE_VALUE SYSRES_CONST_SBVIEWSDESC_POSITIVE_VALUE SYSRES_CONST_SCRIPT_BLOCK_DESCRIPTION SYSRES_CONST_SEARCH_BY_TEXT_REQUISITE_CODE SYSRES_CONST_SEARCHES_COMPONENT_CONTENT SYSRES_CONST_SEARCHES_CRITERIA_ACTION_NAME SYSRES_CONST_SEARCHES_EDOC_CONTENT SYSRES_CONST_SEARCHES_FOLDER_CONTENT SYSRES_CONST_SEARCHES_JOB_CONTENT SYSRES_CONST_SEARCHES_REFERENCE_CODE SYSRES_CONST_SEARCHES_TASK_CONTENT SYSRES_CONST_SECOND_CHAR SYSRES_CONST_SECTION_REQUISITE_ACTIONS_VALUE SYSRES_CONST_SECTION_REQUISITE_CARD_VALUE SYSRES_CONST_SECTION_REQUISITE_CODE SYSRES_CONST_SECTION_REQUISITE_DETAIL_1_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_2_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_3_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_4_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_5_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_6_VALUE SYSRES_CONST_SELECT_REFERENCE_MODE_NAME SYSRES_CONST_SELECT_TYPE_SELECTABLE SYSRES_CONST_SELECT_TYPE_SELECTABLE_ONLY_CHILD SYSRES_CONST_SELECT_TYPE_SELECTABLE_WITH_CHILD SYSRES_CONST_SELECT_TYPE_UNSLECTABLE SYSRES_CONST_SERVER_TYPE_MAIN SYSRES_CONST_SERVICE_USER_CATEGORY_FIELD_VALUE SYSRES_CONST_SETTINGS_USER_REQUISITE_CODE SYSRES_CONST_SIGNATURE_AND_ENCODE_CERTIFICATE_TYPE_CODE SYSRES_CONST_SIGNATURE_CERTIFICATE_TYPE_CODE SYSRES_CONST_SINGULAR_TITLE_REQUISITE_CODE SYSRES_CONST_SQL_SERVER_AUTHENTIFICATION_FLAG_VALUE_CODE SYSRES_CONST_SQL_SERVER_ENCODE_AUTHENTIFICATION_FLAG_VALUE_CODE SYSRES_CONST_STANDART_ROUTE_REFERENCE_CODE SYSRES_CONST_STANDART_ROUTE_REFERENCE_COMMENT_REQUISITE_CODE SYSRES_CONST_STANDART_ROUTES_GROUPS_REFERENCE_CODE SYSRES_CONST_STATE_REQ_NAME SYSRES_CONST_STATE_REQUISITE_ACTIVE_VALUE SYSRES_CONST_STATE_REQUISITE_CLOSED_VALUE SYSRES_CONST_STATE_REQUISITE_CODE SYSRES_CONST_STATIC_ROLE_TYPE_CODE SYSRES_CONST_STATUS_PLAN_DEFAULT_VALUE SYSRES_CONST_STATUS_VALUE_AUTOCLEANING SYSRES_CONST_STATUS_VALUE_BLUE_SQUARE SYSRES_CONST_STATUS_VALUE_COMPLETE SYSRES_CONST_STATUS_VALUE_GREEN_SQUARE SYSRES_CONST_STATUS_VALUE_ORANGE_SQUARE SYSRES_CONST_STATUS_VALUE_PURPLE_SQUARE SYSRES_CONST_STATUS_VALUE_RED_SQUARE SYSRES_CONST_STATUS_VALUE_SUSPEND SYSRES_CONST_STATUS_VALUE_YELLOW_SQUARE SYSRES_CONST_STDROUTE_SHOW_TO_USERS_REQUISITE_CODE SYSRES_CONST_STORAGE_TYPE_FILE SYSRES_CONST_STORAGE_TYPE_SQL_SERVER SYSRES_CONST_STR_REQUISITE SYSRES_CONST_STRIKEOUT_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_STRING_FORMAT_LEFT_ALIGN_CHAR SYSRES_CONST_STRING_FORMAT_RIGHT_ALIGN_CHAR SYSRES_CONST_STRING_REQUISITE_CODE SYSRES_CONST_STRING_REQUISITE_TYPE SYSRES_CONST_STRING_TYPE_CHAR SYSRES_CONST_SUBSTITUTES_PSEUDOREFERENCE_CODE SYSRES_CONST_SUBTASK_BLOCK_DESCRIPTION SYSRES_CONST_SYSTEM_SETTING_CURRENT_USER_PARAM_VALUE SYSRES_CONST_SYSTEM_SETTING_EMPTY_VALUE_PARAM_VALUE SYSRES_CONST_SYSTEM_VERSION_COMMENT SYSRES_CONST_TASK_ACCESS_TYPE_ALL SYSRES_CONST_TASK_ACCESS_TYPE_ALL_MEMBERS SYSRES_CONST_TASK_ACCESS_TYPE_MANUAL SYSRES_CONST_TASK_ENCODE_TYPE_CERTIFICATION SYSRES_CONST_TASK_ENCODE_TYPE_CERTIFICATION_AND_PASSWORD SYSRES_CONST_TASK_ENCODE_TYPE_NONE SYSRES_CONST_TASK_ENCODE_TYPE_PASSWORD SYSRES_CONST_TASK_ROUTE_ALL_CONDITION SYSRES_CONST_TASK_ROUTE_AND_CONDITION SYSRES_CONST_TASK_ROUTE_OR_CONDITION SYSRES_CONST_TASK_STATE_ABORTED SYSRES_CONST_TASK_STATE_COMPLETE SYSRES_CONST_TASK_STATE_CONTINUED SYSRES_CONST_TASK_STATE_CONTROL SYSRES_CONST_TASK_STATE_INIT SYSRES_CONST_TASK_STATE_WORKING SYSRES_CONST_TASK_TITLE SYSRES_CONST_TASK_TYPES_GROUPS_REFERENCE_CODE SYSRES_CONST_TASK_TYPES_REFERENCE_CODE SYSRES_CONST_TEMPLATES_REFERENCE_CODE SYSRES_CONST_TEST_DATE_REQUISITE_NAME SYSRES_CONST_TEST_DEV_DATABASE_NAME SYSRES_CONST_TEST_DEV_SYSTEM_CODE SYSRES_CONST_TEST_EDMS_DATABASE_NAME SYSRES_CONST_TEST_EDMS_MAIN_CODE SYSRES_CONST_TEST_EDMS_MAIN_DB_NAME SYSRES_CONST_TEST_EDMS_SECOND_CODE SYSRES_CONST_TEST_EDMS_SECOND_DB_NAME SYSRES_CONST_TEST_EDMS_SYSTEM_CODE SYSRES_CONST_TEST_NUMERIC_REQUISITE_NAME SYSRES_CONST_TEXT_REQUISITE SYSRES_CONST_TEXT_REQUISITE_CODE SYSRES_CONST_TEXT_REQUISITE_TYPE SYSRES_CONST_TEXT_TYPE_CHAR SYSRES_CONST_TYPE_CODE_REQUISITE_CODE SYSRES_CONST_TYPE_REQUISITE_CODE SYSRES_CONST_UNDEFINED_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_UNITS_SECTION_ID_REQUISITE_CODE SYSRES_CONST_UNITS_SECTION_REQUISITE_CODE SYSRES_CONST_UNOPERATING_RECORD_FLAG_VALUE_CODE SYSRES_CONST_UNSTORED_DATA_REQUISITE_CODE SYSRES_CONST_UNSTORED_DATA_REQUISITE_NAME SYSRES_CONST_USE_ACCESS_TYPE_CODE SYSRES_CONST_USE_ACCESS_TYPE_NAME SYSRES_CONST_USER_ACCOUNT_TYPE_VALUE_CODE SYSRES_CONST_USER_ADDITIONAL_INFORMATION_REQUISITE_CODE SYSRES_CONST_USER_AND_GROUP_ID_FROM_PSEUDOREFERENCE_REQUISITE_CODE SYSRES_CONST_USER_CATEGORY_NORMAL SYSRES_CONST_USER_CERTIFICATE_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_STATE_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_SUBJECT_NAME_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_THUMBPRINT_REQUISITE_CODE SYSRES_CONST_USER_COMMON_CATEGORY SYSRES_CONST_USER_COMMON_CATEGORY_CODE SYSRES_CONST_USER_FULL_NAME_REQUISITE_CODE SYSRES_CONST_USER_GROUP_TYPE_REQUISITE_CODE SYSRES_CONST_USER_LOGIN_REQUISITE_CODE SYSRES_CONST_USER_REMOTE_CONTROLLER_REQUISITE_CODE SYSRES_CONST_USER_REMOTE_SYSTEM_REQUISITE_CODE SYSRES_CONST_USER_RIGHTS_T_REQUISITE_CODE SYSRES_CONST_USER_SERVER_NAME_REQUISITE_CODE SYSRES_CONST_USER_SERVICE_CATEGORY SYSRES_CONST_USER_SERVICE_CATEGORY_CODE SYSRES_CONST_USER_STATUS_ADMINISTRATOR_CODE SYSRES_CONST_USER_STATUS_ADMINISTRATOR_NAME SYSRES_CONST_USER_STATUS_DEVELOPER_CODE SYSRES_CONST_USER_STATUS_DEVELOPER_NAME SYSRES_CONST_USER_STATUS_DISABLED_CODE SYSRES_CONST_USER_STATUS_DISABLED_NAME SYSRES_CONST_USER_STATUS_SYSTEM_DEVELOPER_CODE SYSRES_CONST_USER_STATUS_USER_CODE SYSRES_CONST_USER_STATUS_USER_NAME SYSRES_CONST_USER_STATUS_USER_NAME_DEPRECATED SYSRES_CONST_USER_TYPE_FIELD_VALUE_USER SYSRES_CONST_USER_TYPE_REQUISITE_CODE SYSRES_CONST_USERS_CONTROLLER_REQUISITE_CODE SYSRES_CONST_USERS_IS_MAIN_SERVER_REQUISITE_CODE SYSRES_CONST_USERS_REFERENCE_CODE SYSRES_CONST_USERS_REGISTRATION_CERTIFICATES_ACTION_NAME SYSRES_CONST_USERS_REQUISITE_CODE SYSRES_CONST_USERS_SYSTEM_REQUISITE_CODE SYSRES_CONST_USERS_USER_ACCESS_RIGHTS_TYPR_REQUISITE_CODE SYSRES_CONST_USERS_USER_AUTHENTICATION_REQUISITE_CODE SYSRES_CONST_USERS_USER_COMPONENT_REQUISITE_CODE SYSRES_CONST_USERS_USER_GROUP_REQUISITE_CODE SYSRES_CONST_USERS_VIEW_CERTIFICATES_ACTION_NAME SYSRES_CONST_VIEW_DEFAULT_CODE SYSRES_CONST_VIEW_DEFAULT_NAME SYSRES_CONST_VIEWER_REQUISITE_CODE SYSRES_CONST_WAITING_BLOCK_DESCRIPTION SYSRES_CONST_WIZARD_FORM_LABEL_TEST_STRING  SYSRES_CONST_WIZARD_QUERY_PARAM_HEIGHT_ETALON_STRING SYSRES_CONST_WIZARD_REFERENCE_COMMENT_REQUISITE_CODE SYSRES_CONST_WORK_RULES_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_WORK_TIME_CALENDAR_REFERENCE_CODE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE_CODE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE_CODE_RUS SYSRES_CONST_WORK_WORKFLOW_SOFT_ROUTE_TYPE_VALUE_CODE_RUS SYSRES_CONST_WORKFLOW_ROUTE_TYPR_HARD SYSRES_CONST_WORKFLOW_ROUTE_TYPR_SOFT SYSRES_CONST_XML_ENCODING SYSRES_CONST_XREC_STAT_REQUISITE_CODE SYSRES_CONST_XRECID_FIELD_NAME SYSRES_CONST_YES SYSRES_CONST_YES_NO_2_REQUISITE_CODE SYSRES_CONST_YES_NO_REQUISITE_CODE SYSRES_CONST_YES_NO_T_REF_TYPE_REQUISITE_CODE SYSRES_CONST_YES_PICK_VALUE SYSRES_CONST_YES_VALUE ", s = "CR FALSE nil NO_VALUE NULL TAB TRUE YES_VALUE ", o = "ADMINISTRATORS_GROUP_NAME CUSTOMIZERS_GROUP_NAME DEVELOPERS_GROUP_NAME SERVICE_USERS_GROUP_NAME ", c = "DECISION_BLOCK_FIRST_OPERAND_PROPERTY DECISION_BLOCK_NAME_PROPERTY DECISION_BLOCK_OPERATION_PROPERTY DECISION_BLOCK_RESULT_TYPE_PROPERTY DECISION_BLOCK_SECOND_OPERAND_PROPERTY ", u = "ANY_FILE_EXTENTION COMPRESSED_DOCUMENT_EXTENSION EXTENDED_DOCUMENT_EXTENSION SHORT_COMPRESSED_DOCUMENT_EXTENSION SHORT_EXTENDED_DOCUMENT_EXTENSION ", d = "JOB_BLOCK_ABORT_DEADLINE_PROPERTY JOB_BLOCK_AFTER_FINISH_EVENT JOB_BLOCK_AFTER_QUERY_PARAMETERS_EVENT JOB_BLOCK_ATTACHMENT_PROPERTY JOB_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY JOB_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY JOB_BLOCK_BEFORE_QUERY_PARAMETERS_EVENT JOB_BLOCK_BEFORE_START_EVENT JOB_BLOCK_CREATED_JOBS_PROPERTY JOB_BLOCK_DEADLINE_PROPERTY JOB_BLOCK_EXECUTION_RESULTS_PROPERTY JOB_BLOCK_IS_PARALLEL_PROPERTY JOB_BLOCK_IS_RELATIVE_ABORT_DEADLINE_PROPERTY JOB_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY JOB_BLOCK_JOB_TEXT_PROPERTY JOB_BLOCK_NAME_PROPERTY JOB_BLOCK_NEED_SIGN_ON_PERFORM_PROPERTY JOB_BLOCK_PERFORMER_PROPERTY JOB_BLOCK_RELATIVE_ABORT_DEADLINE_TYPE_PROPERTY JOB_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY JOB_BLOCK_SUBJECT_PROPERTY ", E = "ENGLISH_LANGUAGE_CODE RUSSIAN_LANGUAGE_CODE ", m = "smHidden smMaximized smMinimized smNormal wmNo wmYes ", b = "COMPONENT_TOKEN_LINK_KIND DOCUMENT_LINK_KIND EDOCUMENT_LINK_KIND FOLDER_LINK_KIND JOB_LINK_KIND REFERENCE_LINK_KIND TASK_LINK_KIND ", g = "COMPONENT_TOKEN_LOCK_TYPE EDOCUMENT_VERSION_LOCK_TYPE ", f = "MONITOR_BLOCK_AFTER_FINISH_EVENT MONITOR_BLOCK_BEFORE_START_EVENT MONITOR_BLOCK_DEADLINE_PROPERTY MONITOR_BLOCK_INTERVAL_PROPERTY MONITOR_BLOCK_INTERVAL_TYPE_PROPERTY MONITOR_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY MONITOR_BLOCK_NAME_PROPERTY MONITOR_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY MONITOR_BLOCK_SEARCH_SCRIPT_PROPERTY ", C = "NOTICE_BLOCK_AFTER_FINISH_EVENT NOTICE_BLOCK_ATTACHMENT_PROPERTY NOTICE_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY NOTICE_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY NOTICE_BLOCK_BEFORE_START_EVENT NOTICE_BLOCK_CREATED_NOTICES_PROPERTY NOTICE_BLOCK_DEADLINE_PROPERTY NOTICE_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY NOTICE_BLOCK_NAME_PROPERTY NOTICE_BLOCK_NOTICE_TEXT_PROPERTY NOTICE_BLOCK_PERFORMER_PROPERTY NOTICE_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY NOTICE_BLOCK_SUBJECT_PROPERTY ", A = "dseAfterCancel dseAfterClose dseAfterDelete dseAfterDeleteOutOfTransaction dseAfterInsert dseAfterOpen dseAfterScroll dseAfterUpdate dseAfterUpdateOutOfTransaction dseBeforeCancel dseBeforeClose dseBeforeDelete dseBeforeDetailUpdate dseBeforeInsert dseBeforeOpen dseBeforeUpdate dseOnAnyRequisiteChange dseOnCloseRecord dseOnDeleteError dseOnOpenRecord dseOnPrepareUpdate dseOnUpdateError dseOnUpdateRatifiedRecord dseOnValidDelete dseOnValidUpdate reOnChange reOnChangeValues SELECTION_BEGIN_ROUTE_EVENT SELECTION_END_ROUTE_EVENT ", P = "CURRENT_PERIOD_IS_REQUIRED PREVIOUS_CARD_TYPE_NAME SHOW_RECORD_PROPERTIES_FORM ", k = "ACCESS_RIGHTS_SETTING_DIALOG_CODE ADMINISTRATOR_USER_CODE ANALYTIC_REPORT_TYPE asrtHideLocal asrtHideRemote CALCULATED_ROLE_TYPE_CODE COMPONENTS_REFERENCE_DEVELOPER_VIEW_CODE DCTS_TEST_PROTOCOLS_FOLDER_PATH E_EDOC_VERSION_ALREADY_APPROVINGLY_SIGNED E_EDOC_VERSION_ALREADY_APPROVINGLY_SIGNED_BY_USER E_EDOC_VERSION_ALREDY_SIGNED E_EDOC_VERSION_ALREDY_SIGNED_BY_USER EDOC_TYPES_CODE_REQUISITE_FIELD_NAME EDOCUMENTS_ALIAS_NAME FILES_FOLDER_PATH FILTER_OPERANDS_DELIMITER FILTER_OPERATIONS_DELIMITER FORMCARD_NAME FORMLIST_NAME GET_EXTENDED_DOCUMENT_EXTENSION_CREATION_MODE GET_EXTENDED_DOCUMENT_EXTENSION_IMPORT_MODE INTEGRATED_REPORT_TYPE IS_BUILDER_APPLICATION_ROLE IS_BUILDER_APPLICATION_ROLE2 IS_BUILDER_USERS ISBSYSDEV LOG_FOLDER_PATH mbCancel mbNo mbNoToAll mbOK mbYes mbYesToAll MEMORY_DATASET_DESRIPTIONS_FILENAME mrNo mrNoToAll mrYes mrYesToAll MULTIPLE_SELECT_DIALOG_CODE NONOPERATING_RECORD_FLAG_FEMININE NONOPERATING_RECORD_FLAG_MASCULINE OPERATING_RECORD_FLAG_FEMININE OPERATING_RECORD_FLAG_MASCULINE PROFILING_SETTINGS_COMMON_SETTINGS_CODE_VALUE PROGRAM_INITIATED_LOOKUP_ACTION ratDelete ratEdit ratInsert REPORT_TYPE REQUIRED_PICK_VALUES_VARIABLE rmCard rmList SBRTE_PROGID_DEV SBRTE_PROGID_RELEASE STATIC_ROLE_TYPE_CODE SUPPRESS_EMPTY_TEMPLATE_CREATION SYSTEM_USER_CODE UPDATE_DIALOG_DATASET USED_IN_OBJECT_HINT_PARAM USER_INITIATED_LOOKUP_ACTION USER_NAME_FORMAT USER_SELECTION_RESTRICTIONS WORKFLOW_TEST_PROTOCOLS_FOLDER_PATH ELS_SUBTYPE_CONTROL_NAME ELS_FOLDER_KIND_CONTROL_NAME REPEAT_PROCESS_CURRENT_OBJECT_EXCEPTION_NAME ", w = "PRIVILEGE_COMPONENT_FULL_ACCESS PRIVILEGE_DEVELOPMENT_EXPORT PRIVILEGE_DEVELOPMENT_IMPORT PRIVILEGE_DOCUMENT_DELETE PRIVILEGE_ESD PRIVILEGE_FOLDER_DELETE PRIVILEGE_MANAGE_ACCESS_RIGHTS PRIVILEGE_MANAGE_REPLICATION PRIVILEGE_MANAGE_SESSION_SERVER PRIVILEGE_OBJECT_FULL_ACCESS PRIVILEGE_OBJECT_VIEW PRIVILEGE_RESERVE_LICENSE PRIVILEGE_SYSTEM_CUSTOMIZE PRIVILEGE_SYSTEM_DEVELOP PRIVILEGE_SYSTEM_INSTALL PRIVILEGE_TASK_DELETE PRIVILEGE_USER_PLUGIN_SETTINGS_CUSTOMIZE PRIVILEGES_PSEUDOREFERENCE_CODE ", q = "ACCESS_TYPES_PSEUDOREFERENCE_CODE ALL_AVAILABLE_COMPONENTS_PSEUDOREFERENCE_CODE ALL_AVAILABLE_PRIVILEGES_PSEUDOREFERENCE_CODE ALL_REPLICATE_COMPONENTS_PSEUDOREFERENCE_CODE AVAILABLE_DEVELOPERS_COMPONENTS_PSEUDOREFERENCE_CODE COMPONENTS_PSEUDOREFERENCE_CODE FILTRATER_SETTINGS_CONFLICTS_PSEUDOREFERENCE_CODE GROUPS_PSEUDOREFERENCE_CODE RECEIVE_PROTOCOL_PSEUDOREFERENCE_CODE REFERENCE_REQUISITE_PSEUDOREFERENCE_CODE REFERENCE_REQUISITES_PSEUDOREFERENCE_CODE REFTYPES_PSEUDOREFERENCE_CODE REPLICATION_SEANCES_DIARY_PSEUDOREFERENCE_CODE SEND_PROTOCOL_PSEUDOREFERENCE_CODE SUBSTITUTES_PSEUDOREFERENCE_CODE SYSTEM_SETTINGS_PSEUDOREFERENCE_CODE UNITS_PSEUDOREFERENCE_CODE USERS_PSEUDOREFERENCE_CODE VIEWERS_PSEUDOREFERENCE_CODE ", L = "CERTIFICATE_TYPE_ENCRYPT CERTIFICATE_TYPE_SIGN CERTIFICATE_TYPE_SIGN_AND_ENCRYPT ", X = "STORAGE_TYPE_FILE STORAGE_TYPE_NAS_CIFS STORAGE_TYPE_SAPERION STORAGE_TYPE_SQL_SERVER ", h = "COMPTYPE2_REQUISITE_DOCUMENTS_VALUE COMPTYPE2_REQUISITE_TASKS_VALUE COMPTYPE2_REQUISITE_FOLDERS_VALUE COMPTYPE2_REQUISITE_REFERENCES_VALUE ", y = "SYSREQ_CODE SYSREQ_COMPTYPE2 SYSREQ_CONST_AVAILABLE_FOR_WEB SYSREQ_CONST_COMMON_CODE SYSREQ_CONST_COMMON_VALUE SYSREQ_CONST_FIRM_CODE SYSREQ_CONST_FIRM_STATUS SYSREQ_CONST_FIRM_VALUE SYSREQ_CONST_SERVER_STATUS SYSREQ_CONTENTS SYSREQ_DATE_OPEN SYSREQ_DATE_CLOSE SYSREQ_DESCRIPTION SYSREQ_DESCRIPTION_LOCALIZE_ID SYSREQ_DOUBLE SYSREQ_EDOC_ACCESS_TYPE SYSREQ_EDOC_AUTHOR SYSREQ_EDOC_CREATED SYSREQ_EDOC_DELEGATE_RIGHTS_REQUISITE_CODE SYSREQ_EDOC_EDITOR SYSREQ_EDOC_ENCODE_TYPE SYSREQ_EDOC_ENCRYPTION_PLUGIN_NAME SYSREQ_EDOC_ENCRYPTION_PLUGIN_VERSION SYSREQ_EDOC_EXPORT_DATE SYSREQ_EDOC_EXPORTER SYSREQ_EDOC_KIND SYSREQ_EDOC_LIFE_STAGE_NAME SYSREQ_EDOC_LOCKED_FOR_SERVER_CODE SYSREQ_EDOC_MODIFIED SYSREQ_EDOC_NAME SYSREQ_EDOC_NOTE SYSREQ_EDOC_QUALIFIED_ID SYSREQ_EDOC_SESSION_KEY SYSREQ_EDOC_SESSION_KEY_ENCRYPTION_PLUGIN_NAME SYSREQ_EDOC_SESSION_KEY_ENCRYPTION_PLUGIN_VERSION SYSREQ_EDOC_SIGNATURE_TYPE SYSREQ_EDOC_SIGNED SYSREQ_EDOC_STORAGE SYSREQ_EDOC_STORAGES_ARCHIVE_STORAGE SYSREQ_EDOC_STORAGES_CHECK_RIGHTS SYSREQ_EDOC_STORAGES_COMPUTER_NAME SYSREQ_EDOC_STORAGES_EDIT_IN_STORAGE SYSREQ_EDOC_STORAGES_EXECUTIVE_STORAGE SYSREQ_EDOC_STORAGES_FUNCTION SYSREQ_EDOC_STORAGES_INITIALIZED SYSREQ_EDOC_STORAGES_LOCAL_PATH SYSREQ_EDOC_STORAGES_SAPERION_DATABASE_NAME SYSREQ_EDOC_STORAGES_SEARCH_BY_TEXT SYSREQ_EDOC_STORAGES_SERVER_NAME SYSREQ_EDOC_STORAGES_SHARED_SOURCE_NAME SYSREQ_EDOC_STORAGES_TYPE SYSREQ_EDOC_TEXT_MODIFIED SYSREQ_EDOC_TYPE_ACT_CODE SYSREQ_EDOC_TYPE_ACT_DESCRIPTION SYSREQ_EDOC_TYPE_ACT_DESCRIPTION_LOCALIZE_ID SYSREQ_EDOC_TYPE_ACT_ON_EXECUTE SYSREQ_EDOC_TYPE_ACT_ON_EXECUTE_EXISTS SYSREQ_EDOC_TYPE_ACT_SECTION SYSREQ_EDOC_TYPE_ADD_PARAMS SYSREQ_EDOC_TYPE_COMMENT SYSREQ_EDOC_TYPE_EVENT_TEXT SYSREQ_EDOC_TYPE_NAME_IN_SINGULAR SYSREQ_EDOC_TYPE_NAME_IN_SINGULAR_LOCALIZE_ID SYSREQ_EDOC_TYPE_NAME_LOCALIZE_ID SYSREQ_EDOC_TYPE_NUMERATION_METHOD SYSREQ_EDOC_TYPE_PSEUDO_REQUISITE_CODE SYSREQ_EDOC_TYPE_REQ_CODE SYSREQ_EDOC_TYPE_REQ_DESCRIPTION SYSREQ_EDOC_TYPE_REQ_DESCRIPTION_LOCALIZE_ID SYSREQ_EDOC_TYPE_REQ_IS_LEADING SYSREQ_EDOC_TYPE_REQ_IS_REQUIRED SYSREQ_EDOC_TYPE_REQ_NUMBER SYSREQ_EDOC_TYPE_REQ_ON_CHANGE SYSREQ_EDOC_TYPE_REQ_ON_CHANGE_EXISTS SYSREQ_EDOC_TYPE_REQ_ON_SELECT SYSREQ_EDOC_TYPE_REQ_ON_SELECT_KIND SYSREQ_EDOC_TYPE_REQ_SECTION SYSREQ_EDOC_TYPE_VIEW_CARD SYSREQ_EDOC_TYPE_VIEW_CODE SYSREQ_EDOC_TYPE_VIEW_COMMENT SYSREQ_EDOC_TYPE_VIEW_IS_MAIN SYSREQ_EDOC_TYPE_VIEW_NAME SYSREQ_EDOC_TYPE_VIEW_NAME_LOCALIZE_ID SYSREQ_EDOC_VERSION_AUTHOR SYSREQ_EDOC_VERSION_CRC SYSREQ_EDOC_VERSION_DATA SYSREQ_EDOC_VERSION_EDITOR SYSREQ_EDOC_VERSION_EXPORT_DATE SYSREQ_EDOC_VERSION_EXPORTER SYSREQ_EDOC_VERSION_HIDDEN SYSREQ_EDOC_VERSION_LIFE_STAGE SYSREQ_EDOC_VERSION_MODIFIED SYSREQ_EDOC_VERSION_NOTE SYSREQ_EDOC_VERSION_SIGNATURE_TYPE SYSREQ_EDOC_VERSION_SIGNED SYSREQ_EDOC_VERSION_SIZE SYSREQ_EDOC_VERSION_SOURCE SYSREQ_EDOC_VERSION_TEXT_MODIFIED SYSREQ_EDOCKIND_DEFAULT_VERSION_STATE_CODE SYSREQ_FOLDER_KIND SYSREQ_FUNC_CATEGORY SYSREQ_FUNC_COMMENT SYSREQ_FUNC_GROUP SYSREQ_FUNC_GROUP_COMMENT SYSREQ_FUNC_GROUP_NUMBER SYSREQ_FUNC_HELP SYSREQ_FUNC_PARAM_DEF_VALUE SYSREQ_FUNC_PARAM_IDENT SYSREQ_FUNC_PARAM_NUMBER SYSREQ_FUNC_PARAM_TYPE SYSREQ_FUNC_TEXT SYSREQ_GROUP_CATEGORY SYSREQ_ID SYSREQ_LAST_UPDATE SYSREQ_LEADER_REFERENCE SYSREQ_LINE_NUMBER SYSREQ_MAIN_RECORD_ID SYSREQ_NAME SYSREQ_NAME_LOCALIZE_ID SYSREQ_NOTE SYSREQ_ORIGINAL_RECORD SYSREQ_OUR_FIRM SYSREQ_PROFILING_SETTINGS_BATCH_LOGING SYSREQ_PROFILING_SETTINGS_BATCH_SIZE SYSREQ_PROFILING_SETTINGS_PROFILING_ENABLED SYSREQ_PROFILING_SETTINGS_SQL_PROFILING_ENABLED SYSREQ_PROFILING_SETTINGS_START_LOGGED SYSREQ_RECORD_STATUS SYSREQ_REF_REQ_FIELD_NAME SYSREQ_REF_REQ_FORMAT SYSREQ_REF_REQ_GENERATED SYSREQ_REF_REQ_LENGTH SYSREQ_REF_REQ_PRECISION SYSREQ_REF_REQ_REFERENCE SYSREQ_REF_REQ_SECTION SYSREQ_REF_REQ_STORED SYSREQ_REF_REQ_TOKENS SYSREQ_REF_REQ_TYPE SYSREQ_REF_REQ_VIEW SYSREQ_REF_TYPE_ACT_CODE SYSREQ_REF_TYPE_ACT_DESCRIPTION SYSREQ_REF_TYPE_ACT_DESCRIPTION_LOCALIZE_ID SYSREQ_REF_TYPE_ACT_ON_EXECUTE SYSREQ_REF_TYPE_ACT_ON_EXECUTE_EXISTS SYSREQ_REF_TYPE_ACT_SECTION SYSREQ_REF_TYPE_ADD_PARAMS SYSREQ_REF_TYPE_COMMENT SYSREQ_REF_TYPE_COMMON_SETTINGS SYSREQ_REF_TYPE_DISPLAY_REQUISITE_NAME SYSREQ_REF_TYPE_EVENT_TEXT SYSREQ_REF_TYPE_MAIN_LEADING_REF SYSREQ_REF_TYPE_NAME_IN_SINGULAR SYSREQ_REF_TYPE_NAME_IN_SINGULAR_LOCALIZE_ID SYSREQ_REF_TYPE_NAME_LOCALIZE_ID SYSREQ_REF_TYPE_NUMERATION_METHOD SYSREQ_REF_TYPE_REQ_CODE SYSREQ_REF_TYPE_REQ_DESCRIPTION SYSREQ_REF_TYPE_REQ_DESCRIPTION_LOCALIZE_ID SYSREQ_REF_TYPE_REQ_IS_CONTROL SYSREQ_REF_TYPE_REQ_IS_FILTER SYSREQ_REF_TYPE_REQ_IS_LEADING SYSREQ_REF_TYPE_REQ_IS_REQUIRED SYSREQ_REF_TYPE_REQ_NUMBER SYSREQ_REF_TYPE_REQ_ON_CHANGE SYSREQ_REF_TYPE_REQ_ON_CHANGE_EXISTS SYSREQ_REF_TYPE_REQ_ON_SELECT SYSREQ_REF_TYPE_REQ_ON_SELECT_KIND SYSREQ_REF_TYPE_REQ_SECTION SYSREQ_REF_TYPE_VIEW_CARD SYSREQ_REF_TYPE_VIEW_CODE SYSREQ_REF_TYPE_VIEW_COMMENT SYSREQ_REF_TYPE_VIEW_IS_MAIN SYSREQ_REF_TYPE_VIEW_NAME SYSREQ_REF_TYPE_VIEW_NAME_LOCALIZE_ID SYSREQ_REFERENCE_TYPE_ID SYSREQ_STATE SYSREQ_STAT\u0415 SYSREQ_SYSTEM_SETTINGS_VALUE SYSREQ_TYPE SYSREQ_UNIT SYSREQ_UNIT_ID SYSREQ_USER_GROUPS_GROUP_FULL_NAME SYSREQ_USER_GROUPS_GROUP_NAME SYSREQ_USER_GROUPS_GROUP_SERVER_NAME SYSREQ_USERS_ACCESS_RIGHTS SYSREQ_USERS_AUTHENTICATION SYSREQ_USERS_CATEGORY SYSREQ_USERS_COMPONENT SYSREQ_USERS_COMPONENT_USER_IS_PUBLIC SYSREQ_USERS_DOMAIN SYSREQ_USERS_FULL_USER_NAME SYSREQ_USERS_GROUP SYSREQ_USERS_IS_MAIN_SERVER SYSREQ_USERS_LOGIN SYSREQ_USERS_REFERENCE_USER_IS_PUBLIC SYSREQ_USERS_STATUS SYSREQ_USERS_USER_CERTIFICATE SYSREQ_USERS_USER_CERTIFICATE_INFO SYSREQ_USERS_USER_CERTIFICATE_PLUGIN_NAME SYSREQ_USERS_USER_CERTIFICATE_PLUGIN_VERSION SYSREQ_USERS_USER_CERTIFICATE_STATE SYSREQ_USERS_USER_CERTIFICATE_SUBJECT_NAME SYSREQ_USERS_USER_CERTIFICATE_THUMBPRINT SYSREQ_USERS_USER_DEFAULT_CERTIFICATE SYSREQ_USERS_USER_DESCRIPTION SYSREQ_USERS_USER_GLOBAL_NAME SYSREQ_USERS_USER_LOGIN SYSREQ_USERS_USER_MAIN_SERVER SYSREQ_USERS_USER_TYPE SYSREQ_WORK_RULES_FOLDER_ID ", B = "RESULT_VAR_NAME RESULT_VAR_NAME_ENG ", M = "AUTO_NUMERATION_RULE_ID CANT_CHANGE_ID_REQUISITE_RULE_ID CANT_CHANGE_OURFIRM_REQUISITE_RULE_ID CHECK_CHANGING_REFERENCE_RECORD_USE_RULE_ID CHECK_CODE_REQUISITE_RULE_ID CHECK_DELETING_REFERENCE_RECORD_USE_RULE_ID CHECK_FILTRATER_CHANGES_RULE_ID CHECK_RECORD_INTERVAL_RULE_ID CHECK_REFERENCE_INTERVAL_RULE_ID CHECK_REQUIRED_DATA_FULLNESS_RULE_ID CHECK_REQUIRED_REQUISITES_FULLNESS_RULE_ID MAKE_RECORD_UNRATIFIED_RULE_ID RESTORE_AUTO_NUMERATION_RULE_ID SET_FIRM_CONTEXT_FROM_RECORD_RULE_ID SET_FIRST_RECORD_IN_LIST_FORM_RULE_ID SET_IDSPS_VALUE_RULE_ID SET_NEXT_CODE_VALUE_RULE_ID SET_OURFIRM_BOUNDS_RULE_ID SET_OURFIRM_REQUISITE_RULE_ID ", ie = "SCRIPT_BLOCK_AFTER_FINISH_EVENT SCRIPT_BLOCK_BEFORE_START_EVENT SCRIPT_BLOCK_EXECUTION_RESULTS_PROPERTY SCRIPT_BLOCK_NAME_PROPERTY SCRIPT_BLOCK_SCRIPT_PROPERTY ", ce = "SUBTASK_BLOCK_ABORT_DEADLINE_PROPERTY SUBTASK_BLOCK_AFTER_FINISH_EVENT SUBTASK_BLOCK_ASSIGN_PARAMS_EVENT SUBTASK_BLOCK_ATTACHMENTS_PROPERTY SUBTASK_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY SUBTASK_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY SUBTASK_BLOCK_BEFORE_START_EVENT SUBTASK_BLOCK_CREATED_TASK_PROPERTY SUBTASK_BLOCK_CREATION_EVENT SUBTASK_BLOCK_DEADLINE_PROPERTY SUBTASK_BLOCK_IMPORTANCE_PROPERTY SUBTASK_BLOCK_INITIATOR_PROPERTY SUBTASK_BLOCK_IS_RELATIVE_ABORT_DEADLINE_PROPERTY SUBTASK_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY SUBTASK_BLOCK_JOBS_TYPE_PROPERTY SUBTASK_BLOCK_NAME_PROPERTY SUBTASK_BLOCK_PARALLEL_ROUTE_PROPERTY SUBTASK_BLOCK_PERFORMERS_PROPERTY SUBTASK_BLOCK_RELATIVE_ABORT_DEADLINE_TYPE_PROPERTY SUBTASK_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY SUBTASK_BLOCK_REQUIRE_SIGN_PROPERTY SUBTASK_BLOCK_STANDARD_ROUTE_PROPERTY SUBTASK_BLOCK_START_EVENT SUBTASK_BLOCK_STEP_CONTROL_PROPERTY SUBTASK_BLOCK_SUBJECT_PROPERTY SUBTASK_BLOCK_TASK_CONTROL_PROPERTY SUBTASK_BLOCK_TEXT_PROPERTY SUBTASK_BLOCK_UNLOCK_ATTACHMENTS_ON_STOP_PROPERTY SUBTASK_BLOCK_USE_STANDARD_ROUTE_PROPERTY SUBTASK_BLOCK_WAIT_FOR_TASK_COMPLETE_PROPERTY ", _e = "SYSCOMP_CONTROL_JOBS SYSCOMP_FOLDERS SYSCOMP_JOBS SYSCOMP_NOTICES SYSCOMP_TASKS ", re = "SYSDLG_CREATE_EDOCUMENT SYSDLG_CREATE_EDOCUMENT_VERSION SYSDLG_CURRENT_PERIOD SYSDLG_EDIT_FUNCTION_HELP SYSDLG_EDOCUMENT_KINDS_FOR_TEMPLATE SYSDLG_EXPORT_MULTIPLE_EDOCUMENTS SYSDLG_EXPORT_SINGLE_EDOCUMENT SYSDLG_IMPORT_EDOCUMENT SYSDLG_MULTIPLE_SELECT SYSDLG_SETUP_ACCESS_RIGHTS SYSDLG_SETUP_DEFAULT_RIGHTS SYSDLG_SETUP_FILTER_CONDITION SYSDLG_SETUP_SIGN_RIGHTS SYSDLG_SETUP_TASK_OBSERVERS SYSDLG_SETUP_TASK_ROUTE SYSDLG_SETUP_USERS_LIST SYSDLG_SIGN_EDOCUMENT SYSDLG_SIGN_MULTIPLE_EDOCUMENTS ", U = "SYSREF_ACCESS_RIGHTS_TYPES SYSREF_ADMINISTRATION_HISTORY SYSREF_ALL_AVAILABLE_COMPONENTS SYSREF_ALL_AVAILABLE_PRIVILEGES SYSREF_ALL_REPLICATING_COMPONENTS SYSREF_AVAILABLE_DEVELOPERS_COMPONENTS SYSREF_CALENDAR_EVENTS SYSREF_COMPONENT_TOKEN_HISTORY SYSREF_COMPONENT_TOKENS SYSREF_COMPONENTS SYSREF_CONSTANTS SYSREF_DATA_RECEIVE_PROTOCOL SYSREF_DATA_SEND_PROTOCOL SYSREF_DIALOGS SYSREF_DIALOGS_REQUISITES SYSREF_EDITORS SYSREF_EDOC_CARDS SYSREF_EDOC_TYPES SYSREF_EDOCUMENT_CARD_REQUISITES SYSREF_EDOCUMENT_CARD_TYPES SYSREF_EDOCUMENT_CARD_TYPES_REFERENCE SYSREF_EDOCUMENT_CARDS SYSREF_EDOCUMENT_HISTORY SYSREF_EDOCUMENT_KINDS SYSREF_EDOCUMENT_REQUISITES SYSREF_EDOCUMENT_SIGNATURES SYSREF_EDOCUMENT_TEMPLATES SYSREF_EDOCUMENT_TEXT_STORAGES SYSREF_EDOCUMENT_VIEWS SYSREF_FILTERER_SETUP_CONFLICTS SYSREF_FILTRATER_SETTING_CONFLICTS SYSREF_FOLDER_HISTORY SYSREF_FOLDERS SYSREF_FUNCTION_GROUPS SYSREF_FUNCTION_PARAMS SYSREF_FUNCTIONS SYSREF_JOB_HISTORY SYSREF_LINKS SYSREF_LOCALIZATION_DICTIONARY SYSREF_LOCALIZATION_LANGUAGES SYSREF_MODULES SYSREF_PRIVILEGES SYSREF_RECORD_HISTORY SYSREF_REFERENCE_REQUISITES SYSREF_REFERENCE_TYPE_VIEWS SYSREF_REFERENCE_TYPES SYSREF_REFERENCES SYSREF_REFERENCES_REQUISITES SYSREF_REMOTE_SERVERS SYSREF_REPLICATION_SESSIONS_LOG SYSREF_REPLICATION_SESSIONS_PROTOCOL SYSREF_REPORTS SYSREF_ROLES SYSREF_ROUTE_BLOCK_GROUPS SYSREF_ROUTE_BLOCKS SYSREF_SCRIPTS SYSREF_SEARCHES SYSREF_SERVER_EVENTS SYSREF_SERVER_EVENTS_HISTORY SYSREF_STANDARD_ROUTE_GROUPS SYSREF_STANDARD_ROUTES SYSREF_STATUSES SYSREF_SYSTEM_SETTINGS SYSREF_TASK_HISTORY SYSREF_TASK_KIND_GROUPS SYSREF_TASK_KINDS SYSREF_TASK_RIGHTS SYSREF_TASK_SIGNATURES SYSREF_TASKS SYSREF_UNITS SYSREF_USER_GROUPS SYSREF_USER_GROUPS_REFERENCE SYSREF_USER_SUBSTITUTION SYSREF_USERS SYSREF_USERS_REFERENCE SYSREF_VIEWERS SYSREF_WORKING_TIME_CALENDARS ", H = "ACCESS_RIGHTS_TABLE_NAME EDMS_ACCESS_TABLE_NAME EDOC_TYPES_TABLE_NAME ", Z = "TEST_DEV_DB_NAME TEST_DEV_SYSTEM_CODE TEST_EDMS_DB_NAME TEST_EDMS_MAIN_CODE TEST_EDMS_MAIN_DB_NAME TEST_EDMS_SECOND_CODE TEST_EDMS_SECOND_DB_NAME TEST_EDMS_SYSTEM_CODE TEST_ISB5_MAIN_CODE TEST_ISB5_SECOND_CODE TEST_SQL_SERVER_2005_NAME TEST_SQL_SERVER_NAME ", te = "ATTENTION_CAPTION cbsCommandLinks cbsDefault CONFIRMATION_CAPTION ERROR_CAPTION INFORMATION_CAPTION mrCancel mrOk ", Ee = "EDOC_VERSION_ACTIVE_STAGE_CODE EDOC_VERSION_DESIGN_STAGE_CODE EDOC_VERSION_OBSOLETE_STAGE_CODE ", Ae = "cpDataEnciphermentEnabled cpDigitalSignatureEnabled cpID cpIssuer cpPluginVersion cpSerial cpSubjectName cpSubjSimpleName cpValidFromDate cpValidToDate ", ke = "ISBL_SYNTAX NO_SYNTAX XML_SYNTAX ", Ge = "WAIT_BLOCK_AFTER_FINISH_EVENT WAIT_BLOCK_BEFORE_START_EVENT WAIT_BLOCK_DEADLINE_PROPERTY WAIT_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY WAIT_BLOCK_NAME_PROPERTY WAIT_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY ", ge = "SYSRES_COMMON SYSRES_CONST SYSRES_MBFUNC SYSRES_SBDATA SYSRES_SBGUI SYSRES_SBINTF SYSRES_SBREFDSC SYSRES_SQLERRORS SYSRES_SYSCOMP ", he = i + s + o + c + u + d + E + m + b + g + f + C + A + P + k + w + q + L + X + h + y + B + M + ie + ce + _e + re + U + H + Z + te + Ee + Ae + ke + Ge + ge, Te = "atUser atGroup atRole ", pe = "aemEnabledAlways aemDisabledAlways aemEnabledOnBrowse aemEnabledOnEdit aemDisabledOnBrowseEmpty ", Oe = "apBegin apEnd ", De = "alLeft alRight ", Fe = "asmNever asmNoButCustomize asmAsLastTime asmYesButCustomize asmAlways ", Be = "cirCommon cirRevoked ", tt = "ctSignature ctEncode ctSignatureEncode ", lt = "clbUnchecked clbChecked clbGrayed ", Xe = "ceISB ceAlways ceNever ", jt = "ctDocument ctReference ctScript ctUnknown ctReport ctDialog ctFunction ctFolder ctEDocument ctTask ctJob ctNotice ctControlJob ", wt = "cfInternal cfDisplay ", J = "ciUnspecified ciWrite ciRead ", vt = "ckFolder ckEDocument ckTask ckJob ckComponentToken ckAny ckReference ckScript ckReport ckDialog ", Le = "ctISBLEditor ctBevel ctButton ctCheckListBox ctComboBox ctComboEdit ctGrid ctDBCheckBox ctDBComboBox ctDBEdit ctDBEllipsis ctDBMemo ctDBNavigator ctDBRadioGroup ctDBStatusLabel ctEdit ctGroupBox ctInplaceHint ctMemo ctPanel ctListBox ctRadioButton ctRichEdit ctTabSheet ctWebBrowser ctImage ctHyperLink ctLabel ctDBMultiEllipsis ctRibbon ctRichView ctInnerPanel ctPanelGroup ctBitButton ", be = "cctDate cctInteger cctNumeric cctPick cctReference cctString cctText ", it = "cltInternal cltPrimary cltGUI ", Ye = "dseBeforeOpen dseAfterOpen dseBeforeClose dseAfterClose dseOnValidDelete dseBeforeDelete dseAfterDelete dseAfterDeleteOutOfTransaction dseOnDeleteError dseBeforeInsert dseAfterInsert dseOnValidUpdate dseBeforeUpdate dseOnUpdateRatifiedRecord dseAfterUpdate dseAfterUpdateOutOfTransaction dseOnUpdateError dseAfterScroll dseOnOpenRecord dseOnCloseRecord dseBeforeCancel dseAfterCancel dseOnUpdateDeadlockError dseBeforeDetailUpdate dseOnPrepareUpdate dseOnAnyRequisiteChange ", Ot = "dssEdit dssInsert dssBrowse dssInActive ", It = "dftDate dftShortDate dftDateTime dftTimeStamp ", V = "dotDays dotHours dotMinutes dotSeconds ", K = "dtkndLocal dtkndUTC ", ee = "arNone arView arEdit arFull ", de = "ddaView ddaEdit ", we = "emLock emEdit emSign emExportWithLock emImportWithUnlock emChangeVersionNote emOpenForModify emChangeLifeStage emDelete emCreateVersion emImport emUnlockExportedWithLock emStart emAbort emReInit emMarkAsReaded emMarkAsUnreaded emPerform emAccept emResume emChangeRights emEditRoute emEditObserver emRecoveryFromLocalCopy emChangeWorkAccessType emChangeEncodeTypeToCertificate emChangeEncodeTypeToPassword emChangeEncodeTypeToNone emChangeEncodeTypeToCertificatePassword emChangeStandardRoute emGetText emOpenForView emMoveToStorage emCreateObject emChangeVersionHidden emDeleteVersion emChangeLifeCycleStage emApprovingSign emExport emContinue emLockFromEdit emUnLockForEdit emLockForServer emUnlockFromServer emDelegateAccessRights emReEncode ", nt = "ecotFile ecotProcess ", en = "eaGet eaCopy eaCreate eaCreateStandardRoute ", tn = "edltAll edltNothing edltQuery ", Ie = "essmText essmCard ", nn = "esvtLast esvtLastActive esvtSpecified ", gn = "edsfExecutive edsfArchive ", Yn = "edstSQLServer edstFile ", or = "edvstNone edvstEDocumentVersionCopy edvstFile edvstTemplate edvstScannedFile ", sr = "vsDefault vsDesign vsActive vsObsolete ", ra = "etNone etCertificate etPassword etCertificatePassword ", aa = "ecException ecWarning ecInformation ", ia = "estAll estApprovingOnly ", oa = "evtLast evtLastActive evtQuery ", sa = "fdtString fdtNumeric fdtInteger fdtDate fdtText fdtUnknown fdtWideString fdtLargeInteger ", la = "ftInbox ftOutbox ftFavorites ftCommonFolder ftUserFolder ftComponents ftQuickLaunch ftShortcuts ftSearch ", ca = "grhAuto grhX1 grhX2 grhX3 ", _a = "hltText hltRTF hltHTML ", da = "iffBMP iffJPEG iffMultiPageTIFF iffSinglePageTIFF iffTIFF iffPNG ", ua = "im8bGrayscale im24bRGB im1bMonochrome ", pa = "itBMP itJPEG itWMF itPNG ", ma = "ikhInformation ikhWarning ikhError ikhNoIcon ", Ea = "icUnknown icScript icFunction icIntegratedReport icAnalyticReport icDataSetEventHandler icActionHandler icFormEventHandler icLookUpEventHandler icRequisiteChangeEventHandler icBeforeSearchEventHandler icRoleCalculation icSelectRouteEventHandler icBlockPropertyCalculation icBlockQueryParamsEventHandler icChangeSearchResultEventHandler icBlockEventHandler icSubTaskInitEventHandler icEDocDataSetEventHandler icEDocLookUpEventHandler icEDocActionHandler icEDocFormEventHandler icEDocRequisiteChangeEventHandler icStructuredConversionRule icStructuredConversionEventBefore icStructuredConversionEventAfter icWizardEventHandler icWizardFinishEventHandler icWizardStepEventHandler icWizardStepFinishEventHandler icWizardActionEnableEventHandler icWizardActionExecuteEventHandler icCreateJobsHandler icCreateNoticesHandler icBeforeLookUpEventHandler icAfterLookUpEventHandler icTaskAbortEventHandler icWorkflowBlockActionHandler icDialogDataSetEventHandler icDialogActionHandler icDialogLookUpEventHandler icDialogRequisiteChangeEventHandler icDialogFormEventHandler icDialogValidCloseEventHandler icBlockFormEventHandler icTaskFormEventHandler icReferenceMethod icEDocMethod icDialogMethod icProcessMessageHandler ", lr = "isShow isHide isByUserSettings ", cr = "jkJob jkNotice jkControlJob ", ga = "jtInner jtLeft jtRight jtFull jtCross ", Sa = "lbpAbove lbpBelow lbpLeft lbpRight ", fa = "eltPerConnection eltPerUser ", Sn = "sfcUndefined sfcBlack sfcGreen sfcRed sfcBlue sfcOrange sfcLilac ", ba = "sfsItalic sfsStrikeout sfsNormal ", _r = "ldctStandardRoute ldctWizard ldctScript ldctFunction ldctRouteBlock ldctIntegratedReport ldctAnalyticReport ldctReferenceType ldctEDocumentType ldctDialog ldctServerEvents ", Ta = "mrcrtNone mrcrtUser mrcrtMaximal mrcrtCustom ", Ra = "vtEqual vtGreaterOrEqual vtLessOrEqual vtRange ", Ca = "rdYesterday rdToday rdTomorrow rdThisWeek rdThisMonth rdThisYear rdNextMonth rdNextWeek rdLastWeek rdLastMonth ", dr = "rdWindow rdFile rdPrinter ", Na = "rdtString rdtNumeric rdtInteger rdtDate rdtReference rdtAccount rdtText rdtPick rdtUnknown rdtLargeInteger rdtDocument ", ur = "reOnChange reOnChangeValues ", ha = "ttGlobal ttLocal ttUser ttSystem ", pr = "ssmBrowse ssmSelect ssmMultiSelect ssmBrowseModal ", va = "smSelect smLike smCard ", Oa = "stNone stAuthenticating stApproving ", mr = "sctString sctStream ", Ia = "sstAnsiSort sstNaturalSort ", Aa = "svtEqual svtContain ", ya = "soatString soatNumeric soatInteger soatDatetime soatReferenceRecord soatText soatPick soatBoolean soatEDocument soatAccount soatIntegerCollection soatNumericCollection soatStringCollection soatPickCollection soatDatetimeCollection soatBooleanCollection soatReferenceRecordCollection soatEDocumentCollection soatAccountCollection soatContents soatUnknown ", Da = "tarAbortByUser tarAbortByWorkflowException ", Ma = "tvtAllWords tvtExactPhrase tvtAnyWord ", La = "usNone usCompleted usRedSquare usBlueSquare usYellowSquare usGreenSquare usOrangeSquare usPurpleSquare usFollowUp ", qn = "utUnknown utUser utDeveloper utAdministrator utSystemDeveloper utDisconnected ", Bt = "btAnd btDetailAnd btOr btNotOr btOnly ", Hn = "vmView vmSelect vmNavigation ", Gt = "vsmSingle vsmMultiple vsmMultipleCheck vsmNoSelection ", wa = "wfatPrevious wfatNext wfatCancel wfatFinish ", xa = "wfepUndefined wfepText3 wfepText6 wfepText9 wfepSpinEdit wfepDropDown wfepRadioGroup wfepFlag wfepText12 wfepText15 wfepText18 wfepText21 wfepText24 wfepText27 wfepText30 wfepRadioGroupColumn1 wfepRadioGroupColumn2 wfepRadioGroupColumn3 ", Pa = "wfetQueryParameter wfetText wfetDelimiter wfetLabel ", ka = "wptString wptInteger wptNumeric wptBoolean wptDateTime wptPick wptText wptUser wptUserList wptEDocumentInfo wptEDocumentInfoList wptReferenceRecordInfo wptReferenceRecordInfoList wptFolderInfo wptTaskInfo wptContents wptFileName wptDate ", Ua = "wsrComplete wsrGoNext wsrGoPrevious wsrCustom wsrCancel wsrGoFinal ", Er = "wstForm wstEDocument wstTaskCard wstReferenceRecordCard wstFinal ", gr = "waAll waPerformers waManual ", Fa = "wsbStart wsbFinish wsbNotice wsbStep wsbDecision wsbWait wsbMonitor wsbScript wsbConnector wsbSubTask wsbLifeCycleStage wsbPause ", Ba = "wdtInteger wdtFloat wdtString wdtPick wdtDateTime wdtBoolean wdtTask wdtJob wdtFolder wdtEDocument wdtReferenceRecord wdtUser wdtGroup wdtRole wdtIntegerCollection wdtFloatCollection wdtStringCollection wdtPickCollection wdtDateTimeCollection wdtBooleanCollection wdtTaskCollection wdtJobCollection wdtFolderCollection wdtEDocumentCollection wdtReferenceRecordCollection wdtUserCollection wdtGroupCollection wdtRoleCollection wdtContents wdtUserList wdtSearchDescription wdtDeadLine wdtPickSet wdtAccountCollection ", Ga = "wiLow wiNormal wiHigh ", Ya = "wrtSoft wrtHard ", Sr = "wsInit wsRunning wsDone wsControlled wsAborted wsContinued ", fr = "wtmFull wtmFromCurrent wtmOnlyCurrent ", qa = Te + pe + Oe + De + Fe + Be + tt + lt + Xe + jt + wt + J + vt + Le + be + it + Ye + Ot + It + V + K + ee + de + we + nt + en + tn + Ie + nn + gn + Yn + or + sr + ra + aa + ia + oa + sa + la + ca + _a + da + ua + pa + ma + Ea + lr + cr + ga + Sa + fa + Sn + ba + _r + Ta + Ra + Ca + dr + Na + ur + ha + pr + va + Oa + mr + Ia + Aa + ya + Da + Ma + La + qn + Bt + Hn + Gt + wa + xa + Pa + ka + Ua + Er + gr + Fa + Ba + Ga + Ya + Sr + fr, Ha = "AddSubString AdjustLineBreaks AmountInWords Analysis ArrayDimCount ArrayHighBound ArrayLowBound ArrayOf ArrayReDim Assert Assigned BeginOfMonth BeginOfPeriod BuildProfilingOperationAnalysis CallProcedure CanReadFile CArrayElement CDataSetRequisite ChangeDate ChangeReferenceDataset Char CharPos CheckParam CheckParamValue CompareStrings ConstantExists ControlState ConvertDateStr Copy CopyFile CreateArray CreateCachedReference CreateConnection CreateDialog CreateDualListDialog CreateEditor CreateException CreateFile CreateFolderDialog CreateInputDialog CreateLinkFile CreateList CreateLock CreateMemoryDataSet CreateObject CreateOpenDialog CreateProgress CreateQuery CreateReference CreateReport CreateSaveDialog CreateScript CreateSQLPivotFunction CreateStringList CreateTreeListSelectDialog CSelectSQL CSQL CSubString CurrentUserID CurrentUserName CurrentVersion DataSetLocateEx DateDiff DateTimeDiff DateToStr DayOfWeek DeleteFile DirectoryExists DisableCheckAccessRights DisableCheckFullShowingRestriction DisableMassTaskSendingRestrictions DropTable DupeString EditText EnableCheckAccessRights EnableCheckFullShowingRestriction EnableMassTaskSendingRestrictions EndOfMonth EndOfPeriod ExceptionExists ExceptionsOff ExceptionsOn Execute ExecuteProcess Exit ExpandEnvironmentVariables ExtractFileDrive ExtractFileExt ExtractFileName ExtractFilePath ExtractParams FileExists FileSize FindFile FindSubString FirmContext ForceDirectories Format FormatDate FormatNumeric FormatSQLDate FormatString FreeException GetComponent GetComponentLaunchParam GetConstant GetLastException GetReferenceRecord GetRefTypeByRefID GetTableID GetTempFolder IfThen In IndexOf InputDialog InputDialogEx InteractiveMode IsFileLocked IsGraphicFile IsNumeric Length LoadString LoadStringFmt LocalTimeToUTC LowerCase Max MessageBox MessageBoxEx MimeDecodeBinary MimeDecodeString MimeEncodeBinary MimeEncodeString Min MoneyInWords MoveFile NewID Now OpenFile Ord Precision Raise ReadCertificateFromFile ReadFile ReferenceCodeByID ReferenceNumber ReferenceRequisiteMode ReferenceRequisiteValue RegionDateSettings RegionNumberSettings RegionTimeSettings RegRead RegWrite RenameFile Replace Round SelectServerCode SelectSQL ServerDateTime SetConstant SetManagedFolderFieldsState ShowConstantsInputDialog ShowMessage Sleep Split SQL SQL2XLSTAB SQLProfilingSendReport StrToDate SubString SubStringCount SystemSetting Time TimeDiff Today Transliterate Trim UpperCase UserStatus UTCToLocalTime ValidateXML VarIsClear VarIsEmpty VarIsNull WorkTimeDiff WriteFile WriteFileEx WriteObjectHistory \u0410\u043D\u0430\u043B\u0438\u0437 \u0411\u0430\u0437\u0430\u0414\u0430\u043D\u043D\u044B\u0445 \u0411\u043B\u043E\u043A\u0415\u0441\u0442\u044C \u0411\u043B\u043E\u043A\u0415\u0441\u0442\u044C\u0420\u0430\u0441\u0448 \u0411\u043B\u043E\u043A\u0418\u043D\u0444\u043E \u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C \u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C\u0420\u0430\u0441\u0448 \u0411\u043B\u043E\u043A\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0412\u0432\u043E\u0434 \u0412\u0432\u043E\u0434\u041C\u0435\u043D\u044E \u0412\u0435\u0434\u0421 \u0412\u0435\u0434\u0421\u043F\u0440 \u0412\u0435\u0440\u0445\u043D\u044F\u044F\u0413\u0440\u0430\u043D\u0438\u0446\u0430\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u0412\u043D\u0435\u0448\u041F\u0440\u043E\u0433\u0440 \u0412\u043E\u0441\u0441\u0442 \u0412\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F\u041F\u0430\u043F\u043A\u0430 \u0412\u0440\u0435\u043C\u044F \u0412\u044B\u0431\u043E\u0440SQL \u0412\u044B\u0431\u0440\u0430\u0442\u044C\u0417\u0430\u043F\u0438\u0441\u044C \u0412\u044B\u0434\u0435\u043B\u0438\u0442\u044C\u0421\u0442\u0440 \u0412\u044B\u0437\u0432\u0430\u0442\u044C \u0412\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u0412\u044B\u043F\u041F\u0440\u043E\u0433\u0440 \u0413\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0439\u0424\u0430\u0439\u043B \u0413\u0440\u0443\u043F\u043F\u0430\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0414\u0430\u0442\u0430\u0412\u0440\u0435\u043C\u044F\u0421\u0435\u0440\u0432 \u0414\u0435\u043D\u044C\u041D\u0435\u0434\u0435\u043B\u0438 \u0414\u0438\u0430\u043B\u043E\u0433\u0414\u0430\u041D\u0435\u0442 \u0414\u043B\u0438\u043D\u0430\u0421\u0442\u0440 \u0414\u043E\u0431\u041F\u043E\u0434\u0441\u0442\u0440 \u0415\u041F\u0443\u0441\u0442\u043E \u0415\u0441\u043B\u0438\u0422\u043E \u0415\u0427\u0438\u0441\u043B\u043E \u0417\u0430\u043C\u041F\u043E\u0434\u0441\u0442\u0440 \u0417\u0430\u043F\u0438\u0441\u044C\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0430 \u0417\u043D\u0430\u0447\u041F\u043E\u043B\u044F\u0421\u043F\u0440 \u0418\u0414\u0422\u0438\u043F\u0421\u043F\u0440 \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u0414\u0438\u0441\u043A \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u0418\u043C\u044F\u0424\u0430\u0439\u043B\u0430 \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u041F\u0443\u0442\u044C \u0418\u0437\u0432\u043B\u0435\u0447\u044C\u0420\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435 \u0418\u0437\u043C\u0414\u0430\u0442 \u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C\u0420\u0430\u0437\u043C\u0435\u0440\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u0418\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u0439\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u0418\u043C\u044F\u041E\u0440\u0433 \u0418\u043C\u044F\u041F\u043E\u043B\u044F\u0421\u043F\u0440 \u0418\u043D\u0434\u0435\u043A\u0441 \u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440\u0428\u0430\u0433 \u0418\u043D\u0442\u0435\u0440\u0430\u043A\u0442\u0438\u0432\u043D\u044B\u0439\u0420\u0435\u0436\u0438\u043C \u0418\u0442\u043E\u0433\u0422\u0431\u043B\u0421\u043F\u0440 \u041A\u043E\u0434\u0412\u0438\u0434\u0412\u0435\u0434\u0421\u043F\u0440 \u041A\u043E\u0434\u0412\u0438\u0434\u0421\u043F\u0440\u041F\u043E\u0418\u0414 \u041A\u043E\u0434\u041F\u043EAnalit \u041A\u043E\u0434\u0421\u0438\u043C\u0432\u043E\u043B\u0430 \u041A\u043E\u0434\u0421\u043F\u0440 \u041A\u043E\u043B\u041F\u043E\u0434\u0441\u0442\u0440 \u041A\u043E\u043B\u041F\u0440\u043E\u043F \u041A\u043E\u043D\u041C\u0435\u0441 \u041A\u043E\u043D\u0441\u0442 \u041A\u043E\u043D\u0441\u0442\u0415\u0441\u0442\u044C \u041A\u043E\u043D\u0441\u0442\u0417\u043D\u0430\u0447 \u041A\u043E\u043D\u0422\u0440\u0430\u043D \u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0424\u0430\u0439\u043B \u041A\u043E\u043F\u0438\u044F\u0421\u0442\u0440 \u041A\u041F\u0435\u0440\u0438\u043E\u0434 \u041A\u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u041C\u0430\u043A\u0441 \u041C\u0430\u043A\u0441\u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u041C\u0430\u0441\u0441\u0438\u0432 \u041C\u0435\u043D\u044E \u041C\u0435\u043D\u044E\u0420\u0430\u0441\u0448 \u041C\u0438\u043D \u041D\u0430\u0431\u043E\u0440\u0414\u0430\u043D\u043D\u044B\u0445\u041D\u0430\u0439\u0442\u0438\u0420\u0430\u0441\u0448 \u041D\u0430\u0438\u043C\u0412\u0438\u0434\u0421\u043F\u0440 \u041D\u0430\u0438\u043C\u041F\u043EAnalit \u041D\u0430\u0438\u043C\u0421\u043F\u0440 \u041D\u0430\u0441\u0442\u0440\u043E\u0438\u0442\u044C\u041F\u0435\u0440\u0435\u0432\u043E\u0434\u044B\u0421\u0442\u0440\u043E\u043A \u041D\u0430\u0447\u041C\u0435\u0441 \u041D\u0430\u0447\u0422\u0440\u0430\u043D \u041D\u0438\u0436\u043D\u044F\u044F\u0413\u0440\u0430\u043D\u0438\u0446\u0430\u041C\u0430\u0441\u0441\u0438\u0432\u0430 \u041D\u043E\u043C\u0435\u0440\u0421\u043F\u0440 \u041D\u041F\u0435\u0440\u0438\u043E\u0434 \u041E\u043A\u043D\u043E \u041E\u043A\u0440 \u041E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0435 \u041E\u0442\u043B\u0418\u043D\u0444\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u041E\u0442\u043B\u0418\u043D\u0444\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u041E\u0442\u0447\u0435\u0442 \u041E\u0442\u0447\u0435\u0442\u0410\u043D\u0430\u043B \u041E\u0442\u0447\u0435\u0442\u0418\u043D\u0442 \u041F\u0430\u043F\u043A\u0430\u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u041F\u0430\u0443\u0437\u0430 \u041F\u0412\u044B\u0431\u043E\u0440SQL \u041F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u0442\u044C\u0424\u0430\u0439\u043B \u041F\u0435\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0435 \u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0424\u0430\u0439\u043B \u041F\u043E\u0434\u0441\u0442\u0440 \u041F\u043E\u0438\u0441\u043A\u041F\u043E\u0434\u0441\u0442\u0440 \u041F\u043E\u0438\u0441\u043A\u0421\u0442\u0440 \u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C\u0418\u0414\u0422\u0430\u0431\u043B\u0438\u0446\u044B \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0418\u0414 \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0418\u043C\u044F \u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0421\u0442\u0430\u0442\u0443\u0441 \u041F\u0440\u0435\u0440\u0432\u0430\u0442\u044C \u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440 \u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0417\u043D\u0430\u0447 \u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C\u0423\u0441\u043B\u043E\u0432\u0438\u0435 \u0420\u0430\u0437\u0431\u0421\u0442\u0440 \u0420\u0430\u0437\u043D\u0412\u0440\u0435\u043C\u044F \u0420\u0430\u0437\u043D\u0414\u0430\u0442 \u0420\u0430\u0437\u043D\u0414\u0430\u0442\u0430\u0412\u0440\u0435\u043C\u044F \u0420\u0430\u0437\u043D\u0420\u0430\u0431\u0412\u0440\u0435\u043C\u044F \u0420\u0435\u0433\u0423\u0441\u0442\u0412\u0440\u0435\u043C \u0420\u0435\u0433\u0423\u0441\u0442\u0414\u0430\u0442 \u0420\u0435\u0433\u0423\u0441\u0442\u0427\u0441\u043B \u0420\u0435\u0434\u0422\u0435\u043A\u0441\u0442 \u0420\u0435\u0435\u0441\u0442\u0440\u0417\u0430\u043F\u0438\u0441\u044C \u0420\u0435\u0435\u0441\u0442\u0440\u0421\u043F\u0438\u0441\u043E\u043A\u0418\u043C\u0435\u043D\u041F\u0430\u0440\u0430\u043C \u0420\u0435\u0435\u0441\u0442\u0440\u0427\u0442\u0435\u043D\u0438\u0435 \u0420\u0435\u043A\u0432\u0421\u043F\u0440 \u0420\u0435\u043A\u0432\u0421\u043F\u0440\u041F\u0440 \u0421\u0435\u0433\u043E\u0434\u043D\u044F \u0421\u0435\u0439\u0447\u0430\u0441 \u0421\u0435\u0440\u0432\u0435\u0440 \u0421\u0435\u0440\u0432\u0435\u0440\u041F\u0440\u043E\u0446\u0435\u0441\u0441\u0418\u0414 \u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u0424\u0430\u0439\u043B\u0421\u0447\u0438\u0442\u0430\u0442\u044C \u0421\u0436\u041F\u0440\u043E\u0431 \u0421\u0438\u043C\u0432\u043E\u043B \u0421\u0438\u0441\u0442\u0435\u043C\u0430\u0414\u0438\u0440\u0435\u043A\u0442\u0443\u043C\u041A\u043E\u0434 \u0421\u0438\u0441\u0442\u0435\u043C\u0430\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u0421\u0438\u0441\u0442\u0435\u043C\u0430\u041A\u043E\u0434 \u0421\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u0412\u044B\u0431\u043E\u0440\u0430\u0418\u0437\u0414\u0432\u0443\u0445\u0421\u043F\u0438\u0441\u043A\u043E\u0432 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u0412\u044B\u0431\u043E\u0440\u0430\u041F\u0430\u043F\u043A\u0438 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u041E\u0442\u043A\u0440\u044B\u0442\u0438\u044F\u0424\u0430\u0439\u043B\u0430 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0414\u0438\u0430\u043B\u043E\u0433\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u0424\u0430\u0439\u043B\u0430 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0417\u0430\u043F\u0440\u043E\u0441 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0418\u043D\u0434\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041A\u044D\u0448\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041C\u0430\u0441\u0441\u0438\u0432 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041D\u0430\u0431\u043E\u0440\u0414\u0430\u043D\u043D\u044B\u0445 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041E\u0431\u044A\u0435\u043A\u0442 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041E\u0442\u0447\u0435\u0442 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u041F\u0430\u043F\u043A\u0443 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0420\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043F\u0438\u0441\u043E\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043F\u0438\u0441\u043E\u043A\u0421\u0442\u0440\u043E\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A \u0421\u043E\u0437\u0434\u0430\u0442\u044C\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0421\u043E\u0437\u0434\u0421\u043F\u0440 \u0421\u043E\u0441\u0442\u0421\u043F\u0440 \u0421\u043E\u0445\u0440 \u0421\u043E\u0445\u0440\u0421\u043F\u0440 \u0421\u043F\u0438\u0441\u043E\u043A\u0421\u0438\u0441\u0442\u0435\u043C \u0421\u043F\u0440 \u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0415\u0441\u0442\u044C \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0421\u043D\u044F\u0442\u044C\u0420\u0430\u0441\u0448 \u0421\u043F\u0440\u0411\u043B\u043E\u043A\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0421\u043F\u0440\u0418\u0437\u043C\u041D\u0430\u0431\u0414\u0430\u043D \u0421\u043F\u0440\u041A\u043E\u0434 \u0421\u043F\u0440\u041D\u043E\u043C\u0435\u0440 \u0421\u043F\u0440\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u0421\u043F\u0440\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0421\u043F\u0440\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C \u0421\u043F\u0440\u041F\u0430\u0440\u0430\u043C \u0421\u043F\u0440\u041F\u043E\u043B\u0435\u0417\u043D\u0430\u0447 \u0421\u043F\u0440\u041F\u043E\u043B\u0435\u0418\u043C\u044F \u0421\u043F\u0440\u0420\u0435\u043A\u0432 \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u0412\u0432\u0435\u0434\u0417\u043D \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u041D\u043E\u0432\u044B\u0435 \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u041F\u0440 \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u041F\u0440\u0435\u0434\u0417\u043D \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u0420\u0435\u0436\u0438\u043C \u0421\u043F\u0440\u0420\u0435\u043A\u0432\u0422\u0438\u043F\u0422\u0435\u043A\u0441\u0442 \u0421\u043F\u0440\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0421\u043F\u0440\u0421\u043E\u0441\u0442 \u0421\u043F\u0440\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0421\u043F\u0440\u0422\u0431\u043B\u0418\u0442\u043E\u0433 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041A\u043E\u043B \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041C\u0430\u043A\u0441 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041C\u0438\u043D \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u041F\u0440\u0435\u0434 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u0421\u043B\u0435\u0434 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u0421\u043E\u0437\u0434 \u0421\u043F\u0440\u0422\u0431\u043B\u0421\u0442\u0440\u0423\u0434 \u0421\u043F\u0440\u0422\u0435\u043A\u041F\u0440\u0435\u0434\u0441\u0442 \u0421\u043F\u0440\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0421\u0440\u0430\u0432\u043D\u0438\u0442\u044C\u0421\u0442\u0440 \u0421\u0442\u0440\u0412\u0435\u0440\u0445\u0420\u0435\u0433\u0438\u0441\u0442\u0440 \u0421\u0442\u0440\u041D\u0438\u0436\u043D\u0420\u0435\u0433\u0438\u0441\u0442\u0440 \u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u0421\u0443\u043C\u041F\u0440\u043E\u043F \u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439\u041F\u0430\u0440\u0430\u043C \u0422\u0435\u043A\u0412\u0435\u0440\u0441\u0438\u044F \u0422\u0435\u043A\u041E\u0440\u0433 \u0422\u043E\u0447\u043D \u0422\u0440\u0430\u043D \u0422\u0440\u0430\u043D\u0441\u043B\u0438\u0442\u0435\u0440\u0430\u0446\u0438\u044F \u0423\u0434\u0430\u043B\u0438\u0442\u044C\u0422\u0430\u0431\u043B\u0438\u0446\u0443 \u0423\u0434\u0430\u043B\u0438\u0442\u044C\u0424\u0430\u0439\u043B \u0423\u0434\u0421\u043F\u0440 \u0423\u0434\u0421\u0442\u0440\u0422\u0431\u043B\u0421\u043F\u0440 \u0423\u0441\u0442 \u0423\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442 \u0424\u0430\u0439\u043B\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u0421\u0447\u0438\u0442\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0424\u0430\u0439\u043B\u0412\u0440\u0435\u043C\u044F \u0424\u0430\u0439\u043B\u0412\u0440\u0435\u043C\u044F\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0424\u0430\u0439\u043B\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0417\u0430\u043D\u044F\u0442 \u0424\u0430\u0439\u043B\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0418\u0441\u043A\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041C\u043E\u0436\u043D\u043E\u0427\u0438\u0442\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0435\u0440\u0435\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C \u0424\u0430\u0439\u043B\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0424\u0430\u0439\u043B\u0420\u0430\u0437\u043C\u0435\u0440 \u0424\u0430\u0439\u043B\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0421\u0441\u044B\u043B\u043A\u0430\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0424\u0430\u0439\u043B\u0421\u0447\u0438\u0442\u0430\u0442\u044C \u0424\u0430\u0439\u043B\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0424\u043C\u0442SQL\u0414\u0430\u0442 \u0424\u043C\u0442\u0414\u0430\u0442 \u0424\u043C\u0442\u0421\u0442\u0440 \u0424\u043C\u0442\u0427\u0441\u043B \u0424\u043E\u0440\u043C\u0430\u0442 \u0426\u041C\u0430\u0441\u0441\u0438\u0432\u042D\u043B\u0435\u043C\u0435\u043D\u0442 \u0426\u041D\u0430\u0431\u043E\u0440\u0414\u0430\u043D\u043D\u044B\u0445\u0420\u0435\u043A\u0432\u0438\u0437\u0438\u0442 \u0426\u041F\u043E\u0434\u0441\u0442\u0440 ", Va = "AltState Application CallType ComponentTokens CreatedJobs CreatedNotices ControlState DialogResult Dialogs EDocuments EDocumentVersionSource Folders GlobalIDs Job Jobs InputValue LookUpReference LookUpRequisiteNames LookUpSearch Object ParentComponent Processes References Requisite ReportName Reports Result Scripts Searches SelectedAttachments SelectedItems SelectMode Sender ServerEvents ServiceFactory ShiftState SubTask SystemDialogs Tasks Wizard Wizards Work \u0412\u044B\u0437\u043E\u0432\u0421\u043F\u043E\u0441\u043E\u0431 \u0418\u043C\u044F\u041E\u0442\u0447\u0435\u0442\u0430 \u0420\u0435\u043A\u0432\u0417\u043D\u0430\u0447 ", za = "IApplication IAccessRights IAccountRepository IAccountSelectionRestrictions IAction IActionList IAdministrationHistoryDescription IAnchors IApplication IArchiveInfo IAttachment IAttachmentList ICheckListBox ICheckPointedList IColumn IComponent IComponentDescription IComponentToken IComponentTokenFactory IComponentTokenInfo ICompRecordInfo IConnection IContents IControl IControlJob IControlJobInfo IControlList ICrypto ICrypto2 ICustomJob ICustomJobInfo ICustomListBox ICustomObjectWizardStep ICustomWork ICustomWorkInfo IDataSet IDataSetAccessInfo IDataSigner IDateCriterion IDateRequisite IDateRequisiteDescription IDateValue IDeaAccessRights IDeaObjectInfo IDevelopmentComponentLock IDialog IDialogFactory IDialogPickRequisiteItems IDialogsFactory IDICSFactory IDocRequisite IDocumentInfo IDualListDialog IECertificate IECertificateInfo IECertificates IEditControl IEditorForm IEdmsExplorer IEdmsObject IEdmsObjectDescription IEdmsObjectFactory IEdmsObjectInfo IEDocument IEDocumentAccessRights IEDocumentDescription IEDocumentEditor IEDocumentFactory IEDocumentInfo IEDocumentStorage IEDocumentVersion IEDocumentVersionListDialog IEDocumentVersionSource IEDocumentWizardStep IEDocVerSignature IEDocVersionState IEnabledMode IEncodeProvider IEncrypter IEvent IEventList IException IExternalEvents IExternalHandler IFactory IField IFileDialog IFolder IFolderDescription IFolderDialog IFolderFactory IFolderInfo IForEach IForm IFormTitle IFormWizardStep IGlobalIDFactory IGlobalIDInfo IGrid IHasher IHistoryDescription IHyperLinkControl IImageButton IImageControl IInnerPanel IInplaceHint IIntegerCriterion IIntegerList IIntegerRequisite IIntegerValue IISBLEditorForm IJob IJobDescription IJobFactory IJobForm IJobInfo ILabelControl ILargeIntegerCriterion ILargeIntegerRequisite ILargeIntegerValue ILicenseInfo ILifeCycleStage IList IListBox ILocalIDInfo ILocalization ILock IMemoryDataSet IMessagingFactory IMetadataRepository INotice INoticeInfo INumericCriterion INumericRequisite INumericValue IObject IObjectDescription IObjectImporter IObjectInfo IObserver IPanelGroup IPickCriterion IPickProperty IPickRequisite IPickRequisiteDescription IPickRequisiteItem IPickRequisiteItems IPickValue IPrivilege IPrivilegeList IProcess IProcessFactory IProcessMessage IProgress IProperty IPropertyChangeEvent IQuery IReference IReferenceCriterion IReferenceEnabledMode IReferenceFactory IReferenceHistoryDescription IReferenceInfo IReferenceRecordCardWizardStep IReferenceRequisiteDescription IReferencesFactory IReferenceValue IRefRequisite IReport IReportFactory IRequisite IRequisiteDescription IRequisiteDescriptionList IRequisiteFactory IRichEdit IRouteStep IRule IRuleList ISchemeBlock IScript IScriptFactory ISearchCriteria ISearchCriterion ISearchDescription ISearchFactory ISearchFolderInfo ISearchForObjectDescription ISearchResultRestrictions ISecuredContext ISelectDialog IServerEvent IServerEventFactory IServiceDialog IServiceFactory ISignature ISignProvider ISignProvider2 ISignProvider3 ISimpleCriterion IStringCriterion IStringList IStringRequisite IStringRequisiteDescription IStringValue ISystemDialogsFactory ISystemInfo ITabSheet ITask ITaskAbortReasonInfo ITaskCardWizardStep ITaskDescription ITaskFactory ITaskInfo ITaskRoute ITextCriterion ITextRequisite ITextValue ITreeListSelectDialog IUser IUserList IValue IView IWebBrowserControl IWizard IWizardAction IWizardFactory IWizardFormElement IWizardParam IWizardPickParam IWizardReferenceParam IWizardStep IWorkAccessRights IWorkDescription IWorkflowAskableParam IWorkflowAskableParams IWorkflowBlock IWorkflowBlockResult IWorkflowEnabledMode IWorkflowParam IWorkflowPickParam IWorkflowReferenceParam IWorkState IWorkTreeCustomNode IWorkTreeJobNode IWorkTreeTaskNode IXMLEditorForm SBCrypto ", $a = he + qa, Wa = Va, Ka = "null true false nil ", br = {
       className: "number",
       begin: e.NUMBER_RE,
       relevance: 0
@@ -22660,7 +22258,7 @@ function lh() {
       className: "doctag",
       begin: "\\b(?:TODO|DONE|BEGIN|END|STUB|CHG|FIXME|NOTE|BUG|XXX)\\b",
       relevance: 0
-    }, Ka = {
+    }, Qa = {
       className: "comment",
       begin: "//",
       end: "$",
@@ -22669,7 +22267,7 @@ function lh() {
         e.PHRASAL_WORDS_MODE,
         Rr
       ]
-    }, Qa = {
+    }, Xa = {
       className: "comment",
       begin: "/\\*",
       end: "\\*/",
@@ -22679,60 +22277,60 @@ function lh() {
         Rr
       ]
     }, Cr = { variants: [
-      Ka,
-      Qa
-    ] }, nn = {
+      Qa,
+      Xa
+    ] }, rn = {
       $pattern: n,
       keyword: a,
-      built_in: za,
-      class: $a,
-      literal: Wa
+      built_in: $a,
+      class: Wa,
+      literal: Ka
     }, fn = {
       begin: "\\.\\s*" + e.UNDERSCORE_IDENT_RE,
-      keywords: nn,
+      keywords: rn,
       relevance: 0
     }, Nr = {
       className: "type",
-      begin: ":[ \\t]*(" + Va.trim().replace(/\s/g, "|") + ")",
+      begin: ":[ \\t]*(" + za.trim().replace(/\s/g, "|") + ")",
       end: "[ \\t]*=",
       excludeEnd: !0
-    }, rn = {
+    }, an = {
       className: "variable",
-      keywords: nn,
+      keywords: rn,
       begin: n,
       relevance: 0,
       contains: [
         Nr,
         fn
       ]
-    }, Lt = r + "\\(";
+    }, xt = r + "\\(";
     return {
       name: "ISBL",
       case_insensitive: !0,
-      keywords: nn,
+      keywords: rn,
       illegal: "\\$|\\?|%|,|;$|~|#|@|</",
       contains: [
         {
           className: "function",
-          begin: Lt,
+          begin: xt,
           end: "\\)$",
           returnBegin: !0,
-          keywords: nn,
+          keywords: rn,
           illegal: "[\\[\\]\\|\\$\\?%,~#@]",
           contains: [
             {
               className: "title",
               keywords: {
                 $pattern: n,
-                built_in: qa
+                built_in: Ha
               },
-              begin: Lt,
+              begin: xt,
               end: "\\(",
               returnBegin: !0,
               excludeEnd: !0
             },
             fn,
-            rn,
+            an,
             Tr,
             br,
             Cr
@@ -22740,19 +22338,19 @@ function lh() {
         },
         Nr,
         fn,
-        rn,
+        an,
         Tr,
         br,
         Cr
       ]
     };
   }
-  return os = t, os;
+  return ss = t, ss;
 }
-var ss, Vu;
-function ch() {
+var ls, Vu;
+function SN() {
   if (Vu)
-    return ss;
+    return ls;
   Vu = 1;
   var t = "[0-9](_*[0-9])*", e = `\\.(${t})`, n = "[0-9a-fA-F](_*[0-9a-fA-F])*", r = {
     className: "number",
@@ -22975,12 +22573,12 @@ function ch() {
       ]
     };
   }
-  return ss = i, ss;
+  return ls = i, ls;
 }
-var ls, zu;
-function _h() {
+var cs, zu;
+function fN() {
   if (zu)
-    return ls;
+    return cs;
   zu = 1;
   const t = "[A-Za-z$_][0-9A-Za-z$_]*", e = [
     "as",
@@ -23114,7 +22712,7 @@ function _h() {
     const d = u.regex, E = (Te, { after: pe }) => {
       const Oe = "</" + Te[0].slice(1);
       return Te.input.indexOf(Oe, pe) !== -1;
-    }, m = t, T = {
+    }, m = t, b = {
       begin: "<>",
       end: "</>"
     }, g = /<[A-Za-z0-9\\._:-]+\s*\/>/, f = {
@@ -23127,13 +22725,13 @@ function _h() {
           return;
         }
         De === ">" && (E(Te, { after: Oe }) || pe.ignoreMatch());
-        let Ue;
-        const Fe = Te.input.substring(Oe);
-        if (Ue = Fe.match(/^\s*=/)) {
+        let Fe;
+        const Be = Te.input.substring(Oe);
+        if (Fe = Be.match(/^\s*=/)) {
           pe.ignoreMatch();
           return;
         }
-        if ((Ue = Fe.match(/^\s+extends\s+/)) && Ue.index === 0) {
+        if ((Fe = Be.match(/^\s+extends\s+/)) && Fe.index === 0) {
           pe.ignoreMatch();
           return;
         }
@@ -23485,7 +23083,7 @@ function _h() {
             },
             {
               variants: [
-                { begin: T.begin, end: T.end },
+                { begin: b.begin, end: b.end },
                 { match: g },
                 {
                   begin: f.begin,
@@ -23542,12 +23140,12 @@ function _h() {
       ]
     };
   }
-  return ls = c, ls;
+  return cs = c, cs;
 }
-var cs, $u;
-function dh() {
+var _s, $u;
+function bN() {
   if ($u)
-    return cs;
+    return _s;
   $u = 1;
   function t(e) {
     const r = {
@@ -23595,12 +23193,12 @@ function dh() {
       ]
     };
   }
-  return cs = t, cs;
+  return _s = t, _s;
 }
-var _s, Wu;
-function uh() {
+var ds, Wu;
+function TN() {
   if (Wu)
-    return _s;
+    return ds;
   Wu = 1;
   function t(e) {
     const n = {
@@ -23636,12 +23234,12 @@ function uh() {
       illegal: "\\S"
     };
   }
-  return _s = t, _s;
+  return ds = t, ds;
 }
-var ds, Ku;
-function ph() {
+var us, Ku;
+function RN() {
   if (Ku)
-    return ds;
+    return us;
   Ku = 1;
   function t(e) {
     const n = "[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*", s = {
@@ -23945,7 +23543,7 @@ function ph() {
           end: /"\w*/
         }
       ]
-    }, T = {
+    }, b = {
       className: "string",
       contains: [
         e.BACKSLASH_ESCAPE,
@@ -23975,7 +23573,7 @@ function ph() {
       c,
       u,
       m,
-      T,
+      b,
       g,
       f,
       e.HASH_COMMENT_MODE,
@@ -23986,12 +23584,12 @@ function ph() {
       { begin: /<:/ }
     ], d.contains = o.contains, o;
   }
-  return ds = t, ds;
+  return us = t, us;
 }
-var us, Qu;
-function mh() {
+var ps, Qu;
+function CN() {
   if (Qu)
-    return us;
+    return ps;
   Qu = 1;
   function t(e) {
     return {
@@ -24010,12 +23608,12 @@ function mh() {
       aliases: ["jldoctest"]
     };
   }
-  return us = t, us;
+  return ps = t, ps;
 }
-var ps, Xu;
-function Eh() {
+var ms, Xu;
+function NN() {
   if (Xu)
-    return ps;
+    return ms;
   Xu = 1;
   var t = "[0-9](_*[0-9])*", e = `\\.(${t})`, n = "[0-9a-fA-F](_*[0-9a-fA-F])*", r = {
     className: "number",
@@ -24090,7 +23688,7 @@ function Eh() {
     const m = {
       className: "meta",
       begin: "@(?:file|property|field|get|set|receiver|param|setparam|delegate)\\s*:(?:\\s*" + i.UNDERSCORE_IDENT_RE + ")?"
-    }, T = {
+    }, b = {
       className: "meta",
       begin: "@" + i.UNDERSCORE_IDENT_RE,
       contains: [
@@ -24144,7 +23742,7 @@ function Eh() {
         o,
         c,
         m,
-        T,
+        b,
         {
           className: "function",
           beginKeywords: "fun",
@@ -24189,7 +23787,7 @@ function Eh() {
                 i.C_LINE_COMMENT_MODE,
                 f,
                 m,
-                T,
+                b,
                 E,
                 i.C_NUMBER_MODE
               ]
@@ -24229,7 +23827,7 @@ function Eh() {
               returnEnd: !0
             },
             m,
-            T
+            b
           ]
         },
         E,
@@ -24244,12 +23842,12 @@ function Eh() {
       ]
     };
   }
-  return ps = a, ps;
+  return ms = a, ms;
 }
-var ms, Zu;
-function gh() {
+var Es, Zu;
+function hN() {
   if (Zu)
-    return ms;
+    return Es;
   Zu = 1;
   function t(e) {
     const n = "[a-zA-Z_][\\w.]*", r = "<\\?(lasso(script)?|=)", a = "\\]|\\?>", i = {
@@ -24383,12 +23981,12 @@ function gh() {
       ].concat(d)
     };
   }
-  return ms = t, ms;
+  return Es = t, Es;
 }
-var Es, Ju;
-function Sh() {
+var gs, Ju;
+function vN() {
   if (Ju)
-    return Es;
+    return gs;
   Ju = 1;
   function t(e) {
     const r = e.regex.either(...[
@@ -24474,7 +24072,7 @@ function Sh() {
       "%",
       "$",
       { relevance: 0 }
-    ), T = [
+    ), b = [
       o,
       c,
       u,
@@ -24487,7 +24085,7 @@ function Sh() {
       relevance: 0,
       contains: [
         "self",
-        ...T
+        ...b
       ]
     }, f = e.inherit(
       g,
@@ -24496,7 +24094,7 @@ function Sh() {
         endsParent: !0,
         contains: [
           g,
-          ...T
+          ...b
         ]
       }
     ), C = {
@@ -24506,7 +24104,7 @@ function Sh() {
       relevance: 0,
       contains: [
         g,
-        ...T
+        ...b
       ]
     }, A = {
       begin: /\s+/,
@@ -24613,16 +24211,16 @@ function Sh() {
       aliases: ["tex"],
       contains: [
         ...B,
-        ...T
+        ...b
       ]
     };
   }
-  return Es = t, Es;
+  return gs = t, gs;
 }
-var gs, ju;
-function fh() {
+var Ss, ju;
+function ON() {
   if (ju)
-    return gs;
+    return Ss;
   ju = 1;
   function t(e) {
     return {
@@ -24645,12 +24243,12 @@ function fh() {
       ]
     };
   }
-  return gs = t, gs;
+  return Ss = t, Ss;
 }
-var Ss, ep;
-function bh() {
+var fs, ep;
+function IN() {
   if (ep)
-    return Ss;
+    return fs;
   ep = 1;
   function t(e) {
     return {
@@ -24693,12 +24291,12 @@ function bh() {
       ]
     };
   }
-  return Ss = t, Ss;
+  return fs = t, fs;
 }
-var fs, tp;
-function Th() {
+var bs, tp;
+function AN() {
   if (tp)
-    return fs;
+    return bs;
   tp = 1;
   const t = (c) => ({
     IMPORTANT: {
@@ -25276,7 +24874,7 @@ function Th() {
     "z-index"
   ].reverse(), s = r.concat(a);
   function o(c) {
-    const u = t(c), d = s, E = "and or not only", m = "[\\w-]+", T = "(" + m + "|@\\{" + m + "\\})", g = [], f = [], C = function(M) {
+    const u = t(c), d = s, E = "and or not only", m = "[\\w-]+", b = "(" + m + "|@\\{" + m + "\\})", g = [], f = [], C = function(M) {
       return {
         className: "string",
         begin: "~?" + M + ".*?" + M
@@ -25337,7 +24935,7 @@ function Th() {
       endsWithParent: !0,
       contains: [{ beginKeywords: "and not" }].concat(f)
     }, L = {
-      begin: T + "\\s*:",
+      begin: b + "\\s*:",
       returnBegin: !0,
       end: /[;}]/,
       relevance: 0,
@@ -25387,7 +24985,7 @@ function Th() {
           end: "[;{}]"
         },
         {
-          begin: T,
+          begin: b,
           end: /\{/
         }
       ],
@@ -25406,9 +25004,9 @@ function Th() {
           className: "selector-tag"
         },
         u.CSS_NUMBER_MODE,
-        A("selector-tag", T, 0),
-        A("selector-id", "#" + T),
-        A("selector-class", "\\." + T, 0),
+        A("selector-tag", b, 0),
+        A("selector-id", "#" + b),
+        A("selector-class", "\\." + b, 0),
         A("selector-tag", "&", 0),
         u.ATTRIBUTE_SELECTOR_MODE,
         {
@@ -25450,12 +25048,12 @@ function Th() {
       contains: g
     };
   }
-  return fs = o, fs;
+  return bs = o, bs;
 }
-var bs, np;
-function Rh() {
+var Ts, np;
+function yN() {
   if (np)
-    return bs;
+    return Ts;
   np = 1;
   function t(e) {
     const n = "[a-zA-Z_\\-+\\*\\/<=>&#][a-zA-Z0-9_\\-+*\\/<=>&#!]*", r = "\\|[^]*?\\|", a = "(-|\\+)?\\d+(\\.\\d+|\\/\\d+)?((d|e|f|l|s|D|E|F|L|S)(\\+|-)?\\d+)?", i = {
@@ -25570,12 +25168,12 @@ function Rh() {
       ]
     };
   }
-  return bs = t, bs;
+  return Ts = t, Ts;
 }
-var Ts, rp;
-function Ch() {
+var Rs, rp;
+function DN() {
   if (rp)
-    return Ts;
+    return Rs;
   rp = 1;
   function t(e) {
     const n = {
@@ -25666,12 +25264,12 @@ function Ch() {
       illegal: ";$|^\\[|^=|&|\\{"
     };
   }
-  return Ts = t, Ts;
+  return Rs = t, Rs;
 }
-var Rs, ap;
-function Nh() {
+var Cs, ap;
+function MN() {
   if (ap)
-    return Rs;
+    return Cs;
   ap = 1;
   const t = [
     "as",
@@ -25837,7 +25435,7 @@ function Nh() {
       keyword: t.concat(d),
       literal: e.concat(u),
       built_in: i.concat(c)
-    }, m = "[A-Za-z$_](?:-[0-9A-Za-z$_]|[0-9A-Za-z$_])*", T = o.inherit(o.TITLE_MODE, { begin: m }), g = {
+    }, m = "[A-Za-z$_](?:-[0-9A-Za-z$_]|[0-9A-Za-z$_])*", b = o.inherit(o.TITLE_MODE, { begin: m }), g = {
       className: "subst",
       begin: /#\{/,
       end: /\}/,
@@ -25965,7 +25563,7 @@ function Nh() {
         {
           className: "function",
           contains: [
-            T,
+            b,
             A
           ],
           returnBegin: !0,
@@ -25995,12 +25593,12 @@ function Nh() {
       ])
     };
   }
-  return Rs = s, Rs;
+  return Cs = s, Cs;
 }
-var Cs, ip;
-function hh() {
+var Ns, ip;
+function LN() {
   if (ip)
-    return Cs;
+    return Ns;
   ip = 1;
   function t(e) {
     const n = e.regex, r = /([-a-zA-Z$._][\w$.-]*)/, a = {
@@ -26071,12 +25669,12 @@ function hh() {
       ]
     };
   }
-  return Cs = t, Cs;
+  return Ns = t, Ns;
 }
-var Ns, op;
-function vh() {
+var hs, op;
+function wN() {
   if (op)
-    return Ns;
+    return hs;
   op = 1;
   function t(e) {
     const r = {
@@ -26135,12 +25733,12 @@ function vh() {
       ]
     };
   }
-  return Ns = t, Ns;
+  return hs = t, hs;
 }
-var hs, sp;
-function Oh() {
+var vs, sp;
+function xN() {
   if (sp)
-    return hs;
+    return vs;
   sp = 1;
   function t(e) {
     const n = "\\[=*\\[", r = "\\]=*\\]", a = {
@@ -26194,12 +25792,12 @@ function Oh() {
       ])
     };
   }
-  return hs = t, hs;
+  return vs = t, vs;
 }
-var vs, lp;
-function Ih() {
+var Os, lp;
+function PN() {
   if (lp)
-    return vs;
+    return Os;
   lp = 1;
   function t(e) {
     const n = {
@@ -26261,12 +25859,12 @@ function Ih() {
       ]
     };
   }
-  return vs = t, vs;
+  return Os = t, Os;
 }
-var Os, cp;
-function Ah() {
+var Is, cp;
+function kN() {
   if (cp)
-    return Os;
+    return Is;
   cp = 1;
   const t = [
     "AASTriangle",
@@ -32899,7 +32497,7 @@ function Ah() {
       o,
       r.optional(d),
       r.optional(E)
-    ), T = {
+    ), b = {
       className: "number",
       relevance: 0,
       begin: m
@@ -32963,18 +32561,18 @@ function Ah() {
         C,
         A,
         n.QUOTE_STRING_MODE,
-        T,
+        b,
         P,
         q
       ]
     };
   }
-  return Os = e, Os;
+  return Is = e, Is;
 }
-var Is, _p;
-function yh() {
+var As, _p;
+function UN() {
   if (_p)
-    return Is;
+    return As;
   _p = 1;
   function t(e) {
     const n = "('|\\.')+", r = {
@@ -33049,12 +32647,12 @@ function yh() {
       ]
     };
   }
-  return Is = t, Is;
+  return As = t, As;
 }
-var As, dp;
-function Dh() {
+var ys, dp;
+function FN() {
   if (dp)
-    return As;
+    return ys;
   dp = 1;
   function t(e) {
     return {
@@ -33097,12 +32695,12 @@ function Dh() {
       illegal: /@/
     };
   }
-  return As = t, As;
+  return ys = t, ys;
 }
-var ys, up;
-function Mh() {
+var Ds, up;
+function BN() {
   if (up)
-    return ys;
+    return Ds;
   up = 1;
   function t(e) {
     return {
@@ -33127,12 +32725,12 @@ function Mh() {
       ]
     };
   }
-  return ys = t, ys;
+  return Ds = t, Ds;
 }
-var Ds, pp;
-function Lh() {
+var Ms, pp;
+function GN() {
   if (pp)
-    return Ds;
+    return Ms;
   pp = 1;
   function t(e) {
     const n = {
@@ -33196,12 +32794,12 @@ function Lh() {
       ]
     };
   }
-  return Ds = t, Ds;
+  return Ms = t, Ms;
 }
-var Ms, mp;
-function wh() {
+var Ls, mp;
+function YN() {
   if (mp)
-    return Ms;
+    return Ls;
   mp = 1;
   function t(e) {
     return {
@@ -33266,12 +32864,12 @@ function wh() {
       illegal: /\//
     };
   }
-  return Ms = t, Ms;
+  return Ls = t, Ls;
 }
-var Ls, Ep;
-function xh() {
+var ws, Ep;
+function qN() {
   if (Ep)
-    return Ls;
+    return ws;
   Ep = 1;
   function t(e) {
     return {
@@ -33280,12 +32878,12 @@ function xh() {
       contains: [e.COMMENT("::", "$")]
     };
   }
-  return Ls = t, Ls;
+  return ws = t, ws;
 }
-var ws, gp;
-function Ph() {
+var xs, gp;
+function HN() {
   if (gp)
-    return ws;
+    return xs;
   gp = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -33569,7 +33167,7 @@ function Ph() {
       /(?:\\.|[^\\\/])*?/,
       C,
       a
-    ), T = [
+    ), b = [
       c,
       e.HASH_COMMENT_MODE,
       e.COMMENT(
@@ -33698,22 +33296,22 @@ function Ph() {
         ]
       }
     ];
-    return s.contains = T, o.contains = T, {
+    return s.contains = b, o.contains = b, {
       name: "Perl",
       aliases: [
         "pl",
         "pm"
       ],
       keywords: i,
-      contains: T
+      contains: b
     };
   }
-  return ws = t, ws;
+  return xs = t, xs;
 }
-var xs, Sp;
-function kh() {
+var Ps, Sp;
+function VN() {
   if (Sp)
-    return xs;
+    return Ps;
   Sp = 1;
   function t(e) {
     return {
@@ -33739,12 +33337,12 @@ function kh() {
       ]
     };
   }
-  return xs = t, xs;
+  return Ps = t, Ps;
 }
-var Ps, fp;
-function Uh() {
+var ks, fp;
+function zN() {
   if (fp)
-    return Ps;
+    return ks;
   fp = 1;
   function t(e) {
     const n = {
@@ -33913,12 +33511,12 @@ function Uh() {
       ]
     };
   }
-  return Ps = t, Ps;
+  return ks = t, ks;
 }
-var ks, bp;
-function Fh() {
+var Us, bp;
+function $N() {
   if (bp)
-    return ks;
+    return Us;
   bp = 1;
   function t(e) {
     const n = {
@@ -34037,12 +33635,12 @@ function Fh() {
       ])
     };
   }
-  return ks = t, ks;
+  return Us = t, Us;
 }
-var Us, Tp;
-function Bh() {
+var Fs, Tp;
+function WN() {
   if (Tp)
-    return Us;
+    return Fs;
   Tp = 1;
   function t(e) {
     return {
@@ -34390,12 +33988,12 @@ function Bh() {
       ]
     };
   }
-  return Us = t, Us;
+  return Fs = t, Fs;
 }
-var Fs, Rp;
-function Gh() {
+var Bs, Rp;
+function KN() {
   if (Rp)
-    return Fs;
+    return Bs;
   Rp = 1;
   function t(e) {
     const n = {
@@ -34466,12 +34064,12 @@ function Gh() {
       ]
     };
   }
-  return Fs = t, Fs;
+  return Bs = t, Bs;
 }
-var Bs, Cp;
-function Yh() {
+var Gs, Cp;
+function QN() {
   if (Cp)
-    return Bs;
+    return Gs;
   Cp = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -34605,12 +34203,12 @@ function Yh() {
       illegal: "[^\\s\\}\\{]"
     };
   }
-  return Bs = t, Bs;
+  return Gs = t, Gs;
 }
-var Gs, Np;
-function qh() {
+var Ys, Np;
+function XN() {
   if (Np)
-    return Gs;
+    return Ys;
   Np = 1;
   function t(e) {
     return {
@@ -34784,12 +34382,12 @@ function qh() {
       ]
     };
   }
-  return Gs = t, Gs;
+  return Ys = t, Ys;
 }
-var Ys, hp;
-function Hh() {
+var qs, hp;
+function ZN() {
   if (hp)
-    return Ys;
+    return qs;
   hp = 1;
   function t(e) {
     const n = {
@@ -34870,12 +34468,12 @@ function Hh() {
       contains: o
     };
   }
-  return Ys = t, Ys;
+  return qs = t, qs;
 }
-var qs, vp;
-function Vh() {
+var Hs, vp;
+function JN() {
   if (vp)
-    return qs;
+    return Hs;
   vp = 1;
   function t(e) {
     return {
@@ -34898,12 +34496,12 @@ function Vh() {
       ]
     };
   }
-  return qs = t, qs;
+  return Hs = t, Hs;
 }
-var Hs, Op;
-function zh() {
+var Vs, Op;
+function jN() {
   if (Op)
-    return Hs;
+    return Vs;
   Op = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -35062,7 +34660,7 @@ function zh() {
     }, m = {
       className: "char.escape",
       begin: /\$(\\[nrt]|\$)/
-    }, T = {
+    }, b = {
       className: "title.function",
       begin: /\w+::\w+/
     }, g = {
@@ -35403,17 +35001,17 @@ function zh() {
         c,
         u,
         d,
-        T,
+        b,
         e.NUMBER_MODE
       ]
     };
   }
-  return Hs = t, Hs;
+  return Vs = t, Vs;
 }
-var Vs, Ip;
-function $h() {
+var zs, Ip;
+function eh() {
   if (Ip)
-    return Vs;
+    return zs;
   Ip = 1;
   function t(e) {
     const n = {
@@ -35649,12 +35247,12 @@ function $h() {
       ]
     };
   }
-  return Vs = t, Vs;
+  return zs = t, zs;
 }
-var zs, Ap;
-function Wh() {
+var $s, Ap;
+function th() {
   if (Ap)
-    return zs;
+    return $s;
   Ap = 1;
   function t(e) {
     return {
@@ -35711,12 +35309,12 @@ function Wh() {
       ]
     };
   }
-  return zs = t, zs;
+  return $s = t, $s;
 }
-var $s, yp;
-function Kh() {
+var Ws, yp;
+function nh() {
   if (yp)
-    return $s;
+    return Ws;
   yp = 1;
   function t(e) {
     const n = {
@@ -35777,12 +35375,12 @@ function Kh() {
       ]
     };
   }
-  return $s = t, $s;
+  return Ws = t, Ws;
 }
-var Ws, Dp;
-function Qh() {
+var Ks, Dp;
+function rh() {
   if (Dp)
-    return Ws;
+    return Ks;
   Dp = 1;
   function t(e) {
     const n = {
@@ -35845,12 +35443,12 @@ function Qh() {
       ]
     };
   }
-  return Ws = t, Ws;
+  return Ks = t, Ks;
 }
-var Ks, Mp;
-function Xh() {
+var Qs, Mp;
+function ah() {
   if (Mp)
-    return Ks;
+    return Qs;
   Mp = 1;
   function t(e) {
     const n = e.COMMENT(
@@ -35897,12 +35495,12 @@ function Xh() {
       ]
     };
   }
-  return Ks = t, Ks;
+  return Qs = t, Qs;
 }
-var Qs, Lp;
-function Zh() {
+var Xs, Lp;
+function ih() {
   if (Lp)
-    return Qs;
+    return Xs;
   Lp = 1;
   function t(e) {
     const n = {
@@ -35932,17 +35530,17 @@ function Zh() {
       ]
     };
   }
-  return Qs = t, Qs;
+  return Xs = t, Xs;
 }
-var Xs, wp;
-function Jh() {
+var Zs, wp;
+function oh() {
   if (wp)
-    return Xs;
+    return Zs;
   wp = 1;
   function t(e) {
     const n = e.COMMENT("--", "$"), r = "[a-zA-Z_][a-zA-Z_0-9$]*", a = "\\$([a-zA-Z_]?|[a-zA-Z_][a-zA-Z_0-9]*)\\$", i = "<<\\s*" + r + "\\s*>>", s = "ABORT ALTER ANALYZE BEGIN CALL CHECKPOINT|10 CLOSE CLUSTER COMMENT COMMIT COPY CREATE DEALLOCATE DECLARE DELETE DISCARD DO DROP END EXECUTE EXPLAIN FETCH GRANT IMPORT INSERT LISTEN LOAD LOCK MOVE NOTIFY PREPARE REASSIGN|10 REFRESH REINDEX RELEASE RESET REVOKE ROLLBACK SAVEPOINT SECURITY SELECT SET SHOW START TRUNCATE UNLISTEN|10 UPDATE VACUUM|10 VALUES AGGREGATE COLLATION CONVERSION|10 DATABASE DEFAULT PRIVILEGES DOMAIN TRIGGER EXTENSION FOREIGN WRAPPER|10 TABLE FUNCTION GROUP LANGUAGE LARGE OBJECT MATERIALIZED VIEW OPERATOR CLASS FAMILY POLICY PUBLICATION|10 ROLE RULE SCHEMA SEQUENCE SERVER STATISTICS SUBSCRIPTION SYSTEM TABLESPACE CONFIGURATION DICTIONARY PARSER TEMPLATE TYPE USER MAPPING PREPARED ACCESS METHOD CAST AS TRANSFORM TRANSACTION OWNED TO INTO SESSION AUTHORIZATION INDEX PROCEDURE ASSERTION ALL ANALYSE AND ANY ARRAY ASC ASYMMETRIC|10 BOTH CASE CHECK COLLATE COLUMN CONCURRENTLY|10 CONSTRAINT CROSS DEFERRABLE RANGE DESC DISTINCT ELSE EXCEPT FOR FREEZE|10 FROM FULL HAVING ILIKE IN INITIALLY INNER INTERSECT IS ISNULL JOIN LATERAL LEADING LIKE LIMIT NATURAL NOT NOTNULL NULL OFFSET ON ONLY OR ORDER OUTER OVERLAPS PLACING PRIMARY REFERENCES RETURNING SIMILAR SOME SYMMETRIC TABLESAMPLE THEN TRAILING UNION UNIQUE USING VARIADIC|10 VERBOSE WHEN WHERE WINDOW WITH BY RETURNS INOUT OUT SETOF|10 IF STRICT CURRENT CONTINUE OWNER LOCATION OVER PARTITION WITHIN BETWEEN ESCAPE EXTERNAL INVOKER DEFINER WORK RENAME VERSION CONNECTION CONNECT TABLES TEMP TEMPORARY FUNCTIONS SEQUENCES TYPES SCHEMAS OPTION CASCADE RESTRICT ADD ADMIN EXISTS VALID VALIDATE ENABLE DISABLE REPLICA|10 ALWAYS PASSING COLUMNS PATH REF VALUE OVERRIDING IMMUTABLE STABLE VOLATILE BEFORE AFTER EACH ROW PROCEDURAL ROUTINE NO HANDLER VALIDATOR OPTIONS STORAGE OIDS|10 WITHOUT INHERIT DEPENDS CALLED INPUT LEAKPROOF|10 COST ROWS NOWAIT SEARCH UNTIL ENCRYPTED|10 PASSWORD CONFLICT|10 INSTEAD INHERITS CHARACTERISTICS WRITE CURSOR ALSO STATEMENT SHARE EXCLUSIVE INLINE ISOLATION REPEATABLE READ COMMITTED SERIALIZABLE UNCOMMITTED LOCAL GLOBAL SQL PROCEDURES RECURSIVE SNAPSHOT ROLLUP CUBE TRUSTED|10 INCLUDE FOLLOWING PRECEDING UNBOUNDED RANGE GROUPS UNENCRYPTED|10 SYSID FORMAT DELIMITER HEADER QUOTE ENCODING FILTER OFF FORCE_QUOTE FORCE_NOT_NULL FORCE_NULL COSTS BUFFERS TIMING SUMMARY DISABLE_PAGE_SKIPPING RESTART CYCLE GENERATED IDENTITY DEFERRED IMMEDIATE LEVEL LOGGED UNLOGGED OF NOTHING NONE EXCLUDE ATTRIBUTE USAGE ROUTINES TRUE FALSE NAN INFINITY ", o = "SUPERUSER NOSUPERUSER CREATEDB NOCREATEDB CREATEROLE NOCREATEROLE INHERIT NOINHERIT LOGIN NOLOGIN REPLICATION NOREPLICATION BYPASSRLS NOBYPASSRLS ", c = "ALIAS BEGIN CONSTANT DECLARE END EXCEPTION RETURN PERFORM|10 RAISE GET DIAGNOSTICS STACKED|10 FOREACH LOOP ELSIF EXIT WHILE REVERSE SLICE DEBUG LOG INFO NOTICE WARNING ASSERT OPEN ", u = "BIGINT INT8 BIGSERIAL SERIAL8 BIT VARYING VARBIT BOOLEAN BOOL BOX BYTEA CHARACTER CHAR VARCHAR CIDR CIRCLE DATE DOUBLE PRECISION FLOAT8 FLOAT INET INTEGER INT INT4 INTERVAL JSON JSONB LINE LSEG|10 MACADDR MACADDR8 MONEY NUMERIC DEC DECIMAL PATH POINT POLYGON REAL FLOAT4 SMALLINT INT2 SMALLSERIAL|10 SERIAL2|10 SERIAL|10 SERIAL4|10 TEXT TIME ZONE TIMETZ|10 TIMESTAMP TIMESTAMPTZ|10 TSQUERY|10 TSVECTOR|10 TXID_SNAPSHOT|10 UUID XML NATIONAL NCHAR INT4RANGE|10 INT8RANGE|10 NUMRANGE|10 TSRANGE|10 TSTZRANGE|10 DATERANGE|10 ANYELEMENT ANYARRAY ANYNONARRAY ANYENUM ANYRANGE CSTRING INTERNAL RECORD PG_DDL_COMMAND VOID UNKNOWN OPAQUE REFCURSOR NAME OID REGPROC|10 REGPROCEDURE|10 REGOPER|10 REGOPERATOR|10 REGCLASS|10 REGTYPE|10 REGROLE|10 REGNAMESPACE|10 REGCONFIG|10 REGDICTIONARY|10 ", d = u.trim().split(" ").map(function(C) {
       return C.split("|")[0];
-    }).join("|"), E = "CURRENT_TIME CURRENT_TIMESTAMP CURRENT_USER CURRENT_CATALOG|10 CURRENT_DATE LOCALTIME LOCALTIMESTAMP CURRENT_ROLE|10 CURRENT_SCHEMA|10 SESSION_USER PUBLIC ", m = "FOUND NEW OLD TG_NAME|10 TG_WHEN|10 TG_LEVEL|10 TG_OP|10 TG_RELID|10 TG_RELNAME|10 TG_TABLE_NAME|10 TG_TABLE_SCHEMA|10 TG_NARGS|10 TG_ARGV|10 TG_EVENT|10 TG_TAG|10 ROW_COUNT RESULT_OID|10 PG_CONTEXT|10 RETURNED_SQLSTATE COLUMN_NAME CONSTRAINT_NAME PG_DATATYPE_NAME|10 MESSAGE_TEXT TABLE_NAME SCHEMA_NAME PG_EXCEPTION_DETAIL|10 PG_EXCEPTION_HINT|10 PG_EXCEPTION_CONTEXT|10 ", T = "SQLSTATE SQLERRM|10 SUCCESSFUL_COMPLETION WARNING DYNAMIC_RESULT_SETS_RETURNED IMPLICIT_ZERO_BIT_PADDING NULL_VALUE_ELIMINATED_IN_SET_FUNCTION PRIVILEGE_NOT_GRANTED PRIVILEGE_NOT_REVOKED STRING_DATA_RIGHT_TRUNCATION DEPRECATED_FEATURE NO_DATA NO_ADDITIONAL_DYNAMIC_RESULT_SETS_RETURNED SQL_STATEMENT_NOT_YET_COMPLETE CONNECTION_EXCEPTION CONNECTION_DOES_NOT_EXIST CONNECTION_FAILURE SQLCLIENT_UNABLE_TO_ESTABLISH_SQLCONNECTION SQLSERVER_REJECTED_ESTABLISHMENT_OF_SQLCONNECTION TRANSACTION_RESOLUTION_UNKNOWN PROTOCOL_VIOLATION TRIGGERED_ACTION_EXCEPTION FEATURE_NOT_SUPPORTED INVALID_TRANSACTION_INITIATION LOCATOR_EXCEPTION INVALID_LOCATOR_SPECIFICATION INVALID_GRANTOR INVALID_GRANT_OPERATION INVALID_ROLE_SPECIFICATION DIAGNOSTICS_EXCEPTION STACKED_DIAGNOSTICS_ACCESSED_WITHOUT_ACTIVE_HANDLER CASE_NOT_FOUND CARDINALITY_VIOLATION DATA_EXCEPTION ARRAY_SUBSCRIPT_ERROR CHARACTER_NOT_IN_REPERTOIRE DATETIME_FIELD_OVERFLOW DIVISION_BY_ZERO ERROR_IN_ASSIGNMENT ESCAPE_CHARACTER_CONFLICT INDICATOR_OVERFLOW INTERVAL_FIELD_OVERFLOW INVALID_ARGUMENT_FOR_LOGARITHM INVALID_ARGUMENT_FOR_NTILE_FUNCTION INVALID_ARGUMENT_FOR_NTH_VALUE_FUNCTION INVALID_ARGUMENT_FOR_POWER_FUNCTION INVALID_ARGUMENT_FOR_WIDTH_BUCKET_FUNCTION INVALID_CHARACTER_VALUE_FOR_CAST INVALID_DATETIME_FORMAT INVALID_ESCAPE_CHARACTER INVALID_ESCAPE_OCTET INVALID_ESCAPE_SEQUENCE NONSTANDARD_USE_OF_ESCAPE_CHARACTER INVALID_INDICATOR_PARAMETER_VALUE INVALID_PARAMETER_VALUE INVALID_REGULAR_EXPRESSION INVALID_ROW_COUNT_IN_LIMIT_CLAUSE INVALID_ROW_COUNT_IN_RESULT_OFFSET_CLAUSE INVALID_TABLESAMPLE_ARGUMENT INVALID_TABLESAMPLE_REPEAT INVALID_TIME_ZONE_DISPLACEMENT_VALUE INVALID_USE_OF_ESCAPE_CHARACTER MOST_SPECIFIC_TYPE_MISMATCH NULL_VALUE_NOT_ALLOWED NULL_VALUE_NO_INDICATOR_PARAMETER NUMERIC_VALUE_OUT_OF_RANGE SEQUENCE_GENERATOR_LIMIT_EXCEEDED STRING_DATA_LENGTH_MISMATCH STRING_DATA_RIGHT_TRUNCATION SUBSTRING_ERROR TRIM_ERROR UNTERMINATED_C_STRING ZERO_LENGTH_CHARACTER_STRING FLOATING_POINT_EXCEPTION INVALID_TEXT_REPRESENTATION INVALID_BINARY_REPRESENTATION BAD_COPY_FILE_FORMAT UNTRANSLATABLE_CHARACTER NOT_AN_XML_DOCUMENT INVALID_XML_DOCUMENT INVALID_XML_CONTENT INVALID_XML_COMMENT INVALID_XML_PROCESSING_INSTRUCTION INTEGRITY_CONSTRAINT_VIOLATION RESTRICT_VIOLATION NOT_NULL_VIOLATION FOREIGN_KEY_VIOLATION UNIQUE_VIOLATION CHECK_VIOLATION EXCLUSION_VIOLATION INVALID_CURSOR_STATE INVALID_TRANSACTION_STATE ACTIVE_SQL_TRANSACTION BRANCH_TRANSACTION_ALREADY_ACTIVE HELD_CURSOR_REQUIRES_SAME_ISOLATION_LEVEL INAPPROPRIATE_ACCESS_MODE_FOR_BRANCH_TRANSACTION INAPPROPRIATE_ISOLATION_LEVEL_FOR_BRANCH_TRANSACTION NO_ACTIVE_SQL_TRANSACTION_FOR_BRANCH_TRANSACTION READ_ONLY_SQL_TRANSACTION SCHEMA_AND_DATA_STATEMENT_MIXING_NOT_SUPPORTED NO_ACTIVE_SQL_TRANSACTION IN_FAILED_SQL_TRANSACTION IDLE_IN_TRANSACTION_SESSION_TIMEOUT INVALID_SQL_STATEMENT_NAME TRIGGERED_DATA_CHANGE_VIOLATION INVALID_AUTHORIZATION_SPECIFICATION INVALID_PASSWORD DEPENDENT_PRIVILEGE_DESCRIPTORS_STILL_EXIST DEPENDENT_OBJECTS_STILL_EXIST INVALID_TRANSACTION_TERMINATION SQL_ROUTINE_EXCEPTION FUNCTION_EXECUTED_NO_RETURN_STATEMENT MODIFYING_SQL_DATA_NOT_PERMITTED PROHIBITED_SQL_STATEMENT_ATTEMPTED READING_SQL_DATA_NOT_PERMITTED INVALID_CURSOR_NAME EXTERNAL_ROUTINE_EXCEPTION CONTAINING_SQL_NOT_PERMITTED MODIFYING_SQL_DATA_NOT_PERMITTED PROHIBITED_SQL_STATEMENT_ATTEMPTED READING_SQL_DATA_NOT_PERMITTED EXTERNAL_ROUTINE_INVOCATION_EXCEPTION INVALID_SQLSTATE_RETURNED NULL_VALUE_NOT_ALLOWED TRIGGER_PROTOCOL_VIOLATED SRF_PROTOCOL_VIOLATED EVENT_TRIGGER_PROTOCOL_VIOLATED SAVEPOINT_EXCEPTION INVALID_SAVEPOINT_SPECIFICATION INVALID_CATALOG_NAME INVALID_SCHEMA_NAME TRANSACTION_ROLLBACK TRANSACTION_INTEGRITY_CONSTRAINT_VIOLATION SERIALIZATION_FAILURE STATEMENT_COMPLETION_UNKNOWN DEADLOCK_DETECTED SYNTAX_ERROR_OR_ACCESS_RULE_VIOLATION SYNTAX_ERROR INSUFFICIENT_PRIVILEGE CANNOT_COERCE GROUPING_ERROR WINDOWING_ERROR INVALID_RECURSION INVALID_FOREIGN_KEY INVALID_NAME NAME_TOO_LONG RESERVED_NAME DATATYPE_MISMATCH INDETERMINATE_DATATYPE COLLATION_MISMATCH INDETERMINATE_COLLATION WRONG_OBJECT_TYPE GENERATED_ALWAYS UNDEFINED_COLUMN UNDEFINED_FUNCTION UNDEFINED_TABLE UNDEFINED_PARAMETER UNDEFINED_OBJECT DUPLICATE_COLUMN DUPLICATE_CURSOR DUPLICATE_DATABASE DUPLICATE_FUNCTION DUPLICATE_PREPARED_STATEMENT DUPLICATE_SCHEMA DUPLICATE_TABLE DUPLICATE_ALIAS DUPLICATE_OBJECT AMBIGUOUS_COLUMN AMBIGUOUS_FUNCTION AMBIGUOUS_PARAMETER AMBIGUOUS_ALIAS INVALID_COLUMN_REFERENCE INVALID_COLUMN_DEFINITION INVALID_CURSOR_DEFINITION INVALID_DATABASE_DEFINITION INVALID_FUNCTION_DEFINITION INVALID_PREPARED_STATEMENT_DEFINITION INVALID_SCHEMA_DEFINITION INVALID_TABLE_DEFINITION INVALID_OBJECT_DEFINITION WITH_CHECK_OPTION_VIOLATION INSUFFICIENT_RESOURCES DISK_FULL OUT_OF_MEMORY TOO_MANY_CONNECTIONS CONFIGURATION_LIMIT_EXCEEDED PROGRAM_LIMIT_EXCEEDED STATEMENT_TOO_COMPLEX TOO_MANY_COLUMNS TOO_MANY_ARGUMENTS OBJECT_NOT_IN_PREREQUISITE_STATE OBJECT_IN_USE CANT_CHANGE_RUNTIME_PARAM LOCK_NOT_AVAILABLE OPERATOR_INTERVENTION QUERY_CANCELED ADMIN_SHUTDOWN CRASH_SHUTDOWN CANNOT_CONNECT_NOW DATABASE_DROPPED SYSTEM_ERROR IO_ERROR UNDEFINED_FILE DUPLICATE_FILE SNAPSHOT_TOO_OLD CONFIG_FILE_ERROR LOCK_FILE_EXISTS FDW_ERROR FDW_COLUMN_NAME_NOT_FOUND FDW_DYNAMIC_PARAMETER_VALUE_NEEDED FDW_FUNCTION_SEQUENCE_ERROR FDW_INCONSISTENT_DESCRIPTOR_INFORMATION FDW_INVALID_ATTRIBUTE_VALUE FDW_INVALID_COLUMN_NAME FDW_INVALID_COLUMN_NUMBER FDW_INVALID_DATA_TYPE FDW_INVALID_DATA_TYPE_DESCRIPTORS FDW_INVALID_DESCRIPTOR_FIELD_IDENTIFIER FDW_INVALID_HANDLE FDW_INVALID_OPTION_INDEX FDW_INVALID_OPTION_NAME FDW_INVALID_STRING_LENGTH_OR_BUFFER_LENGTH FDW_INVALID_STRING_FORMAT FDW_INVALID_USE_OF_NULL_POINTER FDW_TOO_MANY_HANDLES FDW_OUT_OF_MEMORY FDW_NO_SCHEMAS FDW_OPTION_NAME_NOT_FOUND FDW_REPLY_HANDLE FDW_SCHEMA_NOT_FOUND FDW_TABLE_NOT_FOUND FDW_UNABLE_TO_CREATE_EXECUTION FDW_UNABLE_TO_CREATE_REPLY FDW_UNABLE_TO_ESTABLISH_CONNECTION PLPGSQL_ERROR RAISE_EXCEPTION NO_DATA_FOUND TOO_MANY_ROWS ASSERT_FAILURE INTERNAL_ERROR DATA_CORRUPTED INDEX_CORRUPTED ", f = "ARRAY_AGG AVG BIT_AND BIT_OR BOOL_AND BOOL_OR COUNT EVERY JSON_AGG JSONB_AGG JSON_OBJECT_AGG JSONB_OBJECT_AGG MAX MIN MODE STRING_AGG SUM XMLAGG CORR COVAR_POP COVAR_SAMP REGR_AVGX REGR_AVGY REGR_COUNT REGR_INTERCEPT REGR_R2 REGR_SLOPE REGR_SXX REGR_SXY REGR_SYY STDDEV STDDEV_POP STDDEV_SAMP VARIANCE VAR_POP VAR_SAMP PERCENTILE_CONT PERCENTILE_DISC ROW_NUMBER RANK DENSE_RANK PERCENT_RANK CUME_DIST NTILE LAG LEAD FIRST_VALUE LAST_VALUE NTH_VALUE NUM_NONNULLS NUM_NULLS ABS CBRT CEIL CEILING DEGREES DIV EXP FLOOR LN LOG MOD PI POWER RADIANS ROUND SCALE SIGN SQRT TRUNC WIDTH_BUCKET RANDOM SETSEED ACOS ACOSD ASIN ASIND ATAN ATAND ATAN2 ATAN2D COS COSD COT COTD SIN SIND TAN TAND BIT_LENGTH CHAR_LENGTH CHARACTER_LENGTH LOWER OCTET_LENGTH OVERLAY POSITION SUBSTRING TREAT TRIM UPPER ASCII BTRIM CHR CONCAT CONCAT_WS CONVERT CONVERT_FROM CONVERT_TO DECODE ENCODE INITCAP LEFT LENGTH LPAD LTRIM MD5 PARSE_IDENT PG_CLIENT_ENCODING QUOTE_IDENT|10 QUOTE_LITERAL|10 QUOTE_NULLABLE|10 REGEXP_MATCH REGEXP_MATCHES REGEXP_REPLACE REGEXP_SPLIT_TO_ARRAY REGEXP_SPLIT_TO_TABLE REPEAT REPLACE REVERSE RIGHT RPAD RTRIM SPLIT_PART STRPOS SUBSTR TO_ASCII TO_HEX TRANSLATE OCTET_LENGTH GET_BIT GET_BYTE SET_BIT SET_BYTE TO_CHAR TO_DATE TO_NUMBER TO_TIMESTAMP AGE CLOCK_TIMESTAMP|10 DATE_PART DATE_TRUNC ISFINITE JUSTIFY_DAYS JUSTIFY_HOURS JUSTIFY_INTERVAL MAKE_DATE MAKE_INTERVAL|10 MAKE_TIME MAKE_TIMESTAMP|10 MAKE_TIMESTAMPTZ|10 NOW STATEMENT_TIMESTAMP|10 TIMEOFDAY TRANSACTION_TIMESTAMP|10 ENUM_FIRST ENUM_LAST ENUM_RANGE AREA CENTER DIAMETER HEIGHT ISCLOSED ISOPEN NPOINTS PCLOSE POPEN RADIUS WIDTH BOX BOUND_BOX CIRCLE LINE LSEG PATH POLYGON ABBREV BROADCAST HOST HOSTMASK MASKLEN NETMASK NETWORK SET_MASKLEN TEXT INET_SAME_FAMILY INET_MERGE MACADDR8_SET7BIT ARRAY_TO_TSVECTOR GET_CURRENT_TS_CONFIG NUMNODE PLAINTO_TSQUERY PHRASETO_TSQUERY WEBSEARCH_TO_TSQUERY QUERYTREE SETWEIGHT STRIP TO_TSQUERY TO_TSVECTOR JSON_TO_TSVECTOR JSONB_TO_TSVECTOR TS_DELETE TS_FILTER TS_HEADLINE TS_RANK TS_RANK_CD TS_REWRITE TSQUERY_PHRASE TSVECTOR_TO_ARRAY TSVECTOR_UPDATE_TRIGGER TSVECTOR_UPDATE_TRIGGER_COLUMN XMLCOMMENT XMLCONCAT XMLELEMENT XMLFOREST XMLPI XMLROOT XMLEXISTS XML_IS_WELL_FORMED XML_IS_WELL_FORMED_DOCUMENT XML_IS_WELL_FORMED_CONTENT XPATH XPATH_EXISTS XMLTABLE XMLNAMESPACES TABLE_TO_XML TABLE_TO_XMLSCHEMA TABLE_TO_XML_AND_XMLSCHEMA QUERY_TO_XML QUERY_TO_XMLSCHEMA QUERY_TO_XML_AND_XMLSCHEMA CURSOR_TO_XML CURSOR_TO_XMLSCHEMA SCHEMA_TO_XML SCHEMA_TO_XMLSCHEMA SCHEMA_TO_XML_AND_XMLSCHEMA DATABASE_TO_XML DATABASE_TO_XMLSCHEMA DATABASE_TO_XML_AND_XMLSCHEMA XMLATTRIBUTES TO_JSON TO_JSONB ARRAY_TO_JSON ROW_TO_JSON JSON_BUILD_ARRAY JSONB_BUILD_ARRAY JSON_BUILD_OBJECT JSONB_BUILD_OBJECT JSON_OBJECT JSONB_OBJECT JSON_ARRAY_LENGTH JSONB_ARRAY_LENGTH JSON_EACH JSONB_EACH JSON_EACH_TEXT JSONB_EACH_TEXT JSON_EXTRACT_PATH JSONB_EXTRACT_PATH JSON_OBJECT_KEYS JSONB_OBJECT_KEYS JSON_POPULATE_RECORD JSONB_POPULATE_RECORD JSON_POPULATE_RECORDSET JSONB_POPULATE_RECORDSET JSON_ARRAY_ELEMENTS JSONB_ARRAY_ELEMENTS JSON_ARRAY_ELEMENTS_TEXT JSONB_ARRAY_ELEMENTS_TEXT JSON_TYPEOF JSONB_TYPEOF JSON_TO_RECORD JSONB_TO_RECORD JSON_TO_RECORDSET JSONB_TO_RECORDSET JSON_STRIP_NULLS JSONB_STRIP_NULLS JSONB_SET JSONB_INSERT JSONB_PRETTY CURRVAL LASTVAL NEXTVAL SETVAL COALESCE NULLIF GREATEST LEAST ARRAY_APPEND ARRAY_CAT ARRAY_NDIMS ARRAY_DIMS ARRAY_FILL ARRAY_LENGTH ARRAY_LOWER ARRAY_POSITION ARRAY_POSITIONS ARRAY_PREPEND ARRAY_REMOVE ARRAY_REPLACE ARRAY_TO_STRING ARRAY_UPPER CARDINALITY STRING_TO_ARRAY UNNEST ISEMPTY LOWER_INC UPPER_INC LOWER_INF UPPER_INF RANGE_MERGE GENERATE_SERIES GENERATE_SUBSCRIPTS CURRENT_DATABASE CURRENT_QUERY CURRENT_SCHEMA|10 CURRENT_SCHEMAS|10 INET_CLIENT_ADDR INET_CLIENT_PORT INET_SERVER_ADDR INET_SERVER_PORT ROW_SECURITY_ACTIVE FORMAT_TYPE TO_REGCLASS TO_REGPROC TO_REGPROCEDURE TO_REGOPER TO_REGOPERATOR TO_REGTYPE TO_REGNAMESPACE TO_REGROLE COL_DESCRIPTION OBJ_DESCRIPTION SHOBJ_DESCRIPTION TXID_CURRENT TXID_CURRENT_IF_ASSIGNED TXID_CURRENT_SNAPSHOT TXID_SNAPSHOT_XIP TXID_SNAPSHOT_XMAX TXID_SNAPSHOT_XMIN TXID_VISIBLE_IN_SNAPSHOT TXID_STATUS CURRENT_SETTING SET_CONFIG BRIN_SUMMARIZE_NEW_VALUES BRIN_SUMMARIZE_RANGE BRIN_DESUMMARIZE_RANGE GIN_CLEAN_PENDING_LIST SUPPRESS_REDUNDANT_UPDATES_TRIGGER LO_FROM_BYTEA LO_PUT LO_GET LO_CREAT LO_CREATE LO_UNLINK LO_IMPORT LO_EXPORT LOREAD LOWRITE GROUPING CAST ".trim().split(" ").map(function(C) {
+    }).join("|"), E = "CURRENT_TIME CURRENT_TIMESTAMP CURRENT_USER CURRENT_CATALOG|10 CURRENT_DATE LOCALTIME LOCALTIMESTAMP CURRENT_ROLE|10 CURRENT_SCHEMA|10 SESSION_USER PUBLIC ", m = "FOUND NEW OLD TG_NAME|10 TG_WHEN|10 TG_LEVEL|10 TG_OP|10 TG_RELID|10 TG_RELNAME|10 TG_TABLE_NAME|10 TG_TABLE_SCHEMA|10 TG_NARGS|10 TG_ARGV|10 TG_EVENT|10 TG_TAG|10 ROW_COUNT RESULT_OID|10 PG_CONTEXT|10 RETURNED_SQLSTATE COLUMN_NAME CONSTRAINT_NAME PG_DATATYPE_NAME|10 MESSAGE_TEXT TABLE_NAME SCHEMA_NAME PG_EXCEPTION_DETAIL|10 PG_EXCEPTION_HINT|10 PG_EXCEPTION_CONTEXT|10 ", b = "SQLSTATE SQLERRM|10 SUCCESSFUL_COMPLETION WARNING DYNAMIC_RESULT_SETS_RETURNED IMPLICIT_ZERO_BIT_PADDING NULL_VALUE_ELIMINATED_IN_SET_FUNCTION PRIVILEGE_NOT_GRANTED PRIVILEGE_NOT_REVOKED STRING_DATA_RIGHT_TRUNCATION DEPRECATED_FEATURE NO_DATA NO_ADDITIONAL_DYNAMIC_RESULT_SETS_RETURNED SQL_STATEMENT_NOT_YET_COMPLETE CONNECTION_EXCEPTION CONNECTION_DOES_NOT_EXIST CONNECTION_FAILURE SQLCLIENT_UNABLE_TO_ESTABLISH_SQLCONNECTION SQLSERVER_REJECTED_ESTABLISHMENT_OF_SQLCONNECTION TRANSACTION_RESOLUTION_UNKNOWN PROTOCOL_VIOLATION TRIGGERED_ACTION_EXCEPTION FEATURE_NOT_SUPPORTED INVALID_TRANSACTION_INITIATION LOCATOR_EXCEPTION INVALID_LOCATOR_SPECIFICATION INVALID_GRANTOR INVALID_GRANT_OPERATION INVALID_ROLE_SPECIFICATION DIAGNOSTICS_EXCEPTION STACKED_DIAGNOSTICS_ACCESSED_WITHOUT_ACTIVE_HANDLER CASE_NOT_FOUND CARDINALITY_VIOLATION DATA_EXCEPTION ARRAY_SUBSCRIPT_ERROR CHARACTER_NOT_IN_REPERTOIRE DATETIME_FIELD_OVERFLOW DIVISION_BY_ZERO ERROR_IN_ASSIGNMENT ESCAPE_CHARACTER_CONFLICT INDICATOR_OVERFLOW INTERVAL_FIELD_OVERFLOW INVALID_ARGUMENT_FOR_LOGARITHM INVALID_ARGUMENT_FOR_NTILE_FUNCTION INVALID_ARGUMENT_FOR_NTH_VALUE_FUNCTION INVALID_ARGUMENT_FOR_POWER_FUNCTION INVALID_ARGUMENT_FOR_WIDTH_BUCKET_FUNCTION INVALID_CHARACTER_VALUE_FOR_CAST INVALID_DATETIME_FORMAT INVALID_ESCAPE_CHARACTER INVALID_ESCAPE_OCTET INVALID_ESCAPE_SEQUENCE NONSTANDARD_USE_OF_ESCAPE_CHARACTER INVALID_INDICATOR_PARAMETER_VALUE INVALID_PARAMETER_VALUE INVALID_REGULAR_EXPRESSION INVALID_ROW_COUNT_IN_LIMIT_CLAUSE INVALID_ROW_COUNT_IN_RESULT_OFFSET_CLAUSE INVALID_TABLESAMPLE_ARGUMENT INVALID_TABLESAMPLE_REPEAT INVALID_TIME_ZONE_DISPLACEMENT_VALUE INVALID_USE_OF_ESCAPE_CHARACTER MOST_SPECIFIC_TYPE_MISMATCH NULL_VALUE_NOT_ALLOWED NULL_VALUE_NO_INDICATOR_PARAMETER NUMERIC_VALUE_OUT_OF_RANGE SEQUENCE_GENERATOR_LIMIT_EXCEEDED STRING_DATA_LENGTH_MISMATCH STRING_DATA_RIGHT_TRUNCATION SUBSTRING_ERROR TRIM_ERROR UNTERMINATED_C_STRING ZERO_LENGTH_CHARACTER_STRING FLOATING_POINT_EXCEPTION INVALID_TEXT_REPRESENTATION INVALID_BINARY_REPRESENTATION BAD_COPY_FILE_FORMAT UNTRANSLATABLE_CHARACTER NOT_AN_XML_DOCUMENT INVALID_XML_DOCUMENT INVALID_XML_CONTENT INVALID_XML_COMMENT INVALID_XML_PROCESSING_INSTRUCTION INTEGRITY_CONSTRAINT_VIOLATION RESTRICT_VIOLATION NOT_NULL_VIOLATION FOREIGN_KEY_VIOLATION UNIQUE_VIOLATION CHECK_VIOLATION EXCLUSION_VIOLATION INVALID_CURSOR_STATE INVALID_TRANSACTION_STATE ACTIVE_SQL_TRANSACTION BRANCH_TRANSACTION_ALREADY_ACTIVE HELD_CURSOR_REQUIRES_SAME_ISOLATION_LEVEL INAPPROPRIATE_ACCESS_MODE_FOR_BRANCH_TRANSACTION INAPPROPRIATE_ISOLATION_LEVEL_FOR_BRANCH_TRANSACTION NO_ACTIVE_SQL_TRANSACTION_FOR_BRANCH_TRANSACTION READ_ONLY_SQL_TRANSACTION SCHEMA_AND_DATA_STATEMENT_MIXING_NOT_SUPPORTED NO_ACTIVE_SQL_TRANSACTION IN_FAILED_SQL_TRANSACTION IDLE_IN_TRANSACTION_SESSION_TIMEOUT INVALID_SQL_STATEMENT_NAME TRIGGERED_DATA_CHANGE_VIOLATION INVALID_AUTHORIZATION_SPECIFICATION INVALID_PASSWORD DEPENDENT_PRIVILEGE_DESCRIPTORS_STILL_EXIST DEPENDENT_OBJECTS_STILL_EXIST INVALID_TRANSACTION_TERMINATION SQL_ROUTINE_EXCEPTION FUNCTION_EXECUTED_NO_RETURN_STATEMENT MODIFYING_SQL_DATA_NOT_PERMITTED PROHIBITED_SQL_STATEMENT_ATTEMPTED READING_SQL_DATA_NOT_PERMITTED INVALID_CURSOR_NAME EXTERNAL_ROUTINE_EXCEPTION CONTAINING_SQL_NOT_PERMITTED MODIFYING_SQL_DATA_NOT_PERMITTED PROHIBITED_SQL_STATEMENT_ATTEMPTED READING_SQL_DATA_NOT_PERMITTED EXTERNAL_ROUTINE_INVOCATION_EXCEPTION INVALID_SQLSTATE_RETURNED NULL_VALUE_NOT_ALLOWED TRIGGER_PROTOCOL_VIOLATED SRF_PROTOCOL_VIOLATED EVENT_TRIGGER_PROTOCOL_VIOLATED SAVEPOINT_EXCEPTION INVALID_SAVEPOINT_SPECIFICATION INVALID_CATALOG_NAME INVALID_SCHEMA_NAME TRANSACTION_ROLLBACK TRANSACTION_INTEGRITY_CONSTRAINT_VIOLATION SERIALIZATION_FAILURE STATEMENT_COMPLETION_UNKNOWN DEADLOCK_DETECTED SYNTAX_ERROR_OR_ACCESS_RULE_VIOLATION SYNTAX_ERROR INSUFFICIENT_PRIVILEGE CANNOT_COERCE GROUPING_ERROR WINDOWING_ERROR INVALID_RECURSION INVALID_FOREIGN_KEY INVALID_NAME NAME_TOO_LONG RESERVED_NAME DATATYPE_MISMATCH INDETERMINATE_DATATYPE COLLATION_MISMATCH INDETERMINATE_COLLATION WRONG_OBJECT_TYPE GENERATED_ALWAYS UNDEFINED_COLUMN UNDEFINED_FUNCTION UNDEFINED_TABLE UNDEFINED_PARAMETER UNDEFINED_OBJECT DUPLICATE_COLUMN DUPLICATE_CURSOR DUPLICATE_DATABASE DUPLICATE_FUNCTION DUPLICATE_PREPARED_STATEMENT DUPLICATE_SCHEMA DUPLICATE_TABLE DUPLICATE_ALIAS DUPLICATE_OBJECT AMBIGUOUS_COLUMN AMBIGUOUS_FUNCTION AMBIGUOUS_PARAMETER AMBIGUOUS_ALIAS INVALID_COLUMN_REFERENCE INVALID_COLUMN_DEFINITION INVALID_CURSOR_DEFINITION INVALID_DATABASE_DEFINITION INVALID_FUNCTION_DEFINITION INVALID_PREPARED_STATEMENT_DEFINITION INVALID_SCHEMA_DEFINITION INVALID_TABLE_DEFINITION INVALID_OBJECT_DEFINITION WITH_CHECK_OPTION_VIOLATION INSUFFICIENT_RESOURCES DISK_FULL OUT_OF_MEMORY TOO_MANY_CONNECTIONS CONFIGURATION_LIMIT_EXCEEDED PROGRAM_LIMIT_EXCEEDED STATEMENT_TOO_COMPLEX TOO_MANY_COLUMNS TOO_MANY_ARGUMENTS OBJECT_NOT_IN_PREREQUISITE_STATE OBJECT_IN_USE CANT_CHANGE_RUNTIME_PARAM LOCK_NOT_AVAILABLE OPERATOR_INTERVENTION QUERY_CANCELED ADMIN_SHUTDOWN CRASH_SHUTDOWN CANNOT_CONNECT_NOW DATABASE_DROPPED SYSTEM_ERROR IO_ERROR UNDEFINED_FILE DUPLICATE_FILE SNAPSHOT_TOO_OLD CONFIG_FILE_ERROR LOCK_FILE_EXISTS FDW_ERROR FDW_COLUMN_NAME_NOT_FOUND FDW_DYNAMIC_PARAMETER_VALUE_NEEDED FDW_FUNCTION_SEQUENCE_ERROR FDW_INCONSISTENT_DESCRIPTOR_INFORMATION FDW_INVALID_ATTRIBUTE_VALUE FDW_INVALID_COLUMN_NAME FDW_INVALID_COLUMN_NUMBER FDW_INVALID_DATA_TYPE FDW_INVALID_DATA_TYPE_DESCRIPTORS FDW_INVALID_DESCRIPTOR_FIELD_IDENTIFIER FDW_INVALID_HANDLE FDW_INVALID_OPTION_INDEX FDW_INVALID_OPTION_NAME FDW_INVALID_STRING_LENGTH_OR_BUFFER_LENGTH FDW_INVALID_STRING_FORMAT FDW_INVALID_USE_OF_NULL_POINTER FDW_TOO_MANY_HANDLES FDW_OUT_OF_MEMORY FDW_NO_SCHEMAS FDW_OPTION_NAME_NOT_FOUND FDW_REPLY_HANDLE FDW_SCHEMA_NOT_FOUND FDW_TABLE_NOT_FOUND FDW_UNABLE_TO_CREATE_EXECUTION FDW_UNABLE_TO_CREATE_REPLY FDW_UNABLE_TO_ESTABLISH_CONNECTION PLPGSQL_ERROR RAISE_EXCEPTION NO_DATA_FOUND TOO_MANY_ROWS ASSERT_FAILURE INTERNAL_ERROR DATA_CORRUPTED INDEX_CORRUPTED ", f = "ARRAY_AGG AVG BIT_AND BIT_OR BOOL_AND BOOL_OR COUNT EVERY JSON_AGG JSONB_AGG JSON_OBJECT_AGG JSONB_OBJECT_AGG MAX MIN MODE STRING_AGG SUM XMLAGG CORR COVAR_POP COVAR_SAMP REGR_AVGX REGR_AVGY REGR_COUNT REGR_INTERCEPT REGR_R2 REGR_SLOPE REGR_SXX REGR_SXY REGR_SYY STDDEV STDDEV_POP STDDEV_SAMP VARIANCE VAR_POP VAR_SAMP PERCENTILE_CONT PERCENTILE_DISC ROW_NUMBER RANK DENSE_RANK PERCENT_RANK CUME_DIST NTILE LAG LEAD FIRST_VALUE LAST_VALUE NTH_VALUE NUM_NONNULLS NUM_NULLS ABS CBRT CEIL CEILING DEGREES DIV EXP FLOOR LN LOG MOD PI POWER RADIANS ROUND SCALE SIGN SQRT TRUNC WIDTH_BUCKET RANDOM SETSEED ACOS ACOSD ASIN ASIND ATAN ATAND ATAN2 ATAN2D COS COSD COT COTD SIN SIND TAN TAND BIT_LENGTH CHAR_LENGTH CHARACTER_LENGTH LOWER OCTET_LENGTH OVERLAY POSITION SUBSTRING TREAT TRIM UPPER ASCII BTRIM CHR CONCAT CONCAT_WS CONVERT CONVERT_FROM CONVERT_TO DECODE ENCODE INITCAP LEFT LENGTH LPAD LTRIM MD5 PARSE_IDENT PG_CLIENT_ENCODING QUOTE_IDENT|10 QUOTE_LITERAL|10 QUOTE_NULLABLE|10 REGEXP_MATCH REGEXP_MATCHES REGEXP_REPLACE REGEXP_SPLIT_TO_ARRAY REGEXP_SPLIT_TO_TABLE REPEAT REPLACE REVERSE RIGHT RPAD RTRIM SPLIT_PART STRPOS SUBSTR TO_ASCII TO_HEX TRANSLATE OCTET_LENGTH GET_BIT GET_BYTE SET_BIT SET_BYTE TO_CHAR TO_DATE TO_NUMBER TO_TIMESTAMP AGE CLOCK_TIMESTAMP|10 DATE_PART DATE_TRUNC ISFINITE JUSTIFY_DAYS JUSTIFY_HOURS JUSTIFY_INTERVAL MAKE_DATE MAKE_INTERVAL|10 MAKE_TIME MAKE_TIMESTAMP|10 MAKE_TIMESTAMPTZ|10 NOW STATEMENT_TIMESTAMP|10 TIMEOFDAY TRANSACTION_TIMESTAMP|10 ENUM_FIRST ENUM_LAST ENUM_RANGE AREA CENTER DIAMETER HEIGHT ISCLOSED ISOPEN NPOINTS PCLOSE POPEN RADIUS WIDTH BOX BOUND_BOX CIRCLE LINE LSEG PATH POLYGON ABBREV BROADCAST HOST HOSTMASK MASKLEN NETMASK NETWORK SET_MASKLEN TEXT INET_SAME_FAMILY INET_MERGE MACADDR8_SET7BIT ARRAY_TO_TSVECTOR GET_CURRENT_TS_CONFIG NUMNODE PLAINTO_TSQUERY PHRASETO_TSQUERY WEBSEARCH_TO_TSQUERY QUERYTREE SETWEIGHT STRIP TO_TSQUERY TO_TSVECTOR JSON_TO_TSVECTOR JSONB_TO_TSVECTOR TS_DELETE TS_FILTER TS_HEADLINE TS_RANK TS_RANK_CD TS_REWRITE TSQUERY_PHRASE TSVECTOR_TO_ARRAY TSVECTOR_UPDATE_TRIGGER TSVECTOR_UPDATE_TRIGGER_COLUMN XMLCOMMENT XMLCONCAT XMLELEMENT XMLFOREST XMLPI XMLROOT XMLEXISTS XML_IS_WELL_FORMED XML_IS_WELL_FORMED_DOCUMENT XML_IS_WELL_FORMED_CONTENT XPATH XPATH_EXISTS XMLTABLE XMLNAMESPACES TABLE_TO_XML TABLE_TO_XMLSCHEMA TABLE_TO_XML_AND_XMLSCHEMA QUERY_TO_XML QUERY_TO_XMLSCHEMA QUERY_TO_XML_AND_XMLSCHEMA CURSOR_TO_XML CURSOR_TO_XMLSCHEMA SCHEMA_TO_XML SCHEMA_TO_XMLSCHEMA SCHEMA_TO_XML_AND_XMLSCHEMA DATABASE_TO_XML DATABASE_TO_XMLSCHEMA DATABASE_TO_XML_AND_XMLSCHEMA XMLATTRIBUTES TO_JSON TO_JSONB ARRAY_TO_JSON ROW_TO_JSON JSON_BUILD_ARRAY JSONB_BUILD_ARRAY JSON_BUILD_OBJECT JSONB_BUILD_OBJECT JSON_OBJECT JSONB_OBJECT JSON_ARRAY_LENGTH JSONB_ARRAY_LENGTH JSON_EACH JSONB_EACH JSON_EACH_TEXT JSONB_EACH_TEXT JSON_EXTRACT_PATH JSONB_EXTRACT_PATH JSON_OBJECT_KEYS JSONB_OBJECT_KEYS JSON_POPULATE_RECORD JSONB_POPULATE_RECORD JSON_POPULATE_RECORDSET JSONB_POPULATE_RECORDSET JSON_ARRAY_ELEMENTS JSONB_ARRAY_ELEMENTS JSON_ARRAY_ELEMENTS_TEXT JSONB_ARRAY_ELEMENTS_TEXT JSON_TYPEOF JSONB_TYPEOF JSON_TO_RECORD JSONB_TO_RECORD JSON_TO_RECORDSET JSONB_TO_RECORDSET JSON_STRIP_NULLS JSONB_STRIP_NULLS JSONB_SET JSONB_INSERT JSONB_PRETTY CURRVAL LASTVAL NEXTVAL SETVAL COALESCE NULLIF GREATEST LEAST ARRAY_APPEND ARRAY_CAT ARRAY_NDIMS ARRAY_DIMS ARRAY_FILL ARRAY_LENGTH ARRAY_LOWER ARRAY_POSITION ARRAY_POSITIONS ARRAY_PREPEND ARRAY_REMOVE ARRAY_REPLACE ARRAY_TO_STRING ARRAY_UPPER CARDINALITY STRING_TO_ARRAY UNNEST ISEMPTY LOWER_INC UPPER_INC LOWER_INF UPPER_INF RANGE_MERGE GENERATE_SERIES GENERATE_SUBSCRIPTS CURRENT_DATABASE CURRENT_QUERY CURRENT_SCHEMA|10 CURRENT_SCHEMAS|10 INET_CLIENT_ADDR INET_CLIENT_PORT INET_SERVER_ADDR INET_SERVER_PORT ROW_SECURITY_ACTIVE FORMAT_TYPE TO_REGCLASS TO_REGPROC TO_REGPROCEDURE TO_REGOPER TO_REGOPERATOR TO_REGTYPE TO_REGNAMESPACE TO_REGROLE COL_DESCRIPTION OBJ_DESCRIPTION SHOBJ_DESCRIPTION TXID_CURRENT TXID_CURRENT_IF_ASSIGNED TXID_CURRENT_SNAPSHOT TXID_SNAPSHOT_XIP TXID_SNAPSHOT_XMAX TXID_SNAPSHOT_XMIN TXID_VISIBLE_IN_SNAPSHOT TXID_STATUS CURRENT_SETTING SET_CONFIG BRIN_SUMMARIZE_NEW_VALUES BRIN_SUMMARIZE_RANGE BRIN_DESUMMARIZE_RANGE GIN_CLEAN_PENDING_LIST SUPPRESS_REDUNDANT_UPDATES_TRIGGER LO_FROM_BYTEA LO_PUT LO_GET LO_CREAT LO_CREATE LO_UNLINK LO_IMPORT LO_EXPORT LOREAD LOWRITE GROUPING CAST ".trim().split(" ").map(function(C) {
       return C.split("|")[0];
     }).join("|");
     return {
@@ -35955,7 +35553,7 @@ function Jh() {
       case_insensitive: !0,
       keywords: {
         keyword: s + c + o,
-        built_in: E + m + T
+        built_in: E + m + b
       },
       illegal: /:==|\W\s*\(\*|(^|\s)\$[a-z]|\{\{|[a-z]:\s*$|\.\.\.|TO:|DO:/,
       contains: [
@@ -36146,12 +35744,12 @@ function Jh() {
       ]
     };
   }
-  return Xs = t, Xs;
+  return Zs = t, Zs;
 }
-var Zs, xp;
-function jh() {
+var Js, xp;
+function sh() {
   if (xp)
-    return Zs;
+    return Js;
   xp = 1;
   function t(e) {
     const n = e.regex, r = /(?![A-Za-z0-9])(?![$])/, a = n.concat(
@@ -36188,7 +35786,7 @@ function jh() {
       end: /[ \t]*(\w+)\b/,
       contains: e.QUOTE_STRING_MODE.contains.concat(c)
     }), m = `[ 	
-]`, T = {
+]`, b = {
       scope: "string",
       variants: [
         d,
@@ -36476,7 +36074,7 @@ function jh() {
         s,
         X,
         e.C_BLOCK_COMMENT_MODE,
-        T,
+        b,
         g,
         q
       ]
@@ -36497,7 +36095,7 @@ function jh() {
       h,
       X,
       e.C_BLOCK_COMMENT_MODE,
-      T,
+      b,
       g,
       q
     ], ie = {
@@ -36613,7 +36211,7 @@ function jh() {
                 s,
                 X,
                 e.C_BLOCK_COMMENT_MODE,
-                T,
+                b,
                 g
               ]
             }
@@ -36658,17 +36256,17 @@ function jh() {
             e.UNDERSCORE_TITLE_MODE
           ]
         },
-        T,
+        b,
         g
       ]
     };
   }
-  return Zs = t, Zs;
+  return Js = t, Js;
 }
-var Js, Pp;
-function ev() {
+var js, Pp;
+function lh() {
   if (Pp)
-    return Js;
+    return js;
   Pp = 1;
   function t(e) {
     return {
@@ -36712,12 +36310,12 @@ function ev() {
       ]
     };
   }
-  return Js = t, Js;
+  return js = t, js;
 }
-var js, kp;
-function tv() {
+var el, kp;
+function ch() {
   if (kp)
-    return js;
+    return el;
   kp = 1;
   function t(e) {
     return {
@@ -36729,12 +36327,12 @@ function tv() {
       disableAutodetect: !0
     };
   }
-  return js = t, js;
+  return el = t, el;
 }
-var el, Up;
-function nv() {
+var tl, Up;
+function _h() {
   if (Up)
-    return el;
+    return tl;
   Up = 1;
   function t(e) {
     const n = {
@@ -36784,12 +36382,12 @@ function nv() {
       ]
     };
   }
-  return el = t, el;
+  return tl = t, tl;
 }
-var tl, Fp;
-function rv() {
+var nl, Fp;
+function dh() {
   if (Fp)
-    return tl;
+    return nl;
   Fp = 1;
   function t(e) {
     const n = [
@@ -36866,7 +36464,7 @@ function rv() {
         { begin: /\.(synopsis|description|example|inputs|outputs|notes|link|component|role|functionality)/ },
         { begin: /\.(parameter|forwardhelptargetname|forwardhelpcategory|remotehelprunspace|externalhelp)\s+\S+/ }
       ]
-    }, T = e.inherit(
+    }, b = e.inherit(
       e.COMMENT(null, null),
       {
         variants: [
@@ -36966,7 +36564,7 @@ function rv() {
       ]
     }, q = [
       w,
-      T,
+      b,
       o,
       e.NUMBER_MODE,
       d,
@@ -37014,12 +36612,12 @@ function rv() {
       )
     };
   }
-  return tl = t, tl;
+  return nl = t, nl;
 }
-var nl, Bp;
-function av() {
+var rl, Bp;
+function uh() {
   if (Bp)
-    return nl;
+    return rl;
   Bp = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -37436,12 +37034,12 @@ function av() {
       ]
     };
   }
-  return nl = t, nl;
+  return rl = t, rl;
 }
-var rl, Gp;
-function iv() {
+var al, Gp;
+function ph() {
   if (Gp)
-    return rl;
+    return al;
   Gp = 1;
   function t(e) {
     return {
@@ -37478,12 +37076,12 @@ function iv() {
       ]
     };
   }
-  return rl = t, rl;
+  return al = t, al;
 }
-var al, Yp;
-function ov() {
+var il, Yp;
+function mh() {
   if (Yp)
-    return al;
+    return il;
   Yp = 1;
   function t(e) {
     const n = {
@@ -37545,12 +37143,12 @@ function ov() {
       ])
     };
   }
-  return al = t, al;
+  return il = t, il;
 }
-var il, qp;
-function sv() {
+var ol, qp;
+function Eh() {
   if (qp)
-    return il;
+    return ol;
   qp = 1;
   function t(e) {
     const n = "[ \\t\\f]*", r = "[ \\t\\f]+", a = n + "[:=]" + n, i = r, s = "(" + a + "|" + i + ")", o = "([^\\\\:= \\t\\f\\n]|\\\\.)+", c = {
@@ -37595,12 +37193,12 @@ function sv() {
       ]
     };
   }
-  return il = t, il;
+  return ol = t, ol;
 }
-var ol, Hp;
-function lv() {
+var sl, Hp;
+function gh() {
   if (Hp)
-    return ol;
+    return sl;
   Hp = 1;
   function t(e) {
     const n = [
@@ -37667,12 +37265,12 @@ function lv() {
       ]
     };
   }
-  return ol = t, ol;
+  return sl = t, sl;
 }
-var sl, Vp;
-function cv() {
+var ll, Vp;
+function Sh() {
   if (Vp)
-    return sl;
+    return ll;
   Vp = 1;
   function t(e) {
     const n = {
@@ -37769,12 +37367,12 @@ function cv() {
       ]
     };
   }
-  return sl = t, sl;
+  return ll = t, ll;
 }
-var ll, zp;
-function _v() {
+var cl, zp;
+function fh() {
   if (zp)
-    return ll;
+    return cl;
   zp = 1;
   function t(e) {
     const n = {
@@ -37819,12 +37417,12 @@ function _v() {
       ]
     };
   }
-  return ll = t, ll;
+  return cl = t, cl;
 }
-var cl, $p;
-function dv() {
+var _l, $p;
+function bh() {
   if ($p)
-    return cl;
+    return _l;
   $p = 1;
   function t(e) {
     const n = e.regex, r = /[\p{XID_Start}_]\p{XID_Continue}*/u, a = [
@@ -38052,12 +37650,12 @@ function dv() {
         e.APOS_STRING_MODE,
         e.QUOTE_STRING_MODE
       ]
-    }, T = "[0-9](_?[0-9])*", g = `(\\b(${T}))?\\.(${T})|\\b(${T})\\.`, f = `\\b|${a.join("|")}`, C = {
+    }, b = "[0-9](_?[0-9])*", g = `(\\b(${b}))?\\.(${b})|\\b(${b})\\.`, f = `\\b|${a.join("|")}`, C = {
       className: "number",
       relevance: 0,
       variants: [
         {
-          begin: `(\\b(${T})|(${g}))[eE][+-]?(${T})[jJ]?(?=${f})`
+          begin: `(\\b(${b})|(${g}))[eE][+-]?(${b})[jJ]?(?=${f})`
         },
         {
           begin: `(${g})[jJ]?`
@@ -38075,7 +37673,7 @@ function dv() {
           begin: `\\b0[xX](_?[0-9a-fA-F])+[lL]?(?=${f})`
         },
         {
-          begin: `\\b(${T})[jJ](?=${f})`
+          begin: `\\b(${b})[jJ](?=${f})`
         }
       ]
     }, A = {
@@ -38196,12 +37794,12 @@ function dv() {
       ]
     };
   }
-  return cl = t, cl;
+  return _l = t, _l;
 }
-var _l, Wp;
-function uv() {
+var dl, Wp;
+function Th() {
   if (Wp)
-    return _l;
+    return dl;
   Wp = 1;
   function t(e) {
     return {
@@ -38224,12 +37822,12 @@ function uv() {
       ]
     };
   }
-  return _l = t, _l;
+  return dl = t, dl;
 }
-var dl, Kp;
-function pv() {
+var ul, Kp;
+function Rh() {
   if (Kp)
-    return dl;
+    return ul;
   Kp = 1;
   function t(e) {
     return {
@@ -38252,12 +37850,12 @@ function pv() {
       ]
     };
   }
-  return dl = t, dl;
+  return ul = t, ul;
 }
-var ul, Qp;
-function mv() {
+var pl, Qp;
+function Ch() {
   if (Qp)
-    return ul;
+    return pl;
   Qp = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -38394,12 +37992,12 @@ function mv() {
       illegal: /#/
     };
   }
-  return ul = t, ul;
+  return pl = t, pl;
 }
-var pl, Xp;
-function Ev() {
+var ml, Xp;
+function Nh() {
   if (Xp)
-    return pl;
+    return ml;
   Xp = 1;
   function t(e) {
     const n = e.regex, r = /(?:(?:[a-zA-Z]|\.[._a-zA-Z])[._a-zA-Z0-9]*)|\.(?!\d)/, a = n.either(
@@ -38576,12 +38174,12 @@ function Ev() {
       ]
     };
   }
-  return pl = t, pl;
+  return ml = t, ml;
 }
-var ml, Zp;
-function gv() {
+var El, Zp;
+function hh() {
   if (Zp)
-    return ml;
+    return El;
   Zp = 1;
   function t(e) {
     function n(L) {
@@ -38612,7 +38210,7 @@ function gv() {
         { begin: E },
         { begin: "\\(-" + E + "\\)" }
       ]
-    }, T = {
+    }, b = {
       className: "operator",
       relevance: 0,
       begin: c
@@ -38622,11 +38220,11 @@ function gv() {
         relevance: 0,
         begin: r
       },
-      T,
+      b,
       m
     ], f = [
       e.QUOTE_STRING_MODE,
-      T,
+      b,
       {
         className: "module",
         begin: "\\b" + a,
@@ -38661,7 +38259,7 @@ function gv() {
       end: "(,|\\n|\\))",
       relevance: 0,
       contains: [
-        T,
+        b,
         {
           className: "typing",
           begin: ":",
@@ -38717,7 +38315,7 @@ function gv() {
       keywords: d,
       contains: [
         e.QUOTE_STRING_MODE,
-        T,
+        b,
         {
           className: "params",
           begin: "\\b" + r
@@ -38732,7 +38330,7 @@ function gv() {
       relevance: 0,
       contains: [
         k,
-        T,
+        b,
         {
           relevance: 0,
           className: "constructor",
@@ -38835,12 +38433,12 @@ function gv() {
       ]
     };
   }
-  return ml = t, ml;
+  return El = t, El;
 }
-var El, Jp;
-function Sv() {
+var gl, Jp;
+function vh() {
   if (Jp)
-    return El;
+    return gl;
   Jp = 1;
   function t(e) {
     return {
@@ -38855,12 +38453,12 @@ function Sv() {
       ]
     };
   }
-  return El = t, El;
+  return gl = t, gl;
 }
-var gl, jp;
-function fv() {
+var Sl, jp;
+function Oh() {
   if (jp)
-    return gl;
+    return Sl;
   jp = 1;
   function t(e) {
     const n = "[a-zA-Z-_][^\\n{]+\\{", r = {
@@ -38924,12 +38522,12 @@ function fv() {
       ]
     };
   }
-  return gl = t, gl;
+  return Sl = t, Sl;
 }
-var Sl, em;
-function bv() {
+var fl, em;
+function Ih() {
   if (em)
-    return Sl;
+    return fl;
   em = 1;
   function t(e) {
     const n = "foreach do while for if from to step else on-error and or not in", r = "global local beep delay put len typeof pick log time set find environment terminal error execute parse resolve toarray tobool toid toip toip6 tonum tostr totime", a = "add remove enable disable set get print export edit find run debug error info warning", i = "true false yes no nothing nil null", s = "traffic-flow traffic-generator firewall scheduler aaa accounting address-list address align area bandwidth-server bfd bgp bridge client clock community config connection console customer default dhcp-client dhcp-server discovery dns e-mail ethernet filter firmware gps graphing group hardware health hotspot identity igmp-proxy incoming instance interface ip ipsec ipv6 irq l2tp-server lcd ldp logging mac-server mac-winbox mangle manual mirror mme mpls nat nd neighbor network note ntp ospf ospf-v3 ovpn-server page peer pim ping policy pool port ppp pppoe-client pptp-server prefix profile proposal proxy queue radius resource rip ripng route routing screen script security-profiles server service service-port settings shares smb sms sniffer snmp snooper socks sstp-server system tool tracking type upgrade upnp user-manager users user vlan secret vrrp watchdog web-access wireless pptp pppoe lan wan layer7-protocol lease simple raw", o = {
@@ -39043,12 +38641,12 @@ function bv() {
       ]
     };
   }
-  return Sl = t, Sl;
+  return fl = t, fl;
 }
-var fl, tm;
-function Tv() {
+var bl, tm;
+function Ah() {
   if (tm)
-    return fl;
+    return bl;
   tm = 1;
   function t(e) {
     const n = [
@@ -39182,12 +38780,12 @@ function Tv() {
       ]
     };
   }
-  return fl = t, fl;
+  return bl = t, bl;
 }
-var bl, nm;
-function Rv() {
+var Tl, nm;
+function yh() {
   if (nm)
-    return bl;
+    return Tl;
   nm = 1;
   function t(e) {
     return {
@@ -39215,12 +38813,12 @@ function Rv() {
       ]
     };
   }
-  return bl = t, bl;
+  return Tl = t, Tl;
 }
-var Tl, rm;
-function Cv() {
+var Rl, rm;
+function Dh() {
   if (rm)
-    return Tl;
+    return Rl;
   rm = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -39505,12 +39103,12 @@ function Cv() {
       ]
     };
   }
-  return Tl = t, Tl;
+  return Rl = t, Rl;
 }
-var Rl, am;
-function Nv() {
+var Cl, am;
+function Mh() {
   if (am)
-    return Rl;
+    return Cl;
   am = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -40042,12 +39640,12 @@ function Nv() {
       ]
     };
   }
-  return Rl = t, Rl;
+  return Cl = t, Cl;
 }
-var Cl, im;
-function hv() {
+var Nl, im;
+function Lh() {
   if (im)
-    return Cl;
+    return Nl;
   im = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -40160,7 +39758,7 @@ function hv() {
         begin: /\binline(?=\s)/,
         keywords: "inline"
       }
-    ], T = {
+    ], b = {
       begin: [
         /\(\s*/,
         /using/,
@@ -40185,17 +39783,17 @@ function hv() {
         d,
         E,
         ...m,
-        T,
+        b,
         r
       ]
     };
   }
-  return Cl = t, Cl;
+  return Nl = t, Nl;
 }
-var Nl, om;
-function vv() {
+var hl, om;
+function wh() {
   if (om)
-    return Nl;
+    return hl;
   om = 1;
   function t(e) {
     const n = "[^\\(\\)\\[\\]\\{\\}\",'`;#|\\\\\\s]+", r = "(-|\\+)?\\d+([./]\\d+)?", a = r + "[+\\-]" + r + "i", i = {
@@ -40235,7 +39833,7 @@ function vv() {
     }, m = {
       endsWithParent: !0,
       relevance: 0
-    }, T = {
+    }, b = {
       variants: [
         { begin: /'/ },
         { begin: "`" }
@@ -40303,7 +39901,7 @@ function vv() {
       c,
       d,
       E,
-      T,
+      b,
       C
     ].concat(u), {
       name: "Scheme",
@@ -40314,17 +39912,17 @@ function vv() {
         o,
         c,
         E,
-        T,
+        b,
         C
       ].concat(u)
     };
   }
-  return Nl = t, Nl;
+  return hl = t, hl;
 }
-var hl, sm;
-function Ov() {
+var vl, sm;
+function xh() {
   if (sm)
-    return hl;
+    return vl;
   sm = 1;
   function t(e) {
     const n = [
@@ -40377,12 +39975,12 @@ function Ov() {
       ].concat(n)
     };
   }
-  return hl = t, hl;
+  return vl = t, vl;
 }
-var vl, lm;
-function Iv() {
+var Ol, lm;
+function Ph() {
   if (lm)
-    return vl;
+    return Ol;
   lm = 1;
   const t = (o) => ({
     IMPORTANT: {
@@ -41060,12 +40658,12 @@ function Iv() {
       ]
     };
   }
-  return vl = s, vl;
+  return Ol = s, Ol;
 }
-var Ol, cm;
-function Av() {
+var Il, cm;
+function kh() {
   if (cm)
-    return Ol;
+    return Il;
   cm = 1;
   function t(e) {
     return {
@@ -41086,12 +40684,12 @@ function Av() {
       ]
     };
   }
-  return Ol = t, Ol;
+  return Il = t, Il;
 }
-var Il, _m;
-function yv() {
+var Al, _m;
+function Uh() {
   if (_m)
-    return Il;
+    return Al;
   _m = 1;
   function t(e) {
     const n = [
@@ -41208,12 +40806,12 @@ function yv() {
       ]
     };
   }
-  return Il = t, Il;
+  return Al = t, Al;
 }
-var Al, dm;
-function Dv() {
+var yl, dm;
+function Fh() {
   if (dm)
-    return Al;
+    return yl;
   dm = 1;
   function t(e) {
     const n = "[a-z][a-zA-Z0-9_]*", r = {
@@ -41269,12 +40867,12 @@ function Dv() {
       ]
     };
   }
-  return Al = t, Al;
+  return yl = t, yl;
 }
-var yl, um;
-function Mv() {
+var Dl, um;
+function Bh() {
   if (um)
-    return yl;
+    return Dl;
   um = 1;
   function t(e) {
     return {
@@ -41330,12 +40928,12 @@ function Mv() {
       ]
     };
   }
-  return yl = t, yl;
+  return Dl = t, Dl;
 }
-var Dl, pm;
-function Lv() {
+var Ml, pm;
+function Gh() {
   if (pm)
-    return Dl;
+    return Ml;
   pm = 1;
   function t(e) {
     const n = {
@@ -43835,12 +43433,12 @@ function Lv() {
       illegal: /#|^\$ /
     };
   }
-  return Dl = t, Dl;
+  return Ml = t, Ml;
 }
-var Ml, mm;
-function wv() {
+var Ll, mm;
+function Yh() {
   if (mm)
-    return Ml;
+    return Ll;
   mm = 1;
   function t(e) {
     const n = e.regex, r = e.COMMENT("--", "$"), a = {
@@ -44371,7 +43969,7 @@ function wv() {
       "localtime",
       "current_timestamp",
       "localtimestamp"
-    ], T = [
+    ], b = [
       "create table",
       "insert into",
       "primary key",
@@ -44423,11 +44021,11 @@ function wv() {
       },
       contains: [
         {
-          begin: n.either(...T),
+          begin: n.either(...b),
           relevance: 0,
           keywords: {
             $pattern: /[\w\.]+/,
-            keyword: f.concat(T),
+            keyword: f.concat(b),
             literal: s,
             type: c
           }
@@ -44447,12 +44045,12 @@ function wv() {
       ]
     };
   }
-  return Ml = t, Ml;
+  return Ll = t, Ll;
 }
-var Ll, Em;
-function xv() {
+var wl, Em;
+function qh() {
   if (Em)
-    return Ll;
+    return wl;
   Em = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -44898,12 +44496,12 @@ function xv() {
       ]
     };
   }
-  return Ll = t, Ll;
+  return wl = t, wl;
 }
-var wl, gm;
-function Pv() {
+var xl, gm;
+function Hh() {
   if (gm)
-    return wl;
+    return xl;
   gm = 1;
   function t(e) {
     return {
@@ -44943,12 +44541,12 @@ function Pv() {
       ]
     };
   }
-  return wl = t, wl;
+  return xl = t, xl;
 }
-var xl, Sm;
-function kv() {
+var Pl, Sm;
+function Vh() {
   if (Sm)
-    return xl;
+    return Pl;
   Sm = 1;
   function t(e) {
     return {
@@ -45002,12 +44600,12 @@ function kv() {
       ]
     };
   }
-  return xl = t, xl;
+  return Pl = t, Pl;
 }
-var Pl, fm;
-function Uv() {
+var kl, fm;
+function zh() {
   if (fm)
-    return Pl;
+    return kl;
   fm = 1;
   const t = (o) => ({
     IMPORTANT: {
@@ -45716,12 +45314,12 @@ function Uv() {
       ]
     };
   }
-  return Pl = s, Pl;
+  return kl = s, kl;
 }
-var kl, bm;
-function Fv() {
+var Ul, bm;
+function $h() {
   if (bm)
-    return kl;
+    return Ul;
   bm = 1;
   function t(e) {
     return {
@@ -45756,12 +45354,12 @@ function Fv() {
       ]
     };
   }
-  return kl = t, kl;
+  return Ul = t, Ul;
 }
-var Ul, Tm;
-function Bv() {
+var Fl, Tm;
+function Wh() {
   if (Tm)
-    return Ul;
+    return Fl;
   Tm = 1;
   function t(h) {
     return h ? typeof h == "string" ? h : h.source : null;
@@ -45914,7 +45512,7 @@ function Bv() {
     "#sourceLocation",
     "#warn_unqualified_access",
     "#warning"
-  ], T = [
+  ], b = [
     "abs",
     "all",
     "any",
@@ -46071,11 +45669,11 @@ function Bv() {
       ce,
       U
     ], te = {
-      match: n(/\./, a(...T)),
+      match: n(/\./, a(...b)),
       relevance: 0
     }, Ee = {
       className: "built_in",
-      match: n(/\b/, a(...T), /(?=\()/)
+      match: n(/\b/, a(...b), /(?=\()/)
     }, Ae = [
       te,
       Ee
@@ -46112,48 +45710,48 @@ function Bv() {
     }), De = (Ie = "") => ({
       className: "subst",
       match: n(/\\/, Ie, /[\t ]*(?:[\r\n]|\r\n)/)
-    }), Ue = (Ie = "") => ({
+    }), Fe = (Ie = "") => ({
       className: "subst",
       label: "interpol",
       begin: n(/\\/, Ie, /\(/),
       end: /\)/
-    }), Fe = (Ie = "") => ({
+    }), Be = (Ie = "") => ({
       begin: n(Ie, /"""/),
       end: n(/"""/, Ie),
       contains: [
         Oe(Ie),
         De(Ie),
-        Ue(Ie)
+        Fe(Ie)
       ]
-    }), et = (Ie = "") => ({
+    }), tt = (Ie = "") => ({
       begin: n(Ie, /"/),
       end: n(/"/, Ie),
       contains: [
         Oe(Ie),
-        Ue(Ie)
+        Fe(Ie)
       ]
-    }), st = {
+    }), lt = {
       className: "string",
       variants: [
-        Fe(),
-        Fe("#"),
-        Fe("##"),
-        Fe("###"),
-        et(),
-        et("#"),
-        et("##"),
-        et("###")
+        Be(),
+        Be("#"),
+        Be("##"),
+        Be("###"),
+        tt(),
+        tt("#"),
+        tt("##"),
+        tt("###")
       ]
-    }, Xe = { match: n(/`/, k, /`/) }, Jt = {
+    }, Xe = { match: n(/`/, k, /`/) }, jt = {
       className: "variable",
       match: /\$\d+/
-    }, Mt = {
+    }, wt = {
       className: "variable",
       match: `\\$${P}+`
     }, J = [
       Xe,
-      Jt,
-      Mt
+      jt,
+      wt
     ], vt = {
       match: /(@|#(un)?)available/,
       className: "keyword",
@@ -46165,7 +45763,7 @@ function Bv() {
           contains: [
             ...ge,
             pe,
-            st
+            lt
           ]
         }
       ] }
@@ -46235,7 +45833,7 @@ function Bv() {
         ...Ae,
         ...ge,
         pe,
-        st,
+        lt,
         ...J,
         ...it,
         Ye
@@ -46274,7 +45872,7 @@ function Bv() {
         ...Z,
         ...ge,
         pe,
-        st,
+        lt,
         ...it,
         Ye,
         V
@@ -46300,7 +45898,7 @@ function Bv() {
         /\[/,
         /%/
       ]
-    }, tt = {
+    }, nt = {
       match: [
         /\b(?:subscript|init[?!]?)/,
         /\s*(?=[<(])/
@@ -46312,7 +45910,7 @@ function Bv() {
         y
       ],
       illegal: /\[|%/
-    }, jt = {
+    }, en = {
       match: [
         /operator/,
         /\s+/,
@@ -46322,7 +45920,7 @@ function Bv() {
         1: "keyword",
         3: "title"
       }
-    }, en = {
+    }, tn = {
       begin: [
         /precedencegroup/,
         /\s+/,
@@ -46339,18 +45937,18 @@ function Bv() {
       ],
       end: /}/
     };
-    for (const Ie of st.variants) {
-      const tn = Ie.contains.find((Yn) => Yn.label === "interpol");
-      tn.keywords = H;
+    for (const Ie of lt.variants) {
+      const nn = Ie.contains.find((Yn) => Yn.label === "interpol");
+      nn.keywords = H;
       const gn = [
         ...Z,
         ...Ae,
         ...ge,
         pe,
-        st,
+        lt,
         ...J
       ];
-      tn.contains = [
+      nn.contains = [
         ...gn,
         {
           begin: /\(/,
@@ -46368,7 +45966,7 @@ function Bv() {
       contains: [
         ...M,
         we,
-        tt,
+        nt,
         {
           beginKeywords: "struct protocol class extension enum actor",
           end: "\\{",
@@ -46382,8 +45980,8 @@ function Bv() {
             ...Z
           ]
         },
-        jt,
         en,
+        tn,
         {
           beginKeywords: "import",
           end: /$/,
@@ -46394,7 +45992,7 @@ function Bv() {
         ...Ae,
         ...ge,
         pe,
-        st,
+        lt,
         ...J,
         ...it,
         Ye,
@@ -46402,12 +46000,12 @@ function Bv() {
       ]
     };
   }
-  return Ul = X, Ul;
+  return Fl = X, Fl;
 }
-var Fl, Rm;
-function Gv() {
+var Bl, Rm;
+function Kh() {
   if (Rm)
-    return Fl;
+    return Bl;
   Rm = 1;
   function t(e) {
     return {
@@ -46449,12 +46047,12 @@ function Gv() {
       ]
     };
   }
-  return Fl = t, Fl;
+  return Bl = t, Bl;
 }
-var Bl, Cm;
-function Yv() {
+var Gl, Cm;
+function Qh() {
   if (Cm)
-    return Bl;
+    return Gl;
   Cm = 1;
   function t(e) {
     const n = "true false yes no null", r = "[\\w#;/?:@&=+$,.~*'()[\\]]+", a = {
@@ -46511,7 +46109,7 @@ function Yv() {
     ] }), c = "[0-9]{4}(-[0-9][0-9]){0,2}", u = "([Tt \\t][0-9][0-9]?(:[0-9][0-9]){2})?", d = "(\\.[0-9]*)?", E = "([ \\t])*(Z|[-+][0-9][0-9]?(:[0-9][0-9])?)?", m = {
       className: "number",
       begin: "\\b" + c + u + d + E + "\\b"
-    }, T = {
+    }, b = {
       end: ",",
       endsWithParent: !0,
       excludeEnd: !0,
@@ -46520,13 +46118,13 @@ function Yv() {
     }, g = {
       begin: /\{/,
       end: /\}/,
-      contains: [T],
+      contains: [b],
       illegal: "\\n",
       relevance: 0
     }, f = {
       begin: "\\[",
       end: "\\]",
-      contains: [T],
+      contains: [b],
       illegal: "\\n",
       relevance: 0
     }, C = [
@@ -46592,19 +46190,19 @@ function Yv() {
       f,
       s
     ], A = [...C];
-    return A.pop(), A.push(o), T.contains = A, {
+    return A.pop(), A.push(o), b.contains = A, {
       name: "YAML",
       case_insensitive: !0,
       aliases: ["yml"],
       contains: C
     };
   }
-  return Bl = t, Bl;
+  return Gl = t, Gl;
 }
-var Gl, Nm;
-function qv() {
+var Yl, Nm;
+function Xh() {
   if (Nm)
-    return Gl;
+    return Yl;
   Nm = 1;
   function t(e) {
     return {
@@ -46639,12 +46237,12 @@ function qv() {
       ]
     };
   }
-  return Gl = t, Gl;
+  return Yl = t, Yl;
 }
-var Yl, hm;
-function Hv() {
+var ql, hm;
+function Zh() {
   if (hm)
-    return Yl;
+    return ql;
   hm = 1;
   function t(e) {
     const n = e.regex, r = /[a-zA-Z_][a-zA-Z0-9_]*/, a = {
@@ -46821,12 +46419,12 @@ function Hv() {
       ]
     };
   }
-  return Yl = t, Yl;
+  return ql = t, ql;
 }
-var ql, vm;
-function Vv() {
+var Hl, vm;
+function Jh() {
   if (vm)
-    return ql;
+    return Hl;
   vm = 1;
   function t(e) {
     const n = [
@@ -46894,12 +46492,12 @@ function Vv() {
       ]
     };
   }
-  return ql = t, ql;
+  return Hl = t, Hl;
 }
-var Hl, Om;
-function zv() {
+var Vl, Om;
+function jh() {
   if (Om)
-    return Hl;
+    return Vl;
   Om = 1;
   function t(e) {
     const n = {
@@ -47052,12 +46650,12 @@ function zv() {
       ]
     };
   }
-  return Hl = t, Hl;
+  return Vl = t, Vl;
 }
-var Vl, Im;
-function $v() {
+var zl, Im;
+function ev() {
   if (Im)
-    return Vl;
+    return zl;
   Im = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -47259,7 +46857,7 @@ function $v() {
         s,
         o
       ]
-    }), m = /[a-z_]+/, T = E(i, { relevance: 2 }), g = E([m], { relevance: 1 });
+    }), m = /[a-z_]+/, b = E(i, { relevance: 2 }), g = E([m], { relevance: 1 });
     return {
       name: "Twig",
       aliases: ["craftcms"],
@@ -47267,7 +46865,7 @@ function $v() {
       subLanguage: "xml",
       contains: [
         e.COMMENT(/\{#/, /#\}/),
-        T,
+        b,
         g,
         {
           className: "template-variable",
@@ -47284,12 +46882,12 @@ function $v() {
       ]
     };
   }
-  return Vl = t, Vl;
+  return zl = t, zl;
 }
-var zl, Am;
-function Wv() {
+var $l, Am;
+function tv() {
   if (Am)
-    return zl;
+    return $l;
   Am = 1;
   const t = "[A-Za-z$_][0-9A-Za-z$_]*", e = [
     "as",
@@ -47423,26 +47021,26 @@ function Wv() {
     const E = d.regex, m = (pe, { after: Oe }) => {
       const De = "</" + pe[0].slice(1);
       return pe.input.indexOf(De, Oe) !== -1;
-    }, T = t, g = {
+    }, b = t, g = {
       begin: "<>",
       end: "</>"
     }, f = /<[A-Za-z0-9\\._:-]+\s*\/>/, C = {
       begin: /<[A-Za-z0-9\\._:-]+/,
       end: /\/[A-Za-z0-9\\._:-]+>|\/>/,
       isTrulyOpeningTag: (pe, Oe) => {
-        const De = pe[0].length + pe.index, Ue = pe.input[De];
-        if (Ue === "<" || Ue === ",") {
+        const De = pe[0].length + pe.index, Fe = pe.input[De];
+        if (Fe === "<" || Fe === ",") {
           Oe.ignoreMatch();
           return;
         }
-        Ue === ">" && (m(pe, { after: De }) || Oe.ignoreMatch());
-        let Fe;
-        const et = pe.input.substring(De);
-        if (Fe = et.match(/^\s*=/)) {
+        Fe === ">" && (m(pe, { after: De }) || Oe.ignoreMatch());
+        let Be;
+        const tt = pe.input.substring(De);
+        if (Be = tt.match(/^\s*=/)) {
           Oe.ignoreMatch();
           return;
         }
-        if ((Fe = et.match(/^\s+extends\s+/)) && Fe.index === 0) {
+        if ((Be = tt.match(/^\s+extends\s+/)) && Be.index === 0) {
           Oe.ignoreMatch();
           return;
         }
@@ -47527,7 +47125,7 @@ function Wv() {
               },
               {
                 className: "variable",
-                begin: T + "(?=\\s*(-)|$)",
+                begin: b + "(?=\\s*(-)|$)",
                 endsParent: !0,
                 relevance: 0
               },
@@ -47584,11 +47182,11 @@ function Wv() {
           match: [
             /class/,
             /\s+/,
-            T,
+            b,
             /\s+/,
             /extends/,
             /\s+/,
-            E.concat(T, "(", E.concat(/\./, T), ")*")
+            E.concat(b, "(", E.concat(/\./, b), ")*")
           ],
           scope: {
             1: "keyword",
@@ -47601,7 +47199,7 @@ function Wv() {
           match: [
             /class/,
             /\s+/,
-            T
+            b
           ],
           scope: {
             1: "keyword",
@@ -47635,7 +47233,7 @@ function Wv() {
           match: [
             /function/,
             /\s+/,
-            T,
+            b,
             /(?=\s*\()/
           ]
         },
@@ -47669,16 +47267,16 @@ function Wv() {
           "super",
           "import"
         ]),
-        T,
+        b,
         E.lookahead(/\(/)
       ),
       className: "title.function",
       relevance: 0
     }, Ge = {
       begin: E.concat(/\./, E.lookahead(
-        E.concat(T, /(?![0-9A-Za-z$_(])/)
+        E.concat(b, /(?![0-9A-Za-z$_(])/)
       )),
-      end: T,
+      end: b,
       excludeBegin: !0,
       keywords: "prototype",
       className: "property",
@@ -47687,7 +47285,7 @@ function Wv() {
       match: [
         /get|set/,
         /\s+/,
-        T,
+        b,
         /(?=\()/
       ],
       className: {
@@ -47704,7 +47302,7 @@ function Wv() {
       match: [
         /const|var|let/,
         /\s+/,
-        T,
+        b,
         /\s*/,
         /=\s*/,
         /(async\s*)?/,
@@ -47743,7 +47341,7 @@ function Wv() {
         H,
         {
           className: "attr",
-          begin: T + E.lookahead(":"),
+          begin: b + E.lookahead(":"),
           relevance: 0
         },
         Te,
@@ -47824,7 +47422,7 @@ function Wv() {
           label: "func.def",
           contains: [
             re,
-            d.inherit(d.TITLE_MODE, { begin: T, className: "title.function" })
+            d.inherit(d.TITLE_MODE, { begin: b, className: "title.function" })
           ]
         },
         {
@@ -47833,7 +47431,7 @@ function Wv() {
         },
         Ge,
         {
-          match: "\\$" + T,
+          match: "\\$" + b,
           relevance: 0
         },
         {
@@ -47852,7 +47450,7 @@ function Wv() {
     };
   }
   function u(d) {
-    const E = c(d), m = t, T = [
+    const E = c(d), m = t, b = [
       "any",
       "void",
       "number",
@@ -47874,7 +47472,7 @@ function Wv() {
       excludeEnd: !0,
       keywords: {
         keyword: "interface extends",
-        built_in: T
+        built_in: b
       },
       contains: [E.exports.CLASS_REFERENCE]
     }, C = {
@@ -47898,7 +47496,7 @@ function Wv() {
       $pattern: t,
       keyword: e.concat(A),
       literal: n,
-      built_in: o.concat(T),
+      built_in: o.concat(b),
       "variable.language": s
     }, k = {
       className: "meta",
@@ -47923,12 +47521,12 @@ function Wv() {
       ]
     }), E;
   }
-  return zl = u, zl;
+  return $l = u, $l;
 }
-var $l, ym;
-function Kv() {
+var Wl, ym;
+function nv() {
   if (ym)
-    return $l;
+    return Wl;
   ym = 1;
   function t(e) {
     return {
@@ -47966,12 +47564,12 @@ function Kv() {
       ]
     };
   }
-  return $l = t, $l;
+  return Wl = t, Wl;
 }
-var Wl, Dm;
-function Qv() {
+var Kl, Dm;
+function rv() {
   if (Dm)
-    return Wl;
+    return Kl;
   Dm = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -48038,7 +47636,7 @@ function Qv() {
         begin: /<\/?/,
         end: />/
       }
-    ] }), T = e.COMMENT(null, /$/, { variants: [
+    ] }), b = e.COMMENT(null, /$/, { variants: [
       { begin: /'/ },
       {
         begin: /([\t ]|^)REM(?=\s)/
@@ -48063,23 +47661,23 @@ function Qv() {
         d,
         E,
         m,
-        T,
+        b,
         {
           className: "meta",
           begin: /[\t ]*#(const|disable|else|elseif|enable|end|externalsource|if|region)\b/,
           end: /$/,
           keywords: { keyword: "const disable else elseif enable end externalsource if region then" },
-          contains: [T]
+          contains: [b]
         }
       ]
     };
   }
-  return Wl = t, Wl;
+  return Kl = t, Kl;
 }
-var Kl, Mm;
-function Xv() {
+var Ql, Mm;
+function av() {
   if (Mm)
-    return Kl;
+    return Ql;
   Mm = 1;
   function t(e) {
     const n = e.regex, r = [
@@ -48278,12 +47876,12 @@ function Xv() {
       ]
     };
   }
-  return Kl = t, Kl;
+  return Ql = t, Ql;
 }
-var Ql, Lm;
-function Zv() {
+var Xl, Lm;
+function iv() {
   if (Lm)
-    return Ql;
+    return Xl;
   Lm = 1;
   function t(e) {
     return {
@@ -48298,12 +47896,12 @@ function Zv() {
       ]
     };
   }
-  return Ql = t, Ql;
+  return Xl = t, Xl;
 }
-var Xl, wm;
-function Jv() {
+var Zl, wm;
+function ov() {
   if (wm)
-    return Xl;
+    return Zl;
   wm = 1;
   function t(e) {
     const n = e.regex, r = {
@@ -48839,12 +48437,12 @@ function Jv() {
       ]
     };
   }
-  return Xl = t, Xl;
+  return Zl = t, Zl;
 }
-var Zl, xm;
-function jv() {
+var Jl, xm;
+function sv() {
   if (xm)
-    return Zl;
+    return Jl;
   xm = 1;
   function t(e) {
     const n = "\\d(_|\\d)*", r = "[eE][-+]?" + n, a = n + "(\\." + n + ")?(" + r + ")?", i = "\\w+", s = n + "#" + i + "(\\." + i + ")?#(" + r + ")?", o = "\\b(" + s + "|" + a + ")";
@@ -49034,12 +48632,12 @@ function jv() {
       ]
     };
   }
-  return Zl = t, Zl;
+  return Jl = t, Jl;
 }
-var Jl, Pm;
-function eO() {
+var jl, Pm;
+function lv() {
   if (Pm)
-    return Jl;
+    return jl;
   Pm = 1;
   function t(e) {
     return {
@@ -49094,12 +48692,12 @@ function eO() {
       ]
     };
   }
-  return Jl = t, Jl;
+  return jl = t, jl;
 }
-var jl, km;
-function tO() {
+var ec, km;
+function cv() {
   if (km)
-    return jl;
+    return ec;
   km = 1;
   function t(e) {
     e.regex;
@@ -49209,12 +48807,12 @@ function tO() {
       ]
     };
   }
-  return jl = t, jl;
+  return ec = t, ec;
 }
-var ec, Um;
-function nO() {
+var tc, Um;
+function _v() {
   if (Um)
-    return ec;
+    return tc;
   Um = 1;
   function t(e) {
     const n = e.regex, r = /[a-zA-Z]\w*/, a = [
@@ -49328,7 +48926,7 @@ function nO() {
       relevance: 0,
       match: n.either(...c),
       className: "operator"
-    }, T = {
+    }, b = {
       className: "string",
       begin: /"""/,
       end: /"""/
@@ -49448,7 +49046,7 @@ function nO() {
         },
         A,
         q,
-        T,
+        b,
         k,
         e.C_LINE_COMMENT_MODE,
         e.C_BLOCK_COMMENT_MODE,
@@ -49464,12 +49062,12 @@ function nO() {
       ]
     };
   }
-  return ec = t, ec;
+  return tc = t, tc;
 }
-var tc, Fm;
-function rO() {
+var nc, Fm;
+function dv() {
   if (Fm)
-    return tc;
+    return nc;
   Fm = 1;
   function t(e) {
     return {
@@ -49542,12 +49140,12 @@ function rO() {
       ]
     };
   }
-  return tc = t, tc;
+  return nc = t, nc;
 }
-var nc, Bm;
-function aO() {
+var rc, Bm;
+function uv() {
   if (Bm)
-    return nc;
+    return rc;
   Bm = 1;
   function t(e) {
     const n = [
@@ -49734,12 +49332,12 @@ function aO() {
       ]
     };
   }
-  return nc = t, nc;
+  return rc = t, rc;
 }
-var rc, Gm;
-function iO() {
+var ac, Gm;
+function pv() {
   if (Gm)
-    return rc;
+    return ac;
   Gm = 1;
   function t(e) {
     return {
@@ -50051,12 +49649,12 @@ function iO() {
       ]
     };
   }
-  return rc = t, rc;
+  return ac = t, ac;
 }
-var ac, Ym;
-function oO() {
+var ic, Ym;
+function mv() {
   if (Ym)
-    return ac;
+    return ic;
   Ym = 1;
   function t(e) {
     const n = {
@@ -50147,214 +49745,214 @@ function oO() {
       ]
     };
   }
-  return ac = t, ac;
+  return ic = t, ic;
 }
-var v = DC;
-v.registerLanguage("1c", MC());
-v.registerLanguage("abnf", LC());
-v.registerLanguage("accesslog", wC());
-v.registerLanguage("actionscript", xC());
-v.registerLanguage("ada", PC());
-v.registerLanguage("angelscript", kC());
-v.registerLanguage("apache", UC());
-v.registerLanguage("applescript", FC());
-v.registerLanguage("arcade", BC());
-v.registerLanguage("arduino", GC());
-v.registerLanguage("armasm", YC());
-v.registerLanguage("xml", qC());
-v.registerLanguage("asciidoc", HC());
-v.registerLanguage("aspectj", VC());
-v.registerLanguage("autohotkey", zC());
-v.registerLanguage("autoit", $C());
-v.registerLanguage("avrasm", WC());
-v.registerLanguage("awk", KC());
-v.registerLanguage("axapta", QC());
-v.registerLanguage("bash", XC());
-v.registerLanguage("basic", ZC());
-v.registerLanguage("bnf", JC());
-v.registerLanguage("brainfuck", jC());
-v.registerLanguage("c", eN());
-v.registerLanguage("cal", tN());
-v.registerLanguage("capnproto", nN());
-v.registerLanguage("ceylon", rN());
-v.registerLanguage("clean", aN());
-v.registerLanguage("clojure", iN());
-v.registerLanguage("clojure-repl", oN());
-v.registerLanguage("cmake", sN());
-v.registerLanguage("coffeescript", lN());
-v.registerLanguage("coq", cN());
-v.registerLanguage("cos", _N());
-v.registerLanguage("cpp", dN());
-v.registerLanguage("crmsh", uN());
-v.registerLanguage("crystal", pN());
-v.registerLanguage("csharp", mN());
-v.registerLanguage("csp", EN());
-v.registerLanguage("css", gN());
-v.registerLanguage("d", SN());
-v.registerLanguage("markdown", fN());
-v.registerLanguage("dart", bN());
-v.registerLanguage("delphi", TN());
-v.registerLanguage("diff", RN());
-v.registerLanguage("django", CN());
-v.registerLanguage("dns", NN());
-v.registerLanguage("dockerfile", hN());
-v.registerLanguage("dos", vN());
-v.registerLanguage("dsconfig", ON());
-v.registerLanguage("dts", IN());
-v.registerLanguage("dust", AN());
-v.registerLanguage("ebnf", yN());
-v.registerLanguage("elixir", DN());
-v.registerLanguage("elm", MN());
-v.registerLanguage("ruby", LN());
-v.registerLanguage("erb", wN());
-v.registerLanguage("erlang-repl", xN());
-v.registerLanguage("erlang", PN());
-v.registerLanguage("excel", kN());
-v.registerLanguage("fix", UN());
-v.registerLanguage("flix", FN());
-v.registerLanguage("fortran", BN());
-v.registerLanguage("fsharp", GN());
-v.registerLanguage("gams", YN());
-v.registerLanguage("gauss", qN());
-v.registerLanguage("gcode", HN());
-v.registerLanguage("gherkin", VN());
-v.registerLanguage("glsl", zN());
-v.registerLanguage("gml", $N());
-v.registerLanguage("go", WN());
-v.registerLanguage("golo", KN());
-v.registerLanguage("gradle", QN());
-v.registerLanguage("graphql", XN());
-v.registerLanguage("groovy", ZN());
-v.registerLanguage("haml", JN());
-v.registerLanguage("handlebars", jN());
-v.registerLanguage("haskell", eh());
-v.registerLanguage("haxe", th());
-v.registerLanguage("hsp", nh());
-v.registerLanguage("http", rh());
-v.registerLanguage("hy", ah());
-v.registerLanguage("inform7", ih());
-v.registerLanguage("ini", oh());
-v.registerLanguage("irpf90", sh());
-v.registerLanguage("isbl", lh());
-v.registerLanguage("java", ch());
-v.registerLanguage("javascript", _h());
-v.registerLanguage("jboss-cli", dh());
-v.registerLanguage("json", uh());
-v.registerLanguage("julia", ph());
-v.registerLanguage("julia-repl", mh());
-v.registerLanguage("kotlin", Eh());
-v.registerLanguage("lasso", gh());
-v.registerLanguage("latex", Sh());
-v.registerLanguage("ldif", fh());
-v.registerLanguage("leaf", bh());
-v.registerLanguage("less", Th());
-v.registerLanguage("lisp", Rh());
-v.registerLanguage("livecodeserver", Ch());
-v.registerLanguage("livescript", Nh());
-v.registerLanguage("llvm", hh());
-v.registerLanguage("lsl", vh());
-v.registerLanguage("lua", Oh());
-v.registerLanguage("makefile", Ih());
-v.registerLanguage("mathematica", Ah());
-v.registerLanguage("matlab", yh());
-v.registerLanguage("maxima", Dh());
-v.registerLanguage("mel", Mh());
-v.registerLanguage("mercury", Lh());
-v.registerLanguage("mipsasm", wh());
-v.registerLanguage("mizar", xh());
-v.registerLanguage("perl", Ph());
-v.registerLanguage("mojolicious", kh());
-v.registerLanguage("monkey", Uh());
-v.registerLanguage("moonscript", Fh());
-v.registerLanguage("n1ql", Bh());
-v.registerLanguage("nestedtext", Gh());
-v.registerLanguage("nginx", Yh());
-v.registerLanguage("nim", qh());
-v.registerLanguage("nix", Hh());
-v.registerLanguage("node-repl", Vh());
-v.registerLanguage("nsis", zh());
-v.registerLanguage("objectivec", $h());
-v.registerLanguage("ocaml", Wh());
-v.registerLanguage("openscad", Kh());
-v.registerLanguage("oxygene", Qh());
-v.registerLanguage("parser3", Xh());
-v.registerLanguage("pf", Zh());
-v.registerLanguage("pgsql", Jh());
-v.registerLanguage("php", jh());
-v.registerLanguage("php-template", ev());
-v.registerLanguage("plaintext", tv());
-v.registerLanguage("pony", nv());
-v.registerLanguage("powershell", rv());
-v.registerLanguage("processing", av());
-v.registerLanguage("profile", iv());
-v.registerLanguage("prolog", ov());
-v.registerLanguage("properties", sv());
-v.registerLanguage("protobuf", lv());
-v.registerLanguage("puppet", cv());
-v.registerLanguage("purebasic", _v());
-v.registerLanguage("python", dv());
-v.registerLanguage("python-repl", uv());
-v.registerLanguage("q", pv());
-v.registerLanguage("qml", mv());
-v.registerLanguage("r", Ev());
-v.registerLanguage("reasonml", gv());
-v.registerLanguage("rib", Sv());
-v.registerLanguage("roboconf", fv());
-v.registerLanguage("routeros", bv());
-v.registerLanguage("rsl", Tv());
-v.registerLanguage("ruleslanguage", Rv());
-v.registerLanguage("rust", Cv());
-v.registerLanguage("sas", Nv());
-v.registerLanguage("scala", hv());
-v.registerLanguage("scheme", vv());
-v.registerLanguage("scilab", Ov());
-v.registerLanguage("scss", Iv());
-v.registerLanguage("shell", Av());
-v.registerLanguage("smali", yv());
-v.registerLanguage("smalltalk", Dv());
-v.registerLanguage("sml", Mv());
-v.registerLanguage("sqf", Lv());
-v.registerLanguage("sql", wv());
-v.registerLanguage("stan", xv());
-v.registerLanguage("stata", Pv());
-v.registerLanguage("step21", kv());
-v.registerLanguage("stylus", Uv());
-v.registerLanguage("subunit", Fv());
-v.registerLanguage("swift", Bv());
-v.registerLanguage("taggerscript", Gv());
-v.registerLanguage("yaml", Yv());
-v.registerLanguage("tap", qv());
-v.registerLanguage("tcl", Hv());
-v.registerLanguage("thrift", Vv());
-v.registerLanguage("tp", zv());
-v.registerLanguage("twig", $v());
-v.registerLanguage("typescript", Wv());
-v.registerLanguage("vala", Kv());
-v.registerLanguage("vbnet", Qv());
-v.registerLanguage("vbscript", Xv());
-v.registerLanguage("vbscript-html", Zv());
-v.registerLanguage("verilog", Jv());
-v.registerLanguage("vhdl", jv());
-v.registerLanguage("vim", eO());
-v.registerLanguage("wasm", tO());
-v.registerLanguage("wren", nO());
-v.registerLanguage("x86asm", rO());
-v.registerLanguage("xl", aO());
-v.registerLanguage("xquery", iO());
-v.registerLanguage("zephir", oO());
+var v = FR;
+v.registerLanguage("1c", BR());
+v.registerLanguage("abnf", GR());
+v.registerLanguage("accesslog", YR());
+v.registerLanguage("actionscript", qR());
+v.registerLanguage("ada", HR());
+v.registerLanguage("angelscript", VR());
+v.registerLanguage("apache", zR());
+v.registerLanguage("applescript", $R());
+v.registerLanguage("arcade", WR());
+v.registerLanguage("arduino", KR());
+v.registerLanguage("armasm", QR());
+v.registerLanguage("xml", XR());
+v.registerLanguage("asciidoc", ZR());
+v.registerLanguage("aspectj", JR());
+v.registerLanguage("autohotkey", jR());
+v.registerLanguage("autoit", eC());
+v.registerLanguage("avrasm", tC());
+v.registerLanguage("awk", nC());
+v.registerLanguage("axapta", rC());
+v.registerLanguage("bash", aC());
+v.registerLanguage("basic", iC());
+v.registerLanguage("bnf", oC());
+v.registerLanguage("brainfuck", sC());
+v.registerLanguage("c", lC());
+v.registerLanguage("cal", cC());
+v.registerLanguage("capnproto", _C());
+v.registerLanguage("ceylon", dC());
+v.registerLanguage("clean", uC());
+v.registerLanguage("clojure", pC());
+v.registerLanguage("clojure-repl", mC());
+v.registerLanguage("cmake", EC());
+v.registerLanguage("coffeescript", gC());
+v.registerLanguage("coq", SC());
+v.registerLanguage("cos", fC());
+v.registerLanguage("cpp", bC());
+v.registerLanguage("crmsh", TC());
+v.registerLanguage("crystal", RC());
+v.registerLanguage("csharp", CC());
+v.registerLanguage("csp", NC());
+v.registerLanguage("css", hC());
+v.registerLanguage("d", vC());
+v.registerLanguage("markdown", OC());
+v.registerLanguage("dart", IC());
+v.registerLanguage("delphi", AC());
+v.registerLanguage("diff", yC());
+v.registerLanguage("django", DC());
+v.registerLanguage("dns", MC());
+v.registerLanguage("dockerfile", LC());
+v.registerLanguage("dos", wC());
+v.registerLanguage("dsconfig", xC());
+v.registerLanguage("dts", PC());
+v.registerLanguage("dust", kC());
+v.registerLanguage("ebnf", UC());
+v.registerLanguage("elixir", FC());
+v.registerLanguage("elm", BC());
+v.registerLanguage("ruby", GC());
+v.registerLanguage("erb", YC());
+v.registerLanguage("erlang-repl", qC());
+v.registerLanguage("erlang", HC());
+v.registerLanguage("excel", VC());
+v.registerLanguage("fix", zC());
+v.registerLanguage("flix", $C());
+v.registerLanguage("fortran", WC());
+v.registerLanguage("fsharp", KC());
+v.registerLanguage("gams", QC());
+v.registerLanguage("gauss", XC());
+v.registerLanguage("gcode", ZC());
+v.registerLanguage("gherkin", JC());
+v.registerLanguage("glsl", jC());
+v.registerLanguage("gml", eN());
+v.registerLanguage("go", tN());
+v.registerLanguage("golo", nN());
+v.registerLanguage("gradle", rN());
+v.registerLanguage("graphql", aN());
+v.registerLanguage("groovy", iN());
+v.registerLanguage("haml", oN());
+v.registerLanguage("handlebars", sN());
+v.registerLanguage("haskell", lN());
+v.registerLanguage("haxe", cN());
+v.registerLanguage("hsp", _N());
+v.registerLanguage("http", dN());
+v.registerLanguage("hy", uN());
+v.registerLanguage("inform7", pN());
+v.registerLanguage("ini", mN());
+v.registerLanguage("irpf90", EN());
+v.registerLanguage("isbl", gN());
+v.registerLanguage("java", SN());
+v.registerLanguage("javascript", fN());
+v.registerLanguage("jboss-cli", bN());
+v.registerLanguage("json", TN());
+v.registerLanguage("julia", RN());
+v.registerLanguage("julia-repl", CN());
+v.registerLanguage("kotlin", NN());
+v.registerLanguage("lasso", hN());
+v.registerLanguage("latex", vN());
+v.registerLanguage("ldif", ON());
+v.registerLanguage("leaf", IN());
+v.registerLanguage("less", AN());
+v.registerLanguage("lisp", yN());
+v.registerLanguage("livecodeserver", DN());
+v.registerLanguage("livescript", MN());
+v.registerLanguage("llvm", LN());
+v.registerLanguage("lsl", wN());
+v.registerLanguage("lua", xN());
+v.registerLanguage("makefile", PN());
+v.registerLanguage("mathematica", kN());
+v.registerLanguage("matlab", UN());
+v.registerLanguage("maxima", FN());
+v.registerLanguage("mel", BN());
+v.registerLanguage("mercury", GN());
+v.registerLanguage("mipsasm", YN());
+v.registerLanguage("mizar", qN());
+v.registerLanguage("perl", HN());
+v.registerLanguage("mojolicious", VN());
+v.registerLanguage("monkey", zN());
+v.registerLanguage("moonscript", $N());
+v.registerLanguage("n1ql", WN());
+v.registerLanguage("nestedtext", KN());
+v.registerLanguage("nginx", QN());
+v.registerLanguage("nim", XN());
+v.registerLanguage("nix", ZN());
+v.registerLanguage("node-repl", JN());
+v.registerLanguage("nsis", jN());
+v.registerLanguage("objectivec", eh());
+v.registerLanguage("ocaml", th());
+v.registerLanguage("openscad", nh());
+v.registerLanguage("oxygene", rh());
+v.registerLanguage("parser3", ah());
+v.registerLanguage("pf", ih());
+v.registerLanguage("pgsql", oh());
+v.registerLanguage("php", sh());
+v.registerLanguage("php-template", lh());
+v.registerLanguage("plaintext", ch());
+v.registerLanguage("pony", _h());
+v.registerLanguage("powershell", dh());
+v.registerLanguage("processing", uh());
+v.registerLanguage("profile", ph());
+v.registerLanguage("prolog", mh());
+v.registerLanguage("properties", Eh());
+v.registerLanguage("protobuf", gh());
+v.registerLanguage("puppet", Sh());
+v.registerLanguage("purebasic", fh());
+v.registerLanguage("python", bh());
+v.registerLanguage("python-repl", Th());
+v.registerLanguage("q", Rh());
+v.registerLanguage("qml", Ch());
+v.registerLanguage("r", Nh());
+v.registerLanguage("reasonml", hh());
+v.registerLanguage("rib", vh());
+v.registerLanguage("roboconf", Oh());
+v.registerLanguage("routeros", Ih());
+v.registerLanguage("rsl", Ah());
+v.registerLanguage("ruleslanguage", yh());
+v.registerLanguage("rust", Dh());
+v.registerLanguage("sas", Mh());
+v.registerLanguage("scala", Lh());
+v.registerLanguage("scheme", wh());
+v.registerLanguage("scilab", xh());
+v.registerLanguage("scss", Ph());
+v.registerLanguage("shell", kh());
+v.registerLanguage("smali", Uh());
+v.registerLanguage("smalltalk", Fh());
+v.registerLanguage("sml", Bh());
+v.registerLanguage("sqf", Gh());
+v.registerLanguage("sql", Yh());
+v.registerLanguage("stan", qh());
+v.registerLanguage("stata", Hh());
+v.registerLanguage("step21", Vh());
+v.registerLanguage("stylus", zh());
+v.registerLanguage("subunit", $h());
+v.registerLanguage("swift", Wh());
+v.registerLanguage("taggerscript", Kh());
+v.registerLanguage("yaml", Qh());
+v.registerLanguage("tap", Xh());
+v.registerLanguage("tcl", Zh());
+v.registerLanguage("thrift", Jh());
+v.registerLanguage("tp", jh());
+v.registerLanguage("twig", ev());
+v.registerLanguage("typescript", tv());
+v.registerLanguage("vala", nv());
+v.registerLanguage("vbnet", rv());
+v.registerLanguage("vbscript", av());
+v.registerLanguage("vbscript-html", iv());
+v.registerLanguage("verilog", ov());
+v.registerLanguage("vhdl", sv());
+v.registerLanguage("vim", lv());
+v.registerLanguage("wasm", cv());
+v.registerLanguage("wren", _v());
+v.registerLanguage("x86asm", dv());
+v.registerLanguage("xl", uv());
+v.registerLanguage("xquery", pv());
+v.registerLanguage("zephir", mv());
 v.HighlightJS = v;
 v.default = v;
-var sO = v;
-const lO = sO, qm = /^\/(@fs|@id|node_modules)\//, cO = navigator.userAgent.toLowerCase().includes("chrome") ? /^ +at.* \(?(.*):([0-9]+):([0-9]+)/ : /@(.*):([0-9]+):([0-9]+)/;
-async function _O(t) {
+var Ev = v;
+const gv = Ev, qm = /^\/(@fs|@id|node_modules)\//, Sv = navigator.userAgent.toLowerCase().includes("chrome") ? /^ +at.* \(?(.*):([0-9]+):([0-9]+)/ : /@(.*):([0-9]+):([0-9]+)/;
+async function fv(t) {
   const e = await fetch(`${t}.map`);
-  return new PR(await e.json());
+  return new HT(await e.json());
 }
-async function zE(t, e) {
+async function WE(t, e) {
   const n = [];
   for (const r of t.split(`
 `)) {
-    const a = r.match(cO);
+    const a = r.match(Sv);
     if (!a)
       continue;
     const [, i, s, o] = a, c = new URL(i).pathname, u = {
@@ -50366,7 +49964,7 @@ async function zE(t, e) {
     };
     if (!qm.test(c))
       try {
-        const d = await _O(c), E = d.originalPositionFor(u);
+        const d = await fv(c), E = d.originalPositionFor(u);
         if (E.line === null || E.column === null)
           u.isExternal = !0;
         else if (u.line = E.line, u.column = E.column, u.source = E.source, u.sourceMap = d, e)
@@ -50380,9 +49978,9 @@ async function zE(t, e) {
 }
 async function kc(t) {
   const e = t.source.startsWith("/") ? t.source.slice(1) : t.source;
-  await kR(() => fetch(`/__open-in-editor?file=${encodeURIComponent(e)}:${t.line}:${t.column}`));
+  await VT(() => fetch(`/__open-in-editor?file=${encodeURIComponent(e)}:${t.line}:${t.column}`));
 }
-function dO(t) {
+function bv(t) {
   if (!t.source || !t.sourceMap)
     return null;
   const e = t.sourceMap.sourceContentFor(t.source, !0);
@@ -50392,37 +49990,456 @@ function dO(t) {
     line: n,
     column: r
   } = t, a = n + 2, i = a.toString().length, s = e.split(`
-`).slice(n - 1, a), c = lO.highlight("typescript", s.join(`
+`).slice(n - 1, a), c = gv.highlight("typescript", s.join(`
 `)).value.split(`
 `).map((u, d) => `${n + d} | ${u}`);
   return c.splice(1, 0, `${" ".repeat(i)} | ${" ".repeat(r)}^`), c.join(`
 `);
 }
-async function uO(t) {
-  const e = await zE(t, !0);
+async function Uc(t) {
+  const e = await WE(t, !0);
   e && await kc(e);
 }
-function pO({
+function Tv() {
+  const {
+    inspectedElement: t
+  } = rr(), e = Zr(), n = Rc(), r = Pe(() => mc(e) ? e : null, [e]), [a, i] = Pe(() => {
+    const s = r == null ? void 0 : r.inspectAttributes(t);
+    if (s) {
+      const {
+        stack: o,
+        ...c
+      } = s;
+      return [o, c];
+    }
+    return [void 0, void 0];
+  }, [t, r, n]);
+  return S(Xr, {
+    title: "Properties",
+    id: "properties-pane",
+    children: [a && S(yt, {
+      children: [S(Dt, {}), S(vE, {
+        onClick: () => Uc(a),
+        main: !0,
+        children: "GO TO SOURCE"
+      })]
+    }), i ? Object.entries(i).map(([s, o]) => S(LT, {
+      label: s,
+      value: o
+    })) : r ? "Click on a node to view its properties." : "The current scene doesn't support inspecting."]
+  });
+}
+const Rv = "_root_1ixub_1", Cv = "_times_1ixub_5", Nv = "_thread_1ixub_12", hv = "_threadTitle_1ixub_16", vv = "_threadList_1ixub_23", kr = {
+  root: Rv,
+  times: Cv,
+  thread: Nv,
+  threadTitle: hv,
+  threadList: vv
+};
+function Ov(t) {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    ...t,
+    children: S("path", {
+      d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    })
+  });
+}
+function Iv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-4 4v3c0 .22-.03.47-.07.7l-.1.65-.37.65c-.72 1.24-2.04 2-3.46 2s-2.74-.77-3.46-2l-.37-.64-.1-.65C8.03 15.48 8 15.23 8 15v-4c0-.23.03-.48.07-.7l.1-.65.37-.65c.3-.52.72-.97 1.21-1.31l.57-.39.74-.18c.31-.08.63-.12.94-.12.32 0 .63.04.95.12l.68.16.61.42c.5.34.91.78 1.21 1.31l.38.65.1.65c.04.22.07.47.07.69v1zm-6 2h4v2h-4zm0-4h4v2h-4z"
+    })
+  });
+}
+function Av() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"
+    })
+  });
+}
+function Hm(t) {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    ...t,
+    children: S("path", {
+      d: "M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+    })
+  });
+}
+function yv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+    })
+  });
+}
+function Dv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: [S("path", {
+      d: "M23.6,17c-0.1,0.7-0.7,1.1-1.3,1.1c-0.1,0-0.1,0-0.2,0l-4.8-0.8l0.8,4.8c0.1,0.7-0.4,1.4-1.1,1.5c-0.1,0-0.1,0-0.2,0 c-0.7,0-1.2-0.5-1.3-1.1l-0.7-4.8l-4.3,2.2c-0.7,0.3-1.5,0.1-1.8-0.6c-0.1-0.2-0.1-0.4-0.1-0.6c0-0.5,0.3-0.9,0.7-1.2l4.3-2.2 L10.1,12c-0.5-0.5-0.5-1.4,0-1.9c0.3-0.3,0.6-0.4,0.9-0.4s0.7,0.1,0.9,0.4l3.4,3.4l2.2-4.3c0.3-0.7,1.1-0.9,1.8-0.6 c0.5,0.2,0.7,0.7,0.7,1.2c0,0.2-0.1,0.4-0.1,0.6l-2.2,4.3l4.8,0.7C23.3,15.6,23.7,16.3,23.6,17z"
+    }), S("path", {
+      d: "M15.5,8.9L15.5,8.9c-0.5,0.5-1.4,0.5-1.9,0l-2.8-2.8c-0.5-0.5-0.5-1.4,0-1.9l0,0c0.5-0.5,1.4-0.5,1.9,0L15.5,7 C16,7.5,16,8.4,15.5,8.9z"
+    }), S("path", {
+      d: "M9.4,2.8L9.4,2.8C8.8,3.3,8,3.3,7.5,2.8l0,0C7,2.2,7,1.4,7.5,0.9l0,0c0.5-0.5,1.4-0.5,1.9,0l0,0C9.9,1.4,9.9,2.2,9.4,2.8z"
+    }), S("path", {
+      d: "M8.4,8.4L8.4,8.4c-0.5,0.5-1.4,0.5-1.9,0L2.3,4.2c-0.5-0.5-0.5-1.4,0-1.9l0,0c0.5-0.5,1.4-0.5,1.9,0l4.2,4.2 C8.9,7.1,8.9,7.9,8.4,8.4z"
+    }), S("path", {
+      d: "M8.9,15.5L8.9,15.5C8.4,16,7.5,16,7,15.5L1.3,9.8c-0.5-0.5-0.5-1.4,0-1.9l0,0c0.5-0.5,1.4-0.5,1.9,0l5.7,5.7 C9.4,14.1,9.4,15,8.9,15.5z"
+    })]
+  });
+}
+function Mv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+    })
+  });
+}
+function Lv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+    })
+  });
+}
+function wv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: [S("circle", {
+      cx: "12",
+      cy: "12",
+      r: "3.2"
+    }), S("path", {
+      d: "M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+    })]
+  });
+}
+function xv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M8 5v14l11-7z"
+    })
+  });
+}
+function Pv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"
+    })
+  });
+}
+function kv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: [S("path", {
+      d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+    }), S("path", {
+      d: "M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+    })]
+  });
+}
+function Uv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+    })
+  });
+}
+function Fv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M6 6h2v12H6zm3.5 6l8.5 6V6z"
+    })
+  });
+}
+function Bv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+    })
+  });
+}
+function Gv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("g", {
+      children: S("g", {
+        children: [S("path", {
+          d: "M3,6h18v5h2V6c0-1.1-0.9-2-2-2H3C1.9,4,1,4.9,1,6v12c0,1.1,0.9,2,2,2h9v-2H3V6z"
+        }), S("polygon", {
+          points: "15,12 9,8 9,16"
+        }), S("path", {
+          d: "M22.71,18.43c0.03-0.29,0.04-0.58,0.01-0.86l1.07-0.85c0.1-0.08,0.12-0.21,0.06-0.32l-1.03-1.79 c-0.06-0.11-0.19-0.15-0.31-0.11L21.23,15c-0.23-0.17-0.48-0.31-0.75-0.42l-0.2-1.36C20.26,13.09,20.16,13,20.03,13h-2.07 c-0.12,0-0.23,0.09-0.25,0.21l-0.2,1.36c-0.26,0.11-0.51,0.26-0.74,0.42l-1.28-0.5c-0.12-0.05-0.25,0-0.31,0.11l-1.03,1.79 c-0.06,0.11-0.04,0.24,0.06,0.32l1.07,0.86c-0.03,0.29-0.04,0.58-0.01,0.86l-1.07,0.85c-0.1,0.08-0.12,0.21-0.06,0.32l1.03,1.79 c0.06,0.11,0.19,0.15,0.31,0.11l1.27-0.5c0.23,0.17,0.48,0.31,0.75,0.42l0.2,1.36c0.02,0.12,0.12,0.21,0.25,0.21h2.07 c0.12,0,0.23-0.09,0.25-0.21l0.2-1.36c0.26-0.11,0.51-0.26,0.74-0.42l1.28,0.5c0.12,0.05,0.25,0,0.31-0.11l1.03-1.79 c0.06-0.11,0.04-0.24-0.06-0.32L22.71,18.43z M19,19.5c-0.83,0-1.5-0.67-1.5-1.5s0.67-1.5,1.5-1.5s1.5,0.67,1.5,1.5 S19.83,19.5,19,19.5z"
+        })]
+      })
+    })
+  });
+}
+function Yv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+    })
+  });
+}
+function qv() {
+  return S("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    children: S("path", {
+      d: "M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+    })
+  });
+}
+function Hv() {
+  const t = st(), e = Ft(), {
+    width: n,
+    height: r
+  } = t.project.getSize(), a = [{
+    value: 0.5,
+    text: "0.5x (Half)"
+  }, {
+    value: 1,
+    text: "1.0x (Full)"
+  }, {
+    value: 2,
+    text: "2.0x (Double)"
+  }], i = [{
+    value: "srgb",
+    text: "sRGB"
+  }, {
+    value: "display-p3",
+    text: "DCI-P3"
+  }], s = [{
+    value: "image/png",
+    text: "png"
+  }, {
+    value: "image/jpeg",
+    text: "jpeg"
+  }, {
+    value: "image/webp",
+    text: "webp"
+  }], o = [{
+    value: "30",
+    text: "30 FPS"
+  }, {
+    value: "60",
+    text: "60 FPS"
+  }];
+  return S(Xr, {
+    title: "Rendering",
+    id: "rendering-pane",
+    children: [S(yt, {
+      children: [S(Dt, {
+        children: "range"
+      }), S(cn, {
+        min: 0,
+        max: e.endFrame,
+        type: "number",
+        value: e.startFrame,
+        onChange: (c) => {
+          t.setRange(parseInt(c.target.value));
+        }
+      }), S(cn, {
+        min: e.startFrame,
+        max: e.duration,
+        type: "number",
+        value: Math.min(e.duration, e.endFrame),
+        onChange: (c) => {
+          const u = parseInt(c.target.value);
+          t.setRange(void 0, u);
+        }
+      })]
+    }), S(yt, {
+      children: [S(Dt, {
+        children: "frame rate"
+      }), S(NT, {
+        type: "number",
+        min: 1,
+        value: e.fps.toString(),
+        onChange: (c) => {
+          t.setFramerate(parseInt(c));
+        },
+        options: o
+      })]
+    }), S(yt, {
+      children: [S(Dt, {
+        children: "resolution"
+      }), S(cn, {
+        type: "number",
+        min: 1,
+        value: n,
+        onChange: (c) => {
+          const u = parseInt(c.target.value), {
+            height: d
+          } = t.project.getSize();
+          t.project.setSize([u, d]);
+        }
+      }), S(Ov, {
+        className: kr.times
+      }), S(cn, {
+        type: "number",
+        min: 1,
+        value: r,
+        onChange: (c) => {
+          const u = parseInt(c.target.value), {
+            width: d
+          } = t.project.getSize();
+          t.project.setSize([d, u]);
+        }
+      })]
+    }), S(yt, {
+      children: [S(Dt, {
+        children: "scale"
+      }), S(Qn, {
+        options: a,
+        value: e.scale,
+        onChange: (c) => t.setScale(c)
+      })]
+    }), S(yt, {
+      children: [S(Dt, {
+        children: "color space"
+      }), S(Qn, {
+        options: i,
+        value: e.colorSpace,
+        onChange: (c) => t.setColorSpace(c)
+      })]
+    }), S(yt, {
+      children: [S(Dt, {
+        children: "file type"
+      }), S(Qn, {
+        options: s,
+        value: e.fileType,
+        onChange: (c) => t.setFileType(c)
+      })]
+    }), e.fileType !== "image/png" && S(yt, {
+      children: [S(Dt, {
+        children: "quality (%)"
+      }), S(cn, {
+        type: "number",
+        min: 0,
+        max: 100,
+        value: e.quality * 100,
+        onChange: (c) => {
+          const u = parseFloat(c.target.value);
+          t.setQuality(u / 100);
+        }
+      })]
+    }), S(yt, {
+      children: [S(Dt, {}), S(vE, {
+        main: !0,
+        id: "render",
+        "data-rendering": e.render,
+        onClick: () => t.toggleRendering(),
+        children: e.render ? "STOP RENDERING" : "RENDER"
+      })]
+    })]
+  });
+}
+function Vv() {
+  Rc();
+  const t = Zr(), e = Lt(sb(t) ? t.onThreadChanged : null);
+  return S(Xr, {
+    title: "Threads",
+    id: "threads-pane",
+    children: e ? S(KE, {
+      thread: e
+    }) : "The current scene doesn't support threading"
+  });
+}
+function KE({
+  thread: t
+}) {
+  return S("div", {
+    className: kr.thread,
+    children: [S("div", {
+      className: kr.threadTitle,
+      children: Zm(t.runner)
+    }), t.children.length > 0 && S("ul", {
+      className: kr.threadList,
+      children: t.children.map((e) => S(KE, {
+        thread: e
+      }))
+    })]
+  });
+}
+const zv = "_list_97yos_1", $v = "_error_97yos_10", Wv = "_log_97yos_10", Kv = "_warn_97yos_14", Qv = "_info_97yos_18", Xv = "_http_97yos_22", Zv = "_verbose_97yos_26", Jv = "_debug_97yos_30", jv = "_silly_97yos_34", eO = "_anchor_97yos_38", tO = "_header_97yos_74", nO = "_empty_97yos_80", rO = "_message_97yos_84", aO = "_duration_97yos_88", iO = "_stack_97yos_95", oO = "_section_97yos_101", sO = "_sourceCode_97yos_130", lO = "_viewSource_97yos_134", cO = "_entry_97yos_148", _O = "_external_97yos_153", dO = "_link_97yos_157", uO = "_navbar_97yos_166", pO = "_pills_97yos_177", Ue = {
+  list: zv,
+  error: $v,
+  log: Wv,
+  warn: Kv,
+  info: Qv,
+  http: Xv,
+  verbose: Zv,
+  debug: Jv,
+  silly: jv,
+  anchor: eO,
+  header: tO,
+  empty: nO,
+  message: rO,
+  duration: aO,
+  stack: iO,
+  section: oO,
+  sourceCode: sO,
+  viewSource: lO,
+  entry: cO,
+  external: _O,
+  link: dO,
+  navbar: uO,
+  pills: pO
+};
+function mO({
   entries: t
 }) {
   return S("div", {
-    className: Be.stack,
+    className: Ue.stack,
     children: t.map((e) => S("div", {
-      className: Qe(Be.entry, e.isExternal && Be.external),
+      className: Qe(Ue.entry, e.isExternal && Ue.external),
       children: ["at (", e.isExternal ? `${e.file}:${e.line}:${e.column}` : S("button", {
-        className: Be.link,
+        className: Ue.link,
         onClick: () => kc(e),
         children: [e.file, ":", e.line, ":", e.column]
       }), ")"]
     }))
   });
 }
-function mO({
+function EO({
   entry: t
 }) {
-  const e = Pe(() => t ? dO(t) : null, [t]);
+  const e = Pe(() => t ? bv(t) : null, [t]);
   return S("div", {
-    className: Be.sourceCode,
+    className: Ue.sourceCode,
     children: [S("pre", {
       children: S("code", {
         className: "language-ts",
@@ -50430,17 +50447,17 @@ function mO({
           __html: e != null ? e : "Could not load the source code."
         }
       })
-    }), S(cn, {
+    }), S(_n, {
       title: "Go to source",
-      className: Be.viewSource,
+      className: Ue.viewSource,
       onClick: async () => {
         t && await kc(t);
       },
-      children: S(HT, {})
+      children: S(Mv, {})
     })]
   });
 }
-function EO({
+function gO({
   payload: t
 }) {
   const [e, n] = Ke(t.level === Kt.Error), [r, a] = Ke(null), {
@@ -50450,90 +50467,95 @@ function EO({
     return (d = r == null ? void 0 : r.find((E) => !E.isExternal)) != null ? d : null;
   }, [r]), u = !!o || !!r || !!t.remarks;
   return Nt(() => {
-    t.stack && zE(t.stack).then(a);
+    t.stack && WE(t.stack).then(a);
   }, [t]), S("div", {
-    className: Qe(Be.log, Be[t.level], !u && Be.empty),
+    className: Qe(Ue.log, Ue[t.level], !u && Ue.empty),
     children: [S("div", {
-      className: Be.header,
-      children: [u && S(NE, {
+      className: Ue.header,
+      children: [u && S(OE, {
         open: e,
         onToggle: n
       }), S("div", {
-        className: Be.message,
+        className: Ue.message,
         children: t.message
       }), s !== null && S("div", {
-        className: Be.duration,
+        className: Ue.duration,
         children: [s, " ms"]
-      }), t.inspect && S(cn, {
+      }), t.inspect && S(_n, {
         title: "Select related node",
         onClick: () => i(t.inspect),
-        children: S(YT, {})
+        children: S(yv, {})
       })]
     }), u && e && S("div", {
       children: [t.remarks && S("div", {
-        className: Qe(Be.section, Be.remarks),
+        className: Qe(Ue.section, Ue.remarks),
         dangerouslySetInnerHTML: {
           __html: t.remarks
         }
       }), o && S("div", {
-        className: Be.section,
+        className: Ue.section,
         children: ["Related object:", S("pre", {
-          className: Be.code,
+          className: Ue.code,
           children: o
         })]
       }), r && S("div", {
-        className: Be.section,
-        children: ["The problem occurred here:", c && S(mO, {
+        className: Ue.section,
+        children: ["The problem occurred here:", c && S(EO, {
           entry: c
-        }), S(pO, {
+        }), S(mO, {
           entries: r
         })]
       })]
     })]
   });
 }
-const Hm = {
+const Vm = {
   [Kt.Error]: !0,
   [Kt.Warn]: !0,
   [Kt.Info]: !1,
   [Kt.Debug]: !1
 };
-function gO() {
-  const [t, e] = zb(), [n, r] = Ke(Hm);
-  return S(Xr, {
+function SO() {
+  const t = je(), [e, n] = Wb(), [r, a] = Jr("log-filters", Vm);
+  return Jt(() => {
+    t.current.scrollIntoView();
+  }, []), S(Xr, {
     title: "Console",
     id: "console",
     children: [S("div", {
-      className: Be.navbar,
+      className: Ue.navbar,
       children: [S("div", {
-        className: Be.pills,
-        children: Object.keys(Hm).map((a) => {
-          const i = !n[a] && t.filter((s) => s.level === a).length;
-          return S(hT, {
-            titleOn: `Exclude ${a} logs`,
-            titleOff: `Include ${a} logs`,
-            checked: n[a],
-            onChange: (s) => r({
-              ...n,
-              [a]: s
+        className: Ue.pills,
+        children: Object.keys(Vm).map((i) => {
+          const s = !r[i] && e.filter((o) => o.level === i).length;
+          return S(vT, {
+            titleOn: `Exclude ${i} logs`,
+            titleOff: `Include ${i} logs`,
+            checked: r[i],
+            onChange: (o) => a({
+              ...r,
+              [i]: o
             }),
-            children: [jf(a), " ", i > 0 && `(${i > 99 ? "99+" : i})`]
-          }, a);
+            children: [nb(i), " ", s > 0 && `(${s > 99 ? "99+" : s})`]
+          }, i);
         })
-      }), t.length > 0 && S(cn, {
-        onClick: e,
+      }), e.length > 0 && S(_n, {
+        onClick: n,
         title: "Clear console",
-        children: S(GT, {})
+        children: S(Av, {})
       })]
     }), S("div", {
-      className: Qe(Be.list, ...Object.entries(n).filter(([, a]) => a).map(([a]) => Be[a])),
-      children: t.map((a) => S(EO, {
-        payload: a
-      }))
+      className: Qe(Ue.list, ...Object.entries(r).filter(([, i]) => i).map(([i]) => Ue[i])),
+      children: [e.map((i) => S(gO, {
+        payload: i
+      })), S("div", {
+        ref: t,
+        className: Ue.anchor
+      })]
     })]
   });
 }
-function SO(t = 2) {
+function fO(t = 2) {
   return [{
     translate: "0px"
   }, {
@@ -50552,7 +50574,7 @@ function SO(t = 2) {
     translate: "0px"
   }];
 }
-function fO(t = 4) {
+function bO(t = 4) {
   return [{
     boxShadow: "0 0 0px 0 #ccc inset",
     easing: "cubic-bezier(0.33, 1, 0.68, 1)"
@@ -50563,23 +50585,23 @@ function fO(t = 4) {
     boxShadow: "0 0 0px 0 #ccc inset"
   }];
 }
-function bO({
+function TO({
   setOpen: t
 }) {
-  const [e, n] = Rc("sidebar", -1), {
+  const [e, n] = Jr("sidebar", -1), {
     inspectedElement: r
-  } = rr(), a = SE(), i = nt(), [s, o] = Ke(a.onErrorLogged.current);
+  } = rr(), a = bE(), i = je(), [s, o] = Ke(a.onErrorLogged.current);
   return Nt(() => a.onErrorLogged.subscribe((c) => {
     o(c), setTimeout(() => {
       var u;
-      (u = i.current) == null || u.animate(SO(2), {
+      (u = i.current) == null || u.animate(fO(2), {
         duration: 300
       });
     }, 0);
   }), [a]), Nt(() => {
     r && e !== -1 && n(2);
   }, [r]), S(Zt, {
-    children: S(Fb, {
+    children: S(Yb, {
       tab: e,
       onToggle: (c) => {
         n(c), t(c >= 0);
@@ -50588,7 +50610,7 @@ function bO({
         title: "Project Selection",
         id: "project-selection-link",
         type: $t.Link,
-        icon: S(qT, {}),
+        icon: S(Dv, {}),
         url: window.location.pathname === "/" ? void 0 : "../"
       }, {
         type: $t.Space
@@ -50596,27 +50618,27 @@ function bO({
         title: "Inspector",
         id: "inspector-tab",
         type: $t.Pane,
-        icon: S(ZT, {}),
-        pane: S(LT, {})
+        icon: S(Bv, {}),
+        pane: S(Tv, {})
       }, {
         title: "Video Settings",
         id: "rendering-tab",
         type: $t.Pane,
-        icon: S(JT, {}),
-        pane: S(tR, {})
+        icon: S(Gv, {}),
+        pane: S(Hv, {})
       }, {
         title: "Thread Debugger",
         id: "threads-tab",
         type: $t.Pane,
-        icon: S(KT, {}),
-        pane: S(nR, {})
+        icon: S(kv, {}),
+        pane: S(Vv, {})
       }, {
         title: s > 0 ? `Console (${s})` : "Console",
         id: "console-tab",
         type: $t.Pane,
-        icon: S(BT, {}),
-        pane: S(gO, {}),
-        badge: s > 0 && S(Bb, {
+        icon: S(Iv, {}),
+        pane: S(SO, {}),
+        badge: s > 0 && S(qb, {
           badgeRef: i,
           children: s > 999 ? "999+" : s
         })
@@ -50626,32 +50648,32 @@ function bO({
     })
   });
 }
-const TO = "_root_124x9_1", RO = "_sidebar_124x9_10", CO = "_timelineWrapper_124x9_16", NO = "_timeline_124x9_16", hO = "_timelineContent_124x9_31", vO = "_trackContainer_124x9_37", OO = "_timestamp_124x9_50", IO = "_odd_124x9_62", AO = "_sceneTrack_124x9_78", yO = "_sceneClip_124x9_84", DO = "_scene_124x9_78", MO = "_transition_124x9_94", LO = "_sceneName_124x9_102", wO = "_labelTrack_124x9_111", xO = "_labelClip_124x9_117", PO = "_labelClipStart_124x9_140", kO = "_labelClipTarget_124x9_153", UO = "_playhead_124x9_174", FO = "_playheadPreview_124x9_197", BO = "_range_124x9_210", GO = "_handle_124x9_222", YO = "_handleSpacer_124x9_234", qO = "_audioTrack_124x9_239", xe = {
-  root: TO,
-  sidebar: RO,
-  timelineWrapper: CO,
-  timeline: NO,
-  timelineContent: hO,
-  trackContainer: vO,
-  timestamp: OO,
-  odd: IO,
-  sceneTrack: AO,
-  sceneClip: yO,
-  scene: DO,
-  transition: MO,
-  sceneName: LO,
-  labelTrack: wO,
-  labelClip: xO,
-  labelClipStart: PO,
-  labelClipTarget: kO,
-  playhead: UO,
-  playheadPreview: FO,
-  range: BO,
-  handle: GO,
-  handleSpacer: YO,
-  audioTrack: qO
+const RO = "_root_1o50l_1", CO = "_sidebar_1o50l_10", NO = "_timelineWrapper_1o50l_16", hO = "_timeline_1o50l_16", vO = "_timelineContent_1o50l_31", OO = "_trackContainer_1o50l_37", IO = "_timestamp_1o50l_50", AO = "_odd_1o50l_62", yO = "_sceneTrack_1o50l_78", DO = "_sceneClip_1o50l_84", MO = "_scene_1o50l_78", LO = "_transition_1o50l_94", wO = "_sceneName_1o50l_102", xO = "_labelTrack_1o50l_115", PO = "_labelClip_1o50l_121", kO = "_labelClipStart_1o50l_144", UO = "_labelClipTarget_1o50l_157", FO = "_playhead_1o50l_178", BO = "_playheadPreview_1o50l_201", GO = "_range_1o50l_214", YO = "_handle_1o50l_226", qO = "_handleSpacer_1o50l_238", HO = "_audioTrack_1o50l_243", xe = {
+  root: RO,
+  sidebar: CO,
+  timelineWrapper: NO,
+  timeline: hO,
+  timelineContent: vO,
+  trackContainer: OO,
+  timestamp: IO,
+  odd: AO,
+  sceneTrack: yO,
+  sceneClip: DO,
+  scene: MO,
+  transition: LO,
+  sceneName: wO,
+  labelTrack: xO,
+  labelClip: PO,
+  labelClipStart: kO,
+  labelClipTarget: UO,
+  playhead: FO,
+  playheadPreview: BO,
+  range: GO,
+  handle: YO,
+  handleSpacer: qO,
+  audioTrack: HO
 };
-function HO() {
+function VO() {
   const {
     framesToPixels: t
   } = mn(), e = ar();
@@ -50663,7 +50685,7 @@ function HO() {
     }
   });
 }
-function VO() {
+function zO() {
   const {
     framesToPercents: t,
     firstVisibleFrame: e,
@@ -50687,25 +50709,25 @@ function VO() {
     children: a
   });
 }
-function zO({
+function $O({
   event: t,
   scene: e
 }) {
   const {
     framesToPercents: n,
     pixelsToFrames: r
-  } = mn(), a = dt(), i = bc(), [s, o] = Ke(t.offset), [c] = wn($e((u) => {
+  } = mn(), a = st(), i = Tc(), [s, o] = Ke(t.offset), [c] = wn($e((u) => {
     o(s + i.framesToSeconds(r(u)));
   }, [s, i, r]), $e((u) => {
     const d = Math.max(0, s);
     t.offset !== d && e.timeEvents.set(t.name, d, u.shiftKey);
   }, [t, s]));
-  return un(() => {
+  return Jt(() => {
     o(t.offset);
   }, [t.offset]), S(Zt, {
     children: [S("div", {
       onDblClick: async () => {
-        t.stack && await uO(t.stack);
+        t.stack && await Uc(t.stack);
       },
       onMouseDown: (u) => {
         u.button === 1 ? (u.preventDefault(), a.requestSeek(e.firstFrame + a.project.secondsToFrames(t.initialTime + t.offset))) : c(u);
@@ -50729,46 +50751,46 @@ function zO({
     })]
   });
 }
-function $O({
+function WO({
   scene: t
 }) {
   const {
     firstVisibleFrame: e,
     lastVisibleFrame: n
-  } = mn(), r = Dt(t.timeEvents.onChanged), a = Dt(t.onCacheChanged), i = a.lastFrame >= e && a.firstFrame <= n;
+  } = mn(), r = Lt(t.timeEvents.onChanged), a = Lt(t.onCacheChanged), i = a.lastFrame >= e && a.firstFrame <= n;
   return S(Zt, {
-    children: i && r.map((s) => S(zO, {
+    children: i && r.map((s) => S($O, {
       event: s,
       scene: t
     }, s.name))
   });
 }
-function WO() {
-  const t = TE();
+function KO() {
+  const t = CE();
   return S("div", {
     className: xe.labelTrack,
-    children: t.map((e) => S($O, {
+    children: t.map((e) => S(WO, {
       scene: e
     }, e.name))
   });
 }
-function KO() {
-  const t = TE();
+function QO() {
+  const t = CE();
   return S("div", {
     className: xe.sceneTrack,
-    children: t.map((e) => S(QO, {
+    children: t.map((e) => S(XO, {
       scene: e
     }))
   });
 }
-function QO({
+function XO({
   scene: t
 }) {
-  const e = dt(), {
+  const e = st(), {
     framesToPercents: n,
     framesToPixels: r,
     offset: a
-  } = mn(), i = Dt(t.onCacheChanged), s = Pe(() => {
+  } = mn(), i = Lt(t.onCacheChanged), s = Pe(() => {
     const o = r(i.firstFrame);
     return a > o ? {
       paddingLeft: `${a - o}px`
@@ -50793,19 +50815,23 @@ function QO({
           width: `${i.transitionDuration / i.duration * 100}%`
         },
         className: xe.transition
-      }), S("div", {
+      }), S("button", {
         className: xe.sceneName,
         style: s,
+        title: "Go to source",
+        onMouseUp: async (o) => {
+          o.stopPropagation(), t.creationStack && await Uc(t.creationStack);
+        },
         children: t.name
       })]
     })
   });
 }
-function XO() {
+function ZO() {
   const {
     pixelsToFrames: t,
     framesToPercents: e
-  } = mn(), n = dt(), r = Ft(), [a, i] = Ke(r.startFrame), [s, o] = Ke(r.endFrame), c = $e(() => {
+  } = mn(), n = st(), r = Ft(), [a, i] = Ke(r.startFrame), [s, o] = Ke(r.endFrame), c = $e(() => {
     n.setRange(Math.floor(a), Math.floor(s));
   }, [a, s, r.duration]), [u] = wn($e((g) => {
     i(a + t(g));
@@ -50817,31 +50843,31 @@ function XO() {
   Nt(() => {
     i(r.startFrame), o(r.endFrame);
   }, [r.startFrame, r.endFrame]);
-  let m = a, T = s;
-  return a > s && (m = s, T = a), S("div", {
+  let m = a, b = s;
+  return a > s && (m = s, b = a), S("div", {
     style: {
       flexDirection: a > s ? "row-reverse" : "row",
       left: `${e(Math.max(0, m))}%`,
-      right: `${100 - e(Math.min(r.duration, T + 1))}%`
+      right: `${100 - e(Math.min(r.duration, b + 1))}%`
     },
     className: xe.range,
     onMouseDown: (g) => {
       g.button === 1 ? (g.preventDefault(), n.setRange(0, 1 / 0)) : E(g);
     },
-    children: [S(td, {
+    children: [S(Hm, {
       onMouseDown: u,
       className: xe.handle
     }), S("div", {
       class: xe.handleSpacer
-    }), S(td, {
+    }), S(Hm, {
       onMouseDown: d,
       className: xe.handle
     })]
   });
 }
 const zt = 48;
-function ZO() {
-  const t = nt(), e = bc(), n = Pe(() => {
+function JO() {
+  const t = je(), e = Tc(), n = Pe(() => {
     var d;
     return (d = t.current) == null ? void 0 : d.getContext("2d");
   }, [t.current]), {
@@ -50850,17 +50876,17 @@ function ZO() {
     lastVisibleFrame: i,
     density: s,
     framesToPercents: o
-  } = mn(), c = Dt(e.audio.onDataChanged);
-  un(() => {
+  } = mn(), c = Lt(e.audio.onDataChanged);
+  Jt(() => {
     if (!n || (n.clearRect(0, 0, r, zt * 2), !c))
       return;
     n.strokeStyle = "#444", n.lineWidth = 1, n.beginPath(), n.moveTo(0, zt);
-    const d = (e.framesToSeconds(a) - e.audio.onOffsetChanged.current) * c.sampleRate, E = e.audio.toRelativeTime(e.framesToSeconds(i)) * c.sampleRate, m = Math.floor(d), T = m - d, g = E - d, f = Math.ceil(s);
+    const d = (e.framesToSeconds(a) - e.audio.onOffsetChanged.current) * c.sampleRate, E = e.audio.toRelativeTime(e.framesToSeconds(i)) * c.sampleRate, m = Math.floor(d), b = m - d, g = E - d, f = Math.ceil(s);
     for (let C = d; C < E; C += f * 2) {
       const A = C - d, P = m + A;
       if (P >= c.peaks.length)
         break;
-      n.lineTo((T + A) / g * r, c.peaks[P] / c.absoluteMax * zt + zt), n.lineTo((T + A + f) / g * r, c.peaks[P + 1] / c.absoluteMax * zt + zt);
+      n.lineTo((b + A) / g * r, c.peaks[P] / c.absoluteMax * zt + zt), n.lineTo((b + A + f) / g * r, c.peaks[P + 1] / c.absoluteMax * zt + zt);
     }
     n.stroke();
   }, [n, c, s, r, a, i]);
@@ -50877,22 +50903,22 @@ function ZO() {
     className: xe.audioTrack
   });
 }
-const JO = 0.1, ic = 0.5, Vm = 32, jO = 128;
-function eI() {
-  const t = dt(), e = nt(), n = nt(), {
+const jO = 0.1, oc = 0.5, zm = 32, eI = 128;
+function tI() {
+  const t = st(), e = je(), n = je(), {
     duration: r,
     fps: a
-  } = Ft(), i = RE(e), [s, o] = Ke(0), [c, u] = Ke(1), d = Pe(() => ({
+  } = Ft(), i = NE(e), [s, o] = Ke(0), [c, u] = Ke(1), d = Pe(() => ({
     viewLength: i.width,
     paddingLeft: i.width / 2,
     fullLength: i.width * c + i.width,
     playableLength: i.width * c
-  }), [i.width, c]), E = jO / d.viewLength * r, m = Pe(() => ({
+  }), [i.width, c]), E = eI / d.viewLength * r, m = Pe(() => ({
     framesToPixels: (g) => g / r * d.playableLength,
     framesToPercents: (g) => g / r * 100,
     pixelsToFrames: (g) => g / d.playableLength * r
-  }), [r, d]), T = Pe(() => {
-    const g = Math.pow(2, Math.round(Math.log2(r / d.playableLength))), f = Math.floor(Vm * g), C = Math.max(1, f), A = s - d.paddingLeft, P = Math.floor(m.pixelsToFrames(A) / C) * C, k = Math.ceil(m.pixelsToFrames(A + d.viewLength + Vm) / C) * C;
+  }), [r, d]), b = Pe(() => {
+    const g = Math.pow(2, Math.round(Math.log2(r / d.playableLength))), f = Math.floor(zm * g), C = Math.max(1, f), A = s - d.paddingLeft, P = Math.floor(m.pixelsToFrames(A) / C) * C, k = Math.ceil(m.pixelsToFrames(A + d.viewLength + zm) / C) * C;
     return {
       viewLength: d.viewLength,
       offset: A,
@@ -50903,19 +50929,19 @@ function eI() {
       ...m
     };
   }, [d, m, r, s]);
-  return CE(([g, f]) => {
+  return hE(([g, f]) => {
     const C = r / a;
     let A = c;
-    g !== 0 && C !== 0 && (A *= C / g), f !== 0 && i.width !== 0 && (A *= f / i.width), isNaN(A) || u(Ci(ic, E, A));
+    g !== 0 && C !== 0 && (A *= C / g), f !== 0 && i.width !== 0 && (A *= f / i.width), isNaN(A) || u(Ni(oc, E, A));
   }, [r / a, i.width]), Ln("keydown", $e((g) => {
     if (g.key !== "f")
       return;
-    const f = t.onFrameChanged.current, C = d.fullLength - d.viewLength, P = T.framesToPixels(f) - d.viewLength / 2, k = Ci(0, C, P);
-    e.current.scrollLeft = k, o(k);
-  }, [d])), un(() => {
+    const f = t.onFrameChanged.current, C = d.fullLength - d.viewLength, A = b.framesToPixels(f), P = Ni(0, C, A);
+    e.current.scrollLeft = P, o(P);
+  }, [d])), Jt(() => {
     e.current.scrollLeft = s;
-  }, [c]), S(Kb, {
-    state: T,
+  }, [c]), S(Xb, {
+    state: b,
     children: S("div", {
       className: xe.root,
       children: S("div", {
@@ -50925,10 +50951,10 @@ function eI() {
         onWheel: (g) => {
           if (g.shiftKey)
             return;
-          let f = 1 - Math.sign(g.deltaY) * JO, C = c * f;
-          if (C < ic && (C = ic, f = C / c), C > E && (C = E, f = C / c), C === c)
+          let f = 1 - Math.sign(g.deltaY) * jO, C = c * f;
+          if (C < oc && (C = oc, f = C / c), C > E && (C = E, f = C / c), C === c)
             return;
-          const A = s - d.paddingLeft + g.x - i.x, k = i.width * C * +i.width - i.width, w = Ci(0, k, s - A + A * f);
+          const A = s - d.paddingLeft + g.x - i.x, k = i.width * C * +i.width - i.width, w = Ni(0, k, s - A + A * f);
           e.current.scrollLeft = w, isNaN(C) || u(C), isNaN(w) || o(w), n.current.style.left = `${g.x - i.x + w}px`;
         },
         onMouseMove: (g) => {
@@ -50940,7 +50966,7 @@ function eI() {
             width: `${d.fullLength}px`
           },
           onMouseUp: (g) => {
-            g.button === 0 && t.requestSeek(Math.floor(T.pixelsToFrames(s - d.paddingLeft + g.x - i.x)));
+            g.button === 0 && t.requestSeek(Math.floor(b.pixelsToFrames(s - d.paddingLeft + g.x - i.x)));
           },
           children: S("div", {
             className: xe.timelineContent,
@@ -50948,10 +50974,10 @@ function eI() {
               width: `${d.playableLength}px`,
               left: `${d.paddingLeft}px`
             },
-            children: [S(XO, {}), S(VO, {}), S("div", {
+            children: [S(ZO, {}), S(zO, {}), S("div", {
               className: xe.trackContainer,
-              children: [S(KO, {}), S(WO, {}), S(ZO, {})]
-            }), S(HO, {})]
+              children: [S(QO, {}), S(KO, {}), S(JO, {})]
+            }), S(VO, {})]
           })
         }), S("div", {
           ref: n,
@@ -50961,18 +50987,18 @@ function eI() {
     })
   });
 }
-const tI = "_root_ilh5e_1", nI = "_viewport_ilh5e_8", rI = "_alphaBackground_ilh5e_19", aI = "_canvasOutline_ilh5e_26", iI = "_preview_ilh5e_30", oI = "_overlay_ilh5e_34", sI = "_playback_ilh5e_43", lI = "_time_ilh5e_50", cI = "_duration_ilh5e_57", _I = "_frames_ilh5e_64", ct = {
-  root: tI,
-  viewport: nI,
-  alphaBackground: rI,
-  canvasOutline: aI,
-  preview: iI,
-  overlay: oI,
-  playback: sI,
-  time: lI,
-  duration: cI,
-  frames: _I
-}, Uc = Un({
+const nI = "_root_ilh5e_1", rI = "_viewport_ilh5e_8", aI = "_alphaBackground_ilh5e_19", iI = "_canvasOutline_ilh5e_26", oI = "_preview_ilh5e_30", sI = "_overlay_ilh5e_34", lI = "_playback_ilh5e_43", cI = "_time_ilh5e_50", _I = "_duration_ilh5e_57", dI = "_frames_ilh5e_64", _t = {
+  root: nI,
+  viewport: rI,
+  alphaBackground: aI,
+  canvasOutline: iI,
+  preview: oI,
+  overlay: sI,
+  playback: lI,
+  time: cI,
+  duration: _I,
+  frames: dI
+}, Fc = Un({
   width: 1920,
   height: 1080,
   x: 0,
@@ -50980,41 +51006,41 @@ const tI = "_root_ilh5e_1", nI = "_viewport_ilh5e_8", rI = "_alphaBackground_ilh
   zoom: 1,
   grid: !1
 });
-function dI() {
-  const t = ar(), e = Zr(), {
-    scale: n
-  } = Ft(), r = nt(), a = nt(), i = pn(Uc), {
-    inspectedElement: s,
-    setInspectedElement: o
-  } = rr(), c = Pe(() => {
-    const u = new DOMMatrix();
-    if (!e)
-      return u;
-    const d = e.getSize().scale(-0.5);
-    return u.translateSelf(i.x + i.width / 2, i.y + i.height / 2), u.scaleSelf(i.zoom * n, i.zoom * n), u.translateSelf(d.width, d.height), u;
-  }, [e, i, n]);
-  return un(() => {
-    var E;
-    (E = a.current) != null || (a.current = r.current.getContext("2d"));
-    const u = a.current;
-    if (u.clearRect(0, 0, r.current.width, r.current.height), !pc(e))
+function uI() {
+  const t = ar(), e = Zr(), n = st(), {
+    scale: r
+  } = Ft(), a = je(), i = je(), s = pn(Fc), {
+    inspectedElement: o,
+    setInspectedElement: c
+  } = rr(), [u, d] = Ke(0), E = n.project.getSize(), m = Pe(() => {
+    const b = new DOMMatrix();
+    if (!E)
+      return b;
+    const g = E.scale(-0.5);
+    return b.translateSelf(s.x + s.width / 2, s.y + s.height / 2), b.scaleSelf(s.zoom * r, s.zoom * r), b.translateSelf(g.width, g.height), b;
+  }, [E, s, r]);
+  return EE(n.onReloaded, () => d(u + 1), [u]), Jt(() => {
+    var f;
+    (f = i.current) != null || (i.current = a.current.getContext("2d"));
+    const b = i.current;
+    if (b.clearRect(0, 0, a.current.width, a.current.height), !mc(e))
       return;
-    const d = e.validateInspection(s);
-    if (!d || d !== s) {
-      o(d);
+    const g = e.validateInspection(o);
+    if (!g || g !== o) {
+      c(g);
       return;
     }
-    u.save(), e.drawOverlay(d, c, u), u.restore();
-  }, [c, e, s, t]), S("canvas", {
-    className: ct.overlay,
-    ref: r,
-    width: i.width,
-    height: i.height
+    b.save(), e.drawOverlay(g, m, b), b.restore();
+  }, [m, u, e, o, t]), S("canvas", {
+    className: _t.overlay,
+    ref: a,
+    width: s.width,
+    height: s.height
   });
 }
 const At = 40;
-function uI() {
-  const t = nt(), e = nt(), n = pn(Uc), r = Pe(() => {
+function pI() {
+  const t = je(), e = je(), n = pn(Fc), r = Pe(() => {
     const a = new Path2D(), i = Math.ceil(n.width / 2 / At + 2) * At, s = Math.ceil(n.height / 2 / At + 2) * At;
     for (let o = -i; o < i; o += At)
       a.moveTo(o, -s), a.lineTo(o, s);
@@ -51022,7 +51048,7 @@ function uI() {
       a.moveTo(-i, o), a.lineTo(i, o);
     return a.closePath(), a;
   }, [n]);
-  return un(() => {
+  return Jt(() => {
     var s;
     (s = e.current) != null || (e.current = t.current.getContext("2d"));
     const a = e.current;
@@ -51032,15 +51058,15 @@ function uI() {
     const i = Math.pow(2, Math.log2(n.zoom) - Math.floor(Math.log2(n.zoom)));
     a.translate(t.current.width / 2 + n.x % (At * i), t.current.height / 2 + n.y % (At * i)), a.scale(i, i), a.strokeStyle = "rgba(255, 255, 255, 0.24)", a.lineWidth = 1 / i, a.stroke(r), a.lineWidth = 1 / i, a.setLineDash([0, 1.25, 2.5, 1.25]), a.translate(At / 2, At / 2), a.stroke(r), a.restore();
   }, [n, r]), S("canvas", {
-    className: ct.overlay,
+    className: _t.overlay,
     ref: t,
     width: n.width,
     height: n.height
   });
 }
-const oc = 0.1;
-function pI() {
-  const t = dt(), e = Zr(), n = nt(), r = nt(), a = nt(), i = RE(n), s = Ft(), [o, c, u] = Rc("viewport", {
+const sc = 0.1;
+function mI() {
+  const t = st(), e = Zr(), n = je(), r = je(), a = je(), i = NE(n), s = Ft(), [o, c, u] = Jr("viewport", {
     width: 1920,
     height: 1080,
     x: 0,
@@ -51061,7 +51087,7 @@ function pI() {
       x: 0,
       y: 0
     });
-  }, [o, t, s.scale]), [m, T] = wn($e((g, f) => c({
+  }, [o, t, s.scale]), [m, b] = wn($e((g, f) => c({
     ...o,
     x: o.x + g,
     y: o.y + f
@@ -51076,50 +51102,51 @@ function pI() {
     u || E();
   }, [u]), Nt(() => {
     t.project.setCanvas(r.current);
-  }, [s.colorSpace]), CE(([g]) => {
+  }, [s.colorSpace]), hE(([g]) => {
     const f = o.zoom * g / s.scale;
     !isNaN(f) && f > 0 && c({
       ...o,
       zoom: f
     });
-  }, [s.scale]), Gb(t.onReloaded, () => a.current.animate(fO(), {
+  }, [s.scale]), EE(t.onReloaded, () => a.current.animate(bO(), {
     duration: 300
   }), []), Ln("keydown", $e((g) => {
-    switch (g.key) {
-      case "0": {
-        E();
-        break;
+    if (document.activeElement.tagName !== "INPUT")
+      switch (g.key) {
+        case "0": {
+          E();
+          break;
+        }
+        case "=":
+          c({
+            ...o,
+            zoom: o.zoom * (1 + sc)
+          });
+          break;
+        case "-":
+          c({
+            ...o,
+            zoom: o.zoom * (1 - sc)
+          });
+          break;
+        case "'":
+          c({
+            ...o,
+            grid: !o.grid
+          });
+          break;
       }
-      case "=":
-        c({
-          ...o,
-          zoom: o.zoom * (1 + oc)
-        });
-        break;
-      case "-":
-        c({
-          ...o,
-          zoom: o.zoom * (1 - oc)
-        });
-        break;
-      case "'":
-        c({
-          ...o,
-          grid: !o.grid
-        });
-        break;
-    }
-  }, [o, E])), S(Uc.Provider, {
+  }, [o, E])), S(Fc.Provider, {
     value: o,
     children: S("div", {
-      className: ct.viewport,
+      className: _t.viewport,
       ref: n,
       onContextMenu: (g) => {
         g.preventDefault();
       },
       onMouseDown: (g) => {
         if (g.button === 0 && !g.shiftKey) {
-          if (!pc(e))
+          if (!mc(e))
             return;
           const f = {
             x: g.x - i.x,
@@ -51130,12 +51157,12 @@ function pI() {
           m(g);
       },
       onWheel: (g) => {
-        if (T)
+        if (b)
           return;
         const f = n.current.getBoundingClientRect(), C = {
           x: g.x - f.x - f.width / 2,
           y: g.y - f.y - f.height / 2
-        }, A = 1 - Math.sign(g.deltaY) * oc;
+        }, A = 1 - Math.sign(g.deltaY) * sc;
         c({
           ...o,
           zoom: o.zoom * A,
@@ -51144,36 +51171,36 @@ function pI() {
         });
       },
       children: [S("div", {
-        className: t.project.background ? ct.canvasOutline : ct.alphaBackground,
+        className: t.project.background ? _t.canvasOutline : _t.alphaBackground,
         style: {
           transform: `translate(${o.x}px, ${o.y}px) scale(${o.zoom})`,
           outlineWidth: `${1 / o.zoom}px`
         },
         children: S("canvas", {
-          className: ct.preview,
+          className: _t.preview,
           ref: r
         }, s.colorSpace)
-      }), S(uI, {}), S(dI, {}), S("div", {
+      }), S(pI, {}), S(uI, {}), S("div", {
         ref: a,
-        className: ct.overlay
+        className: _t.overlay
       })]
     })
   });
 }
-const mI = "_progress_19ugz_1", EI = "_progressFill_19ugz_6", gI = "_controls_19ugz_11", SI = "_disabled_19ugz_16", Wr = {
-  progress: mI,
-  progressFill: EI,
-  controls: gI,
-  disabled: SI
+const EI = "_progress_19ugz_1", gI = "_progressFill_19ugz_6", SI = "_controls_19ugz_11", fI = "_disabled_19ugz_16", Wr = {
+  progress: EI,
+  progressFill: gI,
+  controls: SI,
+  disabled: fI
 };
-function fI({
+function bI({
   render: t
 }) {
   const {
     paused: e
   } = Ft(), n = ar(), {
     current: r
-  } = nt({
+  } = je({
     history: [],
     lastUpdate: 0,
     overallTime: -1
@@ -51189,30 +51216,31 @@ function fI({
   }, [n.frame, e]);
   return t(a, e);
 }
-function bI() {
-  const t = dt(), e = Ft();
+function TI() {
+  const t = st(), e = Ft();
   return Ln("keydown", $e((n) => {
-    switch (n.key) {
-      case " ":
-        t.togglePlayback();
-        break;
-      case "ArrowLeft":
-        if (n.preventDefault(), n.shiftKey) {
-          t.requestReset();
-          return;
-        }
-        t.requestPreviousFrame();
-        break;
-      case "ArrowRight":
-        n.preventDefault(), t.requestNextFrame();
-        break;
-      case "m":
-        t.toggleAudio();
-        break;
-      case "l":
-        t.toggleLoop();
-        break;
-    }
+    if (document.activeElement.tagName !== "INPUT")
+      switch (n.key) {
+        case " ":
+          t.togglePlayback();
+          break;
+        case "ArrowLeft":
+          if (n.preventDefault(), n.shiftKey) {
+            t.requestReset();
+            return;
+          }
+          t.requestPreviousFrame();
+          break;
+        case "ArrowRight":
+          n.preventDefault(), t.requestNextFrame();
+          break;
+        case "m":
+          t.toggleAudio();
+          break;
+        case "l":
+          t.toggleLoop();
+          break;
+      }
   }, [e])), S("div", {
     className: Qe(Wr.controls, e.render && Wr.disabled),
     children: [S(Qn, {
@@ -51235,47 +51263,47 @@ function bI() {
       }],
       value: e.speed,
       onChange: (n) => t.setSpeed(n)
-    }), S(hi, {
+    }), S(vi, {
       titleOn: "Mute audio",
       titleOff: "Unmute audio",
       checked: !e.muted,
       onChange: (n) => t.toggleAudio(n),
-      children: e.muted ? S(jT, {}) : S(eR, {})
-    }), S(cn, {
+      children: e.muted ? S(Yv, {}) : S(qv, {})
+    }), S(_n, {
       title: "Previous frame",
       onClick: () => t.requestPreviousFrame(),
-      children: S(XT, {})
-    }), S(hi, {
+      children: S(Fv, {})
+    }), S(vi, {
       main: !0,
       titleOn: "Play",
       titleOff: "Pause",
       checked: !e.paused,
       onChange: (n) => t.togglePlayback(n),
-      children: e.paused ? S($T, {}) : S(VT, {})
-    }), S(cn, {
+      children: e.paused ? S(xv, {}) : S(Lv, {})
+    }), S(_n, {
       title: "Next frame",
       onClick: () => t.requestNextFrame(),
-      children: S(QT, {})
-    }), S(hi, {
+      children: S(Uv, {})
+    }), S(vi, {
       titleOn: "Loop video",
       checked: e.loop,
       onChange: () => t.toggleLoop(),
-      children: S(WT, {})
-    }), S(fI, {
-      render: (n, r) => S(ln, {
+      children: S(Pv, {})
+    }), S(bI, {
+      render: (n, r) => S(cn, {
         title: "Current framerate",
         size: 4,
         readOnly: !0,
         value: r ? "PAUSED" : `${n} FPS`
       })
-    }), S(cn, {
+    }), S(_n, {
       title: "Save snapshot",
       onClick: () => t.exportCurrentFrame(),
-      children: S(zT, {})
+      children: S(wv, {})
     })]
   });
 }
-function TI() {
+function RI() {
   const t = ar();
   return S("div", {
     className: Wr.progress,
@@ -51287,51 +51315,51 @@ function TI() {
     })
   });
 }
-function RI({
+function CI({
   render: t
 }) {
   const e = ar();
   return t(e.frame);
 }
-function CI() {
-  const t = dt(), e = Ft();
+function NI() {
+  const t = st(), e = Ft();
   return S("div", {
-    className: ct.root,
-    children: [S(pI, {}), S(TI, {}), S("div", {
-      className: ct.playback,
-      children: [S(RI, {
+    className: _t.root,
+    children: [S(mI, {}), S(RI, {}), S("div", {
+      className: _t.playback,
+      children: [S(CI, {
         render: (n) => S("div", {
-          className: ct.time,
+          className: _t.time,
           title: "Current time",
-          children: [zm(t.project.framesToSeconds(n)), S("span", {
-            className: ct.frames,
+          children: [$m(t.project.framesToSeconds(n)), S("span", {
+            className: _t.frames,
             children: ["[", n, "]"]
           })]
         })
-      }), S(bI, {}), S("div", {
-        className: ct.duration,
+      }), S(TI, {}), S("div", {
+        className: _t.duration,
         title: "Duration",
         children: [S("span", {
-          className: ct.frames,
+          className: _t.frames,
           children: ["[", e.duration, "]"]
-        }), zm(t.project.framesToSeconds(e.duration))]
+        }), $m(t.project.framesToSeconds(e.duration))]
       })]
     })]
   });
 }
-function zm(t) {
+function $m(t) {
   const e = Math.floor(t / 60) % 60, n = Math.floor(t % 60);
   return `${e.toString().padStart(2, "0")}:${n.toString().padStart(2, "0")}`;
 }
-const NI = "_root_1n5sx_1", hI = "_vertical_1n5sx_7", vI = "_left_1n5sx_10", OI = "_right_1n5sx_23", II = "_separator_1n5sx_29", AI = "_resizeable_1n5sx_54", An = {
-  root: NI,
-  vertical: hI,
-  left: vI,
-  right: OI,
-  separator: II,
-  resizeable: AI
+const hI = "_root_1n5sx_1", vI = "_vertical_1n5sx_7", OI = "_left_1n5sx_10", II = "_right_1n5sx_23", AI = "_separator_1n5sx_29", yI = "_resizeable_1n5sx_54", An = {
+  root: hI,
+  vertical: vI,
+  left: OI,
+  right: II,
+  separator: AI,
+  resizeable: yI
 };
-function $m({
+function Wm({
   start: t,
   end: e,
   vertical: n = !1,
@@ -51339,9 +51367,9 @@ function $m({
   id: a = null,
   resizeable: i = !0
 }) {
-  const [s, o] = Rc(`${a}-layout-size`, r), c = nt(), [u] = wn($e((E, m, T, g) => {
+  const [s, o] = Jr(`${a}-layout-size`, r), c = je(), [u] = wn($e((E, m, b, g) => {
     const f = c.current.getBoundingClientRect();
-    o(n ? (g - f.y) / f.height : (T - f.x) / f.width);
+    o(n ? (g - f.y) / f.height : (b - f.x) / f.width);
   }, [n, o])), d = Pe(() => i ? n ? {
     height: `${s * 100}%`
   } : {
@@ -51366,32 +51394,32 @@ function $m({
     })]
   });
 }
-function yI() {
+function DI() {
   const [t, e] = Ke(!1);
-  return S($m, {
+  return S(Wm, {
     id: "main-timeline",
     size: 0.7,
     vertical: !0,
-    start: S($m, {
+    start: S(Wm, {
       resizeable: t,
       id: "sidebar-vieport",
-      start: S(bO, {
+      start: S(TO, {
         setOpen: e
       }),
-      end: S(CI, {})
+      end: S(NI, {})
     }),
-    end: S(eI, {})
+    end: S(tI, {})
   });
 }
-const DI = "_root_36h9h_1", MI = "_header_36h9h_11", LI = "_list_36h9h_26", wI = "_element_36h9h_33", xI = "_title_36h9h_43", PI = "_subtitle_36h9h_48", yn = {
-  root: DI,
-  header: MI,
-  list: LI,
-  element: wI,
-  title: xI,
-  subtitle: PI
+const MI = "_root_36h9h_1", LI = "_header_36h9h_11", wI = "_list_36h9h_26", xI = "_element_36h9h_33", PI = "_title_36h9h_43", kI = "_subtitle_36h9h_48", yn = {
+  root: MI,
+  header: LI,
+  list: wI,
+  element: xI,
+  title: PI,
+  subtitle: kI
 };
-function kI({
+function UI({
   projects: t
 }) {
   return S("div", {
@@ -51415,11 +51443,11 @@ function kI({
     })]
   });
 }
-function $E(t) {
+function QE(t) {
   const e = document.createElement("main");
-  document.body.appendChild(e), hb(t, e);
+  document.body.appendChild(e), Ib(t, e);
 }
-function FI(t) {
+function BI(t) {
   const e = t();
   Error.stackTraceLimit = 1 / 0, e.logger.onLogged.subscribe((o) => {
     var f;
@@ -51429,33 +51457,33 @@ function FI(t) {
       stack: d,
       object: E,
       durationMs: m,
-      ...T
+      ...b
     } = o, g = (f = console[c]) != null ? f : console.log;
-    g(u, ...[E, m, T].filter((C) => !!C)), d && g(d);
+    g(u, ...[E, m, b].filter((C) => !!C)), d && g(d);
   });
-  const n = new fb(e), r = `${e.name}/player`, a = `${e.name}/frame`, i = localStorage.getItem(r), s = localStorage.getItem(a);
+  const n = new Rb(e), r = `${e.name}/player`, a = `${e.name}/frame`, i = localStorage.getItem(r), s = localStorage.getItem(a);
   i && n.loadState(JSON.parse(i)), s && n.requestSeek(parseInt(s)), n.onStateChanged.subscribe((o) => {
     localStorage.setItem(r, JSON.stringify(o));
   }), n.onFrameChanged.subscribe((o) => {
     localStorage.setItem(a, o.toString());
-  }), document.title = `${e.name} | Motion Canvas`, $E(S(Wb, {
+  }), document.title = `${e.name} | Motion Canvas`, QE(S(Qb, {
     player: n,
-    children: S(Hb, {
+    children: S(zb, {
       project: e,
-      children: S($b, {
-        children: S(Yb, {
-          children: S(yI, {})
+      children: S(Kb, {
+        children: S(Hb, {
+          children: S(DI, {})
         })
       })
     })
   }));
 }
-function BI(t) {
-  $E(S(kI, {
+function GI(t) {
+  QE(S(UI, {
     projects: t
   }));
 }
 export {
-  FI as editor,
-  BI as index
+  BI as editor,
+  GI as index
 };
