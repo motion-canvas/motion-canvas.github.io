@@ -1944,17 +1944,18 @@ function* fb(t, ...e) {
 }
 class Rt {
   constructor(e) {
-    this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new Xf(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this);
+    this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new Xf(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this), Object.defineProperty(this.invokable, "context", {
+      value: this
+    });
   }
   static collectPromise(e, n = null) {
-    var i;
     const r = {
       promise: e,
       value: n,
-      stack: (i = this.collectionStack[0]) == null ? void 0 : i.stack
+      stack: new Error().stack
     }, a = this.collectionStack.at(-2);
-    return a && (r.owner = a.owner), e.then((s) => {
-      r.value = s, a == null || a.markDirty();
+    return a && (r.owner = a.owner), e.then((i) => {
+      r.value = i, a == null || a.markDirty();
     }), this.promises.push(r), r;
   }
   static consumePromises() {
@@ -1967,10 +1968,10 @@ class Rt {
     if (Rt.collectionSet.has(this))
       throw new Xm("A circular dependency occurred between signals.", `This can happen when signals reference each other in a loop.
         Try using the attached stack trace to locate said loop.`);
-    this.stack = new Error().stack, Rt.collectionSet.add(this), Rt.collectionStack.push(this);
+    Rt.collectionSet.add(this), Rt.collectionStack.push(this);
   }
   finishCollecting() {
-    if (this.stack = void 0, Rt.collectionSet.delete(this), Rt.collectionStack.pop() !== this)
+    if (Rt.collectionSet.delete(this), Rt.collectionStack.pop() !== this)
       throw new Error("collectStart/collectEnd was called out of order.");
   }
   collect() {
@@ -1990,8 +1991,6 @@ class Br extends Rt {
       value: this.reset.bind(this)
     }), Object.defineProperty(this.invokable, "save", {
       value: this.save.bind(this)
-    }), Object.defineProperty(this.invokable, "context", {
-      value: this
     }), this.initial !== void 0 && (this.current = this.initial, this.markDirty(), Wt(this.initial) || (this.last = this.parse(this.initial)));
   }
   toSignal() {
