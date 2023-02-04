@@ -2,18 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://motion-canvas.github.io/blog</id>
     <title>Motion Canvas Blog</title>
-    <updated>2022-07-14T00:00:00.000Z</updated>
+    <updated>2023-02-04T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://motion-canvas.github.io/blog"/>
     <subtitle>Motion Canvas Blog</subtitle>
     <icon>https://motion-canvas.github.io/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Hello World!]]></title>
-        <id>hello-world</id>
-        <link href="https://motion-canvas.github.io/blog/hello-world"/>
-        <updated>2022-07-14T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Hello World!]]></summary>
-        <content type="html"><![CDATA[<p>Hello World!</p><iframe width="560" height="315" src="https://www.youtube.com/embed/WTUafAwrunE" loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content>
+        <title type="html"><![CDATA[Motion Canvas is now Open Source!]]></title>
+        <id>public-release</id>
+        <link href="https://motion-canvas.github.io/blog/public-release"/>
+        <updated>2023-02-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[After months of work, I'm happy to announce that Motion Canvas is ready for the]]></summary>
+        <content type="html"><![CDATA[<p>After months of work, I'm happy to announce that Motion Canvas is ready for the
+public release!</p><iframe class="root__2So" width="560" height="315" src="https://www.youtube.com/embed/H5GETOP7ivs" loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><p>Don't get me wrong - the road ahead is still long. Plenty of features left to
+implement and tons of bugs to find and fix. But the foundations are here. Motion
+Canvas helped me make most of my videos last year, and I'm positive some of you
+will find it helpful as well.</p><p>Head to the <a href="/docs/quickstart">quickstart</a> guide and give it a try.</p>]]></content>
         <author>
             <name>Jacob</name>
             <uri>https://twitter.com/aarthificial</uri>
