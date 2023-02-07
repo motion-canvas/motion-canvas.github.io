@@ -2089,10 +2089,12 @@ class eE extends Br {
   set(e) {
     if (Wt(e))
       for (const [n, r] of this.signals)
-        r(() => e()[n]);
-    else
-      for (const [n, r] of this.signals)
-        r(e[n]);
+        r(() => this.parser(e())[n]);
+    else {
+      const n = this.parse(e);
+      for (const [r, a] of this.signals)
+        a(n[r]);
+    }
     return this.owner;
   }
   reset() {
@@ -2458,9 +2460,7 @@ class Cb {
   async run() {
     const e = this.consumeCommands(), n = {
       ...this.state.current
-    };
-    n.finished && n.loop && e.seek < 0 && (e.seek = n.startFrame);
-    const r = this.project.playbackState();
+    }, r = this.project.playbackState();
     if (this.project.playbackState(n.paused ? Mn.Paused : Mn.Playing), e.recalculate) {
       const i = performance.now();
       await this.project.recalculate();
@@ -2496,12 +2496,17 @@ class Cb {
       n.finished = await this.project.seek(i);
     } else
       this.project.frame < n.endFrame && (n.finished = await this.project.next(), n.speed !== 1 && this.project.syncAudio());
-    await this.project.render(), n.finished && e.seek >= 0 && this.requestSeek(n.startFrame), this.updateState({
-      finished: n.finished || this.project.frame >= n.endFrame
+    if (await this.project.render(), n.loop && (e.seek > Math.min(n.duration, n.endFrame) || n.finished && !n.paused) && this.requestSeek(n.startFrame), !n.loop && n.finished && !n.paused) {
+      this.togglePlayback(!1), this.request();
+      return;
+    }
+    this.updateState({
+      finished: n.finished || this.project.frame >= Math.min(n.duration, n.endFrame)
     }), this.frame.current = this.project.frame, this.request();
   }
   clampRange(e, n) {
-    return e > n.endFrame ? n.endFrame : e < n.startFrame ? n.startFrame : e;
+    const r = Math.min(n.endFrame, n.duration);
+    return e > r ? r : e < n.startFrame ? n.startFrame : e;
   }
   isInRange(e, n) {
     return e >= n.startFrame && e <= n.endFrame;

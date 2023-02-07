@@ -2,11 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://motion-canvas.github.io/blog</id>
     <title>Motion Canvas Blog</title>
-    <updated>2023-02-04T00:00:00.000Z</updated>
+    <updated>2023-02-08T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://motion-canvas.github.io/blog"/>
     <subtitle>Motion Canvas Blog</subtitle>
     <icon>https://motion-canvas.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Motion Canvas v2.1.0]]></title>
+        <id>version-2.1.0</id>
+        <link href="https://motion-canvas.github.io/blog/version-2.1.0"/>
+        <updated>2023-02-08T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a class="hash-link" href="#features" title="Direct link to heading">​</a></h3><ul><li>add <a href="/docs/time-events#controlling-animation-duration"><code>useDuration</code></a> helper
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/226" target="_blank" rel="noopener noreferrer">#226</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/fa97d6c7f076f287c9b86d2f8852341bd368ef1c" target="_blank" rel="noopener noreferrer">fa97d6c</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/171" target="_blank" rel="noopener noreferrer">#171</a></li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a class="hash-link" href="#bug-fixes" title="Direct link to heading">​</a></h3><ul><li><strong>2d:</strong> fix font ligatures in CodeBlock
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/231" target="_blank" rel="noopener noreferrer">#231</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/11ee3fef5ad878313cf19833df6881333ced4dac" target="_blank" rel="noopener noreferrer">11ee3fe</a>)</li><li><strong>2d:</strong> fix Line cache
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/232" target="_blank" rel="noopener noreferrer">#232</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/a953b64540c020657845efc84d4179142a7a0974" target="_blank" rel="noopener noreferrer">a953b64</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/205" target="_blank" rel="noopener noreferrer">#205</a></li><li><strong>2d:</strong> handle lines with no points
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/233" target="_blank" rel="noopener noreferrer">#233</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/81084743dfad7b6419760796fda825047909d4d4" target="_blank" rel="noopener noreferrer">8108474</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/212" target="_blank" rel="noopener noreferrer">#212</a></li><li><strong>2d:</strong> improve Rect radius
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/221" target="_blank" rel="noopener noreferrer">#221</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/3437e42713a3f4a8d44d246ee01e2eb23b61e06a" target="_blank" rel="noopener noreferrer">3437e42</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/207" target="_blank" rel="noopener noreferrer">#207</a></li><li><strong>2d:</strong> stop code highlighting from jumping
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/230" target="_blank" rel="noopener noreferrer">#230</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/67ef1c497056dd1f8f9e20d1d7fc1af03ec3849e" target="_blank" rel="noopener noreferrer">67ef1c4</a>)</li><li><strong>core:</strong> fix looping
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/217" target="_blank" rel="noopener noreferrer">#217</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/a38e1a7c8fc21384cc17f3f982802071b8cd0cbf" target="_blank" rel="noopener noreferrer">a38e1a7</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/178" target="_blank" rel="noopener noreferrer">#178</a></li><li>fix compound property setter
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/218" target="_blank" rel="noopener noreferrer">#218</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/6cd1b952df950554eb637c9f8e82947c415d00c5" target="_blank" rel="noopener noreferrer">6cd1b95</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/208" target="_blank" rel="noopener noreferrer">#208</a><a href="https://github.com/motion-canvas/motion-canvas/issues/210" target="_blank" rel="noopener noreferrer">#210</a></li><li><strong>vite-plugin:</strong> add missing headers to html
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/219" target="_blank" rel="noopener noreferrer">#219</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/2552bcfbe2e90f3d4b86810d39f8cee24349e405" target="_blank" rel="noopener noreferrer">2552bcf</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/201" target="_blank" rel="noopener noreferrer">#201</a></li></ul>]]></content>
+        <author>
+            <name>Jacob</name>
+            <uri>https://twitter.com/aarthificial</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Motion Canvas is now Open Source!]]></title>
         <id>public-release</id>
