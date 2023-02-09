@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Motion Canvas v2.1.0","permalink":"/blog/version-2.1.0"},{"title":"Motion Canvas is now Open Source!","permalink":"/blog/public-release"}]}')}}]);
