@@ -53,14 +53,14 @@ class Zf extends pc {
   }
 }
 class Xn extends pc {
-  constructor(e) {
-    super(), this.value = e, this.subscribable = new Jf(this);
-  }
   set current(e) {
     this.value = e, this.notifySubscribers(e);
   }
   get current() {
     return this.value;
+  }
+  constructor(e) {
+    super(), this.value = e, this.subscribable = new Jf(this);
   }
   subscribe(e, n = !0) {
     const r = super.subscribe(e);
@@ -1794,14 +1794,14 @@ function Jm(t) {
   return (e = Object.getPrototypeOf(t).name) != null ? e : null;
 }
 class B_ {
+  get canceled() {
+    var e, n;
+    return this.isCanceled || ((n = (e = this.parent) == null ? void 0 : e.canceled) != null ? n : !1);
+  }
   constructor(e) {
     this.runner = e, this.children = [], this.time = Tb(0), this.parent = null, this.isCanceled = !1;
     const n = Ur();
     this.frameDuration = n.framesToSeconds(1), this.time(n.time);
-  }
-  get canceled() {
-    var e, n;
-    return this.isCanceled || ((n = (e = this.parent) == null ? void 0 : e.canceled) != null ? n : !1);
   }
   next() {
     cb(this);
@@ -1943,13 +1943,6 @@ function* bb(t, ...e) {
   yield* Kr(...e);
 }
 class _t {
-  constructor(e) {
-    this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new Zf(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this), Object.defineProperty(this.invokable, "context", {
-      value: this
-    }), Object.defineProperty(this.invokable, "toPromise", {
-      value: this.toPromise.bind(this)
-    });
-  }
   static collectPromise(e, n = null) {
     const r = {
       promise: e,
@@ -1963,6 +1956,13 @@ class _t {
   static consumePromises() {
     const e = this.promises;
     return this.promises = [], e;
+  }
+  constructor(e) {
+    this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new Zf(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this), Object.defineProperty(this.invokable, "context", {
+      value: this
+    }), Object.defineProperty(this.invokable, "toPromise", {
+      value: this.toPromise.bind(this)
+    });
   }
   invoke() {
   }
@@ -2089,10 +2089,12 @@ class eE extends Br {
   set(e) {
     if (Wt(e))
       for (const [n, r] of this.signals)
-        r(() => e()[n]);
-    else
-      for (const [n, r] of this.signals)
-        r(e[n]);
+        r(() => this.parser(e())[n]);
+    else {
+      const n = this.parse(e);
+      for (const [r, a] of this.signals)
+        a(n[r]);
+    }
     return this.owner;
   }
   reset() {
@@ -2136,23 +2138,6 @@ var _c;
   t[t.Middle = 3] = "Middle", t[t.Top = 5] = "Top", t[t.Bottom = 9] = "Bottom", t[t.Left = 18] = "Left", t[t.Right = 34] = "Right", t[t.TopLeft = 20] = "TopLeft", t[t.TopRight = 36] = "TopRight", t[t.BottomLeft = 24] = "BottomLeft", t[t.BottomRight = 40] = "BottomRight";
 })(_c || (_c = {}));
 class ae {
-  constructor(e, n) {
-    if (this.x = 0, this.y = 0, e != null) {
-      if (typeof e != "object") {
-        this.x = e, this.y = n != null ? n : e;
-        return;
-      }
-      if (Array.isArray(e)) {
-        this.x = e[0], this.y = e[1];
-        return;
-      }
-      if ("width" in e) {
-        this.x = e.width, this.y = e.height;
-        return;
-      }
-      this.x = e.x, this.y = e.y;
-    }
-  }
   static createSignal(e, n = ae.lerp, r) {
     return new eE(["x", "y"], (a) => new ae(a), e, n, r).toSignal();
   }
@@ -2212,6 +2197,23 @@ class ae {
   get ctg() {
     return this.x / this.y;
   }
+  constructor(e, n) {
+    if (this.x = 0, this.y = 0, e != null) {
+      if (typeof e != "object") {
+        this.x = e, this.y = n != null ? n : e;
+        return;
+      }
+      if (Array.isArray(e)) {
+        this.x = e[0], this.y = e[1];
+        return;
+      }
+      if ("width" in e) {
+        this.x = e.width, this.y = e.height;
+        return;
+      }
+      this.x = e.x, this.y = e.y;
+    }
+  }
   lerp(e, n) {
     return ae.lerp(this, e, n);
   }
@@ -2267,15 +2269,6 @@ ae.left = new ae(-1, 0);
 ae.up = new ae(0, 1);
 ae.down = new ae(0, -1);
 class Mt {
-  constructor(e = 0, n, r, a) {
-    if (this.top = 0, this.right = 0, this.bottom = 0, this.left = 0, e != null) {
-      if (Array.isArray(e) && (a = e[3], r = e[2], n = e[1], e = e[0]), typeof e == "number") {
-        this.top = e, this.right = n !== void 0 ? n : e, this.bottom = r !== void 0 ? r : e, this.left = a !== void 0 ? a : n !== void 0 ? n : e;
-        return;
-      }
-      this.top = e.top, this.right = e.right, this.bottom = e.bottom, this.left = e.left;
-    }
-  }
   static createSignal(e, n = Mt.lerp) {
     return new eE(["top", "right", "bottom", "left"], (r) => new Mt(r), e, n).toSignal();
   }
@@ -2287,6 +2280,15 @@ class Mt {
   }
   get y() {
     return this.top + this.bottom;
+  }
+  constructor(e = 0, n, r, a) {
+    if (this.top = 0, this.right = 0, this.bottom = 0, this.left = 0, e != null) {
+      if (Array.isArray(e) && (a = e[3], r = e[2], n = e[1], e = e[0]), typeof e == "number") {
+        this.top = e, this.right = n !== void 0 ? n : e, this.bottom = r !== void 0 ? r : e, this.left = a !== void 0 ? a : n !== void 0 ? n : e;
+        return;
+      }
+      this.top = e.top, this.right = e.right, this.bottom = e.bottom, this.left = e.left;
+    }
   }
   lerp(e, n) {
     return Mt.lerp(this, e, n);
@@ -2325,6 +2327,15 @@ var Mn;
 })(Mn || (Mn = {}));
 const H_ = 1 / 50;
 class Cb {
+  get onStateChanged() {
+    return this.state.subscribable;
+  }
+  get onFrameChanged() {
+    return this.frame.subscribable;
+  }
+  get onReloaded() {
+    return this.reloaded.subscribable;
+  }
   constructor(e) {
     this.project = e, this.state = new Xn({
       duration: 1 / 0,
@@ -2346,15 +2357,6 @@ class Cb {
       seek: -1,
       recalculate: !0
     }, this.startTime = performance.now(), this.logger = this.project.logger, this.project.framerate = this.state.current.fps, this.project.resolutionScale = this.state.current.scale, this.project.colorSpace = this.state.current.colorSpace, this.project.onReloaded.subscribe(() => this.reload()), this.request();
-  }
-  get onStateChanged() {
-    return this.state.subscribable;
-  }
-  get onFrameChanged() {
-    return this.frame.subscribable;
-  }
-  get onReloaded() {
-    return this.reloaded.subscribable;
   }
   loadState(e) {
     this.updateState(e), this.project.speed = this.state.current.speed, this.project.framerate = this.state.current.fps, this.project.resolutionScale = this.state.current.scale, this.project.colorSpace = this.state.current.colorSpace, this.setRange(this.state.current.startFrame, this.state.current.endFrame);
@@ -2458,9 +2460,7 @@ class Cb {
   async run() {
     const e = this.consumeCommands(), n = {
       ...this.state.current
-    };
-    n.finished && n.loop && e.seek < 0 && (e.seek = n.startFrame);
-    const r = this.project.playbackState();
+    }, r = this.project.playbackState();
     if (this.project.playbackState(n.paused ? Mn.Paused : Mn.Playing), e.recalculate) {
       const i = performance.now();
       await this.project.recalculate();
@@ -2496,12 +2496,17 @@ class Cb {
       n.finished = await this.project.seek(i);
     } else
       this.project.frame < n.endFrame && (n.finished = await this.project.next(), n.speed !== 1 && this.project.syncAudio());
-    await this.project.render(), n.finished && e.seek >= 0 && this.requestSeek(n.startFrame), this.updateState({
-      finished: n.finished || this.project.frame >= n.endFrame
+    if (await this.project.render(), n.loop && (e.seek > Math.min(n.duration, n.endFrame) || n.finished && !n.paused) && this.requestSeek(n.startFrame), !n.loop && n.finished && !n.paused) {
+      this.togglePlayback(!1), this.request();
+      return;
+    }
+    this.updateState({
+      finished: n.finished || this.project.frame >= Math.min(n.duration, n.endFrame)
     }), this.frame.current = this.project.frame, this.request();
   }
   clampRange(e, n) {
-    return e > n.endFrame ? n.endFrame : e < n.startFrame ? n.startFrame : e;
+    const r = Math.min(n.endFrame, n.duration);
+    return e > r ? r : e < n.startFrame ? n.startFrame : e;
   }
   isInRange(e, n) {
     return e >= n.startFrame && e <= n.endFrame;
@@ -3045,13 +3050,13 @@ function rr() {
 }
 const td = 1;
 class zb {
+  get onDataChanged() {
+    return this.data.subscribable;
+  }
   constructor(e, n = !1) {
     this.name = e, this.source = n, this.data = new Xn({
       version: td
     });
-  }
-  get onDataChanged() {
-    return this.data.subscribable;
   }
   getData() {
     return this.data.current;
@@ -4793,8 +4798,7 @@ function JT(t) {
   return typeof e == "object" && e.constructor === Object ? (t.splice(t.length - 1, 1), e) : {};
 }
 function xc(...t) {
-  const e = JT(t);
-  return "(" + (e.capture ? "" : "?:") + t.map((r) => jn(r)).join("|") + ")";
+  return "(" + (JT(t).capture ? "" : "?:") + t.map((r) => jn(r)).join("|") + ")";
 }
 function GE(t) {
   return new RegExp(t.toString() + "|").exec("").length - 1;
@@ -5968,7 +5972,7 @@ function VR() {
     return wi;
   Sd = 1;
   function t(e) {
-    const n = "\\d(_|\\d)*", r = "[eE][-+]?" + n, a = n + "(\\." + n + ")?(" + r + ")?", i = "\\w+", s = n + "#" + i + "(\\." + i + ")?#(" + r + ")?", o = "\\b(" + s + "|" + a + ")", c = "[A-Za-z](_?[A-Za-z0-9.])*", u = `[]\\{\\}%#'"`, d = e.COMMENT("--", "$"), g = {
+    const n = "\\d(_|\\d)*", r = "[eE][-+]?" + n, a = n + "(\\." + n + ")?(" + r + ")?", i = "\\w+", o = "\\b(" + (n + "#" + i + "(\\." + i + ")?#(" + r + ")?") + "|" + a + ")", c = "[A-Za-z](_?[A-Za-z0-9.])*", u = `[]\\{\\}%#'"`, d = e.COMMENT("--", "$"), g = {
       begin: "\\s+:\\s+",
       end: "\\s*(:=|;|\\)|=>|$)",
       illegal: u,
@@ -13673,87 +13677,87 @@ function AC() {
       "num",
       "Element",
       "ElementList"
-    ], s = i.map((u) => `${u}?`), c = {
-      keyword: [
-        "abstract",
-        "as",
-        "assert",
-        "async",
-        "await",
-        "break",
-        "case",
-        "catch",
-        "class",
-        "const",
-        "continue",
-        "covariant",
-        "default",
-        "deferred",
-        "do",
-        "dynamic",
-        "else",
-        "enum",
-        "export",
-        "extends",
-        "extension",
-        "external",
-        "factory",
-        "false",
-        "final",
-        "finally",
-        "for",
-        "Function",
-        "get",
-        "hide",
-        "if",
-        "implements",
-        "import",
-        "in",
-        "inferface",
-        "is",
-        "late",
-        "library",
-        "mixin",
-        "new",
-        "null",
-        "on",
-        "operator",
-        "part",
-        "required",
-        "rethrow",
-        "return",
-        "set",
-        "show",
-        "static",
-        "super",
-        "switch",
-        "sync",
-        "this",
-        "throw",
-        "true",
-        "try",
-        "typedef",
-        "var",
-        "void",
-        "while",
-        "with",
-        "yield"
-      ],
-      built_in: i.concat(s).concat([
-        "Never",
-        "Null",
-        "dynamic",
-        "print",
-        "document",
-        "querySelector",
-        "querySelectorAll",
-        "window"
-      ]),
-      $pattern: /[A-Za-z][A-Za-z0-9_]*\??/
-    };
+    ], s = i.map((u) => `${u}?`);
     return {
       name: "Dart",
-      keywords: c,
+      keywords: {
+        keyword: [
+          "abstract",
+          "as",
+          "assert",
+          "async",
+          "await",
+          "break",
+          "case",
+          "catch",
+          "class",
+          "const",
+          "continue",
+          "covariant",
+          "default",
+          "deferred",
+          "do",
+          "dynamic",
+          "else",
+          "enum",
+          "export",
+          "extends",
+          "extension",
+          "external",
+          "factory",
+          "false",
+          "final",
+          "finally",
+          "for",
+          "Function",
+          "get",
+          "hide",
+          "if",
+          "implements",
+          "import",
+          "in",
+          "inferface",
+          "is",
+          "late",
+          "library",
+          "mixin",
+          "new",
+          "null",
+          "on",
+          "operator",
+          "part",
+          "required",
+          "rethrow",
+          "return",
+          "set",
+          "show",
+          "static",
+          "super",
+          "switch",
+          "sync",
+          "this",
+          "throw",
+          "true",
+          "try",
+          "typedef",
+          "var",
+          "void",
+          "while",
+          "with",
+          "yield"
+        ],
+        built_in: i.concat(s).concat([
+          "Never",
+          "Null",
+          "dynamic",
+          "print",
+          "document",
+          "querySelector",
+          "querySelectorAll",
+          "window"
+        ]),
+        $pattern: /[A-Za-z][A-Za-z0-9_]*\??/
+      },
       contains: [
         a,
         e.COMMENT(
@@ -16871,8 +16875,7 @@ function QC() {
     return typeof c == "object" && c.constructor === Object ? (o.splice(o.length - 1, 1), c) : {};
   }
   function i(...o) {
-    const c = a(o);
-    return "(" + (c.capture ? "" : "?:") + o.map((d) => e(d)).join("|") + ")";
+    return "(" + (a(o).capture ? "" : "?:") + o.map((d) => e(d)).join("|") + ")";
   }
   function s(o) {
     const c = [
@@ -22800,46 +22803,46 @@ function bN() {
         u.BACKSLASH_ESCAPE,
         q
       ]
-    }, y = u.COMMENT(
-      /\/\*\*(?!\/)/,
-      "\\*/",
-      {
-        relevance: 0,
-        contains: [
+    }, B = {
+      className: "comment",
+      variants: [
+        u.COMMENT(
+          /\/\*\*(?!\/)/,
+          "\\*/",
           {
-            begin: "(?=@[A-Za-z]+)",
             relevance: 0,
             contains: [
               {
-                className: "doctag",
-                begin: "@[A-Za-z]+"
-              },
-              {
-                className: "type",
-                begin: "\\{",
-                end: "\\}",
-                excludeEnd: !0,
-                excludeBegin: !0,
-                relevance: 0
-              },
-              {
-                className: "variable",
-                begin: m + "(?=\\s*(-)|$)",
-                endsParent: !0,
-                relevance: 0
-              },
-              {
-                begin: /(?=[^\n])\s/,
-                relevance: 0
+                begin: "(?=@[A-Za-z]+)",
+                relevance: 0,
+                contains: [
+                  {
+                    className: "doctag",
+                    begin: "@[A-Za-z]+"
+                  },
+                  {
+                    className: "type",
+                    begin: "\\{",
+                    end: "\\}",
+                    excludeEnd: !0,
+                    excludeBegin: !0,
+                    relevance: 0
+                  },
+                  {
+                    className: "variable",
+                    begin: m + "(?=\\s*(-)|$)",
+                    endsParent: !0,
+                    relevance: 0
+                  },
+                  {
+                    begin: /(?=[^\n])\s/,
+                    relevance: 0
+                  }
+                ]
               }
             ]
           }
-        ]
-      }
-    ), B = {
-      className: "comment",
-      variants: [
-        y,
+        ),
         u.C_BLOCK_COMMENT_MODE,
         u.C_LINE_COMMENT_MODE
       ]
@@ -32501,14 +32504,14 @@ function UN() {
     "$WolframUUID"
   ];
   function e(n) {
-    const r = n.regex, a = /([2-9]|[1-2]\d|[3][0-5])\^\^/, i = /(\w*\.\w+|\w+\.\w*|\w+)/, s = /(\d*\.\d+|\d+\.\d*|\d+)/, o = r.either(r.concat(a, i), s), c = /``[+-]?(\d*\.\d+|\d+\.\d*|\d+)/, u = /`([+-]?(\d*\.\d+|\d+\.\d*|\d+))?/, d = r.either(c, u), g = /\*\^[+-]?\d+/, m = r.concat(
-      o,
-      r.optional(d),
-      r.optional(g)
-    ), b = {
+    const r = n.regex, a = /([2-9]|[1-2]\d|[3][0-5])\^\^/, i = /(\w*\.\w+|\w+\.\w*|\w+)/, s = /(\d*\.\d+|\d+\.\d*|\d+)/, o = r.either(r.concat(a, i), s), c = /``[+-]?(\d*\.\d+|\d+\.\d*|\d+)/, u = /`([+-]?(\d*\.\d+|\d+\.\d*|\d+))?/, d = r.either(c, u), g = /\*\^[+-]?\d+/, b = {
       className: "number",
       relevance: 0,
-      begin: m
+      begin: r.concat(
+        o,
+        r.optional(d),
+        r.optional(g)
+      )
     }, E = /[a-zA-Z$][a-zA-Z0-9$]*/, f = new Set(t), N = { variants: [
       {
         className: "builtin-symbol",
@@ -45383,8 +45386,7 @@ function Kh() {
     return typeof y == "object" && y.constructor === Object ? (h.splice(h.length - 1, 1), y) : {};
   }
   function a(...h) {
-    const y = r(h);
-    return "(" + (y.capture ? "" : "?:") + h.map((M) => t(M)).join("|") + ")";
+    return "(" + (r(h).capture ? "" : "?:") + h.map((M) => t(M)).join("|") + ")";
   }
   const i = (h) => n(
     /\b/,
@@ -47109,46 +47111,46 @@ function nv() {
         d.BACKSLASH_ESCAPE,
         L
       ]
-    }, B = d.COMMENT(
-      /\/\*\*(?!\/)/,
-      "\\*/",
-      {
-        relevance: 0,
-        contains: [
+    }, M = {
+      className: "comment",
+      variants: [
+        d.COMMENT(
+          /\/\*\*(?!\/)/,
+          "\\*/",
           {
-            begin: "(?=@[A-Za-z]+)",
             relevance: 0,
             contains: [
               {
-                className: "doctag",
-                begin: "@[A-Za-z]+"
-              },
-              {
-                className: "type",
-                begin: "\\{",
-                end: "\\}",
-                excludeEnd: !0,
-                excludeBegin: !0,
-                relevance: 0
-              },
-              {
-                className: "variable",
-                begin: b + "(?=\\s*(-)|$)",
-                endsParent: !0,
-                relevance: 0
-              },
-              {
-                begin: /(?=[^\n])\s/,
-                relevance: 0
+                begin: "(?=@[A-Za-z]+)",
+                relevance: 0,
+                contains: [
+                  {
+                    className: "doctag",
+                    begin: "@[A-Za-z]+"
+                  },
+                  {
+                    className: "type",
+                    begin: "\\{",
+                    end: "\\}",
+                    excludeEnd: !0,
+                    excludeBegin: !0,
+                    relevance: 0
+                  },
+                  {
+                    className: "variable",
+                    begin: b + "(?=\\s*(-)|$)",
+                    endsParent: !0,
+                    relevance: 0
+                  },
+                  {
+                    begin: /(?=[^\n])\s/,
+                    relevance: 0
+                  }
+                ]
               }
             ]
           }
-        ]
-      }
-    ), M = {
-      className: "comment",
-      variants: [
-        B,
+        ),
         d.C_BLOCK_COMMENT_MODE,
         d.C_LINE_COMMENT_MODE
       ]
@@ -48453,7 +48455,7 @@ function lv() {
     return Jl;
   Pm = 1;
   function t(e) {
-    const n = "\\d(_|\\d)*", r = "[eE][-+]?" + n, a = n + "(\\." + n + ")?(" + r + ")?", i = "\\w+", s = n + "#" + i + "(\\." + i + ")?#(" + r + ")?", o = "\\b(" + s + "|" + a + ")";
+    const n = "\\d(_|\\d)*", r = "[eE][-+]?" + n, a = n + "(\\." + n + ")?(" + r + ")?", i = "\\w+", o = "\\b(" + (n + "#" + i + "(\\." + i + ")?#(" + r + ")?") + "|" + a + ")";
     return {
       name: "VHDL",
       case_insensitive: !0,
