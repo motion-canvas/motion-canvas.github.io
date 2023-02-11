@@ -4,10 +4,43 @@
         <title>Motion Canvas Blog</title>
         <link>https://motion-canvas.github.io/blog</link>
         <description>Motion Canvas Blog</description>
-        <lastBuildDate>Thu, 09 Feb 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Feb 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Motion Canvas v2.3.0]]></title>
+            <link>https://motion-canvas.github.io/blog/version-2.3.0</link>
+            <guid>version-2.3.0</guid>
+            <pubDate>Sat, 11 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Features]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a class="hash-link" href="#features" title="Direct link to heading">​</a></h3><ul><li>A new <a href="/docs/nodes"><code>LaTeX</code></a> node!
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/228" target="_blank" rel="noopener noreferrer">#228</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/4c26d2aaf0c697486639aa917cd5c585d3d0ea74" target="_blank" rel="noopener noreferrer">4c26d2a</a>)</li><li>CodeBlock themes (documentation coming soon)
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/279" target="_blank" rel="noopener noreferrer">#279</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/fe34fa8ebfe66cd356fb1c3d85adedef11e03b45" target="_blank" rel="noopener noreferrer">fe34fa8</a>)</li><li>An <a href="/api/2d/components/Shape#antialiased">antialiased</a> property for Shapes
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/282" target="_blank" rel="noopener noreferrer">#282</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/7c6905d72c6c2f49e10f0a80704c0afe3504d01b" target="_blank" rel="noopener noreferrer">7c6905d</a>)</li><li><a href="/api/2d/components/Rect#smoothCorners">Smooth corners</a> and
+<a href="/api/2d/components/Rect#cornerSharpness">sharpness control</a> for Rects
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/310" target="_blank" rel="noopener noreferrer">#310</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/f7fbefd27f7f6972cfb5a45a68e5d0aed9593ae4" target="_blank" rel="noopener noreferrer">f7fbefd</a>)</li><li>A simpler <a href="/api/core/utils#debug"><code>debug</code></a> function
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/293" target="_blank" rel="noopener noreferrer">#293</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/b8708732af0fc08d9ff9eeecbbb77d65f1b36eb8" target="_blank" rel="noopener noreferrer">b870873</a>)</li><li>Multiple new <a href="/api/core/tweening#createEaseInBack">easing functions</a>
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/274" target="_blank" rel="noopener noreferrer">#274</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/f81ce43019fe253e99f4ab6311c2251b40e2eae3" target="_blank" rel="noopener noreferrer">f81ce43</a>)</li><li>Tweening to/from undefined values now warns the user
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/257" target="_blank" rel="noopener noreferrer">#257</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/d4bb79145300b52c4b4d101df2afaff5ea11a9e9" target="_blank" rel="noopener noreferrer">d4bb791</a>)</li><li>API documentation is always re-build when in <code>build</code> mode
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/298" target="_blank" rel="noopener noreferrer">#298</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/27a4d96593d8e925385252b0d6f62646cd9fa6d5" target="_blank" rel="noopener noreferrer">27a4d96</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/294" target="_blank" rel="noopener noreferrer">#294</a></li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a class="hash-link" href="#bug-fixes" title="Direct link to heading">​</a></h3><ul><li><code>textWrap={'pre'}</code> now works in Firefox
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/287" target="_blank" rel="noopener noreferrer">#287</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/cb07f4bdf07edc8a086b934ca5ab769682b9a010" target="_blank" rel="noopener noreferrer">cb07f4b</a>)</li><li>Using space to play/pause the animation when focused on the play button now
+works properly
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/299" target="_blank" rel="noopener noreferrer">#299</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/191f54a0a5a9de2fd2dc27bffc6d21d692ce6f72" target="_blank" rel="noopener noreferrer">191f54a</a>)</li><li>The glossy effect on the select element has been removed in Safari
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/292" target="_blank" rel="noopener noreferrer">#292</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/9c062b26e48fbdb1905daae25a3fb34df82307d3" target="_blank" rel="noopener noreferrer">9c062b2</a>)</li></ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Motion Canvas v2.2.0]]></title>
             <link>https://motion-canvas.github.io/blog/version-2.2.0</link>
