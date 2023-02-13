@@ -11,10 +11,10 @@
         <item>
             <title><![CDATA[Motion Canvas v2.3.0]]></title>
             <link>https://motion-canvas.github.io/blog/version-2.3.0</link>
-            <guid>version-2.3.0</guid>
+            <guid>https://motion-canvas.github.io/blog/version-2.3.0</guid>
             <pubDate>Sat, 11 Feb 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Features]]></description>
-            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a class="hash-link" href="#features" title="Direct link to heading">​</a></h3><ul><li>A new <a href="/docs/nodes"><code>LaTeX</code></a> node!
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>A new <a href="/docs/nodes"><code>LaTeX</code></a> node!
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/228" target="_blank" rel="noopener noreferrer">#228</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/4c26d2aaf0c697486639aa917cd5c585d3d0ea74" target="_blank" rel="noopener noreferrer">4c26d2a</a>)</li><li>CodeBlock themes (documentation coming soon)
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/279" target="_blank" rel="noopener noreferrer">#279</a>)
@@ -32,7 +32,7 @@
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/d4bb79145300b52c4b4d101df2afaff5ea11a9e9" target="_blank" rel="noopener noreferrer">d4bb791</a>)</li><li>API documentation is always re-build when in <code>build</code> mode
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/298" target="_blank" rel="noopener noreferrer">#298</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/27a4d96593d8e925385252b0d6f62646cd9fa6d5" target="_blank" rel="noopener noreferrer">27a4d96</a>),
-closes <a href="https://github.com/motion-canvas/motion-canvas/issues/294" target="_blank" rel="noopener noreferrer">#294</a></li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a class="hash-link" href="#bug-fixes" title="Direct link to heading">​</a></h3><ul><li><code>textWrap={'pre'}</code> now works in Firefox
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/294" target="_blank" rel="noopener noreferrer">#294</a></li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a href="#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h3><ul><li><code>textWrap={'pre'}</code> now works in Firefox
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/287" target="_blank" rel="noopener noreferrer">#287</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/cb07f4bdf07edc8a086b934ca5ab769682b9a010" target="_blank" rel="noopener noreferrer">cb07f4b</a>)</li><li>Using space to play/pause the animation when focused on the play button now
 works properly
@@ -44,30 +44,30 @@ works properly
         <item>
             <title><![CDATA[Motion Canvas v2.2.0]]></title>
             <link>https://motion-canvas.github.io/blog/version-2.2.0</link>
-            <guid>version-2.2.0</guid>
+            <guid>https://motion-canvas.github.io/blog/version-2.2.0</guid>
             <pubDate>Thu, 09 Feb 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Features]]></description>
-            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a class="hash-link" href="#features" title="Direct link to heading">​</a></h3><ul><li>New <a href="/docs/project-variables">project variables</a> let you create customizable
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>New <a href="/docs/project-variables">project variables</a> let you create customizable
 animations (<a href="https://github.com/motion-canvas/motion-canvas/issues/255" target="_blank" rel="noopener noreferrer">#255</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/488329525939928af52b4a4d8488f1e1cd4cf6f7" target="_blank" rel="noopener noreferrer">4883295</a>)</li><li>The <a href="/api/2d/components/Video"><code>Video</code></a> component has new getters for the
 <a href="/api/2d/components/Video#getDuration">duration</a>,
 <a href="/api/2d/components/Video#getCurrentTime">current time</a>, and
 <a href="/api/2d/components/Video#isPlaying">state</a> of the video
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/240" target="_blank" rel="noopener noreferrer">#240</a>)
-(<a href="https://github.com/motion-canvas/motion-canvas/commit/59de5ab2c089589773a2f9ad7588eda7d72693a7" target="_blank" rel="noopener noreferrer">59de5ab</a>)</li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a class="hash-link" href="#bug-fixes" title="Direct link to heading">​</a></h3><ul><li>Text is now visible in Firefox without the need of a custom flag
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/59de5ab2c089589773a2f9ad7588eda7d72693a7" target="_blank" rel="noopener noreferrer">59de5ab</a>)</li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a href="#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h3><ul><li>Text is now visible in Firefox without the need of a custom flag
 (<a href="https://github.com/motion-canvas/motion-canvas/pull/249" target="_blank" rel="noopener noreferrer">#249</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/20a4d65bbfa0c568e571274d9b6a16fb4327a5fa" target="_blank" rel="noopener noreferrer">20a4d65</a>)</li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Motion Canvas v2.1.0]]></title>
             <link>https://motion-canvas.github.io/blog/version-2.1.0</link>
-            <guid>version-2.1.0</guid>
+            <guid>https://motion-canvas.github.io/blog/version-2.1.0</guid>
             <pubDate>Wed, 08 Feb 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Features]]></description>
-            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a class="hash-link" href="#features" title="Direct link to heading">​</a></h3><ul><li>add <a href="/docs/time-events#controlling-animation-duration"><code>useDuration</code></a> helper
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>add <a href="/docs/time-events#controlling-animation-duration"><code>useDuration</code></a> helper
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/226" target="_blank" rel="noopener noreferrer">#226</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/fa97d6c7f076f287c9b86d2f8852341bd368ef1c" target="_blank" rel="noopener noreferrer">fa97d6c</a>),
-closes <a href="https://github.com/motion-canvas/motion-canvas/issues/171" target="_blank" rel="noopener noreferrer">#171</a></li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a class="hash-link" href="#bug-fixes" title="Direct link to heading">​</a></h3><ul><li><strong>2d:</strong> fix font ligatures in CodeBlock
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/171" target="_blank" rel="noopener noreferrer">#171</a></li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a href="#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h3><ul><li><strong>2d:</strong> fix font ligatures in CodeBlock
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/231" target="_blank" rel="noopener noreferrer">#231</a>)
 (<a href="https://github.com/motion-canvas/motion-canvas/commit/11ee3fef5ad878313cf19833df6881333ced4dac" target="_blank" rel="noopener noreferrer">11ee3fe</a>)</li><li><strong>2d:</strong> fix Line cache
 (<a href="https://github.com/motion-canvas/motion-canvas/issues/232" target="_blank" rel="noopener noreferrer">#232</a>)
@@ -94,7 +94,7 @@ closes <a href="https://github.com/motion-canvas/motion-canvas/issues/201" targe
         <item>
             <title><![CDATA[Motion Canvas is now Open Source!]]></title>
             <link>https://motion-canvas.github.io/blog/public-release</link>
-            <guid>public-release</guid>
+            <guid>https://motion-canvas.github.io/blog/public-release</guid>
             <pubDate>Sat, 04 Feb 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[After months of work, I'm happy to announce that Motion Canvas is ready for the]]></description>
             <content:encoded><![CDATA[<p>After months of work, I'm happy to announce that Motion Canvas is ready for the
