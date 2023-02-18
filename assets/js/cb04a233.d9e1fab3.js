@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[9566],{3411:e=>{e.exports=JSON.parse('{"title":"Advanced","slug":"/category/advanced","permalink":"/docs/category/advanced","navigation":{"previous":{"title":"Media","permalink":"/docs/media"},"next":{"title":"Components","permalink":"/docs/custom-components"}}}')}}]);

@@ -1,16 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://motion-canvas.github.io/blog</id>
+    <id>https://motioncanvas.io/blog</id>
     <title>Motion Canvas Blog</title>
-    <updated>2023-02-11T00:00:00.000Z</updated>
+    <updated>2023-02-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://motion-canvas.github.io/blog"/>
+    <link rel="alternate" href="https://motioncanvas.io/blog"/>
     <subtitle>Motion Canvas Blog</subtitle>
-    <icon>https://motion-canvas.github.io/img/favicon.ico</icon>
+    <icon>https://motioncanvas.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Motion Canvas v2.4.0]]></title>
+        <id>https://motioncanvas.io/blog/version-2.4.0</id>
+        <link href="https://motioncanvas.io/blog/version-2.4.0"/>
+        <updated>2023-02-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li><a href="/docs/signals#default-values"><code>DEFAULT</code></a> signal values. <code>lineHeight</code> now
+supports percentages.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/259" target="_blank" rel="noopener noreferrer">#259</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/18f61a668420dec8afba52d52a6557e7a7919ba2" target="_blank" rel="noopener noreferrer">18f61a6</a>)</li><li>New <a href="/api/2d/components/Node#moveBelow"><code>moveBelow</code></a>,
+<a href="/api/2d/components/Node#moveAbove"><code>moveAbove</code></a> and
+<a href="/api/2d/components/Node#moveTo"><code>moveTo</code></a> methods for rearranging the nodes.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/365" target="_blank" rel="noopener noreferrer">#365</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/16752a3b8ae7461b33d6208a9675729f374e8324" target="_blank" rel="noopener noreferrer">16752a3</a>)</li><li>New <a href="/docs/code-block"><code>CodeBlock</code></a> documentation
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/302" target="_blank" rel="noopener noreferrer">#302</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/73f7221536e09d5cf77f75ca173d1a7637d5b98f" target="_blank" rel="noopener noreferrer">73f7221</a>)</li><li>The editor now warns about duplicated time events.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/341" target="_blank" rel="noopener noreferrer">#341</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/053b2a6c22c4e726e3962fdaf0a2e8d149889a9b" target="_blank" rel="noopener noreferrer">053b2a6</a>)</li><li>We now have a search bar on the documentation website.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/335" target="_blank" rel="noopener noreferrer">#335</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/48f74a60d54cc52c7f069a9ec39071c99163bd19" target="_blank" rel="noopener noreferrer">48f74a6</a>)</li><li>You can now open the documentation from within the editor.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/346" target="_blank" rel="noopener noreferrer">#346</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/fc4ee5d028312904ed9e11c5341ac00f36e7242b" target="_blank" rel="noopener noreferrer">fc4ee5d</a>)</li><li><code>SHIFT + -&gt;</code> moves to the last frame.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/354" target="_blank" rel="noopener noreferrer">#354</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/4b8170971400c5bf4fe690a58d3f44c3e1d00b94" target="_blank" rel="noopener noreferrer">4b81709</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/353" target="_blank" rel="noopener noreferrer">#353</a></li><li>Flexbox <code>gap</code> is now represented by a <code>Vector2</code> signal.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/355" target="_blank" rel="noopener noreferrer">#355</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/3cae97ea704d0533020fa87326dacadcc037d517" target="_blank" rel="noopener noreferrer">3cae97e</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/352" target="_blank" rel="noopener noreferrer">#352</a></li><li>New <a href="/api/core/types/Matrix2D"><code>Matrix2D</code></a> type.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/340" target="_blank" rel="noopener noreferrer">#340</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/66b41e6beaca5c2ba4b6bd1a7e68ca16d183b0e9" target="_blank" rel="noopener noreferrer">66b41e6</a>)</li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a href="#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h3><ul><li><strong>2d:</strong> fix Gradient and Pattern signals
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/376" target="_blank" rel="noopener noreferrer">#376</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/6e0dc8af8d19f93fd6a42addca2b3a2958b4dd33" target="_blank" rel="noopener noreferrer">6e0dc8a</a>)</li><li><strong>2d:</strong> fix layout calculation for nodes not explicitly added to view
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/331" target="_blank" rel="noopener noreferrer">#331</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/528e2d5a0abec99819e022d2848b256ece9f869a" target="_blank" rel="noopener noreferrer">528e2d5</a>)</li><li><strong>2d:</strong> format whitespaces according to HTML
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/372" target="_blank" rel="noopener noreferrer">#372</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/83fb565742d98f060c0400c8cbaf9961b69f34d0" target="_blank" rel="noopener noreferrer">83fb565</a>),
+closes <a href="https://github.com/motion-canvas/motion-canvas/issues/370" target="_blank" rel="noopener noreferrer">#370</a></li><li><strong>core:</strong> playback speed is reset after saving with faulty code
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/204" target="_blank" rel="noopener noreferrer">#204</a>).
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/339" target="_blank" rel="noopener noreferrer">#339</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/6771e5e17edcdc4cce074d7da0962cf71ba6c228" target="_blank" rel="noopener noreferrer">6771e5e</a>)</li><li><strong>docs:</strong> fix search
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/336" target="_blank" rel="noopener noreferrer">#336</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/e44ec02539a67f099471a6aa84f673a236494687" target="_blank" rel="noopener noreferrer">e44ec02</a>)</li><li>typo on codeblock remove comments
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/368" target="_blank" rel="noopener noreferrer">#368</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/2025adc6e7aa11d81b6f5f6989e8eae18cf86cb7" target="_blank" rel="noopener noreferrer">2025adc</a>)</li><li><strong>ui:</strong> fix inspector tab
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/374" target="_blank" rel="noopener noreferrer">#374</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/c4cb378c2f9d972bb41542bbe3b3aa314fa1f3ad" target="_blank" rel="noopener noreferrer">c4cb378</a>)</li><li><strong>vite-plugin:</strong> fix js template
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/337" target="_blank" rel="noopener noreferrer">#337</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/3b33d73416541d491b633bada29f085f5489f6c2" target="_blank" rel="noopener noreferrer">3b33d73</a>)</li><li><strong>vite-plugin:</strong> ignore query param in devserver
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/351" target="_blank" rel="noopener noreferrer">#351</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/5644d72d36adcdc817f0856aaff0be5507338cb8" target="_blank" rel="noopener noreferrer">5644d72</a>)</li></ul>]]></content>
+        <author>
+            <name>Jacob</name>
+            <uri>https://twitter.com/aarthificial</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Motion Canvas v2.3.0]]></title>
-        <id>https://motion-canvas.github.io/blog/version-2.3.0</id>
-        <link href="https://motion-canvas.github.io/blog/version-2.3.0"/>
+        <id>https://motioncanvas.io/blog/version-2.3.0</id>
+        <link href="https://motioncanvas.io/blog/version-2.3.0"/>
         <updated>2023-02-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Features]]></summary>
         <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>A new <a href="/docs/nodes"><code>LaTeX</code></a> node!
@@ -46,8 +101,8 @@ works properly
     </entry>
     <entry>
         <title type="html"><![CDATA[Motion Canvas v2.2.0]]></title>
-        <id>https://motion-canvas.github.io/blog/version-2.2.0</id>
-        <link href="https://motion-canvas.github.io/blog/version-2.2.0"/>
+        <id>https://motioncanvas.io/blog/version-2.2.0</id>
+        <link href="https://motioncanvas.io/blog/version-2.2.0"/>
         <updated>2023-02-09T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Features]]></summary>
         <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>New <a href="/docs/project-variables">project variables</a> let you create customizable
@@ -67,8 +122,8 @@ animations (<a href="https://github.com/motion-canvas/motion-canvas/issues/255" 
     </entry>
     <entry>
         <title type="html"><![CDATA[Motion Canvas v2.1.0]]></title>
-        <id>https://motion-canvas.github.io/blog/version-2.1.0</id>
-        <link href="https://motion-canvas.github.io/blog/version-2.1.0"/>
+        <id>https://motioncanvas.io/blog/version-2.1.0</id>
+        <link href="https://motioncanvas.io/blog/version-2.1.0"/>
         <updated>2023-02-08T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Features]]></summary>
         <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>add <a href="/docs/time-events#controlling-animation-duration"><code>useDuration</code></a> helper
@@ -104,8 +159,8 @@ closes <a href="https://github.com/motion-canvas/motion-canvas/issues/201" targe
     </entry>
     <entry>
         <title type="html"><![CDATA[Motion Canvas is now Open Source!]]></title>
-        <id>https://motion-canvas.github.io/blog/public-release</id>
-        <link href="https://motion-canvas.github.io/blog/public-release"/>
+        <id>https://motioncanvas.io/blog/public-release</id>
+        <link href="https://motioncanvas.io/blog/public-release"/>
         <updated>2023-02-04T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[After months of work, I'm happy to announce that Motion Canvas is ready for the]]></summary>
         <content type="html"><![CDATA[<p>After months of work, I'm happy to announce that Motion Canvas is ready for the
