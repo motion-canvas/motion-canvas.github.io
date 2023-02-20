@@ -4,10 +4,38 @@
         <title>Motion Canvas Blog</title>
         <link>https://motioncanvas.io/blog</link>
         <description>Motion Canvas Blog</description>
-        <lastBuildDate>Sat, 18 Feb 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Feb 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Motion Canvas v2.5.0]]></title>
+            <link>https://motioncanvas.io/blog/version-2.5.0</link>
+            <guid>https://motioncanvas.io/blog/version-2.5.0</guid>
+            <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Features]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_fF9Z" id="features">Features<a href="#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3><ul><li>New <a href="/docs/tweening#spring-function"><code>spring</code></a> interpolation.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/356" target="_blank" rel="noopener noreferrer">#356</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/1463b1592e22fad9d8298c11270e2099119e2229" target="_blank" rel="noopener noreferrer">1463b15</a>)</li><li><a href="/api/2d/components/Circle#closed"><code>closed</code></a> property lets you make wedges
+using <code>Circle</code>s.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/378" target="_blank" rel="noopener noreferrer">#378</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/62a9605d4c54e7bf2d2d44d47bf769f5b27378a5" target="_blank" rel="noopener noreferrer">62a9605</a>)</li><li>New <a href="/docs/transitions#fadetransition"><code>fadeTransition</code></a>
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/384" target="_blank" rel="noopener noreferrer">#384</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/a248785e87d1c6ebc08581f4fda6be428a89824c" target="_blank" rel="noopener noreferrer">a248785</a>)</li><li>The <a href="/api/core/utils#range"><code>range</code></a> function now accepts an additional <code>step</code>
+parameter. (<a href="https://github.com/motion-canvas/motion-canvas/issues/373" target="_blank" rel="noopener noreferrer">#373</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/923209a4106c8e7f570853dcc47a10e65e0d04d8" target="_blank" rel="noopener noreferrer">923209a</a>)</li><li><code>View2D</code> now extends <code>Rect</code> allowing you to change the background color of a
+scene using the <code>fill</code> property.
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/379" target="_blank" rel="noopener noreferrer">#379</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/93db5fc41617c0902e85fda90fbfc930c2b4634b" target="_blank" rel="noopener noreferrer">93db5fc</a>)</li></ul><h3 class="anchor anchorWithStickyNavbar_fF9Z" id="bug-fixes">Bug Fixes<a href="#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h3><ul><li>support <code>Color</code> to <code>null</code> tweening
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/387" target="_blank" rel="noopener noreferrer">#387</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/02e9f22027a1c3a85ffcc259aeca913318fb6f54" target="_blank" rel="noopener noreferrer">02e9f22</a>)</li><li><strong>2d:</strong> fix signal initialization
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/382" target="_blank" rel="noopener noreferrer">#382</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/ea36e791a20bfd1b491ffa9917be686c51bc3899" target="_blank" rel="noopener noreferrer">ea36e79</a>)</li><li><strong>2d:</strong> handle floating point errors in acos
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/381" target="_blank" rel="noopener noreferrer">#381</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/5bca8fd0bbdcf28f2793c124b7d6b0afd560c4b8" target="_blank" rel="noopener noreferrer">5bca8fd</a>)</li><li>plug memory leaks
+(<a href="https://github.com/motion-canvas/motion-canvas/issues/385" target="_blank" rel="noopener noreferrer">#385</a>)
+(<a href="https://github.com/motion-canvas/motion-canvas/commit/de0af00a7d2e019e2a933791c62b7901755be7b0" target="_blank" rel="noopener noreferrer">de0af00</a>)</li></ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Motion Canvas v2.4.0]]></title>
             <link>https://motioncanvas.io/blog/version-2.4.0</link>
