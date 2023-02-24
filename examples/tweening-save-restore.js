@@ -1,0 +1,7 @@
+import{M as l,m as d,j as f,a as t,C as m,V as j,b as g,P as r}from"./makeScene2D.1d52a1b2.js";import{c as w}from"./createRef.f9eb3d88.js";let n;n!=null||(n=new l("tweening-save-restore",!1,{version:0}));n.loadData({version:0});const c=n;let o;o!=null||(o=new l("tweening-save-restore",!1,{version:1,seed:1271865379}));o.loadData({version:1,seed:1271865379});const v=o,a=d(function*(p){const e=w();p.add(f(m,{ref:e,size:150,position:[-300,-300],fill:"#e13238"})),e().save(),yield*t(e().position.x(0,1),e().scale(1.5,1)),e().save(),yield*t(e().position.y(0,1),e().scale(.5,1)),e().save(),yield*t(e().position.x(300,1),e().scale(1,1)),yield*e().restore(1),yield*e().restore(1),yield*e().restore(1)});a.name="tweening-save-restore";a.meta=v;var i;(i=a.onReplaced)!=null||(a.onReplaced=new j(a.config));const s=g({scenes:[a]}),h=()=>s instanceof r?(s.meta=c,s.name="tweening-save-restore",s.logger.warn({message:"A project instance was exported instead of a project factory.",remarks:`<p>Use the <code>makeProject()</code> function instead:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> {makeProject} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@motion-canvas/core&#x27;</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">makeProject</span>({
+  <span class="hljs-comment">// Configuration and scenes go here.</span>
+});
+</code></pre>
+`,stack:s.creationStack}),s):new r("tweening-save-restore",c,s);export{h as default};

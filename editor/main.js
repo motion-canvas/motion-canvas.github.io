@@ -1845,6 +1845,8 @@ function uc(t, e, n, r = !1) {
     return pt(t, e, n);
   if (typeof t == "string" && typeof e == "string")
     return _b(t, e, n);
+  if (typeof t == "boolean" && typeof e == "boolean")
+    return n < 0.5 ? t : e;
   if ("lerp" in t)
     return t.lerp(e, n);
   if (t && e && typeof t == "object" && typeof e == "object")
