@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[3356],{3057:e=>{e.exports=JSON.parse('{"title":"Components","slug":"/category/components","permalink":"/docs/category/components","navigation":{"previous":{"title":"Media","permalink":"/docs/media"},"next":{"title":"CodeBlock","permalink":"/docs/code-block"}}}')}}]);
