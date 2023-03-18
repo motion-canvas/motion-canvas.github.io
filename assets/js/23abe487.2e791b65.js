@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_motion_canvas_docs=self.webpackChunk_motion_canvas_docs||[]).push([[9627],{24326:(e,n,t)=>{t.r(n),t.d(n,{default:()=>o});var c=t(2784),s=t(37614),a=t(77377),l=t(12369);function o(){const{siteConfig:e}=(0,s.Z)();return c.createElement(a.Z,null,c.createElement("h2",null,"Site config"),c.createElement(l.Z,{src:e,collapseDepth:3}))}}}]);
