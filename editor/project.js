@@ -1,1 +1,1 @@
-import {index} from '/editor/main.js';index([{"name":"random","url":"Random values generator"},{"name":"quickstart","url":"Quickstart example"},{"name":"logging","url":"Logging example"},{"name":"presentation","url":"Presentation example"}]);
+import {index} from '/editor/main.js';index([{"name":"Random","fileName":"random","url":"Random values generator"},{"name":"Quickstart","fileName":"quickstart","url":"Quickstart example"},{"name":"Logging","fileName":"logging","url":"Logging example"},{"name":"Presentation","fileName":"presentation","url":"Presentation example"}]);

@@ -1,1 +1,0 @@
-import project from '/examples/presentation.js';import {editor} from '/editor/main.js';editor(project);
