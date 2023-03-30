@@ -1,0 +1,1 @@
+import{A as d,Y as a,B as n,$ as u,v as o}from"./makeScene2D-f1afe989.js";function l(t){const e=d(),i=a();return e.timeEvents.register(t,i.time())}n(m,o());function*m(t,e){yield*r(l(t)),e&&(yield*e)}n(r,o());function*r(t=0,e){const i=a(),c=u().framesToSeconds(1),s=i.time()+t;for(;s-c>i.fixed;)yield;i.time(s),e&&(yield*e)}export{m as a,r as w};
