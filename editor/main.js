@@ -54232,16 +54232,19 @@ const KA = "_root_oa7go_1", QA = "_link_oa7go_8", XA = "_main_oa7go_18", ZA = "_
 function JA() {
   const {
     project: t
-  } = Re(), [e, n] = Be(t.versions.core), r = zN(t.versions.core, e) < 0;
+  } = Re(), e = {
+    core: "0.0.0",
+    ...t.versions ?? {}
+  }, [n, r] = Be(e.core), a = zN(e.core, n) < 0;
   return ut(() => {
-    const a = new AbortController();
+    const i = new AbortController();
     return fetch("https://registry.npmjs.org/@motion-canvas/core/latest", {
-      signal: a.signal
-    }).then((i) => i.json()).then((i) => n(i.version)), () => a.abort();
+      signal: i.signal
+    }).then((o) => o.json()).then((o) => r(o.version)), () => i.abort();
   }, []), p("div", {
     className: Hr.root,
-    children: [r && p("a", {
-      href: `https://motioncanvas.io/blog/version-${e}`,
+    children: [a && p("a", {
+      href: "https://github.com/motion-canvas/motion-canvas/releases",
       target: "_blank",
       title: "See what's new",
       className: Ne(Hr.link, Hr.main),
@@ -54250,11 +54253,11 @@ function JA() {
       title: "Copy version information",
       className: Hr.link,
       onClick: () => {
-        const a = Object.entries(t.versions).filter(([, i]) => !!i).map(([i, o]) => `- ${i}: ${o}`).join(`
+        const i = Object.entries(e).filter(([, o]) => !!o).map(([o, s]) => `- ${o}: ${s}`).join(`
 `);
-        navigator.clipboard.writeText(a);
+        navigator.clipboard.writeText(i);
       },
-      children: t.versions.core
+      children: e.core
     })]
   });
 }
