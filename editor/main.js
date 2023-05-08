@@ -2144,12 +2144,14 @@ class Et {
     }, a = this.collectionStack.at(-1);
     return a && (r.owner = a.owner), e.then((i) => {
       r.value = i, a == null || a.markDirty();
-    }).finally(() => {
-      this.promises = this.promises.filter((i) => i !== r);
     }), this.promises.push(r), r;
   }
-  static consumePromises() {
-    return this.promises;
+  static hasPromises() {
+    return this.promises.length > 0;
+  }
+  static async consumePromises() {
+    const e = [...this.promises];
+    return await Promise.all(e.map((n) => n.promise)), this.promises = this.promises.filter((n) => !e.includes(n)), e;
   }
   constructor(e) {
     this.owner = e, this.dependencies = /* @__PURE__ */ new Set(), this.event = new nT(), this.markDirty = () => this.event.raise(), this.invokable = this.invoke.bind(this), Object.defineProperty(this.invokable, "context", {
@@ -2181,10 +2183,9 @@ class Et {
     this.clearDependencies(), this.event.clear(), this.owner = null;
   }
   async toPromise() {
-    let e = Et.consumePromises();
     do
-      await Promise.all(e.map((n) => n.promise)), this.invokable(), e = Et.consumePromises();
-    while (e.length > 0);
+      await Et.consumePromises(), this.invokable();
+    while (Et.hasPromises());
     return this.invokable;
   }
 }
